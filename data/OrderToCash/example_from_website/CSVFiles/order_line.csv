@@ -1,0 +1,5 @@
+rowid,fk_commande,fk_parent_line,fk_product,label,description,tva_tx,localtax1_tx,localtax1_type,localtax2_tx,localtax2_type,qty,remise_percent,remise,fk_remise_except,price,subprice,total_ht,total_tva,total_localtax1,total_localtax2,total_ttc,product_type,date_start,date_end,info_bits,buy_price_ht,fk_product_fournisseur_price,special_code,rang,fk_unit,import_key
+1,1,null,computer,null,,19.000,0.000,0,0.000,0,2,0,0,null,400,400.00000000,400.00000000,76.00000000,0.00000000,0.00000000,1190.00000000,0,null,null,0,210.00000000,null,0,1,null,null
+2,1,null,phone,null,,6.000,0.000,0,0.000,0,3,5,1.25,null,23.75,25.00000000,95.00000000,5.70000000,0.00000000,0.00000000,476.00000000,0,null,null,0,16.00000000,null,0,2,null,null
+3,2,null,cup,null,,6.000,0.000,0,0.000,0,3,10,0.6,null,5.4,6.00000000,32.40000000,1.94000000,0.00000000,0.00000000,1.00000000,0,null,null,0,3.00000000,null,0,3,null,null
+4,2,null,TV,null,,0.000,0.000,0,0.000,0,2,0,0,null,2,2.00000000,4.00000000,0.00000000,0.00000000,0.00000000,952.00000000,0,null,null,0,0.80000000,null,0,1,null,null

@@ -1,0 +1,5 @@
+rowid,fk_source,sourcetype,fk_target,targettype
+1,1,commande,1,facture
+2,1,commande,2,facture
+3,2,commande,2,facture
+4,2,commande,3,facture

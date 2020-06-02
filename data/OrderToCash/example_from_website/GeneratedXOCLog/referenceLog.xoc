@@ -1,0 +1,2526 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!-- This file is an XOC log example from the OTC scenario.-->
+<!-- It is of "total" format and consists of 10 events.-->
+<!-- More informaiton is available at http://www.win.tue.nl/ocbc/ .-->
+<log xoc.version="1.0">
+	<string key="format" value="total"/>
+	<event>
+		<string key="id" value="co1"/>
+		<string key="activity" value="create_order"/>
+		<string key="timestamp" value="2017-08-11 10:33:37"/>
+		<model>
+			<objects>
+				<object>
+					<string key="id" value="c1"/>
+					<string key="class" value="customer"/>
+					<string key="name" value="Ming"/>
+					<string key="address" value="Eindhoven"/>					
+				</object>
+				<object>
+					<string key="id" value="c2"/>
+					<string key="class" value="customer"/>
+					<string key="name" value="Cong"/>
+					<string key="address" value="Tilburg"/>					
+				</object>
+				<object>
+					<string key="id" value="o1"/>
+					<string key="class" value="order"/>
+					<string key="create_date" value="2017-08-11 10:33:37"/>
+					<string key="customer" value="c1"/>
+				</object>
+				<object>
+					<string key="id" value="ol1"/>
+					<string key="class" value="order_line"/>
+					<string key="order" value="o1"/>
+					<string key="product" value="computer"/>
+					<string key="quantity" value="2"/>
+					<string key="price" value="1190"/>
+				</object>
+				<object>
+					<string key="id" value="ol2"/>
+					<string key="class" value="order_line"/>
+					<string key="order" value="o1"/>
+					<string key="product" value="phone"/>
+					<string key="quantity" value="3"/>
+					<string key="price" value="476"/>	
+				</object>
+			</objects>
+			<relations>
+				<relation>
+					<string key="id" value="c1-r5-o1"/>
+					<string key="relation" value="r5"/>
+					<string key="sourceobjectid" value="c1"/>
+					<string key="targetobjectid" value="o1"/>
+				</relation>
+				<relation>
+					<string key="id" value="o1-r10-ol1"/>
+					<string key="relation" value="r10"/>
+					<string key="sourceobjectid" value="o1"/>
+					<string key="targetobjectid" value="ol1"/>
+				</relation>
+				<relation>
+					<string key="id" value="o1-r10-ol2"/>
+					<string key="relation" value="r10"/>
+					<string key="sourceobjectid" value="o1"/>
+					<string key="targetobjectid" value="ol2"/>
+				</relation>				
+			</relations>
+		</model>
+		<references>
+			<object>
+				<string key="id" value="o1"/>
+			</object>
+			<object>
+				<string key="id" value="ol1"/>
+			</object>
+			<object>
+				<string key="id" value="ol2"/>
+			</object>
+		</references>
+	</event>
+	<event>
+		<string key="id" value="co2"/>
+		<string key="activity" value="create_order"/>
+		<string key="timestamp" value="2017-08-13 16:28:15"/>
+		<model>
+			<objects>
+				<object>
+					<string key="id" value="c1"/>
+					<string key="class" value="customer"/>
+					<string key="name" value="Ming"/>
+					<string key="address" value="Eindhoven"/>					
+				</object>
+				<object>
+					<string key="id" value="c2"/>
+					<string key="class" value="customer"/>
+					<string key="name" value="Cong"/>
+					<string key="address" value="Tilburg"/>					
+				</object>
+				<object>
+					<string key="id" value="o1"/>
+					<string key="class" value="order"/>
+					<string key="create_date" value="2017-08-11 10:33:37"/>
+					<string key="customer" value="c1"/>
+				</object>
+				<object>
+					<string key="id" value="ol1"/>
+					<string key="class" value="order_line"/>
+					<string key="order" value="o1"/>
+					<string key="product" value="computer"/>
+					<string key="quantity" value="2"/>
+					<string key="price" value="1190"/>
+				</object>
+				<object>
+					<string key="id" value="ol2"/>
+					<string key="class" value="order_line"/>
+					<string key="order" value="o1"/>
+					<string key="product" value="phone"/>
+					<string key="quantity" value="3"/>
+					<string key="price" value="476"/>	
+				</object>
+				<object>
+					<string key="id" value="o2"/>
+					<string key="class" value="order"/>
+					<string key="create_date" value="2017-08-13 16:28:15"/>
+					<string key="customer" value="c1"/>
+				</object>
+				<object>
+					<string key="id" value="ol3"/>
+					<string key="class" value="order_line"/>
+					<string key="order" value="o2"/>
+					<string key="product" value="cup"/>
+					<string key="quantity" value="3"/>
+					<string key="price" value="1"/>
+				</object>
+				<object>
+					<string key="id" value="ol4"/>
+					<string key="class" value="order_line"/>
+					<string key="order" value="o2"/>
+					<string key="product" value="TV"/>
+					<string key="quantity" value="2"/>
+					<string key="price" value="952"/>	
+				</object>
+			</objects>
+			<relations>
+				<relation>
+					<string key="id" value="c1-r5-o1"/>
+					<string key="relation" value="r5"/>
+					<string key="sourceobjectid" value="c1"/>
+					<string key="targetobjectid" value="o1"/>
+				</relation>
+				<relation>
+					<string key="id" value="o1-r10-ol1"/>
+					<string key="relation" value="r10"/>
+					<string key="sourceobjectid" value="o1"/>
+					<string key="targetobjectid" value="ol1"/>
+				</relation>
+				<relation>
+					<string key="id" value="o1-r10-ol2"/>
+					<string key="relation" value="r10"/>
+					<string key="sourceobjectid" value="o1"/>
+					<string key="targetobjectid" value="ol2"/>
+				</relation>			
+				<relation>
+					<string key="id" value="c1-r5-o2"/>
+					<string key="relation" value="r5"/>
+					<string key="sourceobjectid" value="c1"/>
+					<string key="targetobjectid" value="o2"/>
+				</relation>
+				<relation>
+					<string key="id" value="o2-r10-ol3"/>
+					<string key="relation" value="r10"/>
+					<string key="sourceobjectid" value="o2"/>
+					<string key="targetobjectid" value="ol3"/>
+				</relation>
+				<relation>
+					<string key="id" value="o2-r10-ol4"/>
+					<string key="relation" value="r10"/>
+					<string key="sourceobjectid" value="o2"/>
+					<string key="targetobjectid" value="ol4"/>
+				</relation>								
+			</relations>
+		</model>
+		<references>
+			<object>
+				<string key="id" value="o2"/>
+			</object>
+			<object>
+				<string key="id" value="ol3"/>
+			</object>
+			<object>
+				<string key="id" value="ol4"/>
+			</object>
+		</references>
+	</event>
+	<event>
+		<string key="id" value="cs1"/>
+		<string key="activity" value="create_shipment"/>
+		<string key="timestamp" value="2017-08-14 11:36:35"/>
+		<model>
+			<objects>
+				<object>
+					<string key="id" value="c1"/>
+					<string key="class" value="customer"/>
+					<string key="name" value="Ming"/>
+					<string key="address" value="Eindhoven"/>					
+				</object>
+				<object>
+					<string key="id" value="c2"/>
+					<string key="class" value="customer"/>
+					<string key="name" value="Cong"/>
+					<string key="address" value="Tilburg"/>					
+				</object>
+				<object>
+					<string key="id" value="o1"/>
+					<string key="class" value="order"/>
+					<string key="create_date" value="2017-08-11 10:33:37"/>
+					<string key="customer" value="c1"/>
+				</object>
+				<object>
+					<string key="id" value="ol1"/>
+					<string key="class" value="order_line"/>
+					<string key="order" value="o1"/>
+					<string key="product" value="computer"/>
+					<string key="quantity" value="2"/>
+					<string key="price" value="1190"/>
+				</object>
+				<object>
+					<string key="id" value="ol2"/>
+					<string key="class" value="order_line"/>
+					<string key="order" value="o1"/>
+					<string key="product" value="phone"/>
+					<string key="quantity" value="3"/>
+					<string key="price" value="476"/>	
+				</object>
+				<object>
+					<string key="id" value="o2"/>
+					<string key="class" value="order"/>
+					<string key="create_date" value="2017-08-13 16:28:15"/>
+					<string key="customer" value="c1"/>
+				</object>
+				<object>
+					<string key="id" value="ol3"/>
+					<string key="class" value="order_line"/>
+					<string key="order" value="o2"/>
+					<string key="product" value="cup"/>
+					<string key="quantity" value="3"/>
+					<string key="price" value="1"/>
+				</object>
+				<object>
+					<string key="id" value="ol4"/>
+					<string key="class" value="order_line"/>
+					<string key="order" value="o2"/>
+					<string key="product" value="TV"/>
+					<string key="quantity" value="2"/>
+					<string key="price" value="952"/>	
+				</object>
+				<object>
+					<string key="id" value="s1"/>
+					<string key="class" value="shipment"/>
+					<string key="create_date" value="2017-08-14 10:33:37"/>
+					<string key="customer" value="c1"/>
+				</object>
+				<object>
+					<string key="id" value="sl1"/>
+					<string key="class" value="shipment_line"/>
+					<string key="shipment" value="s1"/>
+					<string key="order_line" value="ol1"/>
+					<string key="quantity" value="1"/>
+				</object>
+			</objects>
+			<relations>
+				<relation>
+					<string key="id" value="c1-r5-o1"/>
+					<string key="relation" value="r5"/>
+					<string key="sourceobjectid" value="c1"/>
+					<string key="targetobjectid" value="o1"/>
+				</relation>
+				<relation>
+					<string key="id" value="o1-r10-ol1"/>
+					<string key="relation" value="r10"/>
+					<string key="sourceobjectid" value="o1"/>
+					<string key="targetobjectid" value="ol1"/>
+				</relation>
+				<relation>
+					<string key="id" value="o1-r10-ol2"/>
+					<string key="relation" value="r10"/>
+					<string key="sourceobjectid" value="o1"/>
+					<string key="targetobjectid" value="ol2"/>
+				</relation>			
+				<relation>
+					<string key="id" value="c1-r5-o2"/>
+					<string key="relation" value="r5"/>
+					<string key="sourceobjectid" value="c1"/>
+					<string key="targetobjectid" value="o2"/>
+				</relation>
+				<relation>
+					<string key="id" value="o2-r10-ol3"/>
+					<string key="relation" value="r10"/>
+					<string key="sourceobjectid" value="o2"/>
+					<string key="targetobjectid" value="ol3"/>
+				</relation>
+				<relation>
+					<string key="id" value="o2-r10-ol4"/>
+					<string key="relation" value="r10"/>
+					<string key="sourceobjectid" value="o2"/>
+					<string key="targetobjectid" value="ol4"/>
+				</relation>	
+				<relation>
+					<string key="id" value="c1-r4-s1"/>
+					<string key="relation" value="r4"/>
+					<string key="sourceobjectid" value="c1"/>
+					<string key="targetobjectid" value="s1"/>
+				</relation>
+				<relation>
+					<string key="id" value="s1-r6-sl1"/>
+					<string key="relation" value="r6"/>
+					<string key="sourceobjectid" value="s1"/>
+					<string key="targetobjectid" value="sl1"/>
+				</relation>
+				<relation>
+					<string key="id" value="ol1-r9-sl1"/>
+					<string key="relation" value="r9"/>
+					<string key="sourceobjectid" value="ol1"/>
+					<string key="targetobjectid" value="sl1"/>
+				</relation>					
+			</relations>
+		</model>
+		<references>
+			<object>
+				<string key="id" value="s1"/>
+			</object>
+			<object>
+				<string key="id" value="ol1"/>
+			</object>
+		</references>
+	</event>
+	<event>
+		<string key="id" value="ci1"/>
+		<string key="activity" value="create_invoice"/>
+		<string key="timestamp" value="2017-08-15 09:13:27"/>
+		<model>
+			<objects>
+				<object>
+					<string key="id" value="c1"/>
+					<string key="class" value="customer"/>
+					<string key="name" value="Ming"/>
+					<string key="address" value="Eindhoven"/>					
+				</object>
+				<object>
+					<string key="id" value="c2"/>
+					<string key="class" value="customer"/>
+					<string key="name" value="Cong"/>
+					<string key="address" value="Tilburg"/>					
+				</object>
+				<object>
+					<string key="id" value="o1"/>
+					<string key="class" value="order"/>
+					<string key="create_date" value="2017-08-11 10:33:37"/>
+					<string key="customer" value="c1"/>
+				</object>
+				<object>
+					<string key="id" value="ol1"/>
+					<string key="class" value="order_line"/>
+					<string key="order" value="o1"/>
+					<string key="product" value="computer"/>
+					<string key="quantity" value="2"/>
+					<string key="price" value="1190"/>
+				</object>
+				<object>
+					<string key="id" value="ol2"/>
+					<string key="class" value="order_line"/>
+					<string key="order" value="o1"/>
+					<string key="product" value="phone"/>
+					<string key="quantity" value="3"/>
+					<string key="price" value="476"/>	
+				</object>
+				<object>
+					<string key="id" value="o2"/>
+					<string key="class" value="order"/>
+					<string key="create_date" value="2017-08-13 16:28:15"/>
+					<string key="customer" value="c1"/>
+				</object>
+				<object>
+					<string key="id" value="ol3"/>
+					<string key="class" value="order_line"/>
+					<string key="order" value="o2"/>
+					<string key="product" value="cup"/>
+					<string key="quantity" value="3"/>
+					<string key="price" value="1"/>
+				</object>
+				<object>
+					<string key="id" value="ol4"/>
+					<string key="class" value="order_line"/>
+					<string key="order" value="o2"/>
+					<string key="product" value="TV"/>
+					<string key="quantity" value="2"/>
+					<string key="price" value="952"/>	
+				</object>
+				<object>
+					<string key="id" value="s1"/>
+					<string key="class" value="shipment"/>
+					<string key="create_date" value="2017-08-14 10:33:37"/>
+					<string key="customer" value="c1"/>
+				</object>
+				<object>
+					<string key="id" value="sl1"/>
+					<string key="class" value="shipment_line"/>
+					<string key="shipment" value="s1"/>
+					<string key="order_line" value="ol1"/>
+					<string key="quantity" value="1"/>
+				</object>
+				<object>
+					<string key="id" value="i1"/>
+					<string key="class" value="invoice"/>
+					<string key="create_date" value="2017-08-15 09:13:27"/>
+					<string key="customer" value="c1"/>
+					<string key="amount" value="2380"/>
+				</object>
+				<object>
+					<string key="id" value="er1"/>
+					<string key="class" value="element_relation"/>
+					<string key="order" value="o1"/>
+					<string key="invoice" value="i1"/>
+				</object>
+			</objects>
+			<relations>
+				<relation>
+					<string key="id" value="c1-r5-o1"/>
+					<string key="relation" value="r5"/>
+					<string key="sourceobjectid" value="c1"/>
+					<string key="targetobjectid" value="o1"/>
+				</relation>
+				<relation>
+					<string key="id" value="o1-r10-ol1"/>
+					<string key="relation" value="r10"/>
+					<string key="sourceobjectid" value="o1"/>
+					<string key="targetobjectid" value="ol1"/>
+				</relation>
+				<relation>
+					<string key="id" value="o1-r10-ol2"/>
+					<string key="relation" value="r10"/>
+					<string key="sourceobjectid" value="o1"/>
+					<string key="targetobjectid" value="ol2"/>
+				</relation>			
+				<relation>
+					<string key="id" value="c1-r5-o2"/>
+					<string key="relation" value="r5"/>
+					<string key="sourceobjectid" value="c1"/>
+					<string key="targetobjectid" value="o2"/>
+				</relation>
+				<relation>
+					<string key="id" value="o2-r10-ol3"/>
+					<string key="relation" value="r10"/>
+					<string key="sourceobjectid" value="o2"/>
+					<string key="targetobjectid" value="ol3"/>
+				</relation>
+				<relation>
+					<string key="id" value="o2-r10-ol4"/>
+					<string key="relation" value="r10"/>
+					<string key="sourceobjectid" value="o2"/>
+					<string key="targetobjectid" value="ol4"/>
+				</relation>	
+				<relation>
+					<string key="id" value="c1-r4-s1"/>
+					<string key="relation" value="r4"/>
+					<string key="sourceobjectid" value="c1"/>
+					<string key="targetobjectid" value="s1"/>
+				</relation>
+				<relation>
+					<string key="id" value="s1-r6-sl1"/>
+					<string key="relation" value="r6"/>
+					<string key="sourceobjectid" value="s1"/>
+					<string key="targetobjectid" value="sl1"/>
+				</relation>
+				<relation>
+					<string key="id" value="ol1-r9-sl1"/>
+					<string key="relation" value="r9"/>
+					<string key="sourceobjectid" value="ol1"/>
+					<string key="targetobjectid" value="sl1"/>
+				</relation>	
+				<relation>
+					<string key="id" value="c1-r1-i1"/>
+					<string key="relation" value="r1"/>
+					<string key="sourceobjectid" value="c1"/>
+					<string key="targetobjectid" value="i1"/>
+				</relation>
+				<relation>
+					<string key="id" value="i1-r3-er1"/>
+					<string key="relation" value="r3"/>
+					<string key="sourceobjectid" value="i1"/>
+					<string key="targetobjectid" value="er1"/>
+				</relation>
+				<relation>
+					<string key="id" value="o1-r8-er1"/>
+					<string key="relation" value="r8"/>
+					<string key="sourceobjectid" value="o1"/>
+					<string key="targetobjectid" value="er1"/>
+				</relation>					
+			</relations>
+		</model>
+		<references>
+			<object>
+				<string key="id" value="i1"/>
+			</object>
+			<object>
+				<string key="id" value="er1"/>
+			</object>
+		</references>
+	</event>
+	<event>
+		<string key="id" value="cs2"/>
+		<string key="activity" value="create_shipment"/>
+		<string key="timestamp" value="2017-08-16 14:15:31"/>
+		<model>
+			<objects>
+				<object>
+					<string key="id" value="c1"/>
+					<string key="class" value="customer"/>
+					<string key="name" value="Ming"/>
+					<string key="address" value="Eindhoven"/>					
+				</object>
+				<object>
+					<string key="id" value="c2"/>
+					<string key="class" value="customer"/>
+					<string key="name" value="Cong"/>
+					<string key="address" value="Tilburg"/>					
+				</object>
+				<object>
+					<string key="id" value="o1"/>
+					<string key="class" value="order"/>
+					<string key="create_date" value="2017-08-11 10:33:37"/>
+					<string key="customer" value="c1"/>
+				</object>
+				<object>
+					<string key="id" value="ol1"/>
+					<string key="class" value="order_line"/>
+					<string key="order" value="o1"/>
+					<string key="product" value="computer"/>
+					<string key="quantity" value="2"/>
+					<string key="price" value="1190"/>
+				</object>
+				<object>
+					<string key="id" value="ol2"/>
+					<string key="class" value="order_line"/>
+					<string key="order" value="o1"/>
+					<string key="product" value="phone"/>
+					<string key="quantity" value="3"/>
+					<string key="price" value="476"/>	
+				</object>
+				<object>
+					<string key="id" value="o2"/>
+					<string key="class" value="order"/>
+					<string key="create_date" value="2017-08-13 16:28:15"/>
+					<string key="customer" value="c1"/>
+				</object>
+				<object>
+					<string key="id" value="ol3"/>
+					<string key="class" value="order_line"/>
+					<string key="order" value="o2"/>
+					<string key="product" value="cup"/>
+					<string key="quantity" value="3"/>
+					<string key="price" value="1"/>
+				</object>
+				<object>
+					<string key="id" value="ol4"/>
+					<string key="class" value="order_line"/>
+					<string key="order" value="o2"/>
+					<string key="product" value="TV"/>
+					<string key="quantity" value="2"/>
+					<string key="price" value="952"/>	
+				</object>
+				<object>
+					<string key="id" value="s1"/>
+					<string key="class" value="shipment"/>
+					<string key="create_date" value="2017-08-14 10:33:37"/>
+					<string key="customer" value="c1"/>
+				</object>
+				<object>
+					<string key="id" value="sl1"/>
+					<string key="class" value="shipment_line"/>
+					<string key="shipment" value="s1"/>
+					<string key="order_line" value="ol1"/>
+					<string key="quantity" value="1"/>
+				</object>
+				<object>
+					<string key="id" value="i1"/>
+					<string key="class" value="invoice"/>
+					<string key="create_date" value="2017-08-15 09:13:27"/>
+					<string key="customer" value="c1"/>
+					<string key="amount" value="2380"/>
+				</object>
+				<object>
+					<string key="id" value="er1"/>
+					<string key="class" value="element_relation"/>
+					<string key="order" value="o1"/>
+					<string key="invoice" value="i1"/>
+				</object>
+				<object>
+					<string key="id" value="s2"/>
+					<string key="class" value="shipment"/>
+					<string key="create_date" value="2017-08-16 14:15:31"/>
+					<string key="customer" value="c1"/>
+				</object>
+				<object>
+					<string key="id" value="sl2"/>
+					<string key="class" value="shipment_line"/>
+					<string key="shipment" value="s2"/>
+					<string key="order_line" value="ol1"/>
+					<string key="quantity" value="1"/>
+				</object>
+				<object>
+					<string key="id" value="sl3"/>
+					<string key="class" value="shipment_line"/>
+					<string key="shipment" value="s2"/>
+					<string key="order_line" value="ol2"/>
+					<string key="quantity" value="3"/>
+				</object>
+			</objects>
+			<relations>
+				<relation>
+					<string key="id" value="c1-r5-o1"/>
+					<string key="relation" value="r5"/>
+					<string key="sourceobjectid" value="c1"/>
+					<string key="targetobjectid" value="o1"/>
+				</relation>
+				<relation>
+					<string key="id" value="o1-r10-ol1"/>
+					<string key="relation" value="r10"/>
+					<string key="sourceobjectid" value="o1"/>
+					<string key="targetobjectid" value="ol1"/>
+				</relation>
+				<relation>
+					<string key="id" value="o1-r10-ol2"/>
+					<string key="relation" value="r10"/>
+					<string key="sourceobjectid" value="o1"/>
+					<string key="targetobjectid" value="ol2"/>
+				</relation>			
+				<relation>
+					<string key="id" value="c1-r5-o2"/>
+					<string key="relation" value="r5"/>
+					<string key="sourceobjectid" value="c1"/>
+					<string key="targetobjectid" value="o2"/>
+				</relation>
+				<relation>
+					<string key="id" value="o2-r10-ol3"/>
+					<string key="relation" value="r10"/>
+					<string key="sourceobjectid" value="o2"/>
+					<string key="targetobjectid" value="ol3"/>
+				</relation>
+				<relation>
+					<string key="id" value="o2-r10-ol4"/>
+					<string key="relation" value="r10"/>
+					<string key="sourceobjectid" value="o2"/>
+					<string key="targetobjectid" value="ol4"/>
+				</relation>	
+				<relation>
+					<string key="id" value="c1-r4-s1"/>
+					<string key="relation" value="r4"/>
+					<string key="sourceobjectid" value="c1"/>
+					<string key="targetobjectid" value="s1"/>
+				</relation>
+				<relation>
+					<string key="id" value="s1-r6-sl1"/>
+					<string key="relation" value="r6"/>
+					<string key="sourceobjectid" value="s1"/>
+					<string key="targetobjectid" value="sl1"/>
+				</relation>
+				<relation>
+					<string key="id" value="ol1-r9-sl1"/>
+					<string key="relation" value="r9"/>
+					<string key="sourceobjectid" value="ol1"/>
+					<string key="targetobjectid" value="sl1"/>
+				</relation>	
+				<relation>
+					<string key="id" value="c1-r1-i1"/>
+					<string key="relation" value="r1"/>
+					<string key="sourceobjectid" value="c1"/>
+					<string key="targetobjectid" value="i1"/>
+				</relation>
+				<relation>
+					<string key="id" value="i1-r3-er1"/>
+					<string key="relation" value="r3"/>
+					<string key="sourceobjectid" value="i1"/>
+					<string key="targetobjectid" value="er1"/>
+				</relation>
+				<relation>
+					<string key="id" value="o1-r8-er1"/>
+					<string key="relation" value="r8"/>
+					<string key="sourceobjectid" value="o1"/>
+					<string key="targetobjectid" value="er1"/>
+				</relation>	
+				<relation>
+					<string key="id" value="c1-r4-s2"/>
+					<string key="relation" value="r4"/>
+					<string key="sourceobjectid" value="c1"/>
+					<string key="targetobjectid" value="s2"/>
+				</relation>
+				<relation>
+					<string key="id" value="s2-r6-sl2"/>
+					<string key="relation" value="r6"/>
+					<string key="sourceobjectid" value="s2"/>
+					<string key="targetobjectid" value="sl2"/>
+				</relation>	
+				<relation>
+					<string key="id" value="ol1-r9-sl2"/>
+					<string key="relation" value="r9"/>
+					<string key="sourceobjectid" value="ol1"/>
+					<string key="targetobjectid" value="sl2"/>
+				</relation>
+				<relation>
+					<string key="id" value="s2-r6-sl3"/>
+					<string key="relation" value="r6"/>
+					<string key="sourceobjectid" value="s2"/>
+					<string key="targetobjectid" value="sl3"/>
+				</relation>
+				<relation>
+					<string key="id" value="ol2-r9-sl3"/>
+					<string key="relation" value="r9"/>
+					<string key="sourceobjectid" value="ol2"/>
+					<string key="targetobjectid" value="sl3"/>
+				</relation>					
+			</relations>
+		</model>
+		<references>
+			<object>
+				<string key="id" value="s2"/>
+			</object>
+			<object>
+				<string key="id" value="ol1"/>
+			</object>
+			<object>
+				<string key="id" value="ol2"/>
+			</object>
+		</references>
+	</event>
+	<event>
+		<string key="id" value="ci2"/>
+		<string key="activity" value="create_invoice"/>
+		<string key="timestamp" value="2017-08-17 17:38:36"/>
+		<model>
+			<objects>
+				<object>
+					<string key="id" value="c1"/>
+					<string key="class" value="customer"/>
+					<string key="name" value="Ming"/>
+					<string key="address" value="Eindhoven"/>					
+				</object>
+				<object>
+					<string key="id" value="c2"/>
+					<string key="class" value="customer"/>
+					<string key="name" value="Cong"/>
+					<string key="address" value="Tilburg"/>					
+				</object>
+				<object>
+					<string key="id" value="o1"/>
+					<string key="class" value="order"/>
+					<string key="create_date" value="2017-08-11 10:33:37"/>
+					<string key="customer" value="c1"/>
+				</object>
+				<object>
+					<string key="id" value="ol1"/>
+					<string key="class" value="order_line"/>
+					<string key="order" value="o1"/>
+					<string key="product" value="computer"/>
+					<string key="quantity" value="2"/>
+					<string key="price" value="1190"/>
+				</object>
+				<object>
+					<string key="id" value="ol2"/>
+					<string key="class" value="order_line"/>
+					<string key="order" value="o1"/>
+					<string key="product" value="phone"/>
+					<string key="quantity" value="3"/>
+					<string key="price" value="476"/>	
+				</object>
+				<object>
+					<string key="id" value="o2"/>
+					<string key="class" value="order"/>
+					<string key="create_date" value="2017-08-13 16:28:15"/>
+					<string key="customer" value="c1"/>
+				</object>
+				<object>
+					<string key="id" value="ol3"/>
+					<string key="class" value="order_line"/>
+					<string key="order" value="o2"/>
+					<string key="product" value="cup"/>
+					<string key="quantity" value="3"/>
+					<string key="price" value="1"/>
+				</object>
+				<object>
+					<string key="id" value="ol4"/>
+					<string key="class" value="order_line"/>
+					<string key="order" value="o2"/>
+					<string key="product" value="TV"/>
+					<string key="quantity" value="2"/>
+					<string key="price" value="952"/>	
+				</object>
+				<object>
+					<string key="id" value="s1"/>
+					<string key="class" value="shipment"/>
+					<string key="create_date" value="2017-08-14 10:33:37"/>
+					<string key="customer" value="c1"/>
+				</object>
+				<object>
+					<string key="id" value="sl1"/>
+					<string key="class" value="shipment_line"/>
+					<string key="shipment" value="s1"/>
+					<string key="order_line" value="ol1"/>
+					<string key="quantity" value="1"/>
+				</object>
+				<object>
+					<string key="id" value="i1"/>
+					<string key="class" value="invoice"/>
+					<string key="create_date" value="2017-08-15 09:13:27"/>
+					<string key="customer" value="c1"/>
+					<string key="amount" value="2380"/>
+				</object>
+				<object>
+					<string key="id" value="er1"/>
+					<string key="class" value="element_relation"/>
+					<string key="order" value="o1"/>
+					<string key="invoice" value="i1"/>
+				</object>
+				<object>
+					<string key="id" value="s2"/>
+					<string key="class" value="shipment"/>
+					<string key="create_date" value="2017-08-16 14:15:31"/>
+					<string key="customer" value="c1"/>
+				</object>
+				<object>
+					<string key="id" value="sl2"/>
+					<string key="class" value="shipment_line"/>
+					<string key="shipment" value="s2"/>
+					<string key="order_line" value="ol1"/>
+					<string key="quantity" value="1"/>
+				</object>
+				<object>
+					<string key="id" value="sl3"/>
+					<string key="class" value="shipment_line"/>
+					<string key="shipment" value="s2"/>
+					<string key="order_line" value="ol2"/>
+					<string key="quantity" value="3"/>
+				</object>
+				<object>
+					<string key="id" value="i2"/>
+					<string key="class" value="invoice"/>
+					<string key="create_date" value="2017-08-17 17:38:36"/>
+					<string key="customer" value="c1"/>
+					<string key="amount" value="1431"/>
+				</object>
+				<object>
+					<string key="id" value="er2"/>
+					<string key="class" value="element_relation"/>
+					<string key="order" value="o1"/>
+					<string key="invoice" value="i2"/>
+				</object>
+				<object>
+					<string key="id" value="er3"/>
+					<string key="class" value="element_relation"/>
+					<string key="order" value="o2"/>
+					<string key="invoice" value="i2"/>
+				</object>
+			</objects>
+			<relations>
+				<relation>
+					<string key="id" value="c1-r5-o1"/>
+					<string key="relation" value="r5"/>
+					<string key="sourceobjectid" value="c1"/>
+					<string key="targetobjectid" value="o1"/>
+				</relation>
+				<relation>
+					<string key="id" value="o1-r10-ol1"/>
+					<string key="relation" value="r10"/>
+					<string key="sourceobjectid" value="o1"/>
+					<string key="targetobjectid" value="ol1"/>
+				</relation>
+				<relation>
+					<string key="id" value="o1-r10-ol2"/>
+					<string key="relation" value="r10"/>
+					<string key="sourceobjectid" value="o1"/>
+					<string key="targetobjectid" value="ol2"/>
+				</relation>			
+				<relation>
+					<string key="id" value="c1-r5-o2"/>
+					<string key="relation" value="r5"/>
+					<string key="sourceobjectid" value="c1"/>
+					<string key="targetobjectid" value="o2"/>
+				</relation>
+				<relation>
+					<string key="id" value="o2-r10-ol3"/>
+					<string key="relation" value="r10"/>
+					<string key="sourceobjectid" value="o2"/>
+					<string key="targetobjectid" value="ol3"/>
+				</relation>
+				<relation>
+					<string key="id" value="o2-r10-ol4"/>
+					<string key="relation" value="r10"/>
+					<string key="sourceobjectid" value="o2"/>
+					<string key="targetobjectid" value="ol4"/>
+				</relation>	
+				<relation>
+					<string key="id" value="c1-r4-s1"/>
+					<string key="relation" value="r4"/>
+					<string key="sourceobjectid" value="c1"/>
+					<string key="targetobjectid" value="s1"/>
+				</relation>
+				<relation>
+					<string key="id" value="s1-r6-sl1"/>
+					<string key="relation" value="r6"/>
+					<string key="sourceobjectid" value="s1"/>
+					<string key="targetobjectid" value="sl1"/>
+				</relation>
+				<relation>
+					<string key="id" value="ol1-r9-sl1"/>
+					<string key="relation" value="r9"/>
+					<string key="sourceobjectid" value="ol1"/>
+					<string key="targetobjectid" value="sl1"/>
+				</relation>	
+				<relation>
+					<string key="id" value="c1-r1-i1"/>
+					<string key="relation" value="r1"/>
+					<string key="sourceobjectid" value="c1"/>
+					<string key="targetobjectid" value="i1"/>
+				</relation>
+				<relation>
+					<string key="id" value="i1-r3-er1"/>
+					<string key="relation" value="r3"/>
+					<string key="sourceobjectid" value="i1"/>
+					<string key="targetobjectid" value="er1"/>
+				</relation>
+				<relation>
+					<string key="id" value="o1-r8-er1"/>
+					<string key="relation" value="r8"/>
+					<string key="sourceobjectid" value="o1"/>
+					<string key="targetobjectid" value="er1"/>
+				</relation>	
+				<relation>
+					<string key="id" value="c1-r4-s2"/>
+					<string key="relation" value="r4"/>
+					<string key="sourceobjectid" value="c1"/>
+					<string key="targetobjectid" value="s2"/>
+				</relation>
+				<relation>
+					<string key="id" value="s2-r6-sl2"/>
+					<string key="relation" value="r6"/>
+					<string key="sourceobjectid" value="s2"/>
+					<string key="targetobjectid" value="sl2"/>
+				</relation>	
+				<relation>
+					<string key="id" value="ol1-r9-sl2"/>
+					<string key="relation" value="r9"/>
+					<string key="sourceobjectid" value="ol1"/>
+					<string key="targetobjectid" value="sl2"/>
+				</relation>
+				<relation>
+					<string key="id" value="s2-r6-sl3"/>
+					<string key="relation" value="r6"/>
+					<string key="sourceobjectid" value="s2"/>
+					<string key="targetobjectid" value="sl3"/>
+				</relation>
+				<relation>
+					<string key="id" value="ol2-r9-sl3"/>
+					<string key="relation" value="r9"/>
+					<string key="sourceobjectid" value="ol2"/>
+					<string key="targetobjectid" value="sl3"/>
+				</relation>	
+				<relation>
+					<string key="id" value="c1-r1-i2"/>
+					<string key="relation" value="r1"/>
+					<string key="sourceobjectid" value="c1"/>
+					<string key="targetobjectid" value="i2"/>
+				</relation>
+				<relation>
+					<string key="id" value="i2-r3-er2"/>
+					<string key="relation" value="r3"/>
+					<string key="sourceobjectid" value="i2"/>
+					<string key="targetobjectid" value="er2"/>
+				</relation>	
+				<relation>
+					<string key="id" value="o1-r8-er2"/>
+					<string key="relation" value="r8"/>
+					<string key="sourceobjectid" value="o1"/>
+					<string key="targetobjectid" value="er2"/>
+				</relation>	
+				<relation>
+					<string key="id" value="i2-r3-er3"/>
+					<string key="relation" value="r3"/>
+					<string key="sourceobjectid" value="i2"/>
+					<string key="targetobjectid" value="er3"/>
+				</relation>	
+				<relation>
+					<string key="id" value="o2-r8-er3"/>
+					<string key="relation" value="r8"/>
+					<string key="sourceobjectid" value="o2"/>
+					<string key="targetobjectid" value="er3"/>
+				</relation>					
+			</relations>
+		</model>
+		<references>
+			<object>
+				<string key="id" value="i2"/>
+			</object>
+			<object>
+				<string key="id" value="er2"/>
+			</object>
+			<object>
+				<string key="id" value="er3"/>
+			</object>
+		</references>
+	</event>
+	<event>
+		<string key="id" value="cs3"/>
+		<string key="activity" value="create_shipment"/>
+		<string key="timestamp" value="2017-08-19 13:22:04"/>
+		<model>
+			<objects>
+				<object>
+					<string key="id" value="c1"/>
+					<string key="class" value="customer"/>
+					<string key="name" value="Ming"/>
+					<string key="address" value="Eindhoven"/>					
+				</object>
+				<object>
+					<string key="id" value="c2"/>
+					<string key="class" value="customer"/>
+					<string key="name" value="Cong"/>
+					<string key="address" value="Tilburg"/>					
+				</object>
+				<object>
+					<string key="id" value="o1"/>
+					<string key="class" value="order"/>
+					<string key="create_date" value="2017-08-11 10:33:37"/>
+					<string key="customer" value="c1"/>
+				</object>
+				<object>
+					<string key="id" value="ol1"/>
+					<string key="class" value="order_line"/>
+					<string key="order" value="o1"/>
+					<string key="product" value="computer"/>
+					<string key="quantity" value="2"/>
+					<string key="price" value="1190"/>
+				</object>
+				<object>
+					<string key="id" value="ol2"/>
+					<string key="class" value="order_line"/>
+					<string key="order" value="o1"/>
+					<string key="product" value="phone"/>
+					<string key="quantity" value="3"/>
+					<string key="price" value="476"/>	
+				</object>
+				<object>
+					<string key="id" value="o2"/>
+					<string key="class" value="order"/>
+					<string key="create_date" value="2017-08-13 16:28:15"/>
+					<string key="customer" value="c1"/>
+				</object>
+				<object>
+					<string key="id" value="ol3"/>
+					<string key="class" value="order_line"/>
+					<string key="order" value="o2"/>
+					<string key="product" value="cup"/>
+					<string key="quantity" value="3"/>
+					<string key="price" value="1"/>
+				</object>
+				<object>
+					<string key="id" value="ol4"/>
+					<string key="class" value="order_line"/>
+					<string key="order" value="o2"/>
+					<string key="product" value="TV"/>
+					<string key="quantity" value="2"/>
+					<string key="price" value="952"/>	
+				</object>
+				<object>
+					<string key="id" value="s1"/>
+					<string key="class" value="shipment"/>
+					<string key="create_date" value="2017-08-14 10:33:37"/>
+					<string key="customer" value="c1"/>
+				</object>
+				<object>
+					<string key="id" value="sl1"/>
+					<string key="class" value="shipment_line"/>
+					<string key="shipment" value="s1"/>
+					<string key="order_line" value="ol1"/>
+					<string key="quantity" value="1"/>
+				</object>
+				<object>
+					<string key="id" value="i1"/>
+					<string key="class" value="invoice"/>
+					<string key="create_date" value="2017-08-15 09:13:27"/>
+					<string key="customer" value="c1"/>
+					<string key="amount" value="2380"/>
+				</object>
+				<object>
+					<string key="id" value="er1"/>
+					<string key="class" value="element_relation"/>
+					<string key="order" value="o1"/>
+					<string key="invoice" value="i1"/>
+				</object>
+				<object>
+					<string key="id" value="s2"/>
+					<string key="class" value="shipment"/>
+					<string key="create_date" value="2017-08-16 14:15:31"/>
+					<string key="customer" value="c1"/>
+				</object>
+				<object>
+					<string key="id" value="sl2"/>
+					<string key="class" value="shipment_line"/>
+					<string key="shipment" value="s2"/>
+					<string key="order_line" value="ol1"/>
+					<string key="quantity" value="1"/>
+				</object>
+				<object>
+					<string key="id" value="sl3"/>
+					<string key="class" value="shipment_line"/>
+					<string key="shipment" value="s2"/>
+					<string key="order_line" value="ol2"/>
+					<string key="quantity" value="3"/>
+				</object>
+				<object>
+					<string key="id" value="i2"/>
+					<string key="class" value="invoice"/>
+					<string key="create_date" value="2017-08-17 17:38:36"/>
+					<string key="customer" value="c1"/>
+					<string key="amount" value="1431"/>
+				</object>
+				<object>
+					<string key="id" value="er2"/>
+					<string key="class" value="element_relation"/>
+					<string key="order" value="o1"/>
+					<string key="invoice" value="i2"/>
+				</object>
+				<object>
+					<string key="id" value="er3"/>
+					<string key="class" value="element_relation"/>
+					<string key="order" value="o2"/>
+					<string key="invoice" value="i2"/>
+				</object>
+				<object>
+					<string key="id" value="s3"/>
+					<string key="class" value="shipment"/>
+					<string key="create_date" value="2017-08-19 13:22:04"/>
+					<string key="customer" value="c1"/>
+				</object>
+				<object>
+					<string key="id" value="sl4"/>
+					<string key="class" value="shipment_line"/>
+					<string key="shipment" value="s3"/>
+					<string key="order_line" value="ol3"/>
+					<string key="quantity" value="3"/>
+				</object>
+				<object>
+					<string key="id" value="sl5"/>
+					<string key="class" value="shipment_line"/>
+					<string key="shipment" value="s3"/>
+					<string key="order_line" value="ol4"/>
+					<string key="quantity" value="2"/>
+				</object>
+			</objects>
+			<relations>
+				<relation>
+					<string key="id" value="c1-r5-o1"/>
+					<string key="relation" value="r5"/>
+					<string key="sourceobjectid" value="c1"/>
+					<string key="targetobjectid" value="o1"/>
+				</relation>
+				<relation>
+					<string key="id" value="o1-r10-ol1"/>
+					<string key="relation" value="r10"/>
+					<string key="sourceobjectid" value="o1"/>
+					<string key="targetobjectid" value="ol1"/>
+				</relation>
+				<relation>
+					<string key="id" value="o1-r10-ol2"/>
+					<string key="relation" value="r10"/>
+					<string key="sourceobjectid" value="o1"/>
+					<string key="targetobjectid" value="ol2"/>
+				</relation>			
+				<relation>
+					<string key="id" value="c1-r5-o2"/>
+					<string key="relation" value="r5"/>
+					<string key="sourceobjectid" value="c1"/>
+					<string key="targetobjectid" value="o2"/>
+				</relation>
+				<relation>
+					<string key="id" value="o2-r10-ol3"/>
+					<string key="relation" value="r10"/>
+					<string key="sourceobjectid" value="o2"/>
+					<string key="targetobjectid" value="ol3"/>
+				</relation>
+				<relation>
+					<string key="id" value="o2-r10-ol4"/>
+					<string key="relation" value="r10"/>
+					<string key="sourceobjectid" value="o2"/>
+					<string key="targetobjectid" value="ol4"/>
+				</relation>	
+				<relation>
+					<string key="id" value="c1-r4-s1"/>
+					<string key="relation" value="r4"/>
+					<string key="sourceobjectid" value="c1"/>
+					<string key="targetobjectid" value="s1"/>
+				</relation>
+				<relation>
+					<string key="id" value="s1-r6-sl1"/>
+					<string key="relation" value="r6"/>
+					<string key="sourceobjectid" value="s1"/>
+					<string key="targetobjectid" value="sl1"/>
+				</relation>
+				<relation>
+					<string key="id" value="ol1-r9-sl1"/>
+					<string key="relation" value="r9"/>
+					<string key="sourceobjectid" value="ol1"/>
+					<string key="targetobjectid" value="sl1"/>
+				</relation>	
+				<relation>
+					<string key="id" value="c1-r1-i1"/>
+					<string key="relation" value="r1"/>
+					<string key="sourceobjectid" value="c1"/>
+					<string key="targetobjectid" value="i1"/>
+				</relation>
+				<relation>
+					<string key="id" value="i1-r3-er1"/>
+					<string key="relation" value="r3"/>
+					<string key="sourceobjectid" value="i1"/>
+					<string key="targetobjectid" value="er1"/>
+				</relation>
+				<relation>
+					<string key="id" value="o1-r8-er1"/>
+					<string key="relation" value="r8"/>
+					<string key="sourceobjectid" value="o1"/>
+					<string key="targetobjectid" value="er1"/>
+				</relation>	
+				<relation>
+					<string key="id" value="c1-r4-s2"/>
+					<string key="relation" value="r4"/>
+					<string key="sourceobjectid" value="c1"/>
+					<string key="targetobjectid" value="s2"/>
+				</relation>
+				<relation>
+					<string key="id" value="s2-r6-sl2"/>
+					<string key="relation" value="r6"/>
+					<string key="sourceobjectid" value="s2"/>
+					<string key="targetobjectid" value="sl2"/>
+				</relation>	
+				<relation>
+					<string key="id" value="ol1-r9-sl2"/>
+					<string key="relation" value="r9"/>
+					<string key="sourceobjectid" value="ol1"/>
+					<string key="targetobjectid" value="sl2"/>
+				</relation>
+				<relation>
+					<string key="id" value="s2-r6-sl3"/>
+					<string key="relation" value="r6"/>
+					<string key="sourceobjectid" value="s2"/>
+					<string key="targetobjectid" value="sl3"/>
+				</relation>
+				<relation>
+					<string key="id" value="ol2-r9-sl3"/>
+					<string key="relation" value="r9"/>
+					<string key="sourceobjectid" value="ol2"/>
+					<string key="targetobjectid" value="sl3"/>
+				</relation>	
+				<relation>
+					<string key="id" value="c1-r1-i2"/>
+					<string key="relation" value="r1"/>
+					<string key="sourceobjectid" value="c1"/>
+					<string key="targetobjectid" value="i2"/>
+				</relation>
+				<relation>
+					<string key="id" value="i2-r3-er2"/>
+					<string key="relation" value="r3"/>
+					<string key="sourceobjectid" value="i2"/>
+					<string key="targetobjectid" value="er2"/>
+				</relation>	
+				<relation>
+					<string key="id" value="o1-r8-er2"/>
+					<string key="relation" value="r8"/>
+					<string key="sourceobjectid" value="o1"/>
+					<string key="targetobjectid" value="er2"/>
+				</relation>	
+				<relation>
+					<string key="id" value="i2-r3-er3"/>
+					<string key="relation" value="r3"/>
+					<string key="sourceobjectid" value="i2"/>
+					<string key="targetobjectid" value="er3"/>
+				</relation>	
+				<relation>
+					<string key="id" value="o2-r8-er3"/>
+					<string key="relation" value="r8"/>
+					<string key="sourceobjectid" value="o2"/>
+					<string key="targetobjectid" value="er3"/>
+				</relation>	
+				<relation>
+					<string key="id" value="c1-r4-s3"/>
+					<string key="relation" value="r4"/>
+					<string key="sourceobjectid" value="c1"/>
+					<string key="targetobjectid" value="s3"/>
+				</relation>
+				<relation>
+					<string key="id" value="s3-r6-sl4"/>
+					<string key="relation" value="r6"/>
+					<string key="sourceobjectid" value="s3"/>
+					<string key="targetobjectid" value="sl4"/>
+				</relation>	
+				<relation>
+					<string key="id" value="ol3-r9-sl4"/>
+					<string key="relation" value="r9"/>
+					<string key="sourceobjectid" value="ol3"/>
+					<string key="targetobjectid" value="sl4"/>
+				</relation>
+				<relation>
+					<string key="id" value="s3-r6-sl5"/>
+					<string key="relation" value="r6"/>
+					<string key="sourceobjectid" value="s3"/>
+					<string key="targetobjectid" value="sl5"/>
+				</relation>
+				<relation>
+					<string key="id" value="ol4-r9-sl5"/>
+					<string key="relation" value="r9"/>
+					<string key="sourceobjectid" value="ol4"/>
+					<string key="targetobjectid" value="sl5"/>
+				</relation>					
+			</relations>
+		</model>
+		<references>
+			<object>
+				<string key="id" value="s3"/>
+			</object>
+			<object>
+				<string key="id" value="ol3"/>
+			</object>
+			<object>
+				<string key="id" value="ol4"/>
+			</object>
+		</references>
+	</event>
+	<event>
+		<string key="id" value="cp1"/>
+		<string key="activity" value="create_payment"/>
+		<string key="timestamp" value="2017-08-21 16:26:13"/>
+		<string key="amount" value="3811"/>
+		<model>
+			<objects>
+				<object>
+					<string key="id" value="c1"/>
+					<string key="class" value="customer"/>
+					<string key="name" value="Ming"/>
+					<string key="address" value="Eindhoven"/>					
+				</object>
+				<object>
+					<string key="id" value="c2"/>
+					<string key="class" value="customer"/>
+					<string key="name" value="Cong"/>
+					<string key="address" value="Tilburg"/>					
+				</object>
+				<object>
+					<string key="id" value="o1"/>
+					<string key="class" value="order"/>
+					<string key="create_date" value="2017-08-11 10:33:37"/>
+					<string key="customer" value="c1"/>
+				</object>
+				<object>
+					<string key="id" value="ol1"/>
+					<string key="class" value="order_line"/>
+					<string key="order" value="o1"/>
+					<string key="product" value="computer"/>
+					<string key="quantity" value="2"/>
+					<string key="price" value="1190"/>
+				</object>
+				<object>
+					<string key="id" value="ol2"/>
+					<string key="class" value="order_line"/>
+					<string key="order" value="o1"/>
+					<string key="product" value="phone"/>
+					<string key="quantity" value="3"/>
+					<string key="price" value="476"/>	
+				</object>
+				<object>
+					<string key="id" value="o2"/>
+					<string key="class" value="order"/>
+					<string key="create_date" value="2017-08-13 16:28:15"/>
+					<string key="customer" value="c1"/>
+				</object>
+				<object>
+					<string key="id" value="ol3"/>
+					<string key="class" value="order_line"/>
+					<string key="order" value="o2"/>
+					<string key="product" value="cup"/>
+					<string key="quantity" value="3"/>
+					<string key="price" value="1"/>
+				</object>
+				<object>
+					<string key="id" value="ol4"/>
+					<string key="class" value="order_line"/>
+					<string key="order" value="o2"/>
+					<string key="product" value="TV"/>
+					<string key="quantity" value="2"/>
+					<string key="price" value="952"/>	
+				</object>
+				<object>
+					<string key="id" value="s1"/>
+					<string key="class" value="shipment"/>
+					<string key="create_date" value="2017-08-14 10:33:37"/>
+					<string key="customer" value="c1"/>
+				</object>
+				<object>
+					<string key="id" value="sl1"/>
+					<string key="class" value="shipment_line"/>
+					<string key="shipment" value="s1"/>
+					<string key="order_line" value="ol1"/>
+					<string key="quantity" value="1"/>
+				</object>
+				<object>
+					<string key="id" value="i1"/>
+					<string key="class" value="invoice"/>
+					<string key="create_date" value="2017-08-15 09:13:27"/>
+					<string key="customer" value="c1"/>
+					<string key="amount" value="2380"/>
+				</object>
+				<object>
+					<string key="id" value="er1"/>
+					<string key="class" value="element_relation"/>
+					<string key="order" value="o1"/>
+					<string key="invoice" value="i1"/>
+				</object>
+				<object>
+					<string key="id" value="s2"/>
+					<string key="class" value="shipment"/>
+					<string key="create_date" value="2017-08-16 14:15:31"/>
+					<string key="customer" value="c1"/>
+				</object>
+				<object>
+					<string key="id" value="sl2"/>
+					<string key="class" value="shipment_line"/>
+					<string key="shipment" value="s2"/>
+					<string key="order_line" value="ol1"/>
+					<string key="quantity" value="1"/>
+				</object>
+				<object>
+					<string key="id" value="sl3"/>
+					<string key="class" value="shipment_line"/>
+					<string key="shipment" value="s2"/>
+					<string key="order_line" value="ol2"/>
+					<string key="quantity" value="3"/>
+				</object>
+				<object>
+					<string key="id" value="i2"/>
+					<string key="class" value="invoice"/>
+					<string key="create_date" value="2017-08-17 17:38:36"/>
+					<string key="customer" value="c1"/>
+					<string key="amount" value="1431"/>
+				</object>
+				<object>
+					<string key="id" value="er2"/>
+					<string key="class" value="element_relation"/>
+					<string key="order" value="o1"/>
+					<string key="invoice" value="i2"/>
+				</object>
+				<object>
+					<string key="id" value="er3"/>
+					<string key="class" value="element_relation"/>
+					<string key="order" value="o2"/>
+					<string key="invoice" value="i2"/>
+				</object>
+				<object>
+					<string key="id" value="s3"/>
+					<string key="class" value="shipment"/>
+					<string key="create_date" value="2017-08-19 13:22:04"/>
+					<string key="customer" value="c1"/>
+				</object>
+				<object>
+					<string key="id" value="sl4"/>
+					<string key="class" value="shipment_line"/>
+					<string key="shipment" value="s3"/>
+					<string key="order_line" value="ol3"/>
+					<string key="quantity" value="3"/>
+				</object>
+				<object>
+					<string key="id" value="sl5"/>
+					<string key="class" value="shipment_line"/>
+					<string key="shipment" value="s3"/>
+					<string key="order_line" value="ol4"/>
+					<string key="quantity" value="2"/>
+				</object>
+				<object>
+					<string key="id" value="p1"/>
+					<string key="class" value="payment"/>
+					<string key="create_date" value="2017-08-24 16:26:13"/>
+					<string key="amount" value="3811"/>
+				</object>
+				<object>
+					<string key="id" value="pl1"/>
+					<string key="class" value="payment_line"/>
+					<string key="payment" value="p1"/>
+					<string key="invoice" value="i1"/>
+					<string key="amount" value="2380"/>
+				</object>
+				<object>
+					<string key="id" value="pl2"/>
+					<string key="class" value="payment_line"/>
+					<string key="payment" value="p1"/>
+					<string key="invoice" value="i2"/>
+					<string key="amount" value="1431"/>
+				</object>
+			</objects>
+			<relations>
+				<relation>
+					<string key="id" value="c1-r5-o1"/>
+					<string key="relation" value="r5"/>
+					<string key="sourceobjectid" value="c1"/>
+					<string key="targetobjectid" value="o1"/>
+				</relation>
+				<relation>
+					<string key="id" value="o1-r10-ol1"/>
+					<string key="relation" value="r10"/>
+					<string key="sourceobjectid" value="o1"/>
+					<string key="targetobjectid" value="ol1"/>
+				</relation>
+				<relation>
+					<string key="id" value="o1-r10-ol2"/>
+					<string key="relation" value="r10"/>
+					<string key="sourceobjectid" value="o1"/>
+					<string key="targetobjectid" value="ol2"/>
+				</relation>			
+				<relation>
+					<string key="id" value="c1-r5-o2"/>
+					<string key="relation" value="r5"/>
+					<string key="sourceobjectid" value="c1"/>
+					<string key="targetobjectid" value="o2"/>
+				</relation>
+				<relation>
+					<string key="id" value="o2-r10-ol3"/>
+					<string key="relation" value="r10"/>
+					<string key="sourceobjectid" value="o2"/>
+					<string key="targetobjectid" value="ol3"/>
+				</relation>
+				<relation>
+					<string key="id" value="o2-r10-ol4"/>
+					<string key="relation" value="r10"/>
+					<string key="sourceobjectid" value="o2"/>
+					<string key="targetobjectid" value="ol4"/>
+				</relation>	
+				<relation>
+					<string key="id" value="c1-r4-s1"/>
+					<string key="relation" value="r4"/>
+					<string key="sourceobjectid" value="c1"/>
+					<string key="targetobjectid" value="s1"/>
+				</relation>
+				<relation>
+					<string key="id" value="s1-r6-sl1"/>
+					<string key="relation" value="r6"/>
+					<string key="sourceobjectid" value="s1"/>
+					<string key="targetobjectid" value="sl1"/>
+				</relation>
+				<relation>
+					<string key="id" value="ol1-r9-sl1"/>
+					<string key="relation" value="r9"/>
+					<string key="sourceobjectid" value="ol1"/>
+					<string key="targetobjectid" value="sl1"/>
+				</relation>	
+				<relation>
+					<string key="id" value="c1-r1-i1"/>
+					<string key="relation" value="r1"/>
+					<string key="sourceobjectid" value="c1"/>
+					<string key="targetobjectid" value="i1"/>
+				</relation>
+				<relation>
+					<string key="id" value="i1-r3-er1"/>
+					<string key="relation" value="r3"/>
+					<string key="sourceobjectid" value="i1"/>
+					<string key="targetobjectid" value="er1"/>
+				</relation>
+				<relation>
+					<string key="id" value="o1-r8-er1"/>
+					<string key="relation" value="r8"/>
+					<string key="sourceobjectid" value="o1"/>
+					<string key="targetobjectid" value="er1"/>
+				</relation>	
+				<relation>
+					<string key="id" value="c1-r4-s2"/>
+					<string key="relation" value="r4"/>
+					<string key="sourceobjectid" value="c1"/>
+					<string key="targetobjectid" value="s2"/>
+				</relation>
+				<relation>
+					<string key="id" value="s2-r6-sl2"/>
+					<string key="relation" value="r6"/>
+					<string key="sourceobjectid" value="s2"/>
+					<string key="targetobjectid" value="sl2"/>
+				</relation>	
+				<relation>
+					<string key="id" value="ol1-r9-sl2"/>
+					<string key="relation" value="r9"/>
+					<string key="sourceobjectid" value="ol1"/>
+					<string key="targetobjectid" value="sl2"/>
+				</relation>
+				<relation>
+					<string key="id" value="s2-r6-sl3"/>
+					<string key="relation" value="r6"/>
+					<string key="sourceobjectid" value="s2"/>
+					<string key="targetobjectid" value="sl3"/>
+				</relation>
+				<relation>
+					<string key="id" value="ol2-r9-sl3"/>
+					<string key="relation" value="r9"/>
+					<string key="sourceobjectid" value="ol2"/>
+					<string key="targetobjectid" value="sl3"/>
+				</relation>	
+				<relation>
+					<string key="id" value="c1-r1-i2"/>
+					<string key="relation" value="r1"/>
+					<string key="sourceobjectid" value="c1"/>
+					<string key="targetobjectid" value="i2"/>
+				</relation>
+				<relation>
+					<string key="id" value="i2-r3-er2"/>
+					<string key="relation" value="r3"/>
+					<string key="sourceobjectid" value="i2"/>
+					<string key="targetobjectid" value="er2"/>
+				</relation>	
+				<relation>
+					<string key="id" value="o1-r8-er2"/>
+					<string key="relation" value="r8"/>
+					<string key="sourceobjectid" value="o1"/>
+					<string key="targetobjectid" value="er2"/>
+				</relation>	
+				<relation>
+					<string key="id" value="i2-r3-er3"/>
+					<string key="relation" value="r3"/>
+					<string key="sourceobjectid" value="i2"/>
+					<string key="targetobjectid" value="er3"/>
+				</relation>	
+				<relation>
+					<string key="id" value="o2-r8-er3"/>
+					<string key="relation" value="r8"/>
+					<string key="sourceobjectid" value="o2"/>
+					<string key="targetobjectid" value="er3"/>
+				</relation>	
+				<relation>
+					<string key="id" value="c1-r4-s3"/>
+					<string key="relation" value="r4"/>
+					<string key="sourceobjectid" value="c1"/>
+					<string key="targetobjectid" value="s3"/>
+				</relation>
+				<relation>
+					<string key="id" value="s3-r6-sl4"/>
+					<string key="relation" value="r6"/>
+					<string key="sourceobjectid" value="s3"/>
+					<string key="targetobjectid" value="sl4"/>
+				</relation>	
+				<relation>
+					<string key="id" value="ol3-r9-sl4"/>
+					<string key="relation" value="r9"/>
+					<string key="sourceobjectid" value="ol3"/>
+					<string key="targetobjectid" value="sl4"/>
+				</relation>
+				<relation>
+					<string key="id" value="s3-r6-sl5"/>
+					<string key="relation" value="r6"/>
+					<string key="sourceobjectid" value="s3"/>
+					<string key="targetobjectid" value="sl5"/>
+				</relation>
+				<relation>
+					<string key="id" value="ol4-r9-sl5"/>
+					<string key="relation" value="r9"/>
+					<string key="sourceobjectid" value="ol4"/>
+					<string key="targetobjectid" value="sl5"/>
+				</relation>	
+				<relation>
+					<string key="id" value="p1-r7-pl1"/>
+					<string key="relation" value="r7"/>
+					<string key="sourceobjectid" value="p1"/>
+					<string key="targetobjectid" value="pl1"/>
+				</relation>	
+				<relation>
+					<string key="id" value="i1-r2-pl1"/>
+					<string key="relation" value="r2"/>
+					<string key="sourceobjectid" value="i1"/>
+					<string key="targetobjectid" value="pl1"/>
+				</relation>
+				<relation>
+					<string key="id" value="p1-r7-pl2"/>
+					<string key="relation" value="r7"/>
+					<string key="sourceobjectid" value="p1"/>
+					<string key="targetobjectid" value="pl2"/>
+				</relation>	
+				<relation>
+					<string key="id" value="i2-r2-pl2"/>
+					<string key="relation" value="r2"/>
+					<string key="sourceobjectid" value="i2"/>
+					<string key="targetobjectid" value="pl2"/>
+				</relation>				
+			</relations>
+		</model>
+		<references>
+			<object>
+				<string key="id" value="p1"/>
+			</object>
+			<object>
+				<string key="id" value="pl1"/>
+			</object>
+			<object>
+				<string key="id" value="pl2"/>
+			</object>
+		</references>
+	</event>
+	<event>
+		<string key="id" value="ci3"/>
+		<string key="activity" value="create_invoice"/>
+		<string key="timestamp" value="2017-08-23 14:23:19"/>
+		<model>
+			<objects>
+				<object>
+					<string key="id" value="c1"/>
+					<string key="class" value="customer"/>
+					<string key="name" value="Ming"/>
+					<string key="address" value="Eindhoven"/>					
+				</object>
+				<object>
+					<string key="id" value="c2"/>
+					<string key="class" value="customer"/>
+					<string key="name" value="Cong"/>
+					<string key="address" value="Tilburg"/>					
+				</object>
+				<object>
+					<string key="id" value="o1"/>
+					<string key="class" value="order"/>
+					<string key="create_date" value="2017-08-11 10:33:37"/>
+					<string key="customer" value="c1"/>
+				</object>
+				<object>
+					<string key="id" value="ol1"/>
+					<string key="class" value="order_line"/>
+					<string key="order" value="o1"/>
+					<string key="product" value="computer"/>
+					<string key="quantity" value="2"/>
+					<string key="price" value="1190"/>
+				</object>
+				<object>
+					<string key="id" value="ol2"/>
+					<string key="class" value="order_line"/>
+					<string key="order" value="o1"/>
+					<string key="product" value="phone"/>
+					<string key="quantity" value="3"/>
+					<string key="price" value="476"/>	
+				</object>
+				<object>
+					<string key="id" value="o2"/>
+					<string key="class" value="order"/>
+					<string key="create_date" value="2017-08-13 16:28:15"/>
+					<string key="customer" value="c1"/>
+				</object>
+				<object>
+					<string key="id" value="ol3"/>
+					<string key="class" value="order_line"/>
+					<string key="order" value="o2"/>
+					<string key="product" value="cup"/>
+					<string key="quantity" value="3"/>
+					<string key="price" value="1"/>
+				</object>
+				<object>
+					<string key="id" value="ol4"/>
+					<string key="class" value="order_line"/>
+					<string key="order" value="o2"/>
+					<string key="product" value="TV"/>
+					<string key="quantity" value="2"/>
+					<string key="price" value="952"/>	
+				</object>
+				<object>
+					<string key="id" value="s1"/>
+					<string key="class" value="shipment"/>
+					<string key="create_date" value="2017-08-14 10:33:37"/>
+					<string key="customer" value="c1"/>
+				</object>
+				<object>
+					<string key="id" value="sl1"/>
+					<string key="class" value="shipment_line"/>
+					<string key="shipment" value="s1"/>
+					<string key="order_line" value="ol1"/>
+					<string key="quantity" value="1"/>
+				</object>
+				<object>
+					<string key="id" value="i1"/>
+					<string key="class" value="invoice"/>
+					<string key="create_date" value="2017-08-15 09:13:27"/>
+					<string key="customer" value="c1"/>
+					<string key="amount" value="2380"/>
+				</object>
+				<object>
+					<string key="id" value="er1"/>
+					<string key="class" value="element_relation"/>
+					<string key="order" value="o1"/>
+					<string key="invoice" value="i1"/>
+				</object>
+				<object>
+					<string key="id" value="s2"/>
+					<string key="class" value="shipment"/>
+					<string key="create_date" value="2017-08-16 14:15:31"/>
+					<string key="customer" value="c1"/>
+				</object>
+				<object>
+					<string key="id" value="sl2"/>
+					<string key="class" value="shipment_line"/>
+					<string key="shipment" value="s2"/>
+					<string key="order_line" value="ol1"/>
+					<string key="quantity" value="1"/>
+				</object>
+				<object>
+					<string key="id" value="sl3"/>
+					<string key="class" value="shipment_line"/>
+					<string key="shipment" value="s2"/>
+					<string key="order_line" value="ol2"/>
+					<string key="quantity" value="3"/>
+				</object>
+				<object>
+					<string key="id" value="i2"/>
+					<string key="class" value="invoice"/>
+					<string key="create_date" value="2017-08-17 17:38:36"/>
+					<string key="customer" value="c1"/>
+					<string key="amount" value="1431"/>
+				</object>
+				<object>
+					<string key="id" value="er2"/>
+					<string key="class" value="element_relation"/>
+					<string key="order" value="o1"/>
+					<string key="invoice" value="i2"/>
+				</object>
+				<object>
+					<string key="id" value="er3"/>
+					<string key="class" value="element_relation"/>
+					<string key="order" value="o2"/>
+					<string key="invoice" value="i2"/>
+				</object>
+				<object>
+					<string key="id" value="s3"/>
+					<string key="class" value="shipment"/>
+					<string key="create_date" value="2017-08-19 13:22:04"/>
+					<string key="customer" value="c1"/>
+				</object>
+				<object>
+					<string key="id" value="sl4"/>
+					<string key="class" value="shipment_line"/>
+					<string key="shipment" value="s3"/>
+					<string key="order_line" value="ol3"/>
+					<string key="quantity" value="3"/>
+				</object>
+				<object>
+					<string key="id" value="sl5"/>
+					<string key="class" value="shipment_line"/>
+					<string key="shipment" value="s3"/>
+					<string key="order_line" value="ol4"/>
+					<string key="quantity" value="2"/>
+				</object>
+				<object>
+					<string key="id" value="p1"/>
+					<string key="class" value="payment"/>
+					<string key="create_date" value="2017-08-24 16:26:13"/>
+					<string key="amount" value="3811"/>
+				</object>
+				<object>
+					<string key="id" value="pl1"/>
+					<string key="class" value="payment_line"/>
+					<string key="payment" value="p1"/>
+					<string key="invoice" value="i1"/>
+					<string key="amount" value="2380"/>
+				</object>
+				<object>
+					<string key="id" value="pl2"/>
+					<string key="class" value="payment_line"/>
+					<string key="payment" value="p1"/>
+					<string key="invoice" value="i2"/>
+					<string key="amount" value="1431"/>
+				</object>
+				<object>
+					<string key="id" value="i3"/>
+					<string key="class" value="invoice"/>
+					<string key="create_date" value="2017-08-23 14:23:19"/>
+					<string key="customer" value="c1"/>
+					<string key="amount" value="1904"/>
+				</object>
+				<object>
+					<string key="id" value="er4"/>
+					<string key="class" value="element_relation"/>
+					<string key="order" value="o2"/>
+					<string key="invoice" value="i3"/>
+				</object>
+			</objects>
+			<relations>
+				<relation>
+					<string key="id" value="c1-r5-o1"/>
+					<string key="relation" value="r5"/>
+					<string key="sourceobjectid" value="c1"/>
+					<string key="targetobjectid" value="o1"/>
+				</relation>
+				<relation>
+					<string key="id" value="o1-r10-ol1"/>
+					<string key="relation" value="r10"/>
+					<string key="sourceobjectid" value="o1"/>
+					<string key="targetobjectid" value="ol1"/>
+				</relation>
+				<relation>
+					<string key="id" value="o1-r10-ol2"/>
+					<string key="relation" value="r10"/>
+					<string key="sourceobjectid" value="o1"/>
+					<string key="targetobjectid" value="ol2"/>
+				</relation>			
+				<relation>
+					<string key="id" value="c1-r5-o2"/>
+					<string key="relation" value="r5"/>
+					<string key="sourceobjectid" value="c1"/>
+					<string key="targetobjectid" value="o2"/>
+				</relation>
+				<relation>
+					<string key="id" value="o2-r10-ol3"/>
+					<string key="relation" value="r10"/>
+					<string key="sourceobjectid" value="o2"/>
+					<string key="targetobjectid" value="ol3"/>
+				</relation>
+				<relation>
+					<string key="id" value="o2-r10-ol4"/>
+					<string key="relation" value="r10"/>
+					<string key="sourceobjectid" value="o2"/>
+					<string key="targetobjectid" value="ol4"/>
+				</relation>	
+				<relation>
+					<string key="id" value="c1-r4-s1"/>
+					<string key="relation" value="r4"/>
+					<string key="sourceobjectid" value="c1"/>
+					<string key="targetobjectid" value="s1"/>
+				</relation>
+				<relation>
+					<string key="id" value="s1-r6-sl1"/>
+					<string key="relation" value="r6"/>
+					<string key="sourceobjectid" value="s1"/>
+					<string key="targetobjectid" value="sl1"/>
+				</relation>
+				<relation>
+					<string key="id" value="ol1-r9-sl1"/>
+					<string key="relation" value="r9"/>
+					<string key="sourceobjectid" value="ol1"/>
+					<string key="targetobjectid" value="sl1"/>
+				</relation>	
+				<relation>
+					<string key="id" value="c1-r1-i1"/>
+					<string key="relation" value="r1"/>
+					<string key="sourceobjectid" value="c1"/>
+					<string key="targetobjectid" value="i1"/>
+				</relation>
+				<relation>
+					<string key="id" value="i1-r3-er1"/>
+					<string key="relation" value="r3"/>
+					<string key="sourceobjectid" value="i1"/>
+					<string key="targetobjectid" value="er1"/>
+				</relation>
+				<relation>
+					<string key="id" value="o1-r8-er1"/>
+					<string key="relation" value="r8"/>
+					<string key="sourceobjectid" value="o1"/>
+					<string key="targetobjectid" value="er1"/>
+				</relation>	
+				<relation>
+					<string key="id" value="c1-r4-s2"/>
+					<string key="relation" value="r4"/>
+					<string key="sourceobjectid" value="c1"/>
+					<string key="targetobjectid" value="s2"/>
+				</relation>
+				<relation>
+					<string key="id" value="s2-r6-sl2"/>
+					<string key="relation" value="r6"/>
+					<string key="sourceobjectid" value="s2"/>
+					<string key="targetobjectid" value="sl2"/>
+				</relation>	
+				<relation>
+					<string key="id" value="ol1-r9-sl2"/>
+					<string key="relation" value="r9"/>
+					<string key="sourceobjectid" value="ol1"/>
+					<string key="targetobjectid" value="sl2"/>
+				</relation>
+				<relation>
+					<string key="id" value="s2-r6-sl3"/>
+					<string key="relation" value="r6"/>
+					<string key="sourceobjectid" value="s2"/>
+					<string key="targetobjectid" value="sl3"/>
+				</relation>
+				<relation>
+					<string key="id" value="ol2-r9-sl3"/>
+					<string key="relation" value="r9"/>
+					<string key="sourceobjectid" value="ol2"/>
+					<string key="targetobjectid" value="sl3"/>
+				</relation>	
+				<relation>
+					<string key="id" value="c1-r1-i2"/>
+					<string key="relation" value="r1"/>
+					<string key="sourceobjectid" value="c1"/>
+					<string key="targetobjectid" value="i2"/>
+				</relation>
+				<relation>
+					<string key="id" value="i2-r3-er2"/>
+					<string key="relation" value="r3"/>
+					<string key="sourceobjectid" value="i2"/>
+					<string key="targetobjectid" value="er2"/>
+				</relation>	
+				<relation>
+					<string key="id" value="o1-r8-er2"/>
+					<string key="relation" value="r8"/>
+					<string key="sourceobjectid" value="o1"/>
+					<string key="targetobjectid" value="er2"/>
+				</relation>	
+				<relation>
+					<string key="id" value="i2-r3-er3"/>
+					<string key="relation" value="r3"/>
+					<string key="sourceobjectid" value="i2"/>
+					<string key="targetobjectid" value="er3"/>
+				</relation>	
+				<relation>
+					<string key="id" value="o2-r8-er3"/>
+					<string key="relation" value="r8"/>
+					<string key="sourceobjectid" value="o2"/>
+					<string key="targetobjectid" value="er3"/>
+				</relation>	
+				<relation>
+					<string key="id" value="c1-r4-s3"/>
+					<string key="relation" value="r4"/>
+					<string key="sourceobjectid" value="c1"/>
+					<string key="targetobjectid" value="s3"/>
+				</relation>
+				<relation>
+					<string key="id" value="s3-r6-sl4"/>
+					<string key="relation" value="r6"/>
+					<string key="sourceobjectid" value="s3"/>
+					<string key="targetobjectid" value="sl4"/>
+				</relation>	
+				<relation>
+					<string key="id" value="ol3-r9-sl4"/>
+					<string key="relation" value="r9"/>
+					<string key="sourceobjectid" value="ol3"/>
+					<string key="targetobjectid" value="sl4"/>
+				</relation>
+				<relation>
+					<string key="id" value="s3-r6-sl5"/>
+					<string key="relation" value="r6"/>
+					<string key="sourceobjectid" value="s3"/>
+					<string key="targetobjectid" value="sl5"/>
+				</relation>
+				<relation>
+					<string key="id" value="ol4-r9-sl5"/>
+					<string key="relation" value="r9"/>
+					<string key="sourceobjectid" value="ol4"/>
+					<string key="targetobjectid" value="sl5"/>
+				</relation>	
+				<relation>
+					<string key="id" value="p1-r7-pl1"/>
+					<string key="relation" value="r7"/>
+					<string key="sourceobjectid" value="p1"/>
+					<string key="targetobjectid" value="pl1"/>
+				</relation>	
+				<relation>
+					<string key="id" value="i1-r2-pl1"/>
+					<string key="relation" value="r2"/>
+					<string key="sourceobjectid" value="i1"/>
+					<string key="targetobjectid" value="pl1"/>
+				</relation>
+				<relation>
+					<string key="id" value="p1-r7-pl2"/>
+					<string key="relation" value="r7"/>
+					<string key="sourceobjectid" value="p1"/>
+					<string key="targetobjectid" value="pl2"/>
+				</relation>	
+				<relation>
+					<string key="id" value="i2-r2-pl2"/>
+					<string key="relation" value="r2"/>
+					<string key="sourceobjectid" value="i2"/>
+					<string key="targetobjectid" value="pl2"/>
+				</relation>	
+				<relation>
+					<string key="id" value="c1-r1-i3"/>
+					<string key="relation" value="r1"/>
+					<string key="sourceobjectid" value="c1"/>
+					<string key="targetobjectid" value="i3"/>
+				</relation>
+				<relation>
+					<string key="id" value="i3-r3-er4"/>
+					<string key="relation" value="r3"/>
+					<string key="sourceobjectid" value="i3"/>
+					<string key="targetobjectid" value="er4"/>
+				</relation>	
+				<relation>
+					<string key="id" value="o2-r8-er4"/>
+					<string key="relation" value="r8"/>
+					<string key="sourceobjectid" value="o2"/>
+					<string key="targetobjectid" value="er4"/>
+				</relation>					
+			</relations>
+		</model>
+		<references>
+			<object>
+				<string key="id" value="i3"/>
+			</object>
+			<object>
+				<string key="id" value="er4"/>
+			</object>
+		</references>
+	</event>
+	<event>
+		<string key="id" value="cp2"/>
+		<string key="activity" value="create_payment"/>
+		<string key="timestamp" value="2017-08-26 14:53:49"/>
+		<string key="amount" value="1904"/>
+		<model>
+			<objects>
+				<object>
+					<string key="id" value="c1"/>
+					<string key="class" value="customer"/>
+					<string key="name" value="Ming"/>
+					<string key="address" value="Eindhoven"/>					
+				</object>
+				<object>
+					<string key="id" value="c2"/>
+					<string key="class" value="customer"/>
+					<string key="name" value="Cong"/>
+					<string key="address" value="Tilburg"/>					
+				</object>
+				<object>
+					<string key="id" value="o1"/>
+					<string key="class" value="order"/>
+					<string key="create_date" value="2017-08-11 10:33:37"/>
+					<string key="customer" value="c1"/>
+				</object>
+				<object>
+					<string key="id" value="ol1"/>
+					<string key="class" value="order_line"/>
+					<string key="order" value="o1"/>
+					<string key="product" value="computer"/>
+					<string key="quantity" value="2"/>
+					<string key="price" value="1190"/>
+				</object>
+				<object>
+					<string key="id" value="ol2"/>
+					<string key="class" value="order_line"/>
+					<string key="order" value="o1"/>
+					<string key="product" value="phone"/>
+					<string key="quantity" value="3"/>
+					<string key="price" value="476"/>	
+				</object>
+				<object>
+					<string key="id" value="o2"/>
+					<string key="class" value="order"/>
+					<string key="create_date" value="2017-08-13 16:28:15"/>
+					<string key="customer" value="c1"/>
+				</object>
+				<object>
+					<string key="id" value="ol3"/>
+					<string key="class" value="order_line"/>
+					<string key="order" value="o2"/>
+					<string key="product" value="cup"/>
+					<string key="quantity" value="3"/>
+					<string key="price" value="1"/>
+				</object>
+				<object>
+					<string key="id" value="ol4"/>
+					<string key="class" value="order_line"/>
+					<string key="order" value="o2"/>
+					<string key="product" value="TV"/>
+					<string key="quantity" value="2"/>
+					<string key="price" value="952"/>	
+				</object>
+				<object>
+					<string key="id" value="s1"/>
+					<string key="class" value="shipment"/>
+					<string key="create_date" value="2017-08-14 10:33:37"/>
+					<string key="customer" value="c1"/>
+				</object>
+				<object>
+					<string key="id" value="sl1"/>
+					<string key="class" value="shipment_line"/>
+					<string key="shipment" value="s1"/>
+					<string key="order_line" value="ol1"/>
+					<string key="quantity" value="1"/>
+				</object>
+				<object>
+					<string key="id" value="i1"/>
+					<string key="class" value="invoice"/>
+					<string key="create_date" value="2017-08-15 09:13:27"/>
+					<string key="customer" value="c1"/>
+					<string key="amount" value="2380"/>
+				</object>
+				<object>
+					<string key="id" value="er1"/>
+					<string key="class" value="element_relation"/>
+					<string key="order" value="o1"/>
+					<string key="invoice" value="i1"/>
+				</object>
+				<object>
+					<string key="id" value="s2"/>
+					<string key="class" value="shipment"/>
+					<string key="create_date" value="2017-08-16 14:15:31"/>
+					<string key="customer" value="c1"/>
+				</object>
+				<object>
+					<string key="id" value="sl2"/>
+					<string key="class" value="shipment_line"/>
+					<string key="shipment" value="s2"/>
+					<string key="order_line" value="ol1"/>
+					<string key="quantity" value="1"/>
+				</object>
+				<object>
+					<string key="id" value="sl3"/>
+					<string key="class" value="shipment_line"/>
+					<string key="shipment" value="s2"/>
+					<string key="order_line" value="ol2"/>
+					<string key="quantity" value="3"/>
+				</object>
+				<object>
+					<string key="id" value="i2"/>
+					<string key="class" value="invoice"/>
+					<string key="create_date" value="2017-08-17 17:38:36"/>
+					<string key="customer" value="c1"/>
+					<string key="amount" value="1431"/>
+				</object>
+				<object>
+					<string key="id" value="er2"/>
+					<string key="class" value="element_relation"/>
+					<string key="order" value="o1"/>
+					<string key="invoice" value="i2"/>
+				</object>
+				<object>
+					<string key="id" value="er3"/>
+					<string key="class" value="element_relation"/>
+					<string key="order" value="o2"/>
+					<string key="invoice" value="i2"/>
+				</object>
+				<object>
+					<string key="id" value="s3"/>
+					<string key="class" value="shipment"/>
+					<string key="create_date" value="2017-08-19 13:22:04"/>
+					<string key="customer" value="c1"/>
+				</object>
+				<object>
+					<string key="id" value="sl4"/>
+					<string key="class" value="shipment_line"/>
+					<string key="shipment" value="s3"/>
+					<string key="order_line" value="ol3"/>
+					<string key="quantity" value="3"/>
+				</object>
+				<object>
+					<string key="id" value="sl5"/>
+					<string key="class" value="shipment_line"/>
+					<string key="shipment" value="s3"/>
+					<string key="order_line" value="ol4"/>
+					<string key="quantity" value="2"/>
+				</object>
+				<object>
+					<string key="id" value="p1"/>
+					<string key="class" value="payment"/>
+					<string key="create_date" value="2017-08-24 16:26:13"/>
+					<string key="amount" value="3811"/>
+				</object>
+				<object>
+					<string key="id" value="pl1"/>
+					<string key="class" value="payment_line"/>
+					<string key="payment" value="p1"/>
+					<string key="invoice" value="i1"/>
+					<string key="amount" value="2380"/>
+				</object>
+				<object>
+					<string key="id" value="pl2"/>
+					<string key="class" value="payment_line"/>
+					<string key="payment" value="p1"/>
+					<string key="invoice" value="i2"/>
+					<string key="amount" value="1431"/>
+				</object>
+				<object>
+					<string key="id" value="i3"/>
+					<string key="class" value="invoice"/>
+					<string key="create_date" value="2017-08-23 14:23:19"/>
+					<string key="customer" value="c1"/>
+					<string key="amount" value="1904"/>
+				</object>
+				<object>
+					<string key="id" value="er4"/>
+					<string key="class" value="element_relation"/>
+					<string key="order" value="o2"/>
+					<string key="invoice" value="i3"/>
+				</object>
+				<object>
+					<string key="id" value="p2"/>
+					<string key="class" value="payment"/>
+					<string key="create_date" value="2017-08-26 14:53:49"/>
+					<string key="amount" value="1904"/>
+				</object>
+				<object>
+					<string key="id" value="pl3"/>
+					<string key="class" value="payment_line"/>
+					<string key="payment" value="p2"/>
+					<string key="invoice" value="i3"/>
+					<string key="amount" value="1904"/>
+				</object>
+			</objects>
+			<relations>
+				<relation>
+					<string key="id" value="c1-r5-o1"/>
+					<string key="relation" value="r5"/>
+					<string key="sourceobjectid" value="c1"/>
+					<string key="targetobjectid" value="o1"/>
+				</relation>
+				<relation>
+					<string key="id" value="o1-r10-ol1"/>
+					<string key="relation" value="r10"/>
+					<string key="sourceobjectid" value="o1"/>
+					<string key="targetobjectid" value="ol1"/>
+				</relation>
+				<relation>
+					<string key="id" value="o1-r10-ol2"/>
+					<string key="relation" value="r10"/>
+					<string key="sourceobjectid" value="o1"/>
+					<string key="targetobjectid" value="ol2"/>
+				</relation>			
+				<relation>
+					<string key="id" value="c1-r5-o2"/>
+					<string key="relation" value="r5"/>
+					<string key="sourceobjectid" value="c1"/>
+					<string key="targetobjectid" value="o2"/>
+				</relation>
+				<relation>
+					<string key="id" value="o2-r10-ol3"/>
+					<string key="relation" value="r10"/>
+					<string key="sourceobjectid" value="o2"/>
+					<string key="targetobjectid" value="ol3"/>
+				</relation>
+				<relation>
+					<string key="id" value="o2-r10-ol4"/>
+					<string key="relation" value="r10"/>
+					<string key="sourceobjectid" value="o2"/>
+					<string key="targetobjectid" value="ol4"/>
+				</relation>	
+				<relation>
+					<string key="id" value="c1-r4-s1"/>
+					<string key="relation" value="r4"/>
+					<string key="sourceobjectid" value="c1"/>
+					<string key="targetobjectid" value="s1"/>
+				</relation>
+				<relation>
+					<string key="id" value="s1-r6-sl1"/>
+					<string key="relation" value="r6"/>
+					<string key="sourceobjectid" value="s1"/>
+					<string key="targetobjectid" value="sl1"/>
+				</relation>
+				<relation>
+					<string key="id" value="ol1-r9-sl1"/>
+					<string key="relation" value="r9"/>
+					<string key="sourceobjectid" value="ol1"/>
+					<string key="targetobjectid" value="sl1"/>
+				</relation>	
+				<relation>
+					<string key="id" value="c1-r1-i1"/>
+					<string key="relation" value="r1"/>
+					<string key="sourceobjectid" value="c1"/>
+					<string key="targetobjectid" value="i1"/>
+				</relation>
+				<relation>
+					<string key="id" value="i1-r3-er1"/>
+					<string key="relation" value="r3"/>
+					<string key="sourceobjectid" value="i1"/>
+					<string key="targetobjectid" value="er1"/>
+				</relation>
+				<relation>
+					<string key="id" value="o1-r8-er1"/>
+					<string key="relation" value="r8"/>
+					<string key="sourceobjectid" value="o1"/>
+					<string key="targetobjectid" value="er1"/>
+				</relation>	
+				<relation>
+					<string key="id" value="c1-r4-s2"/>
+					<string key="relation" value="r4"/>
+					<string key="sourceobjectid" value="c1"/>
+					<string key="targetobjectid" value="s2"/>
+				</relation>
+				<relation>
+					<string key="id" value="s2-r6-sl2"/>
+					<string key="relation" value="r6"/>
+					<string key="sourceobjectid" value="s2"/>
+					<string key="targetobjectid" value="sl2"/>
+				</relation>	
+				<relation>
+					<string key="id" value="ol1-r9-sl2"/>
+					<string key="relation" value="r9"/>
+					<string key="sourceobjectid" value="ol1"/>
+					<string key="targetobjectid" value="sl2"/>
+				</relation>
+				<relation>
+					<string key="id" value="s2-r6-sl3"/>
+					<string key="relation" value="r6"/>
+					<string key="sourceobjectid" value="s2"/>
+					<string key="targetobjectid" value="sl3"/>
+				</relation>
+				<relation>
+					<string key="id" value="ol2-r9-sl3"/>
+					<string key="relation" value="r9"/>
+					<string key="sourceobjectid" value="ol2"/>
+					<string key="targetobjectid" value="sl3"/>
+				</relation>	
+				<relation>
+					<string key="id" value="c1-r1-i2"/>
+					<string key="relation" value="r1"/>
+					<string key="sourceobjectid" value="c1"/>
+					<string key="targetobjectid" value="i2"/>
+				</relation>
+				<relation>
+					<string key="id" value="i2-r3-er2"/>
+					<string key="relation" value="r3"/>
+					<string key="sourceobjectid" value="i2"/>
+					<string key="targetobjectid" value="er2"/>
+				</relation>	
+				<relation>
+					<string key="id" value="o1-r8-er2"/>
+					<string key="relation" value="r8"/>
+					<string key="sourceobjectid" value="o1"/>
+					<string key="targetobjectid" value="er2"/>
+				</relation>	
+				<relation>
+					<string key="id" value="i2-r3-er3"/>
+					<string key="relation" value="r3"/>
+					<string key="sourceobjectid" value="i2"/>
+					<string key="targetobjectid" value="er3"/>
+				</relation>	
+				<relation>
+					<string key="id" value="o2-r8-er3"/>
+					<string key="relation" value="r8"/>
+					<string key="sourceobjectid" value="o2"/>
+					<string key="targetobjectid" value="er3"/>
+				</relation>	
+				<relation>
+					<string key="id" value="c1-r4-s3"/>
+					<string key="relation" value="r4"/>
+					<string key="sourceobjectid" value="c1"/>
+					<string key="targetobjectid" value="s3"/>
+				</relation>
+				<relation>
+					<string key="id" value="s3-r6-sl4"/>
+					<string key="relation" value="r6"/>
+					<string key="sourceobjectid" value="s3"/>
+					<string key="targetobjectid" value="sl4"/>
+				</relation>	
+				<relation>
+					<string key="id" value="ol3-r9-sl4"/>
+					<string key="relation" value="r9"/>
+					<string key="sourceobjectid" value="ol3"/>
+					<string key="targetobjectid" value="sl4"/>
+				</relation>
+				<relation>
+					<string key="id" value="s3-r6-sl5"/>
+					<string key="relation" value="r6"/>
+					<string key="sourceobjectid" value="s3"/>
+					<string key="targetobjectid" value="sl5"/>
+				</relation>
+				<relation>
+					<string key="id" value="ol4-r9-sl5"/>
+					<string key="relation" value="r9"/>
+					<string key="sourceobjectid" value="ol4"/>
+					<string key="targetobjectid" value="sl5"/>
+				</relation>	
+				<relation>
+					<string key="id" value="p1-r7-pl1"/>
+					<string key="relation" value="r7"/>
+					<string key="sourceobjectid" value="p1"/>
+					<string key="targetobjectid" value="pl1"/>
+				</relation>	
+				<relation>
+					<string key="id" value="i1-r2-pl1"/>
+					<string key="relation" value="r2"/>
+					<string key="sourceobjectid" value="i1"/>
+					<string key="targetobjectid" value="pl1"/>
+				</relation>
+				<relation>
+					<string key="id" value="p1-r7-pl2"/>
+					<string key="relation" value="r7"/>
+					<string key="sourceobjectid" value="p1"/>
+					<string key="targetobjectid" value="pl2"/>
+				</relation>	
+				<relation>
+					<string key="id" value="i2-r2-pl2"/>
+					<string key="relation" value="r2"/>
+					<string key="sourceobjectid" value="i2"/>
+					<string key="targetobjectid" value="pl2"/>
+				</relation>	
+				<relation>
+					<string key="id" value="c1-r1-i3"/>
+					<string key="relation" value="r1"/>
+					<string key="sourceobjectid" value="c1"/>
+					<string key="targetobjectid" value="i3"/>
+				</relation>
+				<relation>
+					<string key="id" value="i3-r3-er4"/>
+					<string key="relation" value="r3"/>
+					<string key="sourceobjectid" value="i3"/>
+					<string key="targetobjectid" value="er4"/>
+				</relation>	
+				<relation>
+					<string key="id" value="o2-r8-er4"/>
+					<string key="relation" value="r8"/>
+					<string key="sourceobjectid" value="o2"/>
+					<string key="targetobjectid" value="er4"/>
+				</relation>
+				<relation>
+					<string key="id" value="p2-r7-pl3"/>
+					<string key="relation" value="r7"/>
+					<string key="sourceobjectid" value="p2"/>
+					<string key="targetobjectid" value="pl3"/>
+				</relation>	
+				<relation>
+					<string key="id" value="i3-r2-pl3"/>
+					<string key="relation" value="r2"/>
+					<string key="sourceobjectid" value="i3"/>
+					<string key="targetobjectid" value="pl3"/>
+				</relation>					
+			</relations>
+		</model>
+		<references>
+			<object>
+				<string key="id" value="p2"/>
+			</object>
+			<object>
+				<string key="id" value="pl3"/>
+			</object>
+		</references>
+	</event>
+</log>

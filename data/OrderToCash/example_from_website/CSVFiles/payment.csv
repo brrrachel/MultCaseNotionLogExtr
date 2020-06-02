@@ -1,0 +1,3 @@
+rowid,ref,entity,datec,tms,datep,amount,fk_paiement,num_paiement,note,fk_bank,fk_user_creat,fk_user_modif,statut,fk_export_compta
+1,PAY1001-0007,1,2017-08-21 16:26:13,2017-08-21 16:26:13,2017-08-21 16:26:13,3811.00000000,4,108,first payment 3811,73,1,null,0,0
+2,PAY1001-0008,1,2017-08-26 14:53:49,2017-08-26 14:53:49,2017-08-26 14:53:49,1904.00000000,4,108,second payment 1904,74,1,null,0,0
