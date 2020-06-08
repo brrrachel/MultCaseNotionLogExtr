@@ -10,11 +10,11 @@ SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='TRADITIONAL,ALLOW_INVALID_DATES';
 -- -----------------------------------------------------
 -- Schema sakila
 -- -----------------------------------------------------
-
+DROP SCHEMA IF EXISTS `sakila` ;
 -- -----------------------------------------------------
 -- Schema sakila
 -- -----------------------------------------------------
-CREATE SCHEMA IF NOT EXISTS `sakila` ;
+CREATE SCHEMA IF NOT EXISTS `sakila` DEFAULT CHARACTER SET utf8 ;
 USE `sakila` ;
 
 -- -----------------------------------------------------
@@ -249,16 +249,6 @@ CREATE TABLE IF NOT EXISTS `sakila`.`payment` (
     ON UPDATE CASCADE)
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8;
-
-
--- -----------------------------------------------------
--- Table `sakila`.`order`
--- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `sakila`.`order` (
-  `order_id` INT GENERATED ALWAYS AS (),
-  PRIMARY KEY (`order_id`),
-  UNIQUE INDEX `order_id_UNIQUE` (`order_id` ASC))
-ENGINE = InnoDB;
 
 
 SET SQL_MODE=@OLD_SQL_MODE;
