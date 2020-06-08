@@ -1,22 +1,20 @@
-equipment_id,name,description,release_year,brand_id,rental_rate,replacement_cost,special_features,last_update
-1,Schwing-/Deltaschleifer,NULL,2005,1,9.6,79.99,NULL,NULL
-2,"Fliesenhandkreissäge eintauchbar",180mm,2006,1,29.6,119.99,NULL,NULL
-3,Säbelsäge,NULL,2009,2,14.4,89.9,NULL,NULL
-4,"Bohner- & Schleifmaschine",NULL,2012,1,33.20,639.99,NULL,NULL
-5,Stemmhammer,NULL,2010,1,26.90,99.99,NULL,NULL
-6,Teppichbodenentferner,NULL,2015,1,35.60,132.90,NULL,NULL
-7,Diamantbohrmaschine,NULL,2013,1,39.90,444.99,NULL,NULL
-8,"Wand- und Deckenschleifer",NULL,2014,1,42,79.90,NULL,NULL
-9,"Rand- und Kantenschleifer",NULL,2011,1,22,506,NULL,NULL
-10,Winkelschleifer,NULL,2015,1,13.60,54.60,NULL,NULL
-11,Stichsäge,NULL,2012,2,9.60,99.99,NULL,NULL
-12,Dampf-Tapetenablöser,NULL,2004,3,8.90,88.99,NULL,NULL
-13,Schlaghammer,NULL,2012,2,48.80,1.518.99,NULL,NULL
-14,Steinsäge,NULL,2013,4,13.60,759,NULL,NULL
-15,Elektroheizgerät,NULL,2010,5,13.60,1121.99,NULL,NULL
-16,"Kreuzlinien Laser",NULL,2011,2,14.40,138.90,NULL,NULL
-17,Tacker,NULL,2015,2,13.60,86.70,NULL,NULL
-18,Heißluft-Pistole,NULL,2013,2,11.20,69.90,NULL,NULL
-19,"
-Platten-/Klinkerschneider",NULL,2006,4,18.40,701,NULL,NULL
-20,Saugheber,NULL,2009,2,8,69.90,NULL,NULL
+1,Schwing-/Deltaschleifer,NULL,2005,1,9.60,79.99,NULL,08.06.20 17:47
+2,Fliesenhandkreissaege eintauchbar,180mm,2006,1,29.60,119.99,NULL,08.06.20 17:47
+3,Säbelsäge,NULL,2009,2,11.90,89.90,NULL,08.06.20 17:47
+4,Bohner- & Schleifmaschine,NULL,2012,1,33.20,639.99,NULL,08.06.20 17:47
+5,Stemmhammer,NULL,2010,1,26.90,99.99,NULL,08.06.20 17:47
+6,Teppichbodenentferner,NULL,2015,1,35.60,132.90,NULL,08.06.20 17:47
+7,Diamantbohrmaschine,NULL,2013,1,39.90,444.99,NULL,08.06.20 17:47
+8,Wand- und Deckenschleifer,NULL,2014,1,42.00,79.90,NULL,08.06.20 17:47
+9,Rand- und Kantenschleifer,NULL,2011,1,22.00,506.00,NULL,08.06.20 17:47
+10,Winkelschleifer,NULL,2015,1,13.60,54.60,NULL,08.06.20 17:47
+11,Stichsaege,NULL,2012,2,9.60,99.99,NULL,08.06.20 17:47
+12,Dampf-Tapetenabloeser,NULL,2004,3,12.60,88.99,NULL,08.06.20 17:47
+13,Schlaghammer,NULL,2012,2,48.80,1518.99,NULL,08.06.20 17:47
+14,Steinsäge,NULL,2013,4,13.60,759.00,NULL,08.06.20 17:47
+15,Elektroheizgerät,NULL,2010,5,13.60,1121.99,NULL,08.06.20 17:47
+16,Kreuzlinien Laser,NULL,2011,2,14.40,138.90,NULL,08.06.20 17:47
+17,Tacker,NULL,2015,2,13.60,86.70,NULL,08.06.20 17:47
+18,Heissluft-Pistole,NULL,2013,2,5.90,69.90,NULL,08.06.20 17:47
+19,"Platten-/Klinkerschneider""",NULL,2006,4,18.40,701.00,NULL,08.06.20 17:47
+20,Saugheber,NULL,2009,2,7.90,69.90,NULL,08.06.20 17:47
