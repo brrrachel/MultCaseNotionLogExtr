@@ -1113,7 +1113,15 @@
          <element>691</element>
       </rental>
    </tableVSSelectedRowIds>
-   <activityVSClasses/>
+   <activityVSClasses>
+      <created_date>
+         <element>rental</element>
+         <element>inventory</element>
+         <element>brand</element>
+         <element>customer</element>
+         <element>staff</element>
+      </created_date>
+   </activityVSClasses>
    <tableVSClassList>
       <address>
          <element>address</element>
@@ -1170,6 +1178,11 @@
    <tableColumnVSImpactedTableColumns>
       <rental-created_date>
          <element>rental-created_date-rowid</element>
+         <element>rental-rowid-rowid</element>
+         <element>rental-inventory_id-rowid</element>
+         <element>rental-customer_id-rowid</element>
+         <element>rental-staff_id-rowid</element>
+         <element>rental-last_update-rowid</element>
       </rental-created_date>
    </tableColumnVSImpactedTableColumns>
    <tableVSFatherTables>
@@ -1271,7 +1284,15 @@
       <customer-customer/>
    </tableClassVSColumnVSConstraint>
    <tableVSObjectChainedChildTableVSFK/>
-   <activityVSReferredClassVSPath/>
+   <activityVSReferredClassVSPath>
+      <created_date>
+         <staff>rental--staff</staff>
+         <inventory>rental--inventory</inventory>
+         <brand>rental--inventory--equipment--brand</brand>
+         <rental>rental</rental>
+         <customer>rental--customer</customer>
+      </created_date>
+   </activityVSReferredClassVSPath>
    <classVSColumnVSName>
       <address>
          <order_rejected_date>order_rejected_date</order_rejected_date>
@@ -1401,6 +1422,7 @@
          <rowid>rowid</rowid>
          <staff_id>staff_id</staff_id>
          <last_update>last_update</last_update>
+         <name>name</name>
          <rental_date>rental_date</rental_date>
          <created_date>created_date</created_date>
          <return_inspected_date>return_inspected_date</return_inspected_date>
