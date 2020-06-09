@@ -1,4 +1,4 @@
-inventory_id;equipment_id;store_id;last_update
+rowid;equipment_id;store_id;last_update
 1;9;2;2019-12-21 00:24:01
 2;2;4;2019-12-23 13:02:25
 3;8;3;2019-12-24 03:22:29

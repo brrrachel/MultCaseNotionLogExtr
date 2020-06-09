@@ -1,4 +1,4 @@
-staff_id;first_name;last_name;address_id;email;store_id;last_update
+rowid;first_name;last_name;address_id;email;store_id;last_update
 1;Rommy;Schoenbach;8;rommy_schoenbach@xyz.none;1;2019-12-22 09:31:41
 2;Markwart;Holder;9;markwart.holder@spam.none;5;2019-12-26 23:03:33
 3;Ben;Ney;10;ben-ney@internet.none;3;2019-12-28 00:12:42

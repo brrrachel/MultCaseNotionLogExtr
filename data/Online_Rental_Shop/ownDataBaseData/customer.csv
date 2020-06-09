@@ -1,13 +1,13 @@
-customer_id;store_id;first_name;last_name;email;address_id;create_date;last_update
+rowid;store_id;first_name;last_name;email;address_id;create_date;last_update
 1;1;Erhard;Drake;e.@company.none;27;2008-06-20 17:45:00;2008-06-20 17:45:00
 2;2;Kirsten;Schlingmann;k-68@web.none;28;2008-06-20 17:45:00;2008-06-20 17:45:00
 3;3;Ingelotte;Nitzsche;ingelotte_nitzsche@private.none;29;2008-06-20 17:45:00;2008-06-20 17:45:00
 4;4;Helmtrud;Rimbach;helmtrud.rimbach@internet.none;30;2008-06-20 17:45:00;2008-06-20 17:45:00
-5;5;Fraenzi;Dieterich;fraenzi-dieterich@email.none;31;2008-06-20 17:45:00;2008-06-20 17:45:00
+5;5;Fränzi;Dieterich;fraenzi-dieterich@email.none;31;2008-06-20 17:45:00;2008-06-20 17:45:00
 6;6;Raimer;Cox;raimer_cox@xyz.none;32;2008-06-20 17:45:00;2008-06-20 17:45:00
 7;7;Aslind;Pasch;aslind_pasch@net.none;33;2008-06-20 17:45:00;2008-06-20 17:45:00
 8;1;Mathilde;Westenberger;mathilde-westenberger@domain.none;34;2008-06-20 17:45:00;2008-06-20 17:45:00
-9;2;Hanswalter;Voss;hanswalter_@internet.none;35;2008-06-20 17:45:00;2008-06-20 17:45:00
+9;2;Hanswalter;Voß;hanswalter_@internet.none;35;2008-06-20 17:45:00;2008-06-20 17:45:00
 10;3;Hanswolf;Utecht;hanswolf_@mail.none;36;2008-06-20 17:45:00;2008-06-20 17:45:00
 11;4;Bennet;Bauernfeind;b-bauernfeind@xyz.none;37;2008-06-20 17:45:00;2008-06-20 17:45:00
 12;5;Gabriel;Gies;gabrielgies@internet.none;38;2008-06-20 17:45:00;2008-06-20 17:45:00
@@ -21,7 +21,7 @@ customer_id;store_id;first_name;last_name;email;address_id;create_date;last_upda
 20;6;Arne;Sack;a_sack@xyz.none;46;2008-06-20 17:45:00;2008-06-20 17:45:00
 21;7;Timm;Neis;t-neis@internet.none;47;2008-06-20 17:45:00;2008-06-20 17:45:00
 22;1;Cordian;Bonk;cordianbonk@web.none;48;2008-06-20 17:45:00;2008-06-20 17:45:00
-23;2;Gottfrieda;Bruecker;gottfrieda-@email.none;49;2008-06-20 17:45:00;2008-06-20 17:45:00
+23;2;Gottfrieda;Brücker;gottfrieda-@email.none;49;2008-06-20 17:45:00;2008-06-20 17:45:00
 24;3;Volkhardt;Blunk;volkhardt-blunk@email.none;50;2008-06-20 17:45:00;2008-06-20 17:45:00
 25;4;Traugott;Grimminger;traugott.grimminger@private.none;51;2008-06-20 17:45:00;2008-06-20 17:45:00
 26;5;Dietram;Morbach;dmorbach@internet.none;52;2008-06-20 17:45:00;2008-06-20 17:45:00
@@ -44,11 +44,11 @@ customer_id;store_id;first_name;last_name;email;address_id;create_date;last_upda
 43;1;Sylvia;Haas;sylvia_haas@mail.none;69;2008-06-20 17:45:00;2008-06-20 17:45:00
 44;2;Bertwald;Fugmann;bertwald.fugmann@domain.none;70;2008-06-20 17:45:00;2008-06-20 17:45:00
 45;3;Reinholdt;Kinne;r.kinne@internet.none;71;2008-06-20 17:45:00;2008-06-20 17:45:00
-46;4;Kaethi;Janning;kaethijanning@spam.none;72;2008-06-20 17:45:00;2008-06-20 17:45:00
+46;4;Käthi;Janning;kaethijanning@spam.none;72;2008-06-20 17:45:00;2008-06-20 17:45:00
 47;5;Gerold;Ellermann;gerold.ellermann@web.none;73;2008-06-20 17:45:00;2008-06-20 17:45:00
 48;6;Eitelbert;Dersch;eitelbert.42@web.none;74;2008-06-20 17:45:00;2008-06-20 17:45:00
 49;7;Holdina;Geske;holdina_82@internet.none;75;2008-06-20 17:45:00;2008-06-20 17:45:00
-50;1;Jons;Hessler;jons_hessler@private.none;76;2008-06-20 17:45:00;2008-06-20 17:45:00
+50;1;Jons;Heßler;jons_hessler@private.none;76;2008-06-20 17:45:00;2008-06-20 17:45:00
 51;2;Uve;Schwinghammer;uve@email.none;77;2008-06-20 17:45:00;2008-06-20 17:45:00
 52;3;Jannis;Orth;jannis@email.none;78;2008-06-20 17:45:00;2008-06-20 17:45:00
 53;4;Walther;Rose;walther_rose@company.none;79;2008-06-20 17:45:00;2008-06-20 17:45:00
@@ -61,7 +61,7 @@ customer_id;store_id;first_name;last_name;email;address_id;create_date;last_upda
 60;4;Olivia;Stiller;olivia-stiller@mail.none;86;2008-06-20 17:45:00;2008-06-20 17:45:00
 61;5;Holger;Quaas;holgerquaas@company.none;87;2008-06-20 17:45:00;2008-06-20 17:45:00
 62;6;Titus;Raiba;titus-@internet.none;88;2008-06-20 17:45:00;2008-06-20 17:45:00
-63;7;Clarissa;Roehrl;croehrl@domain.none;89;2008-06-20 17:45:00;2008-06-20 17:45:00
+63;7;Clarissa;Röhrl;croehrl@domain.none;89;2008-06-20 17:45:00;2008-06-20 17:45:00
 64;1;Detrich;Hegmann;detrich@company.none;90;2008-06-20 17:45:00;2008-06-20 17:45:00
 65;2;Gila;Hille;gila-@mail.none;91;2008-06-20 17:45:00;2008-06-20 17:45:00
 66;3;Ernstfried;Leuthold;ernstfriedleuthold@web.none;92;2008-06-20 17:45:00;2008-06-20 17:45:00
@@ -73,7 +73,7 @@ customer_id;store_id;first_name;last_name;email;address_id;create_date;last_upda
 72;2;Pirmin;Imhoff;pirmin_imhoff@xyz.none;98;2008-06-20 17:45:00;2008-06-20 17:45:00
 73;3;Erni;Pust;erni_pust@web.none;99;2008-06-20 17:45:00;2008-06-20 17:45:00
 74;4;Trixi;Deeken;t-@company.none;100;2008-06-20 17:45:00;2008-06-20 17:45:00
-75;5;Wittmar;Broeder;wittmar.broeder@internet.none;101;2008-06-20 17:45:00;2008-06-20 17:45:00
+75;5;Wittmar;Bröder;wittmar.broeder@internet.none;101;2008-06-20 17:45:00;2008-06-20 17:45:00
 76;6;Mathias;Wenz;m.wenz@internet.none;102;2008-06-20 17:45:00;2008-06-20 17:45:00
 77;7;Wolfbert;Hitzler;wolfbert-@company.none;103;2008-06-20 17:45:00;2008-06-20 17:45:00
 78;1;Marko;Elstner;melstner@company.none;104;2008-06-20 17:45:00;2008-06-20 17:45:00

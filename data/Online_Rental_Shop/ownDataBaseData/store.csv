@@ -1,4 +1,4 @@
-store_id;manager_staff_id;address_id;last_update
+rowid;manager_staff_id;address_id;last_update
 1;1;1;2019-12-13 19:06:57
 2;2;2;2019-12-14 23:17:47
 3;3;3;2019-12-13 11:08:06

@@ -1,4 +1,4 @@
-rental_id;rental_date;inventory_id;customer_id;return_date;staff_id;last_update;created_date;order_confirmed_date;order_rejected_date;return_inspected_date
+rowid;rental_date;inventory_id;customer_id;return_date;staff_id;last_update;created_date;order_confirmed_date;order_rejected_date;return_inspected_date
 1;;15;3;;9;2020-05-28 05:05:43;2020-05-28 05:05:43;;;
 2;;156;2;;4;2020-02-21 18:06:06;2020-02-21 18:06:06;;;
 3;;31;3;;20;2020-04-26 12:45:17;2020-04-26 12:45:17;;;
