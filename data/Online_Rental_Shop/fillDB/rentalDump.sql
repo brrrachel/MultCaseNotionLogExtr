@@ -25,14 +25,14 @@ DROP TABLE IF EXISTS `address`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `address` (
-  `address_id` smallint unsigned NOT NULL AUTO_INCREMENT,
+  `rowid` smallint unsigned NOT NULL AUTO_INCREMENT,
   `address` varchar(50) NOT NULL,
   `city` varchar(20) NOT NULL,
   `postal_code` varchar(10) NOT NULL,
   `phone` varchar(20) DEFAULT NULL,
   `last_update` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `street number` varchar(45) NOT NULL,
-  PRIMARY KEY (`address_id`)
+  `street_number` varchar(45) NOT NULL,
+  PRIMARY KEY (`rowid`)
 ) ENGINE=InnoDB AUTO_INCREMENT=108 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -54,10 +54,10 @@ DROP TABLE IF EXISTS `brand`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `brand` (
-  `brand_id` tinyint unsigned NOT NULL AUTO_INCREMENT,
+  `rowid` tinyint unsigned NOT NULL AUTO_INCREMENT,
   `name` char(20) NOT NULL,
   `last_update` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  PRIMARY KEY (`brand_id`)
+  PRIMARY KEY (`rowid`)
 ) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -79,7 +79,7 @@ DROP TABLE IF EXISTS `customer`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `customer` (
-  `customer_id` smallint unsigned NOT NULL AUTO_INCREMENT,
+  `rowid` smallint unsigned NOT NULL AUTO_INCREMENT,
   `store_id` tinyint unsigned NOT NULL,
   `first_name` varchar(45) NOT NULL,
   `last_name` varchar(45) NOT NULL,
@@ -87,11 +87,11 @@ CREATE TABLE `customer` (
   `address_id` smallint unsigned NOT NULL,
   `create_date` datetime NOT NULL,
   `last_update` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
-  PRIMARY KEY (`customer_id`),
+  PRIMARY KEY (`rowid`),
   KEY `idx_fk_store_id` (`store_id`),
   KEY `idx_fk_address_id` (`address_id`),
-  CONSTRAINT `fk_customer_address` FOREIGN KEY (`address_id`) REFERENCES `address` (`address_id`) ON DELETE RESTRICT ON UPDATE CASCADE,
-  CONSTRAINT `fk_customer_store` FOREIGN KEY (`store_id`) REFERENCES `store` (`store_id`) ON DELETE RESTRICT ON UPDATE CASCADE
+  CONSTRAINT `fk_customer_address` FOREIGN KEY (`address_id`) REFERENCES `address` (`rowid`) ON DELETE RESTRICT ON UPDATE CASCADE,
+  CONSTRAINT `fk_customer_store` FOREIGN KEY (`store_id`) REFERENCES `store` (`rowid`) ON DELETE RESTRICT ON UPDATE CASCADE
 ) ENGINE=InnoDB AUTO_INCREMENT=80 DEFAULT CHARSET=utf8 COMMENT='Table storing all customers. Holds foreign keys to the address table and the store table where this customer is registered.\\n\\nBasic information about the customer like first and last name are stored in the table itself. Same for the date the record was created and when the information was last updated.';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -113,7 +113,7 @@ DROP TABLE IF EXISTS `equipment`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `equipment` (
-  `equipment_id` smallint unsigned NOT NULL AUTO_INCREMENT,
+  `rowid` smallint unsigned NOT NULL AUTO_INCREMENT,
   `name` varchar(255) NOT NULL,
   `description` text,
   `release_year` year DEFAULT NULL,
@@ -122,9 +122,9 @@ CREATE TABLE `equipment` (
   `replacement_cost` decimal(5,2) NOT NULL DEFAULT '19.99',
   `special_features` set('Trailers','Commentaries','Deleted Scenes','Behind the Scenes') DEFAULT NULL,
   `last_update` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  PRIMARY KEY (`equipment_id`),
+  PRIMARY KEY (`rowid`),
   KEY `idx_fk_brand_id` (`brand_id`),
-  CONSTRAINT `fk_film_language` FOREIGN KEY (`brand_id`) REFERENCES `brand` (`brand_id`) ON DELETE RESTRICT ON UPDATE CASCADE
+  CONSTRAINT `fk_film_language` FOREIGN KEY (`brand_id`) REFERENCES `brand` (`rowid`) ON DELETE RESTRICT ON UPDATE CASCADE
 ) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -146,16 +146,16 @@ DROP TABLE IF EXISTS `inventory`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `inventory` (
-  `inventory_id` mediumint unsigned NOT NULL AUTO_INCREMENT,
+  `rowid` mediumint unsigned NOT NULL AUTO_INCREMENT,
   `equipment_id` smallint unsigned NOT NULL,
   `store_id` tinyint unsigned NOT NULL,
   `last_update` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  PRIMARY KEY (`inventory_id`),
+  PRIMARY KEY (`rowid`),
   KEY `idx_fk_equipment_id` (`equipment_id`),
   KEY `idx_store_id_equipment_id` (`store_id`,`equipment_id`),
   KEY `fk_inventory_store_idx` (`store_id`),
-  CONSTRAINT `fk_inventory_film` FOREIGN KEY (`equipment_id`) REFERENCES `equipment` (`equipment_id`) ON DELETE RESTRICT ON UPDATE CASCADE,
-  CONSTRAINT `fk_inventory_store` FOREIGN KEY (`store_id`) REFERENCES `store` (`store_id`) ON DELETE RESTRICT ON UPDATE CASCADE
+  CONSTRAINT `fk_inventory_film` FOREIGN KEY (`equipment_id`) REFERENCES `equipment` (`rowid`) ON DELETE RESTRICT ON UPDATE CASCADE,
+  CONSTRAINT `fk_inventory_store` FOREIGN KEY (`store_id`) REFERENCES `store` (`rowid`) ON DELETE RESTRICT ON UPDATE CASCADE
 ) ENGINE=InnoDB AUTO_INCREMENT=168 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -177,20 +177,20 @@ DROP TABLE IF EXISTS `payment`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `payment` (
-  `payment_id` smallint unsigned NOT NULL AUTO_INCREMENT,
+  `rowid` smallint unsigned NOT NULL AUTO_INCREMENT,
   `customer_id` smallint unsigned NOT NULL,
   `staff_id` tinyint unsigned NOT NULL,
   `rental_id` int DEFAULT NULL,
   `amount` decimal(5,2) NOT NULL,
   `payment_date` datetime NOT NULL,
   `last_update` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
-  PRIMARY KEY (`payment_id`),
+  PRIMARY KEY (`rowid`),
   KEY `idx_fk_staff_id` (`staff_id`),
   KEY `idx_fk_customer_id` (`customer_id`),
   KEY `fk_payment_rental_idx` (`rental_id`),
-  CONSTRAINT `fk_payment_customer` FOREIGN KEY (`customer_id`) REFERENCES `customer` (`customer_id`) ON DELETE RESTRICT ON UPDATE CASCADE,
-  CONSTRAINT `fk_payment_rental` FOREIGN KEY (`rental_id`) REFERENCES `rental` (`rental_id`) ON DELETE SET NULL ON UPDATE CASCADE,
-  CONSTRAINT `fk_payment_staff` FOREIGN KEY (`staff_id`) REFERENCES `staff` (`staff_id`) ON DELETE RESTRICT ON UPDATE CASCADE
+  CONSTRAINT `fk_payment_customer` FOREIGN KEY (`customer_id`) REFERENCES `customer` (`rowid`) ON DELETE RESTRICT ON UPDATE CASCADE,
+  CONSTRAINT `fk_payment_rental` FOREIGN KEY (`rental_id`) REFERENCES `rental` (`rowid`) ON DELETE SET NULL ON UPDATE CASCADE,
+  CONSTRAINT `fk_payment_staff` FOREIGN KEY (`staff_id`) REFERENCES `staff` (`rowid`) ON DELETE RESTRICT ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -211,7 +211,7 @@ DROP TABLE IF EXISTS `rental`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `rental` (
-  `rental_id` int NOT NULL AUTO_INCREMENT,
+  `rowid` int NOT NULL AUTO_INCREMENT,
   `rental_date` datetime DEFAULT NULL,
   `inventory_id` mediumint unsigned DEFAULT NULL,
   `customer_id` smallint unsigned NOT NULL,
@@ -222,14 +222,14 @@ CREATE TABLE `rental` (
   `order_confirmed_date` datetime DEFAULT NULL,
   `order_rejected_date` datetime DEFAULT NULL,
   `return_inspected_date` varchar(45) DEFAULT NULL,
-  PRIMARY KEY (`rental_id`),
+  PRIMARY KEY (`rowid`),
   UNIQUE KEY `idx_rental` (`rental_date`,`inventory_id`,`customer_id`),
   KEY `idx_fk_inventory_id` (`inventory_id`),
   KEY `idx_fk_customer_id` (`customer_id`),
   KEY `idx_fk_staff_id` (`staff_id`),
-  CONSTRAINT `fk_rental_customer` FOREIGN KEY (`customer_id`) REFERENCES `customer` (`customer_id`) ON DELETE RESTRICT ON UPDATE CASCADE,
-  CONSTRAINT `fk_rental_inventory` FOREIGN KEY (`inventory_id`) REFERENCES `inventory` (`inventory_id`) ON DELETE RESTRICT ON UPDATE CASCADE,
-  CONSTRAINT `fk_rental_staff` FOREIGN KEY (`staff_id`) REFERENCES `staff` (`staff_id`) ON DELETE RESTRICT ON UPDATE CASCADE
+  CONSTRAINT `fk_rental_customer` FOREIGN KEY (`customer_id`) REFERENCES `customer` (`rowid`) ON DELETE RESTRICT ON UPDATE CASCADE,
+  CONSTRAINT `fk_rental_inventory` FOREIGN KEY (`inventory_id`) REFERENCES `inventory` (`rowid`) ON DELETE RESTRICT ON UPDATE CASCADE,
+  CONSTRAINT `fk_rental_staff` FOREIGN KEY (`staff_id`) REFERENCES `staff` (`rowid`) ON DELETE RESTRICT ON UPDATE CASCADE
 ) ENGINE=InnoDB AUTO_INCREMENT=692 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -251,18 +251,18 @@ DROP TABLE IF EXISTS `staff`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `staff` (
-  `staff_id` tinyint unsigned NOT NULL AUTO_INCREMENT,
+  `rowid` tinyint unsigned NOT NULL AUTO_INCREMENT,
   `first_name` varchar(45) NOT NULL,
   `last_name` varchar(45) NOT NULL,
   `address_id` smallint unsigned NOT NULL,
   `email` varchar(50) DEFAULT NULL,
   `store_id` tinyint unsigned NOT NULL,
   `last_update` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  PRIMARY KEY (`staff_id`),
+  PRIMARY KEY (`rowid`),
   KEY `idx_fk_address_id` (`address_id`),
   KEY `fk_staff_store_idx` (`store_id`),
-  CONSTRAINT `fk_staff_address` FOREIGN KEY (`address_id`) REFERENCES `address` (`address_id`) ON DELETE RESTRICT ON UPDATE CASCADE,
-  CONSTRAINT `fk_staff_store` FOREIGN KEY (`store_id`) REFERENCES `store` (`store_id`)
+  CONSTRAINT `fk_staff_address` FOREIGN KEY (`address_id`) REFERENCES `address` (`rowid`) ON DELETE RESTRICT ON UPDATE CASCADE,
+  CONSTRAINT `fk_staff_store` FOREIGN KEY (`store_id`) REFERENCES `store` (`rowid`)
 ) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -284,15 +284,15 @@ DROP TABLE IF EXISTS `store`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `store` (
-  `store_id` tinyint unsigned NOT NULL AUTO_INCREMENT,
+  `rowid` tinyint unsigned NOT NULL AUTO_INCREMENT,
   `manager_staff_id` tinyint unsigned NOT NULL,
   `address_id` smallint unsigned NOT NULL,
   `last_update` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  PRIMARY KEY (`store_id`),
+  PRIMARY KEY (`rowid`),
   UNIQUE KEY `idx_unique_manager` (`manager_staff_id`),
   KEY `idx_fk_address_id` (`address_id`),
-  CONSTRAINT `fk_store_address` FOREIGN KEY (`address_id`) REFERENCES `address` (`address_id`) ON DELETE RESTRICT ON UPDATE CASCADE,
-  CONSTRAINT `fk_store_staff` FOREIGN KEY (`manager_staff_id`) REFERENCES `staff` (`staff_id`) ON DELETE RESTRICT ON UPDATE CASCADE
+  CONSTRAINT `fk_store_address` FOREIGN KEY (`address_id`) REFERENCES `address` (`rowid`) ON DELETE RESTRICT ON UPDATE CASCADE,
+  CONSTRAINT `fk_store_staff` FOREIGN KEY (`manager_staff_id`) REFERENCES `staff` (`rowid`) ON DELETE RESTRICT ON UPDATE CASCADE
 ) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -319,4 +319,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2020-06-09 10:55:57
+-- Dump completed on 2020-06-09 21:46:54
