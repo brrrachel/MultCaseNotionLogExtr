@@ -1,16 +1,16 @@
 import datetime
 import random
 import pandas as pd
-import numpy as np
 
 '''
 Processes:
 
-create_rental -> create_payment -> confirm_payment -> confirm_rental -> cancel_equipment
-create_rental -> create_payment -> confirm_payment -> confirm_rental -> lend_equipment -> return_equipment -> inspect_equipment
-create_rental -> create_payment -> confirm_payment -> confirm_rental -> lend_equipment -> return_equipment -> inspect_equipment -> create_payment -> confirm_payment
+create_rental -> confirm_payment -> confirm_rental -> cancel_equipment
+create_rental -> confirm_payment -> confirm_rental -> lend_equipment -> return_equipment -> inspect_equipment
+create_rental -> confirm_payment -> confirm_rental -> lend_equipment -> return_equipment -> inspect_equipment -> create_payment -> confirm_payment
 
 '''
+
 
 class ProcessSimulator:
 
@@ -27,10 +27,10 @@ class ProcessSimulator:
         self.store = pd.read_csv(path + 'store.csv', index_col=0)
 
         # create additional tables
-        self.rental_orders = pd.DataFrame(columns=['inventory_id', 'costumer_id', 'created_date', 'confirmed_date'])
+        self.rental_orders = pd.DataFrame(columns=['costumer_id', 'created_date', 'confirmed_date'])
         self.lended_equipments = pd.DataFrame(columns=['rental_id', 'inventory_id', 'cancel_date', 'lend_date', 'return_date', 'inspection_id'])
         self.inspections = pd.DataFrame(columns=['inspector_id', 'date', 'payment_id']) # inspector == staff
-        self.payments = pd.DataFrame(columns=['rental_id', 'customer_id', 'value', 'created_date', 'confirmed_date'])
+        self.payments = pd.DataFrame(columns=['rental_id', 'value', 'created_date', 'confirmed_date'])
 
     '''
         Helper Methods
@@ -45,11 +45,15 @@ class ProcessSimulator:
     def __get_inventory_ids_for_store__(self, store_id) -> []:
         return self.inventory.loc[(self.inventory['store_id'] == store_id)].index.tolist()
 
+    def __get_rental_rate_for_inventory_id__(self, inventory_id):
+        equipment_id = self.inventory.iloc[inventory_id]['equipment_id']
+        return float(self.equipment.iloc[equipment_id]['rental_rate'])
+
     def __get_overall_lended_inventory_ids__(self, date) -> []:
         return self.lended_equipments.loc[(self.lended_equipments['return_date'] <= date) & (self.lended_equipments['inspection_id'] == False)].index.tolist()
 
     '''
-        Costumer Methods
+        Costumer Activities
     '''
 
     def select_available_equipment_from_store(self, store_id, rental_date, count=2):
@@ -59,17 +63,28 @@ class ProcessSimulator:
         available_inventory = list(set(inventory_of_store).difference(currently_lended_inventory))
         return list(set(random.choices(available_inventory, k=count)))
 
-
     '''
         Defining activities
     '''
 
-    def create_rental(self, costumer_id, inventory_id_list):
+    def create_rental(self, customer_id, date: datetime.datetime):
+        new_rental = {'customer_id': customer_id, 'created_date': date, 'confirmed_date': False}
+        self.rental_orders = self.rental_orders.append(new_rental, ignore_index=True)
 
-        return None
+        rental_id = self.rental_orders.index.max()
+        print('Customer ' + str(customer_id) + ' created rental ' + str(rental_id) + ' on ' + date.__str__())
+        return rental_id
 
-    def create_payment(self):
-        return None
+    def create_payment(self, rental_id, inventory_ids_list, date):
+        total_payment = 0
+        for inventory_id in inventory_ids_list:
+            total_payment += self.__get_rental_rate_for_inventory_id__(inventory_id)
+
+        new_payment = {'rental_id': rental_id, 'value': total_payment, 'created_date': date, 'confirmed_date': False}
+        self.payments = self.payments.append(new_payment, ignore_index=True)
+        payment_id = self.payments.index.max()
+        print('Payment ' + str(payment_id) + ' with value ' + str(total_payment) + ' created for rental ' + str(rental_id))
+        return payment_id
 
     def confirm_payment(self):
         return None
@@ -96,11 +111,10 @@ class ProcessSimulator:
         for c in self.__get_costumer_ids__():
             belonging_store_id = self.__get_store_of_customer__(c)
 
-            rental_date = current_time + datetime.timedelta(days=3)
-            selected_equipment = self.select_available_equipment_from_store(belonging_store_id, rental_date)
-            print('Costumer with id ' + str(c) + ' has selected inventory with id(s) ' + str(selected_equipment) + ' from store id ' + str(belonging_store_id))
+            selected_inventory = self.select_available_equipment_from_store(belonging_store_id, current_time)
 
-            c.create_rental(c, rental_date)
+            rental_id = self.create_rental(c, current_time)
+            payment_id = self.create_payment(rental_id, selected_inventory, current_time)
 
     def save_table_to_csv(self):
         path = 'generatedData/'
@@ -113,7 +127,6 @@ class ProcessSimulator:
 if __name__ == '__main__':
 
     ps = ProcessSimulator()
-    start = datetime.datetime(year=2020, month=1, day=1)
-    ps.simulate_process(start)
+    ps.simulate_process(datetime.datetime(year=2020, month=1, day=1))
 
     #ps.save_table_to_csv()
