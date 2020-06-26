@@ -28,7 +28,7 @@ class ProcessSimulator:
 
         # create additional tables
         self.rental_orders = pd.DataFrame(columns=['costumer_id', 'created_date', 'confirmed_date'])
-        self.lended_equipments = pd.DataFrame(columns=['rental_id', 'inventory_id', 'cancel_date', 'lend_date', 'return_date', 'inspection_id'])
+        self.lended_inventory = pd.DataFrame(columns=['rental_id', 'inventory_id', 'created_date', 'cancel_date', 'lend_date', 'return_date', 'inspection_id'])
         self.inspections = pd.DataFrame(columns=['inspector_id', 'date', 'payment_id']) # inspector == staff
         self.payments = pd.DataFrame(columns=['rental_id', 'value', 'created_date', 'confirmed_date'])
 
@@ -36,72 +36,90 @@ class ProcessSimulator:
         Helper Methods
     '''
 
-    def __get_costumer_ids__(self) -> []:
+    def __get_costumer_ids__(self) -> list:
         return self.customer.index.tolist()
 
-    def __get_store_of_customer__(self, customer_id):
-        return self.customer.iloc[customer_id]['store_id']
+    def __get_store_of_customer__(self, customer_id: int):
+        return self.customer.iloc[customer_id-1]['store_id']
 
-    def __get_inventory_ids_for_store__(self, store_id) -> []:
+    def __get_inventory_ids_for_store__(self, store_id: int) -> list:
         return self.inventory.loc[(self.inventory['store_id'] == store_id)].index.tolist()
 
-    def __get_rental_rate_for_inventory_id__(self, inventory_id):
-        equipment_id = self.inventory.iloc[inventory_id]['equipment_id']
-        return float(self.equipment.iloc[equipment_id]['rental_rate'])
+    def __get_rental_rate_for_inventory_id__(self, inventory_id: int) -> float:
+        equipment_id = self.inventory.iloc[inventory_id-1]['equipment_id']
+        return self.equipment.iloc[equipment_id-1]['rental_rate'].item()
 
-    def __get_overall_lended_inventory_ids__(self, date) -> []:
-        return self.lended_equipments.loc[(self.lended_equipments['return_date'] <= date) & (self.lended_equipments['inspection_id'] == False)].index.tolist()
+    def __get_overall_lended_inventory_ids__(self) -> list:
+        return list(self.lended_inventory[self.lended_inventory['inspection_id'].isna() & self.lended_inventory['cancel_date'].isna()]['inventory_id'])
 
     '''
         Costumer Activities
     '''
 
-    def select_available_equipment_from_store(self, store_id, rental_date, count=2):
-        # available = inventory_id in lended_equipments table where return_date is before rental_date and inspection_id is not False
+    def select_available_equipment_from_store(self, store_id: int, date: datetime.datetime, count=2) -> list:
+        # lended = inventory_id in lended inventory table where inspection_id and cancel_date are not defined
         inventory_of_store = self.__get_inventory_ids_for_store__(store_id)
-        currently_lended_inventory = self.__get_overall_lended_inventory_ids__(rental_date)
+        currently_lended_inventory = self.__get_overall_lended_inventory_ids__()
         available_inventory = list(set(inventory_of_store).difference(currently_lended_inventory))
         return list(set(random.choices(available_inventory, k=count)))
 
     '''
-        Defining activities
+        Defining Activities
     '''
 
-    def create_rental(self, customer_id, date: datetime.datetime):
-        new_rental = {'customer_id': customer_id, 'created_date': date, 'confirmed_date': False}
-        self.rental_orders = self.rental_orders.append(new_rental, ignore_index=True)
+    def create_rental(self, customer_id: int, inventory_ids_list: list, date: datetime.datetime) -> (int, list):
 
+        # create rental
+        new_rental = {'customer_id': customer_id, 'created_date': date}
+        self.rental_orders = self.rental_orders.append(new_rental, ignore_index=True)
         rental_id = self.rental_orders.index.max()
         print('Customer ' + str(customer_id) + ' created rental ' + str(rental_id) + ' on ' + date.__str__())
-        return rental_id
 
-    def create_payment(self, rental_id, inventory_ids_list, date):
-        total_payment = 0
+        # create entry for each inventory to lend
+        lended_inventory_ids = []
         for inventory_id in inventory_ids_list:
-            total_payment += self.__get_rental_rate_for_inventory_id__(inventory_id)
+            new_lended_inventory = {'rental_id': rental_id, 'inventory_id': inventory_id, 'created_date': date}
+            self.lended_inventory = self.lended_inventory.append(new_lended_inventory, ignore_index=True)
+            lended_inventory_ids.append(self.lended_inventory.index.max())
+        return rental_id, lended_inventory_ids
 
-        new_payment = {'rental_id': rental_id, 'value': total_payment, 'created_date': date, 'confirmed_date': False}
+    def create_payment(self, rental_id: int, inventory_ids_list: list, date) -> int:
+        total_payment = []
+        for inventory_id in inventory_ids_list:
+            total_payment.append(self.__get_rental_rate_for_inventory_id__(inventory_id))
+
+        new_payment = {'rental_id': rental_id, 'value': round(sum(total_payment), 2), 'created_date': date}
         self.payments = self.payments.append(new_payment, ignore_index=True)
         payment_id = self.payments.index.max()
-        print('Payment ' + str(payment_id) + ' with value ' + str(total_payment) + ' created for rental ' + str(rental_id))
+        print('Payment ' + str(payment_id) + ' with value ' + str(round(sum(total_payment), 2)) + ' created for rental ' + str(rental_id) + ' including inventory ids ' + str(inventory_ids_list))
         return payment_id
 
-    def confirm_payment(self):
+    def confirm_payment(self, rental_id: int, date: datetime.datetime) -> int:
+        self.payments.loc[(self.payments['rental_id'] == rental_id)]['confirmed_date'] = date
+        payment_id = self.payments.loc[(self.payments['rental_id'] == rental_id)].index.max()
+        print('Payment ' + str(payment_id) + ' received on ' + date.__str__())
+        return payment_id
+
+    def confirm_rental(self, rental_id: int, date: datetime.datetime) -> int:
+        self.rental_orders.iloc[rental_id-1]['confirmed_date'] = date
+        print('Rental ' + str(rental_id) + ' confirmed on ' + date.__str__())
+        return rental_id
+
+    def cancel_inventory(self, lended_inventory_id: int, date: datetime.datetime) -> int:
+        self.lended_inventory.iloc[lended_inventory_id-1]['cancel_date'] = date
+        print('Lended inventory order ' + str(lended_inventory_id) + ' has been canceled on ' + date.__str__())
+        return lended_inventory_id
+
+    def lend_inventory(self, lended_inventory_ids: list, date: datetime.datetime):
+        for li in lended_inventory_ids:
+            self.lended_inventory.iloc[li-1]['cancel_date'] = date
+        print('Lended inventory ids ' + str(lended_inventory_ids) + ' are/were picked up on ' + date.__str__())
+        return lended_inventory_ids
+
+    def return_inventory(self):
         return None
 
-    def confirm_rental(self):
-        return None
-
-    def cancel_equipment(self):
-        return None
-
-    def lend_equipment(self):
-        return None
-
-    def return_equipment(self):
-        return None
-
-    def inspect_equipment(self):
+    def inspect_inventory(self):
         return None
 
     def simulate_process(self, start_time):
@@ -110,17 +128,18 @@ class ProcessSimulator:
 
         for c in self.__get_costumer_ids__():
             belonging_store_id = self.__get_store_of_customer__(c)
-
             selected_inventory = self.select_available_equipment_from_store(belonging_store_id, current_time)
 
-            rental_id = self.create_rental(c, current_time)
+            rental_id, lended_inventory_ids = self.create_rental(c, selected_inventory, current_time)
             payment_id = self.create_payment(rental_id, selected_inventory, current_time)
+            payment_id = self.confirm_payment(rental_id, current_time)
+            rental_id = self.confirm_rental(rental_id, current_time)
 
     def save_table_to_csv(self):
         path = 'generatedData/'
 
         self.rental_orders.to_csv(path + 'rental_orders.csv')
-        self.lended_equipments.to_csv(path + 'lended_equipments.csv')
+        self.lended_inventory.to_csv(path + 'lended_inventory.csv')
         self.inspections.to_csv(path + 'inspections.csv')
         self.payments.to_csv(path + 'payments.csv')
 
