@@ -134,10 +134,10 @@ class ProcessSimulator:
         if random.uniform(0, 1) < 0.05:
             payment_id = self.create_payment(rental_id, [inventory_id], date)
             new_inspection = {'inspector_id': inspector_id, 'date': date, 'payment_id': payment_id}
-            print('Lended inventory ids ' + str(inventory_id) + ' was inspected up on ' + date.__str__() + '. Due to damage of the equipment an additional payment was created.')
+            print('Lended inventory id ' + str(inventory_id) + ' was inspected up on ' + date.__str__() + '. Due to damage of the equipment an additional payment was created.')
         else:
             new_inspection = {'inspector_id': inspector_id, 'date': date}
-            print('Lended inventory ids ' + str(inventory_id) + ' was inspected up on ' + date.__str__() + '.')
+            print('Lended inventory id ' + str(inventory_id) + ' was inspected up on ' + date.__str__() + '.')
         self.inspections = self.inspections.append(new_inspection, ignore_index=True)
         inspection_id = self.inspections.index.max()
         return inspection_id, payment_id
@@ -147,20 +147,22 @@ class ProcessSimulator:
         current_time = start_time
 
         for c in self.__get_customer_ids__():
+            current_time_process_instance = current_time
             belonging_store_id = self.__get_store_of_customer__(c)
-            selected_inventory = self.select_available_equipment_from_store(belonging_store_id, current_time)
+            selected_inventory = self.select_available_equipment_from_store(belonging_store_id, current_time_process_instance)
 
-            rental_id, lended_inventory_ids = self.create_rental(c, selected_inventory, current_time)
-            payment_id = self.create_payment(rental_id, selected_inventory, current_time)
-            current_time = current_time + datetime.timedelta(hours = random.randint(0,24), minutes = random.randint(0,59))
-            self.confirm_payment(payment_id, current_time)
-            self.confirm_rental(rental_id, current_time)
-            current_time = current_time + datetime.timedelta(days = random.randint(0,1), hours = random.randint(0,72), minutes = random.randint(0,59))
-            self.lend_inventory(lended_inventory_ids, current_time)
-            current_time = current_time + datetime.timedelta(hours = random.randint(0,72), minutes = random.randint(0,59))
-            additional_payment_ids = self.return_inventory(rental_id, lended_inventory_ids, current_time)
+            rental_id, lended_inventory_ids = self.create_rental(c, selected_inventory, current_time_process_instance)
+            payment_id = self.create_payment(rental_id, selected_inventory, current_time_process_instance)
+            current_time_process_instance = current_time_process_instance + datetime.timedelta(hours = random.randint(0,24), minutes = random.randint(0,59))
+            self.confirm_payment(payment_id, current_time_process_instance)
+            self.confirm_rental(rental_id, current_time_process_instance)
+            current_time_process_instance = current_time_process_instance + datetime.timedelta(days = random.randint(0,1), hours = random.randint(0,72), minutes = random.randint(0,59))
+            self.lend_inventory(lended_inventory_ids, current_time_process_instance)
+            current_time_process_instance = current_time_process_instance + datetime.timedelta(hours = random.randint(0,72), minutes = random.randint(0,59))
+            additional_payment_ids = self.return_inventory(rental_id, lended_inventory_ids, current_time_process_instance)
             for additional_payment_id in additional_payment_ids:
-                self.confirm_payment(additional_payment_id, current_time)
+                self.confirm_payment(additional_payment_id, current_time_process_instance)
+            current_time = current_time + datetime.timedelta(hours = random.randint(0,48), minutes = random.randint(0,59))
 
     def save_table_to_csv(self):
         path = 'generatedData/'
