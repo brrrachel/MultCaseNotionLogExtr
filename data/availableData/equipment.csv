@@ -1,4 +1,4 @@
-id,name,information,year,brand_id,rental_rate,replacement_cost,special_features
+rowid,name,information,year,brand_id,rental_rate,replacement_cost,special_features
 1,Schwing-/Deltaschleifer,NULL,2005,1,6.9,79.99,NULL
 2,Fliesenhandkreissaege eintauchbar,180mm,2006,1,29.6,119.99,NULL
 3,Saebelsaege,NULL,2009,2,9.9,89.9,NULL

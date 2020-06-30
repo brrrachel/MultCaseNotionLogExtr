@@ -1,4 +1,4 @@
-id,equipment_id,store_id
+rowid,equipment_id,store_id
 1,9,2
 2,2,4
 3,8,3

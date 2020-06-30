@@ -1,4 +1,4 @@
-id,street,number,city,post_code
+rowid,street,number,city,post_code
 1,Marktstr.,3,Soltau,29614,
 2,Hermann-Seidel-Str.,52,Dresden,1279,
 3,Rathausstr.,2,Bickenbach,56291,

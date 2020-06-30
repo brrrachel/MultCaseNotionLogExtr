@@ -1,4 +1,4 @@
-id,store_id,firstname,lastname,email,address_id
+rowid,store_id,firstname,lastname,email,address_id
 1,1,Erhard,Drake,e.@company.none,27
 2,2,Kirsten,Schlingmann,k-68@web.none,28
 3,3,Ingelotte,Nitzsche,ingelotte_nitzsche@private.none,29

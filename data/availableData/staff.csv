@@ -1,4 +1,4 @@
-id,firstname,lastname,address_id,email,store_id
+rowid,firstname,lastname,address_id,email,store_id
 1,Rommy,Schoenbach,8,rommy_schoenbach@xyz.none,1
 2,Markwart,Holder,9,markwart.holder@spam.none,1
 3,Ben,Ney,10,ben-ney@internet.none,3

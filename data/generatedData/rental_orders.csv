@@ -1,4 +1,4 @@
-,customer_id,created_date,confirmed_date
+rowid,customer_id,created_date,confirmed_date
 0,1,2020-01-01 00:00:00,2020-01-01 18:56:00
 1,2,2020-01-01 06:04:00,2020-01-01 22:40:00
 2,3,2020-01-02 19:46:00,2020-01-03 14:57:00
