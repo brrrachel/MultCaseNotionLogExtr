@@ -911,18 +911,37 @@
       </customer>
    </tableVSSelectedRowIds>
    <activityVSClasses>
-      <lend_inventory/>
-      <return_inventory/>
-      <created_lended_inventory>
-         <element>inventory</element>
-      </created_lended_inventory>
-      <create_payment/>
-      <create_rental>
+      <cancel_inventory>
          <element>lended_inventory</element>
-         <element>customer</element>
+      </cancel_inventory>
+      <lend_inventory>
+         <element>lended_inventory</element>
+      </lend_inventory>
+      <return_inventory>
+         <element>lended_inventory</element>
+         <element>inspection</element>
+      </return_inventory>
+      <create_lended_inventory>
+         <element>lended_inventory</element>
+      </create_lended_inventory>
+      <created_lended_inventory/>
+      <create_payment>
+         <element>payment</element>
+      </create_payment>
+      <create_rental>
+         <element>rental</element>
+         <element>lended_inventory</element>
       </create_rental>
       <confirme_payment/>
-      <confirme_rental/>
+      <confirme_rental>
+         <element>rental</element>
+      </confirme_rental>
+      <confirm_payment>
+         <element>payment</element>
+      </confirm_payment>
+      <execute_inspection>
+         <element>inspection</element>
+      </execute_inspection>
    </activityVSClasses>
    <tableVSClassList>
       <address>
@@ -1006,11 +1025,30 @@
          <element>rental_orders-created_date-rowid</element>
          <element>rental_orders-customer_id-rowid</element>
          <element>rental_orders-rowid-rowid</element>
-         <element>payments-rowid-rental_id</element>
-         <element>payments-rental_id-rental_id</element>
-         <element>payments-created_date-rental_id</element>
-         <element>payments-value-rental_id</element>
       </rental_orders-created_date>
+      <lended_inventory-lend_date>
+         <element>lended_inventory-lend_date-rowid</element>
+      </lended_inventory-lend_date>
+      <lended_inventory-return_date>
+         <element>lended_inventory-return_date-rowid</element>
+      </lended_inventory-return_date>
+      <rental_orders-confirmed_date>
+         <element>rental_orders-confirmed_date-rowid</element>
+      </rental_orders-confirmed_date>
+      <lended_inventory-cancel_date>
+         <element>lended_inventory-inspection_id-rowid</element>
+         <element>inspections-rowid-inspection_id</element>
+         <element>inspections-inspector_id-inspection_id</element>
+      </lended_inventory-cancel_date>
+      <payments-created_date>
+         <element>payments-created_date-rowid</element>
+         <element>payments-rowid-rowid</element>
+         <element>payments-rental_id-rowid</element>
+         <element>payments-value-rowid</element>
+      </payments-created_date>
+      <payments-confirmed_date>
+         <element>payments-confirmed_date-rowid</element>
+      </payments-confirmed_date>
    </tableColumnVSImpactedTableColumns>
    <tableVSFatherTables>
       <payments>
@@ -1051,9 +1089,17 @@
    <tableVSEventColumns>
       <rental_orders>
          <element>created_date</element>
+         <element>confirmed_date</element>
       </rental_orders>
+      <payments>
+         <element>created_date</element>
+         <element>confirmed_date</element>
+      </payments>
       <lended_inventory>
          <element>created_date</element>
+         <element>lend_date</element>
+         <element>return_date</element>
+         <element>cancel_date</element>
       </lended_inventory>
    </tableVSEventColumns>
    <classVSForeignKeys>
@@ -1091,6 +1137,7 @@
       </customer>
       <inspection>
          <element>inspector_id</element>
+         <element>payment_id</element>
       </inspection>
    </classVSForeignKeys>
    <tableVSChildTables>
@@ -1147,18 +1194,37 @@
    </tableClassVSColumnVSConstraint>
    <tableVSObjectChainedChildTableVSFK/>
    <activityVSReferredClassVSPath>
-      <lend_inventory/>
-      <return_inventory/>
-      <created_lended_inventory>
-         <inventory>lended_inventory--inventory</inventory>
-      </created_lended_inventory>
-      <create_payment/>
+      <cancel_inventory>
+         <lended_inventory>lended_inventory</lended_inventory>
+      </cancel_inventory>
+      <lend_inventory>
+         <lended_inventory>lended_inventory</lended_inventory>
+      </lend_inventory>
+      <return_inventory>
+         <lended_inventory>lended_inventory</lended_inventory>
+         <inspection>lended_inventory--inspection</inspection>
+      </return_inventory>
+      <create_lended_inventory>
+         <lended_inventory>lended_inventory</lended_inventory>
+      </create_lended_inventory>
+      <created_lended_inventory/>
+      <create_payment>
+         <payment>payment</payment>
+      </create_payment>
       <create_rental>
          <lended_inventory>rental--lended_inventory</lended_inventory>
-         <customer>rental--customer</customer>
+         <rental>rental</rental>
       </create_rental>
       <confirme_payment/>
-      <confirme_rental/>
+      <confirme_rental>
+         <rental>rental</rental>
+      </confirme_rental>
+      <confirm_payment>
+         <payment>payment</payment>
+      </confirm_payment>
+      <execute_inspection>
+         <inspection>inspection</inspection>
+      </execute_inspection>
    </activityVSReferredClassVSPath>
    <classVSColumnVSName>
       <address>
@@ -1210,22 +1276,17 @@
          <return_date>return_date</return_date>
       </equipment>
       <lended_inventory>
-         <date>date</date>
+         <number>number</number>
+         <inspection_id>inspection_id</inspection_id>
          <city>city</city>
          <inventory_id>inventory_id</inventory_id>
-         <confirmed_date>confirmed_date</confirmed_date>
+         <street>street</street>
+         <post_code>post_code</post_code>
+         <cancel_date>cancel_inventory</cancel_date>
+         <created_date>create_lended_inventory</created_date>
          <rowid>rowid</rowid>
          <rental_id>rental_id</rental_id>
          <lend_date>lend_inventory</lend_date>
-         <inspector_id>inspector_id</inspector_id>
-         <number>number</number>
-         <inspection_id>inspection_id</inspection_id>
-         <street>street</street>
-         <payment_id>payment_id</payment_id>
-         <post_code>post_code</post_code>
-         <cancel_date>cancel_date</cancel_date>
-         <created_date>created_lended_inventory</created_date>
-         <customer_id>customer_id</customer_id>
          <return_date>return_inventory</return_date>
       </lended_inventory>
       <staff>
@@ -1245,25 +1306,12 @@
          <email>email</email>
       </staff>
       <payment>
-         <date>date</date>
-         <store_id>store_id</store_id>
-         <firstname>firstname</firstname>
-         <inventory_id>inventory_id</inventory_id>
-         <address_id>address_id</address_id>
-         <confirmed_date>confirme_payment</confirmed_date>
-         <rowid>rowid</rowid>
-         <rental_id>rental_id</rental_id>
-         <lastname>lastname</lastname>
-         <lend_date>lend_date</lend_date>
-         <inspector_id>inspector_id</inspector_id>
-         <inspection_id>inspection_id</inspection_id>
-         <payment_id>payment_id</payment_id>
-         <cancel_date>cancel_date</cancel_date>
          <created_date>create_payment</created_date>
+         <confirmed_date>confirm_payment</confirmed_date>
          <customer_id>customer_id</customer_id>
          <value>value</value>
-         <email>email</email>
-         <return_date>return_date</return_date>
+         <rowid>rowid</rowid>
+         <rental_id>rental_id</rental_id>
       </payment>
       <store>
          <store_id>store_id</store_id>
@@ -1297,33 +1345,6 @@
          <equipment_id>equipment_id</equipment_id>
          <lastname>lastname</lastname>
       </brand>
-      <inspection>
-         <date>date</date>
-         <special_features>special_features</special_features>
-         <year>year</year>
-         <city>city</city>
-         <replacement_cost>replacement_cost</replacement_cost>
-         <rowid>rowid</rowid>
-         <lend_date>lend_date</lend_date>
-         <inspector_id>inspector_id</inspector_id>
-         <number>number</number>
-         <inspection_id>inspection_id</inspection_id>
-         <payment_id>payment_id</payment_id>
-         <street>street</street>
-         <cancel_date>cancel_date</cancel_date>
-         <value>value</value>
-         <rental_rate>rental_rate</rental_rate>
-         <inventory_id>inventory_id</inventory_id>
-         <confirmed_date>confirmed_date</confirmed_date>
-         <rental_id>rental_id</rental_id>
-         <brand_id>brand_id</brand_id>
-         <post_code>post_code</post_code>
-         <name>name</name>
-         <information>information</information>
-         <created_date>created_date</created_date>
-         <customer_id>customer_id</customer_id>
-         <return_date>return_date</return_date>
-      </inspection>
       <customer>
          <store_id>store_id</store_id>
          <firstname>firstname</firstname>
@@ -1351,16 +1372,109 @@
          <rowid>rowid</rowid>
          <rental_id>rental_id</rental_id>
       </rental>
+      <inspection>
+         <date>execute_inspection</date>
+         <inventory_id>inventory_id</inventory_id>
+         <confirmed_date>confirmed_date</confirmed_date>
+         <rowid>rowid</rowid>
+         <rental_id>rental_id</rental_id>
+         <lend_date>lend_date</lend_date>
+         <inspector_id>inspector_id</inspector_id>
+         <inspection_id>inspection_id</inspection_id>
+         <payment_id>payment_id</payment_id>
+         <cancel_date>cancel_date</cancel_date>
+         <created_date>created_date</created_date>
+         <customer_id>customer_id</customer_id>
+         <return_date>return_date</return_date>
+      </inspection>
    </classVSColumnVSName>
    <classVSActivityColumnVSName>
       <lended_inventory>
-         <created_date>created_lended_inventory</created_date>
+         <cancel_date>cancel_inventory</cancel_date>
+         <created_date>create_lended_inventory</created_date>
+         <lend_date>lend_inventory</lend_date>
+         <return_date>return_inventory</return_date>
       </lended_inventory>
+      <payment>
+         <created_date>create_payment</created_date>
+         <confirmed_date>confirm_payment</confirmed_date>
+      </payment>
       <rental>
          <created_date>create_rental</created_date>
+         <confirmed_date>confirme_rental</confirmed_date>
       </rental>
+      <inspection>
+         <date>execute_inspection</date>
+      </inspection>
    </classVSActivityColumnVSName>
-   <tableVSEventChainedFatherTableVSFKs/>
+   <tableVSEventChainedFatherTableVSFKs>
+      <payments>
+         <rental_orders>
+            <element>rental_id</element>
+         </rental_orders>
+      </payments>
+      <rental_orders>
+         <customer>
+            <element>customer_id</element>
+         </customer>
+      </rental_orders>
+      <inspections>
+         <payments>
+            <element>payment_id</element>
+         </payments>
+         <staff>
+            <element>inspector_id</element>
+         </staff>
+      </inspections>
+      <lended_inventory>
+         <rental_orders>
+            <element>rental_id</element>
+         </rental_orders>
+         <inspections>
+            <element>inspection_id</element>
+         </inspections>
+         <inventory>
+            <element>inventory_id</element>
+         </inventory>
+      </lended_inventory>
+      <equipment>
+         <brand>
+            <element>brand_id</element>
+         </brand>
+      </equipment>
+      <staff>
+         <address>
+            <element>address_id</element>
+         </address>
+         <store>
+            <element>store_id</element>
+         </store>
+      </staff>
+      <store>
+         <address>
+            <element>address_id</element>
+         </address>
+         <staff>
+            <element>manager_id</element>
+         </staff>
+      </store>
+      <inventory>
+         <equipment>
+            <element>equipment_id</element>
+         </equipment>
+         <store>
+            <element>store_id</element>
+         </store>
+      </inventory>
+      <customer>
+         <address>
+            <element>address_id</element>
+         </address>
+         <store>
+            <element>store_id</element>
+         </store>
+      </customer>
+   </tableVSEventChainedFatherTableVSFKs>
    <tableVSChildTableVSForeignKeyList>
       <address>
          <staff>
@@ -1382,7 +1496,9 @@
          </lended_inventory>
       </rental_orders>
       <payments>
-         <inspections/>
+         <inspections>
+            <element>payment_id</element>
+         </inspections>
       </payments>
       <inspections>
          <lended_inventory>
@@ -1433,18 +1549,27 @@
    <classVSActivityColumnVSAttributeColumns>
       <address/>
       <lended_inventory>
+         <cancel_date/>
          <created_date/>
+         <lend_date/>
+         <return_date/>
       </lended_inventory>
       <equipment/>
-      <payment/>
+      <payment>
+         <created_date/>
+         <confirmed_date/>
+      </payment>
       <staff/>
       <store/>
       <inventory/>
       <brand/>
       <rental>
          <created_date/>
+         <confirmed_date/>
       </rental>
-      <inspection/>
+      <inspection>
+         <date/>
+      </inspection>
       <customer/>
    </classVSActivityColumnVSAttributeColumns>
 </configurations>
