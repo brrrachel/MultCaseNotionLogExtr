@@ -122,7 +122,7 @@ class ProcessSimulator:
             if payment_id != -1:
                 additional_payment_ids.append(payment_id)
             self.lended_inventory.iloc[inventory_id, self.lended_inventory.columns.get_loc('return_date')] = date
-            self.lended_inventory.iloc[inventory_id, self.lended_inventory.columns.get_loc('inspection_id')] = inspection_id
+            self.lended_inventory.iloc[inventory_id, self.lended_inventory.columns.get_loc('inspection_id')] = int(inspection_id)
         return additional_payment_ids
 
     def inspect_inventory(self, rental_id: int, inventory_id: int, date: datetime.datetime):
