@@ -155,7 +155,7 @@ class ProcessSimulator:
             if random.uniform(0, 1) < 0.2:
                 current_time_process += datetime.timedelta(hours=random.randint(0,24), minutes=random.randint(0,59), seconds=random.randint(30,100))
                 inventory_id_to_cancel = list(set(random.choices(lended_inventory_ids, k=1)))[0]
-                self.cancel_inventory(inventory_id_to_cancel, current_time)
+                self.cancel_inventory(inventory_id_to_cancel, current_time_process)
                 lended_inventory_ids.remove(inventory_id_to_cancel)
 
             if len(lended_inventory_ids) > 0:
