@@ -186,16 +186,15 @@ class ProcessSimulator:
                     self.tableLog = self.tableLog.append({'activity_name': 'confirm_payment', 'timestamp': current_time_process, 'rental_id': rental_id, 'payment': payment_id}, ignore_index=True)
             
             current_time += datetime.timedelta(hours=random.randint(0,24), minutes=random.randint(0,59), seconds=random.randint(30,100))
-            
-        self.tableLog = self.tableLog.sort_values(by=['timestamp'])
-        self.tableLog = self.tableLog.reset_index(drop=True)
                 
     def save_table_to_csv(self):
         self.rental_orders.to_csv(self.path + 'rental_orders.csv')
         self.lended_inventory.to_csv(self.path + 'lended_inventory.csv')
         self.inspections.to_csv(self.path + 'inspections.csv')
         self.payments.to_csv(self.path + 'payments.csv')
-        print(self.tableLog.head())
+        
+        self.tableLog = self.tableLog.sort_values(by=['timestamp'])
+        self.tableLog = self.tableLog.reset_index(drop=True)
         self.tableLog.to_csv('sortedTableLog.csv')
 
 
