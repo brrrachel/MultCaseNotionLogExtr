@@ -2,8 +2,6 @@ import datetime
 import random
 import pandas as pd
 import numpy as np
-import operator
-import csv
 
 '''
 Processes:
@@ -34,7 +32,9 @@ class ProcessSimulator:
         self.lended_inventory = pd.DataFrame(columns=['rental_id', 'inventory_id', 'created_date', 'cancel_date', 'lend_date', 'return_date'])
         self.inspections = pd.DataFrame(columns=['inspector_id', 'inspection_date', 'lended_inventory_id']) # inspector == staff
         self.payments = pd.DataFrame(columns=['rental_id', 'value', 'created_date', 'confirmed_date', 'staff'])
-        self.tableLog = pd.DataFrame(columns=['activity_name','timestamp','rental','inventory','customer','staff','inspection','payment'])
+
+        # create table log
+        self.tableLog = pd.DataFrame(columns=['activity','timestamp','rental','inventory','customer','staff','inspection','payment'])
 
     '''
         Helper Methods
@@ -62,6 +62,18 @@ class ProcessSimulator:
         inventory_of_store = self.__get_inventory_ids_for_store__(store_id)
         return list(set(random.choices(inventory_of_store, k=count)))
 
+    def __create_entry_for_table_log__(self, activity: str, timestamp: datetime.datetime, rental=np.NaN, inventory=np.NaN, customer=np.NaN, staff=np.NaN, inspection=np.NaN, payment=np.NaN):
+        new_entry = {'activity': activity,
+                     'timestamp': timestamp,
+                     'rental': rental,
+                     'inventory': inventory,
+                     'customer': customer,
+                     'staff': staff,
+                     'inspection': inspection,
+                     'payment': payment
+                     }
+        self.tableLog = self.tableLog.append(new_entry, ignore_index=True)
+
     '''
         Defining Activities
     '''
@@ -73,7 +85,7 @@ class ProcessSimulator:
         self.rental_orders = self.rental_orders.append(new_rental, ignore_index=True)
         rental_id = self.rental_orders.index.max()
         print('Customer ' + str(customer_id) + ' created rental ' + str(rental_id) + ' on ' + date.__str__())
-        self.tableLog = self.tableLog.append({'activity_name': 'create_rental', 'timestamp': date, 'rental': rental_id, 'inventory': inventory_ids, 'customer': customer_id}, ignore_index=True)
+        self.__create_entry_for_table_log__('create_rental', date, rental=rental_id, inventory=inventory_ids, customer=customer_id)
 
         # create entry for each inventory to lend
         lended_inventory_ids = []
@@ -87,29 +99,29 @@ class ProcessSimulator:
         total_payment = []
         for inventory_id in inventory_ids:
             total_payment.append(self.__get_rental_rate_for_inventory_id__(inventory_id))
-        
+
         staff_id = self.__get_staff_id_for_inventory__(inventory_ids[0])
         new_payment = {'rental_id': rental_id, 'value': round(sum(total_payment), 2), 'created_date': date, 'staff': staff_id}
         self.payments = self.payments.append(new_payment, ignore_index=True)
         payment_id = self.payments.index.max()
-        self.tableLog = self.tableLog.append({'activity_name': 'create_payment', 'timestamp': date, 'rental': rental_id, 'staff': staff_id, 'payment': payment_id}, ignore_index=True)
+        self.__create_entry_for_table_log__('create_payment', date, rental=rental_id, staff=staff_id, payment=payment_id)
         print('Payment ' + str(payment_id) + ' with value ' + str(round(sum(total_payment), 2)) + ' created for rental ' + str(rental_id) + ' including inventory ids ' + str(inventory_ids))
         return payment_id
 
     def confirm_payment(self, payment_id: int, date: datetime.datetime, inventory_id: int) -> int:
         staff_id = self.__get_staff_id_for_inventory__(inventory_id)
         self.payments.iloc[payment_id, self.payments.columns.get_loc('confirmed_date')] = date
-        self.tableLog = self.tableLog.append({'activity_name': 'confirm_payment', 'timestamp': date, 'payment': payment_id, 'staff': staff_id}, ignore_index=True)
+        self.__create_entry_for_table_log__('confirm_payment', date, payment=payment_id, staff=staff_id)
         print('Payment ' + str(payment_id) + ' received on ' + date.__str__())
 
     def confirm_rental(self, rental_id: int, date: datetime.datetime):
         self.rental_orders.iloc[rental_id, self.rental_orders.columns.get_loc('confirmed_date')] = date
-        self.tableLog = self.tableLog.append({'activity_name': 'confirm_rental', 'timestamp': date, 'rental': rental_id}, ignore_index=True)
+        self.__create_entry_for_table_log__('confirm_rental', date, rental=rental_id)
         print('Rental ' + str(rental_id) + ' confirmed on ' + date.__str__())
 
     def cancel_inventory(self, rental_id: int, inventory_id: int, date: datetime.datetime, customer_id: int):
         self.lended_inventory.iloc[inventory_id, self.lended_inventory.columns.get_loc('cancel_date')] = date
-        self.tableLog = self.tableLog.append({'activity_name': 'cancel_inventory', 'timestamp': date, 'rental': rental_id, 'inventory': [self.lended_inventory.iloc[inventory_id]['inventory_id']], 'customer': customer_id}, ignore_index=True)
+        self.__create_entry_for_table_log__('cancel_inventory', date, rental=rental_id, inventory=[self.lended_inventory.iloc[inventory_id]['inventory_id']], customer= customer_id)
         print('Inventory order ' + str(inventory_id) + ' has been canceled on ' + date.__str__())
 
     def lend_inventory(self, lended_inventory_ids: list, date: datetime.datetime, customer_id: int):
@@ -117,16 +129,16 @@ class ProcessSimulator:
         for inventory_id in lended_inventory_ids:
             self.lended_inventory.iloc[inventory_id, self.lended_inventory.columns.get_loc('lend_date')] = date
             inventory_ids.append(self.lended_inventory.iloc[inventory_id]['inventory_id'])
-            
+
         rental_id = self.lended_inventory.iloc[lended_inventory_ids[0]]['rental_id']
-        self.tableLog = self.tableLog.append({'activity_name': 'lend_inventory', 'timestamp': date, 'rental': rental_id, 'inventory': inventory_ids, 'customer': customer_id}, ignore_index=True)
+        self.__create_entry_for_table_log__('lend_inventory', date, rental=rental_id, inventory=inventory_ids, customer= customer_id)
         print('Inventory ids ' + str(inventory_ids) + ' were picked up on ' + date.__str__())
 
     def return_inventory(self, rental_id: int, lended_inventory_ids: list, date: datetime.datetime, customer: str):
         additional_payment_ids = []
         print('Inventory ids ' + str(lended_inventory_ids) + ' were returned up on ' + date.__str__() + '.')
         for lended_inventory_id in lended_inventory_ids:
-            self.tableLog = self.tableLog.append({'activity_name': 'return_inventory', 'timestamp': date, 'rental': rental_id, 'inventory': [self.lended_inventory.iloc[lended_inventory_id]['inventory_id']], 'customer': customer}, ignore_index=True)
+            self.__create_entry_for_table_log__('return_inventory', date, rental=rental_id, inventory=[self.lended_inventory.iloc[lended_inventory_id]['inventory_id']], customer=customer)
             date += datetime.timedelta(seconds=random.randint(30,100))
             inspection_id, payment_id, date = self.inspect_inventory(rental_id, lended_inventory_id, date)
             if payment_id != -1:
@@ -141,11 +153,11 @@ class ProcessSimulator:
         payment_id = -1
         self.inspections = self.inspections.append(new_inspection, ignore_index=True)
         inspection_id = self.inspections.index.max()
-        self.tableLog = self.tableLog.append({'activity_name': 'inspect_inventory', 'timestamp': date, 'inventory': [self.lended_inventory.iloc[lended_inventory_id]['inventory_id']], 'staff': inspector_id, 'inspection': inspection_id}, ignore_index=True)
+        self.__create_entry_for_table_log__('inspect_inventory', date, rental=rental_id, inventory=[self.lended_inventory.iloc[lended_inventory_id]['inventory_id']], staff=inspector_id, inspection=inspection_id)
         if random.uniform(0, 1) < 0.05:
             date += datetime.timedelta(seconds=random.randint(30,100))
             payment_id = self.create_payment(rental_id, [lended_inventory_id], date)
-            self.tableLog = self.tableLog.append({'activity_name': 'create_payment', 'timestamp': date, 'rental': rental_id, 'payment': payment_id}, ignore_index=True)
+            self.__create_entry_for_table_log__('create_payment', date, rental=rental_id, payment=payment_id)
             print('Inventory id ' + str(lended_inventory_id) + ' was inspected up on ' + date.__str__() + '. Due to damage of the equipment an additional payment with id' + str(payment_id) + 'was created.')
         else:
             print('Inventory id ' + str(lended_inventory_id) + ' was inspected up on ' + date.__str__() + '.')
@@ -183,7 +195,7 @@ class ProcessSimulator:
 
                 current_time_process += datetime.timedelta(days=random.randint(0,1), hours=random.randint(0,72), minutes=random.randint(0,59))
                 self.lend_inventory(lended_inventory_ids, current_time_process, c)
-                
+
                 inventory_ids = []
                 for lended_inventory_id in lended_inventory_ids:
                     inventory_ids.append(self.lended_inventory.iloc[lended_inventory_id]['inventory_id'])
