@@ -1,7 +1,6 @@
 import datetime
 import random
 import pandas as pd
-import numpy as np
 
 '''
 Processes:
@@ -62,7 +61,7 @@ class ProcessSimulator:
         inventory_of_store = self.__get_inventory_ids_for_store__(store_id)
         return list(set(random.choices(inventory_of_store, k=count)))
 
-    def __create_entry_for_table_log__(self, activity: str, timestamp: datetime.datetime, rental=np.NaN, inventory=np.NaN, customer=np.NaN, staff=np.NaN, inspection=np.NaN, payment=np.NaN):
+    def __create_entry_for_table_log__(self, activity: str, timestamp: datetime.datetime, rental='EMPTY', inventory='EMPTY', customer='EMPTY', staff='EMPTY', inspection='EMPTY', payment='EMPTY'):
         new_entry = {'activity': activity,
                      'timestamp': timestamp,
                      'rental': rental,
@@ -78,7 +77,7 @@ class ProcessSimulator:
         Defining Activities
     '''
 
-    def create_rental(self, customer_id: int, inventory_ids: list, date: datetime.datetime) -> (int, list):
+    def create_rental(self, customer_id: int, inventory_ids: list, date: datetime.datetime):
 
         # create rental
         new_rental = {'customer_id': customer_id, 'created_date': date}
@@ -95,7 +94,7 @@ class ProcessSimulator:
             lended_inventory_ids.append(self.lended_inventory.index.max())
         return rental_id, lended_inventory_ids
 
-    def create_payment(self, rental_id: int, inventory_ids: list, date: datetime.datetime) -> int:
+    def create_payment(self, rental_id: int, inventory_ids: list, date: datetime.datetime):
         total_payment = []
         for inventory_id in inventory_ids:
             total_payment.append(self.__get_rental_rate_for_inventory_id__(inventory_id))
@@ -108,7 +107,7 @@ class ProcessSimulator:
         print('Payment ' + str(payment_id) + ' with value ' + str(round(sum(total_payment), 2)) + ' created for rental ' + str(rental_id) + ' including inventory ids ' + str(inventory_ids))
         return payment_id
 
-    def confirm_payment(self, payment_id: int, date: datetime.datetime, inventory_id: int) -> int:
+    def confirm_payment(self, payment_id: int, date: datetime.datetime, inventory_id: int):
         staff_id = self.__get_staff_id_for_inventory__(inventory_id)
         self.payments.iloc[payment_id, self.payments.columns.get_loc('confirmed_date')] = date
         self.__create_entry_for_table_log__('confirm_payment', date, payment=payment_id, staff=staff_id)
