@@ -107,10 +107,10 @@ class ProcessSimulator:
         print('Payment ' + str(payment_id) + ' with value ' + str(round(sum(total_payment), 2)) + ' created for rental ' + str(rental_id) + ' including inventory ids ' + str(inventory_ids))
         return payment_id
 
-    def confirm_payment(self, payment_id: int, date: datetime.datetime, inventory_id: int):
+    def confirm_payment(self, rental_id: int, payment_id: int, date: datetime.datetime, inventory_id: int):
         staff_id = self.__get_staff_id_for_inventory__(inventory_id)
         self.payments.iloc[payment_id, self.payments.columns.get_loc('confirmed_date')] = date
-        self.__create_entry_for_table_log__('confirm_payment', date, payment=payment_id, staff=staff_id)
+        self.__create_entry_for_table_log__('confirm_payment', date, rental= rental_id, payment=payment_id, staff=staff_id)
         print('Payment ' + str(payment_id) + ' received on ' + date.__str__())
 
     def confirm_rental(self, rental_id: int, date: datetime.datetime):
@@ -178,7 +178,7 @@ class ProcessSimulator:
             payment_id = self.create_payment(rental_id, selected_inventory, current_time_process)
 
             current_time_process += datetime.timedelta(hours=random.randint(0,24), minutes=random.randint(0,59))
-            self.confirm_payment(payment_id, current_time_process, lended_inventory_ids[0])
+            self.confirm_payment(rental_id, payment_id, current_time_process, lended_inventory_ids[0])
 
             current_time_process += datetime.timedelta(seconds=random.randint(30,100))
             self.confirm_rental(rental_id, current_time_process)
@@ -204,7 +204,7 @@ class ProcessSimulator:
 
                 for additional_payment_id in additional_payment_ids:
                     current_time = current_time_process + datetime.timedelta(minutes=random.randint(0,59), seconds=random.randint(30,100))
-                    self.confirm_payment(additional_payment_id, current_time_process, inventory_ids[0])
+                    self.confirm_payment(rental_id, additional_payment_id, current_time_process, inventory_ids[0])
             
             current_time += datetime.timedelta(hours=random.randint(0,24), minutes=random.randint(0,59), seconds=random.randint(30,100))
                 
