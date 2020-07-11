@@ -39,10 +39,10 @@ class ProcessSimulator:
         Helper Methods
     '''
 
-    def __get_customer_ids__(self) -> list:
-        return self.customer.index.tolist()
+    def __get_customer_id__(self) -> int:
+        return random.choice(self.customer.index.tolist())
 
-    def __get_store_of_customer__(self, customer_id: int):
+    def __get_store_of_customer__(self, customer_id: int) -> int:
         return self.customer.iloc[customer_id-1]['store_id']
 
     def __get_inventory_ids_for_store__(self, store_id: int) -> list:
@@ -53,7 +53,7 @@ class ProcessSimulator:
         return self.equipment.iloc[equipment_id-1]['rental_rate'].item()
 
     def __get_staff_id_for_inventory__(self, inventory_id: int) -> int:
-        store_id = self.inventory.iloc[inventory_id]['store_id']
+        store_id = self.inventory.iloc[inventory_id-1]['store_id']
         staff_ids = self.staff.loc[(self.staff['store_id'] == store_id)].index.tolist()
         return random.choice(staff_ids)
 
@@ -64,7 +64,7 @@ class ProcessSimulator:
     def __create_entry_for_table_log__(self, activity: str, timestamp: datetime.datetime, rental='EMPTY', inventory='EMPTY', customer='EMPTY', staff='EMPTY', inspection='EMPTY', payment='EMPTY'):
         new_entry = {'activity': activity,
                      'timestamp': timestamp,
-                     'rental': rental,
+                     'rental': str(rental),
                      'inventory': inventory,
                      'customer': customer,
                      'staff': staff,
@@ -147,38 +147,40 @@ class ProcessSimulator:
         return additional_payment_ids, date
 
     def inspect_inventory(self, rental_id: int, lended_inventory_id: int, date: datetime.datetime):
-        inspector_id = self.__get_staff_id_for_inventory__(lended_inventory_id)
+        inventory_id = self.lended_inventory.iloc[lended_inventory_id-1]['inventory_id']
+        inspector_id = self.__get_staff_id_for_inventory__(inventory_id)
         new_inspection = {'inspector_id': inspector_id, 'inspection_date': date, 'lended_inventory_id': lended_inventory_id}
         payment_id = -1
         self.inspections = self.inspections.append(new_inspection, ignore_index=True)
         inspection_id = self.inspections.index.max()
-        self.__create_entry_for_table_log__('inspect_inventory', date, rental=rental_id, inventory=[self.lended_inventory.iloc[lended_inventory_id]['inventory_id']], staff=inspector_id, inspection=inspection_id)
-        if random.uniform(0, 1) < 0.05:
+        self.__create_entry_for_table_log__('inspect_inventory', date, rental=rental_id, inventory=[inventory_id], staff=inspector_id, inspection=inspection_id)
+        date += datetime.timedelta(minutes=random.randint(10,20))
+        if random.uniform(0, 1) < 0.1:
             date += datetime.timedelta(seconds=random.randint(30,100))
-            payment_id = self.create_payment(rental_id, [lended_inventory_id], date)
-            self.__create_entry_for_table_log__('create_payment', date, rental=rental_id, payment=payment_id)
-            print('Inventory id ' + str(lended_inventory_id) + ' was inspected up on ' + date.__str__() + '. Due to damage of the equipment an additional payment with id' + str(payment_id) + 'was created.')
+            payment_id = self.create_payment(rental_id, [inventory_id], date)
+            print('Inventory id ' + str(inventory_id) + ' was inspected up on ' + date.__str__() + '. Due to damage of the equipment an additional payment with id' + str(payment_id) + 'was created.')
         else:
-            print('Inventory id ' + str(lended_inventory_id) + ' was inspected up on ' + date.__str__() + '.')
+            print('Inventory id ' + str(inventory_id) + ' was inspected up on ' + date.__str__() + '.')
         return inspection_id, payment_id, date
 
     def simulate_process(self, start_time):
 
         current_time = start_time
 
-        for c in self.__get_customer_ids__():
+        for i in range(0,200):
+            customer = self.__get_customer_id__()
             current_time_process = current_time
 
-            belonging_store_id = self.__get_store_of_customer__(c)
+            belonging_store_id = self.__get_store_of_customer__(customer)
             selected_inventory = self.select_inventory_from_store(belonging_store_id)
 
-            rental_id, lended_inventory_ids = self.create_rental(c, selected_inventory, current_time_process)
+            rental_id, lended_inventory_ids = self.create_rental(customer, selected_inventory, current_time_process)
 
             current_time_process += datetime.timedelta(seconds=random.randint(30,100))
             payment_id = self.create_payment(rental_id, selected_inventory, current_time_process)
 
             current_time_process += datetime.timedelta(hours=random.randint(0,24), minutes=random.randint(0,59))
-            self.confirm_payment(rental_id, payment_id, current_time_process, lended_inventory_ids[0])
+            self.confirm_payment(rental_id, payment_id, current_time_process, selected_inventory[0])
 
             current_time_process += datetime.timedelta(seconds=random.randint(30,100))
             self.confirm_rental(rental_id, current_time_process)
@@ -186,25 +188,21 @@ class ProcessSimulator:
             # somehow an rental request for an inventory is beeing canceled
             if random.uniform(0, 1) < 0.1:
                 current_time_process += datetime.timedelta(hours=random.randint(0,24), minutes=random.randint(0,59), seconds=random.randint(30,100))
-                inventory_id_to_cancel = list(set(random.choices(lended_inventory_ids, k=1)))[0]
-                self.cancel_inventory(rental_id, inventory_id_to_cancel, current_time_process, c)
-                lended_inventory_ids.remove(inventory_id_to_cancel)
+                lended_inventory_id_to_cancel = list(set(random.choices(lended_inventory_ids, k=2)))[0]
+                self.cancel_inventory(rental_id, lended_inventory_id_to_cancel, current_time_process, customer)
+                lended_inventory_ids.remove(lended_inventory_id_to_cancel)
 
             if len(lended_inventory_ids) > 0:
 
                 current_time_process += datetime.timedelta(days=random.randint(0,1), hours=random.randint(0,72), minutes=random.randint(0,59))
-                self.lend_inventory(lended_inventory_ids, current_time_process, c)
-
-                inventory_ids = []
-                for lended_inventory_id in lended_inventory_ids:
-                    inventory_ids.append(self.lended_inventory.iloc[lended_inventory_id]['inventory_id'])
+                self.lend_inventory(lended_inventory_ids, current_time_process, customer)
 
                 current_time_process += datetime.timedelta(hours=random.randint(0,72), minutes=random.randint(0,59))
-                additional_payment_ids, current_time_process = self.return_inventory(rental_id, lended_inventory_ids, current_time_process, c)
+                additional_payment_ids, current_time_process = self.return_inventory(rental_id, lended_inventory_ids, current_time_process, customer)
 
                 for additional_payment_id in additional_payment_ids:
                     current_time = current_time_process + datetime.timedelta(minutes=random.randint(0,59), seconds=random.randint(30,100))
-                    self.confirm_payment(rental_id, additional_payment_id, current_time_process, inventory_ids[0])
+                    self.confirm_payment(rental_id, additional_payment_id, current_time_process, selected_inventory[0])
             
             current_time += datetime.timedelta(hours=random.randint(0,24), minutes=random.randint(0,59), seconds=random.randint(30,100))
                 

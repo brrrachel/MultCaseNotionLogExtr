@@ -18,7 +18,11 @@ class XESLogTool:
     def __create_xes_file__(self, csv_file_path, case_notion_column) -> EventLog:
         # load csv file
         dataframe = csv_import_adapter.import_dataframe_from_path(csv_file_path, sep=",")
+        dataframe.rental = dataframe.rental.astype(str)
+
         if case_notion_column in dataframe.columns:
+            indexNames = dataframe[ dataframe[case_notion_column] == 'EMPTY' ].index
+            dataframe.drop(indexNames, inplace=True)
             # rename the column which will be the case notion
             columns_to_rename = {case_notion_column: 'case:concept:name', 'timestamp': 'time:timestamp', 'activity': 'concept:name'}
             dataframe.rename(columns=columns_to_rename, inplace=True)
