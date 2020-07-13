@@ -33,7 +33,7 @@ class ProcessSimulator:
         self.payments = pd.DataFrame(columns=['rental_id', 'value', 'created_date', 'confirmed_date', 'staff'])
 
         # create table log
-        self.tableLog = pd.DataFrame(columns=['activity','timestamp','rental','inventory','customer','staff','inspection','payment'])
+        self.tableLog = pd.DataFrame(columns=['activity','timestamp','rental','inventory','customer','store','staff','inspection','payment'])
 
     '''
         Helper Methods
@@ -214,7 +214,7 @@ class ProcessSimulator:
         
         self.tableLog = self.tableLog.sort_values(by=['timestamp'])
         self.tableLog = self.tableLog.reset_index(drop=True)
-        self.tableLog.to_csv('sortedTableLog.csv')
+        self.tableLog.to_csv('sortedTableLog.csv', index=False)
 
 
 if __name__ == '__main__':
