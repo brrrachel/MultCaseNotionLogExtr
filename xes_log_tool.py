@@ -20,6 +20,7 @@ class XESLogTool:
         # load csv file
         dataframe = csv_import_adapter.import_dataframe_from_path(csv_file_path, sep=",")
         dataframe.rental = dataframe.rental.astype(str)
+        dataframe.store = dataframe.store.astype(str)
 
         def is_slice_in_list(list1, list2):
             return all(elem in list2 for elem in list1)
@@ -80,6 +81,6 @@ class XESLogTool:
 
 
 if __name__ == '__main__':
-    log_extractor = XESLogTool('sortedTableLog.csv', ['rental'])
+    log_extractor = XESLogTool('sortedTableLog.csv', ['store','staff'])
     log_extractor.get_directly_follows_graph()
     log_extractor.xes_to_disk()
