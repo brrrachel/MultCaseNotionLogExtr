@@ -47,13 +47,15 @@ class XESLogTool:
             # rename the columns for preparing the xes log
             columns_to_rename = {case_notion_columns[0]: 'case:concept:name',
                                  'timestamp': 'time:timestamp',
-                                 'activity': 'concept:name'}
+                                 'activity': 'concept:name',
+                                 'lifecycle': 'lifecycle:transition'}
             dataframe.rename(columns=columns_to_rename, inplace=True)
 
         # convert to xes format
         parameters = {constants.PARAMETER_CONSTANT_CASEID_KEY: "case:concept:name",
                       constants.PARAMETER_CONSTANT_ACTIVITY_KEY: "concept:name",
-                      constants.PARAMETER_CONSTANT_TIMESTAMP_KEY: "time:timestamp"}
+                      constants.PARAMETER_CONSTANT_TIMESTAMP_KEY: "time:timestamp",
+                      constants.PARAMETER_CONSTANT_TRANSITION_KEY: "lifecycle:transition"}
         return conversion_factory.apply(dataframe, parameters=parameters)
 
     def get_case_ids(self) -> list:
@@ -81,6 +83,6 @@ class XESLogTool:
 
 
 if __name__ == '__main__':
-    log_extractor = XESLogTool('sortedTableLog.csv', ['store','staff'])
+    log_extractor = XESLogTool('sortedTableLog.csv', ['staff','inspection'])
     log_extractor.get_directly_follows_graph()
     log_extractor.xes_to_disk()

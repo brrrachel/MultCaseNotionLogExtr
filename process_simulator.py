@@ -33,7 +33,7 @@ class ProcessSimulator:
         self.payments = pd.DataFrame(columns=['rental_id', 'value', 'created_date', 'confirmed_date', 'staff'])
 
         # create table log
-        self.tableLog = pd.DataFrame(columns=['activity','timestamp','rental','inventory','customer','store','staff','inspection','payment'])
+        self.tableLog = pd.DataFrame(columns=['activity','timestamp','rental','inventory','customer','store','staff','inspection','payment','lifecycle'])
 
     '''
         Helper Methods
@@ -64,7 +64,7 @@ class ProcessSimulator:
         inventory_of_store = self.__get_inventory_ids_for_store__(store_id)
         return list(set(random.choices(inventory_of_store, k=count)))
 
-    def __create_entry_for_table_log__(self, activity: str, timestamp: datetime.datetime, rental='EMPTY', inventory='EMPTY', customer='EMPTY', staff='EMPTY', inspection='EMPTY', payment='EMPTY', store='EMPTY'):
+    def __create_entry_for_table_log__(self, activity: str, timestamp: datetime.datetime, rental='EMPTY', inventory='EMPTY', customer='EMPTY', staff='EMPTY', inspection='EMPTY', payment='EMPTY', store='EMPTY', lifecycle='complete'):
         new_entry = {'activity': activity,
                      'timestamp': timestamp,
                      'rental': str(rental),
@@ -73,7 +73,8 @@ class ProcessSimulator:
                      'staff': staff,
                      'inspection': inspection,
                      'payment': payment,
-                     'store': store
+                     'store': store,
+                     'lifecycle': lifecycle
                      }
         self.tableLog = self.tableLog.append(new_entry, ignore_index=True)
 
@@ -173,8 +174,9 @@ class ProcessSimulator:
         self.inspections = self.inspections.append(new_inspection, ignore_index=True)
         inspection_id = self.inspections.index.max()
         store_id = self.__get_store_of_inventory__(inventory_id)
-        self.__create_entry_for_table_log__('inspect_inventory', date, rental=rental_id, inventory=[inventory_id], staff=inspector_id, inspection=inspection_id, store=store_id)
+        self.__create_entry_for_table_log__('inspect_inventory', date, rental=rental_id, inventory=[inventory_id], staff=inspector_id, inspection=inspection_id, store=store_id, lifecycle='start')
         date += datetime.timedelta(minutes=random.randint(10,20))
+        self.__create_entry_for_table_log__('inspect_inventory', date, rental=rental_id, inventory=[inventory_id], staff=inspector_id, inspection=inspection_id, store=store_id)
         if random.uniform(0, 1) < 0.1:
             date += datetime.timedelta(seconds=random.randint(30,100))
             payment_id = self.create_payment(rental_id, [inventory_id], date)
