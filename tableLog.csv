@@ -1,0 +1,2217 @@
+activity,timestamp,rental,inventory,customer,staff,inspection,payment,lifecycle
+create_rental,2020-01-01 00:00:00,0,"[160, 167]",78,EMPTY,EMPTY,EMPTY,complete
+create_payment,2020-01-01 00:00:50,0,EMPTY,78,6,EMPTY,0,complete
+create_rental,2020-01-01 02:48:35,1,"[103, 31]",23,EMPTY,EMPTY,EMPTY,complete
+create_payment,2020-01-01 02:49:50,1,EMPTY,23,16,EMPTY,1,complete
+confirm_payment,2020-01-01 10:50:50,1,EMPTY,23,16,EMPTY,1,complete
+confirm_rental,2020-01-01 10:52:29,1,EMPTY,23,16,EMPTY,EMPTY,complete
+confirm_payment,2020-01-01 16:23:50,0,EMPTY,78,5,EMPTY,0,complete
+confirm_rental,2020-01-01 16:24:30,0,EMPTY,78,5,EMPTY,EMPTY,complete
+create_rental,2020-01-01 16:28:10,2,"[34, 45]",54,EMPTY,EMPTY,EMPTY,complete
+create_payment,2020-01-01 16:29:00,2,EMPTY,54,20,EMPTY,2,complete
+create_rental,2020-01-01 21:31:55,3,[143],32,EMPTY,EMPTY,EMPTY,complete
+create_payment,2020-01-01 21:32:41,3,EMPTY,32,18,EMPTY,3,complete
+confirm_payment,2020-01-02 04:04:41,3,EMPTY,32,4,EMPTY,3,complete
+confirm_rental,2020-01-02 04:05:25,3,EMPTY,32,4,EMPTY,EMPTY,complete
+confirm_payment,2020-01-02 06:37:00,2,EMPTY,54,20,EMPTY,2,complete
+confirm_rental,2020-01-02 06:38:06,2,EMPTY,54,20,EMPTY,EMPTY,complete
+create_rental,2020-01-02 18:18:58,4,"[100, 71]",2,EMPTY,EMPTY,EMPTY,complete
+create_payment,2020-01-02 18:20:31,4,EMPTY,2,16,EMPTY,4,complete
+cancel_inventory,2020-01-02 20:56:55,3,[143],32,EMPTY,EMPTY,EMPTY,complete
+lend_inventory,2020-01-03 01:21:29,1,"[103, 31]",23,16,EMPTY,EMPTY,complete
+create_rental,2020-01-03 08:26:36,5,"[129, 6]",1,EMPTY,EMPTY,EMPTY,complete
+create_payment,2020-01-03 08:27:25,5,EMPTY,1,6,EMPTY,5,complete
+confirm_payment,2020-01-03 09:10:31,4,EMPTY,2,16,EMPTY,4,complete
+confirm_rental,2020-01-03 09:11:02,4,EMPTY,2,16,EMPTY,EMPTY,complete
+create_rental,2020-01-03 09:15:48,6,"[137, 46]",31,EMPTY,EMPTY,EMPTY,complete
+create_payment,2020-01-03 09:17:07,6,EMPTY,31,19,EMPTY,6,complete
+return_inventory,2020-01-03 13:19:29,1,[103],23,16,EMPTY,EMPTY,complete
+inspect_inventory,2020-01-03 13:20:17,1,[103],EMPTY,16,2,EMPTY,start
+inspect_inventory,2020-01-03 13:30:17,1,[103],EMPTY,16,2,EMPTY,complete
+return_inventory,2020-01-03 13:31:28,1,[31],23,16,EMPTY,EMPTY,complete
+inspect_inventory,2020-01-03 13:32:10,1,[31],EMPTY,16,3,EMPTY,start
+inspect_inventory,2020-01-03 13:44:10,1,[31],EMPTY,16,3,EMPTY,complete
+create_rental,2020-01-03 16:00:14,7,"[68, 55]",27,EMPTY,EMPTY,EMPTY,complete
+create_payment,2020-01-03 16:01:09,7,EMPTY,27,7,EMPTY,7,complete
+confirm_payment,2020-01-03 16:14:09,7,EMPTY,27,8,EMPTY,7,complete
+confirm_rental,2020-01-03 16:14:44,7,EMPTY,27,9,EMPTY,EMPTY,complete
+confirm_payment,2020-01-03 16:53:25,5,EMPTY,1,5,EMPTY,5,complete
+confirm_rental,2020-01-03 16:54:54,5,EMPTY,1,1,EMPTY,EMPTY,complete
+confirm_payment,2020-01-04 09:03:07,6,EMPTY,31,12,EMPTY,6,complete
+confirm_rental,2020-01-04 09:04:00,6,EMPTY,31,19,EMPTY,EMPTY,complete
+create_rental,2020-01-04 12:07:00,8,"[11, 29]",74,EMPTY,EMPTY,EMPTY,complete
+create_payment,2020-01-04 12:08:05,8,EMPTY,74,4,EMPTY,8,complete
+confirm_payment,2020-01-04 18:28:05,8,EMPTY,74,4,EMPTY,8,complete
+confirm_rental,2020-01-04 18:29:44,8,EMPTY,74,18,EMPTY,EMPTY,complete
+create_rental,2020-01-05 02:19:45,9,"[40, 37]",2,EMPTY,EMPTY,EMPTY,complete
+create_payment,2020-01-05 02:21:01,9,EMPTY,2,16,EMPTY,9,complete
+lend_inventory,2020-01-05 04:36:06,2,"[34, 45]",54,20,EMPTY,EMPTY,complete
+create_rental,2020-01-05 05:24:15,10,"[8, 79]",65,EMPTY,EMPTY,EMPTY,complete
+create_payment,2020-01-05 05:25:49,10,EMPTY,65,16,EMPTY,10,complete
+lend_inventory,2020-01-05 08:01:30,0,"[160, 167]",78,2,EMPTY,EMPTY,complete
+create_rental,2020-01-05 09:20:23,11,"[25, 93]",39,EMPTY,EMPTY,EMPTY,complete
+create_payment,2020-01-05 09:21:09,11,EMPTY,39,4,EMPTY,11,complete
+confirm_payment,2020-01-05 11:04:09,11,EMPTY,39,18,EMPTY,11,complete
+confirm_rental,2020-01-05 11:05:02,11,EMPTY,39,4,EMPTY,EMPTY,complete
+create_rental,2020-01-05 11:41:13,12,"[60, 54]",43,EMPTY,EMPTY,EMPTY,complete
+create_payment,2020-01-05 11:42:38,12,EMPTY,43,6,EMPTY,12,complete
+cancel_inventory,2020-01-05 12:05:05,11,[25],39,EMPTY,EMPTY,EMPTY,complete
+return_inventory,2020-01-05 15:32:30,0,[160],78,6,EMPTY,EMPTY,complete
+inspect_inventory,2020-01-05 15:34:10,0,[160],EMPTY,6,0,EMPTY,start
+inspect_inventory,2020-01-05 15:53:10,0,[160],EMPTY,6,0,EMPTY,complete
+return_inventory,2020-01-05 15:54:10,0,[167],78,2,EMPTY,EMPTY,complete
+inspect_inventory,2020-01-05 15:55:39,0,[167],EMPTY,2,1,EMPTY,start
+inspect_inventory,2020-01-05 16:14:39,0,[167],EMPTY,2,1,EMPTY,complete
+lend_inventory,2020-01-05 19:50:00,6,"[137, 46]",31,15,EMPTY,EMPTY,complete
+lend_inventory,2020-01-05 22:04:02,4,"[100, 71]",2,16,EMPTY,EMPTY,complete
+create_rental,2020-01-05 23:22:00,13,[44],55,EMPTY,EMPTY,EMPTY,complete
+create_payment,2020-01-05 23:23:06,13,EMPTY,55,7,EMPTY,13,complete
+confirm_payment,2020-01-06 02:51:01,9,EMPTY,2,16,EMPTY,9,complete
+confirm_rental,2020-01-06 02:52:09,9,EMPTY,2,16,EMPTY,EMPTY,complete
+lend_inventory,2020-01-06 03:55:54,5,"[129, 6]",1,2,EMPTY,EMPTY,complete
+confirm_payment,2020-01-06 05:29:49,10,EMPTY,65,16,EMPTY,10,complete
+confirm_rental,2020-01-06 05:30:42,10,EMPTY,65,16,EMPTY,EMPTY,complete
+confirm_payment,2020-01-06 06:52:38,12,EMPTY,43,2,EMPTY,12,complete
+confirm_rental,2020-01-06 06:53:30,12,EMPTY,43,2,EMPTY,EMPTY,complete
+confirm_payment,2020-01-06 07:47:06,13,EMPTY,55,9,EMPTY,13,complete
+confirm_rental,2020-01-06 07:48:13,13,EMPTY,55,7,EMPTY,EMPTY,complete
+create_rental,2020-01-06 08:17:32,14,"[126, 159]",27,EMPTY,EMPTY,EMPTY,complete
+create_payment,2020-01-06 08:19:00,14,EMPTY,27,8,EMPTY,14,complete
+return_inventory,2020-01-06 15:32:54,5,[129],1,2,EMPTY,EMPTY,complete
+inspect_inventory,2020-01-06 15:34:05,5,[129],EMPTY,5,8,EMPTY,start
+inspect_inventory,2020-01-06 15:44:05,5,[129],EMPTY,5,8,EMPTY,complete
+return_inventory,2020-01-06 15:45:38,5,[6],1,2,EMPTY,EMPTY,complete
+inspect_inventory,2020-01-06 15:46:54,5,[6],EMPTY,2,9,EMPTY,start
+return_inventory,2020-01-06 16:03:06,2,[34],54,20,EMPTY,EMPTY,complete
+inspect_inventory,2020-01-06 16:03:36,2,[34],EMPTY,20,4,EMPTY,start
+inspect_inventory,2020-01-06 16:04:54,5,[6],EMPTY,2,9,EMPTY,complete
+inspect_inventory,2020-01-06 16:14:36,2,[34],EMPTY,20,4,EMPTY,complete
+return_inventory,2020-01-06 16:15:42,2,[45],54,20,EMPTY,EMPTY,complete
+inspect_inventory,2020-01-06 16:16:19,2,[45],EMPTY,20,5,EMPTY,start
+inspect_inventory,2020-01-06 16:30:19,2,[45],EMPTY,20,5,EMPTY,complete
+lend_inventory,2020-01-06 17:04:44,7,"[68, 55]",27,8,EMPTY,EMPTY,complete
+cancel_inventory,2020-01-06 18:46:39,9,[40],2,EMPTY,EMPTY,EMPTY,complete
+confirm_payment,2020-01-07 04:56:00,14,EMPTY,27,8,EMPTY,14,complete
+confirm_rental,2020-01-07 04:57:02,14,EMPTY,27,9,EMPTY,EMPTY,complete
+create_rental,2020-01-07 05:54:41,15,"[6, 7]",57,EMPTY,EMPTY,EMPTY,complete
+create_payment,2020-01-07 05:56:14,15,EMPTY,57,6,EMPTY,15,complete
+lend_inventory,2020-01-07 05:59:05,11,[93],39,4,EMPTY,EMPTY,complete
+confirm_payment,2020-01-07 07:17:14,15,EMPTY,57,2,EMPTY,15,complete
+confirm_rental,2020-01-07 07:17:49,15,EMPTY,57,2,EMPTY,EMPTY,complete
+lend_inventory,2020-01-07 13:10:44,8,"[11, 29]",74,4,EMPTY,EMPTY,complete
+return_inventory,2020-01-07 15:47:00,6,[137],31,15,EMPTY,EMPTY,complete
+inspect_inventory,2020-01-07 15:48:15,6,[137],EMPTY,19,10,EMPTY,start
+inspect_inventory,2020-01-07 16:00:15,6,[137],EMPTY,19,10,EMPTY,complete
+return_inventory,2020-01-07 16:01:11,6,[46],31,15,EMPTY,EMPTY,complete
+inspect_inventory,2020-01-07 16:01:51,6,[46],EMPTY,3,11,EMPTY,start
+inspect_inventory,2020-01-07 16:15:51,6,[46],EMPTY,3,11,EMPTY,complete
+create_rental,2020-01-07 18:25:28,16,"[9, 117]",63,EMPTY,EMPTY,EMPTY,complete
+create_payment,2020-01-07 18:26:39,16,EMPTY,63,11,EMPTY,16,complete
+lend_inventory,2020-01-07 20:06:42,10,"[8, 79]",65,16,EMPTY,EMPTY,complete
+lend_inventory,2020-01-07 20:49:49,15,"[6, 7]",57,6,EMPTY,EMPTY,complete
+lend_inventory,2020-01-08 06:39:13,13,[44],55,9,EMPTY,EMPTY,complete
+create_rental,2020-01-08 07:22:58,17,[167],1,EMPTY,EMPTY,EMPTY,complete
+create_payment,2020-01-08 07:23:54,17,EMPTY,1,6,EMPTY,17,complete
+confirm_payment,2020-01-08 11:24:39,16,EMPTY,63,14,EMPTY,16,complete
+confirm_rental,2020-01-08 11:26:17,16,EMPTY,63,11,EMPTY,EMPTY,complete
+lend_inventory,2020-01-08 11:53:02,14,"[126, 159]",27,8,EMPTY,EMPTY,complete
+return_inventory,2020-01-08 13:48:02,4,[100],2,16,EMPTY,EMPTY,complete
+inspect_inventory,2020-01-08 13:48:52,4,[100],EMPTY,16,6,EMPTY,start
+inspect_inventory,2020-01-08 14:06:52,4,[100],EMPTY,16,6,EMPTY,complete
+return_inventory,2020-01-08 14:07:38,4,[71],2,16,EMPTY,EMPTY,complete
+inspect_inventory,2020-01-08 14:08:35,4,[71],EMPTY,16,7,EMPTY,start
+inspect_inventory,2020-01-08 14:27:35,4,[71],EMPTY,16,7,EMPTY,complete
+return_inventory,2020-01-08 16:04:13,13,[44],55,8,EMPTY,EMPTY,complete
+inspect_inventory,2020-01-08 16:04:58,13,[44],EMPTY,8,22,EMPTY,start
+inspect_inventory,2020-01-08 16:18:58,13,[44],EMPTY,8,22,EMPTY,complete
+create_rental,2020-01-08 21:24:44,18,"[128, 53]",31,EMPTY,EMPTY,EMPTY,complete
+create_payment,2020-01-08 21:26:00,18,EMPTY,31,12,EMPTY,18,complete
+lend_inventory,2020-01-08 22:49:30,12,"[60, 54]",43,2,EMPTY,EMPTY,complete
+confirm_payment,2020-01-09 01:36:00,18,EMPTY,31,19,EMPTY,18,complete
+confirm_rental,2020-01-09 01:36:45,18,EMPTY,31,15,EMPTY,EMPTY,complete
+lend_inventory,2020-01-09 01:53:39,9,[37],2,16,EMPTY,EMPTY,complete
+return_inventory,2020-01-09 02:17:05,11,[93],39,13,EMPTY,EMPTY,complete
+inspect_inventory,2020-01-09 02:18:13,11,[93],EMPTY,18,19,EMPTY,start
+inspect_inventory,2020-01-09 02:33:13,11,[93],EMPTY,18,19,EMPTY,complete
+confirm_payment,2020-01-09 04:05:54,17,EMPTY,1,1,EMPTY,17,complete
+confirm_rental,2020-01-09 04:06:53,17,EMPTY,1,1,EMPTY,EMPTY,complete
+return_inventory,2020-01-09 14:27:44,7,[68],27,9,EMPTY,EMPTY,complete
+inspect_inventory,2020-01-09 14:29:23,7,[68],EMPTY,7,12,EMPTY,start
+inspect_inventory,2020-01-09 14:40:23,7,[68],EMPTY,7,12,EMPTY,complete
+return_inventory,2020-01-09 14:41:24,7,[55],27,9,EMPTY,EMPTY,complete
+inspect_inventory,2020-01-09 14:42:54,7,[55],EMPTY,8,13,EMPTY,start
+inspect_inventory,2020-01-09 14:54:54,7,[55],EMPTY,8,13,EMPTY,complete
+create_rental,2020-01-09 15:35:20,19,"[137, 141]",59,EMPTY,EMPTY,EMPTY,complete
+create_payment,2020-01-09 15:35:53,19,EMPTY,59,15,EMPTY,19,complete
+return_inventory,2020-01-09 17:38:49,15,[6],57,1,EMPTY,EMPTY,complete
+inspect_inventory,2020-01-09 17:40:28,15,[6],EMPTY,5,25,EMPTY,start
+inspect_inventory,2020-01-09 18:00:28,15,[6],EMPTY,5,25,EMPTY,complete
+return_inventory,2020-01-09 18:01:20,15,[7],57,2,EMPTY,EMPTY,complete
+inspect_inventory,2020-01-09 18:02:22,15,[7],EMPTY,2,26,EMPTY,start
+inspect_inventory,2020-01-09 18:20:22,15,[7],EMPTY,2,26,EMPTY,complete
+return_inventory,2020-01-09 19:48:44,8,[11],74,13,EMPTY,EMPTY,complete
+inspect_inventory,2020-01-09 19:50:07,8,[11],EMPTY,4,14,EMPTY,start
+lend_inventory,2020-01-09 19:51:17,16,"[9, 117]",63,17,EMPTY,EMPTY,complete
+inspect_inventory,2020-01-09 20:03:07,8,[11],EMPTY,4,14,EMPTY,complete
+return_inventory,2020-01-09 20:04:33,8,[29],74,13,EMPTY,EMPTY,complete
+inspect_inventory,2020-01-09 20:05:36,8,[29],EMPTY,13,15,EMPTY,start
+inspect_inventory,2020-01-09 20:21:36,8,[29],EMPTY,13,15,EMPTY,complete
+create_rental,2020-01-10 00:18:47,20,"[41, 74]",42,EMPTY,EMPTY,EMPTY,complete
+create_payment,2020-01-10 00:20:10,20,EMPTY,42,14,EMPTY,20,complete
+return_inventory,2020-01-10 04:11:42,10,[8],65,16,EMPTY,EMPTY,complete
+inspect_inventory,2020-01-10 04:13:05,10,[8],EMPTY,16,17,EMPTY,start
+inspect_inventory,2020-01-10 04:33:05,10,[8],EMPTY,16,17,EMPTY,complete
+return_inventory,2020-01-10 04:33:51,10,[79],65,16,EMPTY,EMPTY,complete
+inspect_inventory,2020-01-10 04:35:20,10,[79],EMPTY,16,18,EMPTY,start
+inspect_inventory,2020-01-10 04:47:20,10,[79],EMPTY,16,18,EMPTY,complete
+return_inventory,2020-01-10 11:29:39,9,[37],2,16,EMPTY,EMPTY,complete
+inspect_inventory,2020-01-10 11:30:53,9,[37],EMPTY,16,16,EMPTY,start
+inspect_inventory,2020-01-10 11:50:53,9,[37],EMPTY,16,16,EMPTY,complete
+return_inventory,2020-01-10 13:20:02,14,[126],27,8,EMPTY,EMPTY,complete
+inspect_inventory,2020-01-10 13:21:22,14,[126],EMPTY,7,23,EMPTY,start
+inspect_inventory,2020-01-10 13:35:22,14,[126],EMPTY,7,23,EMPTY,complete
+return_inventory,2020-01-10 13:36:17,14,[159],27,9,EMPTY,EMPTY,complete
+inspect_inventory,2020-01-10 13:37:56,14,[159],EMPTY,9,24,EMPTY,start
+inspect_inventory,2020-01-10 13:56:56,14,[159],EMPTY,9,24,EMPTY,complete
+return_inventory,2020-01-10 15:08:30,12,[60],43,2,EMPTY,EMPTY,complete
+inspect_inventory,2020-01-10 15:09:19,12,[60],EMPTY,2,20,EMPTY,start
+confirm_payment,2020-01-10 15:12:53,19,EMPTY,59,10,EMPTY,19,complete
+confirm_rental,2020-01-10 15:14:30,19,EMPTY,59,19,EMPTY,EMPTY,complete
+inspect_inventory,2020-01-10 15:28:19,12,[60],EMPTY,2,20,EMPTY,complete
+return_inventory,2020-01-10 15:29:00,12,[54],43,1,EMPTY,EMPTY,complete
+inspect_inventory,2020-01-10 15:29:40,12,[54],EMPTY,1,21,EMPTY,start
+inspect_inventory,2020-01-10 15:47:40,12,[54],EMPTY,1,21,EMPTY,complete
+cancel_inventory,2020-01-10 19:25:36,19,[137],59,EMPTY,EMPTY,EMPTY,complete
+confirm_payment,2020-01-11 00:36:10,20,EMPTY,42,14,EMPTY,20,complete
+confirm_rental,2020-01-11 00:36:57,20,EMPTY,42,14,EMPTY,EMPTY,complete
+lend_inventory,2020-01-11 05:52:45,18,"[128, 53]",31,3,EMPTY,EMPTY,complete
+return_inventory,2020-01-11 06:09:17,16,[9],63,14,EMPTY,EMPTY,complete
+inspect_inventory,2020-01-11 06:10:01,16,[9],EMPTY,14,27,EMPTY,start
+inspect_inventory,2020-01-11 06:28:01,16,[9],EMPTY,14,27,EMPTY,complete
+return_inventory,2020-01-11 06:28:36,16,[117],63,14,EMPTY,EMPTY,complete
+inspect_inventory,2020-01-11 06:30:08,16,[117],EMPTY,17,28,EMPTY,start
+inspect_inventory,2020-01-11 06:44:08,16,[117],EMPTY,17,28,EMPTY,complete
+return_inventory,2020-01-11 20:12:45,18,[128],31,15,EMPTY,EMPTY,complete
+inspect_inventory,2020-01-11 20:14:13,18,[128],EMPTY,10,30,EMPTY,start
+inspect_inventory,2020-01-11 20:29:13,18,[128],EMPTY,10,30,EMPTY,complete
+return_inventory,2020-01-11 20:30:02,18,[53],31,10,EMPTY,EMPTY,complete
+inspect_inventory,2020-01-11 20:31:08,18,[53],EMPTY,19,31,EMPTY,start
+inspect_inventory,2020-01-11 20:48:08,18,[53],EMPTY,19,31,EMPTY,complete
+lend_inventory,2020-01-12 00:04:53,17,[167],1,5,EMPTY,EMPTY,complete
+return_inventory,2020-01-12 16:29:53,17,[167],1,6,EMPTY,EMPTY,complete
+inspect_inventory,2020-01-12 16:30:49,17,[167],EMPTY,5,29,EMPTY,start
+inspect_inventory,2020-01-12 16:46:49,17,[167],EMPTY,5,29,EMPTY,complete
+lend_inventory,2020-01-12 21:07:36,19,[141],59,10,EMPTY,EMPTY,complete
+lend_inventory,2020-01-12 21:10:57,20,"[41, 74]",42,14,EMPTY,EMPTY,complete
+return_inventory,2020-01-13 21:30:36,19,[141],59,3,EMPTY,EMPTY,complete
+inspect_inventory,2020-01-13 21:31:57,19,[141],EMPTY,19,32,EMPTY,start
+inspect_inventory,2020-01-13 21:44:57,19,[141],EMPTY,19,32,EMPTY,complete
+return_inventory,2020-01-15 11:05:57,20,[41],42,14,EMPTY,EMPTY,complete
+inspect_inventory,2020-01-15 11:07:11,20,[41],EMPTY,11,33,EMPTY,start
+inspect_inventory,2020-01-15 11:17:11,20,[41],EMPTY,11,33,EMPTY,complete
+create_payment,2020-01-15 11:18:13,20,EMPTY,42,17,EMPTY,21,complete
+return_inventory,2020-01-15 11:19:21,20,[74],42,17,EMPTY,EMPTY,complete
+inspect_inventory,2020-01-15 11:20:28,20,[74],EMPTY,14,34,EMPTY,start
+inspect_inventory,2020-01-15 11:40:28,20,[74],EMPTY,14,34,EMPTY,complete
+confirm_payment,2020-01-15 11:41:53,20,EMPTY,42,11,EMPTY,21,complete
+create_rental,2020-01-15 19:16:41,21,"[72, 107]",68,EMPTY,EMPTY,EMPTY,complete
+create_payment,2020-01-15 19:17:18,21,EMPTY,68,20,EMPTY,22,complete
+create_rental,2020-01-16 07:56:53,22,"[72, 76]",61,EMPTY,EMPTY,EMPTY,complete
+create_payment,2020-01-16 07:57:23,22,EMPTY,61,20,EMPTY,23,complete
+confirm_payment,2020-01-16 11:12:18,21,EMPTY,68,20,EMPTY,22,complete
+confirm_rental,2020-01-16 11:13:25,21,EMPTY,68,20,EMPTY,EMPTY,complete
+confirm_payment,2020-01-16 16:42:23,22,EMPTY,61,20,EMPTY,23,complete
+confirm_rental,2020-01-16 16:43:23,22,EMPTY,61,20,EMPTY,EMPTY,complete
+lend_inventory,2020-01-17 21:35:25,21,"[72, 107]",68,20,EMPTY,EMPTY,complete
+lend_inventory,2020-01-18 19:40:23,22,"[72, 76]",61,20,EMPTY,EMPTY,complete
+return_inventory,2020-01-18 20:06:25,21,[72],68,20,EMPTY,EMPTY,complete
+inspect_inventory,2020-01-18 20:07:27,21,[72],EMPTY,20,35,EMPTY,start
+inspect_inventory,2020-01-18 20:20:27,21,[72],EMPTY,20,35,EMPTY,complete
+return_inventory,2020-01-18 20:21:14,21,[107],68,20,EMPTY,EMPTY,complete
+inspect_inventory,2020-01-18 20:22:48,21,[107],EMPTY,20,36,EMPTY,start
+inspect_inventory,2020-01-18 20:33:48,21,[107],EMPTY,20,36,EMPTY,complete
+return_inventory,2020-01-20 04:39:23,22,[72],61,20,EMPTY,EMPTY,complete
+inspect_inventory,2020-01-20 04:40:59,22,[72],EMPTY,20,37,EMPTY,start
+inspect_inventory,2020-01-20 04:53:59,22,[72],EMPTY,20,37,EMPTY,complete
+create_payment,2020-01-20 04:54:42,22,EMPTY,61,20,EMPTY,24,complete
+return_inventory,2020-01-20 04:55:40,22,[76],61,20,EMPTY,EMPTY,complete
+inspect_inventory,2020-01-20 04:57:13,22,[76],EMPTY,20,38,EMPTY,start
+inspect_inventory,2020-01-20 05:11:13,22,[76],EMPTY,20,38,EMPTY,complete
+confirm_payment,2020-01-20 05:12:46,22,EMPTY,61,20,EMPTY,24,complete
+create_rental,2020-01-21 05:52:25,23,"[62, 151]",35,EMPTY,EMPTY,EMPTY,complete
+create_payment,2020-01-21 05:53:09,23,EMPTY,35,17,EMPTY,25,complete
+create_rental,2020-01-21 06:20:31,24,"[53, 38]",17,EMPTY,EMPTY,EMPTY,complete
+create_payment,2020-01-21 06:22:03,24,EMPTY,17,15,EMPTY,26,complete
+create_rental,2020-01-21 07:48:13,25,"[20, 6]",29,EMPTY,EMPTY,EMPTY,complete
+create_payment,2020-01-21 07:49:13,25,EMPTY,29,2,EMPTY,27,complete
+create_rental,2020-01-21 08:28:12,26,"[22, 167]",8,EMPTY,EMPTY,EMPTY,complete
+create_payment,2020-01-21 08:29:31,26,EMPTY,8,5,EMPTY,28,complete
+confirm_payment,2020-01-21 12:21:09,23,EMPTY,35,14,EMPTY,25,complete
+confirm_rental,2020-01-21 12:22:09,23,EMPTY,35,14,EMPTY,EMPTY,complete
+confirm_payment,2020-01-21 13:23:13,25,EMPTY,29,1,EMPTY,27,complete
+confirm_rental,2020-01-21 13:24:17,25,EMPTY,29,5,EMPTY,EMPTY,complete
+confirm_payment,2020-01-21 22:20:03,24,EMPTY,17,12,EMPTY,26,complete
+confirm_rental,2020-01-21 22:21:06,24,EMPTY,17,3,EMPTY,EMPTY,complete
+confirm_payment,2020-01-22 01:15:31,26,EMPTY,8,2,EMPTY,28,complete
+confirm_rental,2020-01-22 01:17:03,26,EMPTY,8,6,EMPTY,EMPTY,complete
+create_rental,2020-01-22 08:04:52,27,"[153, 129]",71,EMPTY,EMPTY,EMPTY,complete
+create_payment,2020-01-22 08:06:30,27,EMPTY,71,2,EMPTY,29,complete
+lend_inventory,2020-01-22 08:13:03,26,"[22, 167]",8,6,EMPTY,EMPTY,complete
+confirm_payment,2020-01-22 11:37:30,27,EMPTY,71,1,EMPTY,29,complete
+confirm_rental,2020-01-22 11:38:31,27,EMPTY,71,2,EMPTY,EMPTY,complete
+create_rental,2020-01-22 21:20:28,28,"[156, 28]",67,EMPTY,EMPTY,EMPTY,complete
+create_payment,2020-01-22 21:21:31,28,EMPTY,67,4,EMPTY,30,complete
+confirm_payment,2020-01-23 08:07:31,28,EMPTY,67,4,EMPTY,30,complete
+confirm_rental,2020-01-23 08:08:22,28,EMPTY,67,13,EMPTY,EMPTY,complete
+create_rental,2020-01-23 10:40:01,29,"[147, 92]",69,EMPTY,EMPTY,EMPTY,complete
+create_payment,2020-01-23 10:41:02,29,EMPTY,69,9,EMPTY,31,complete
+lend_inventory,2020-01-23 14:17:06,24,"[53, 38]",17,3,EMPTY,EMPTY,complete
+return_inventory,2020-01-23 15:10:03,26,[22],8,5,EMPTY,EMPTY,complete
+inspect_inventory,2020-01-23 15:11:01,26,[22],EMPTY,1,45,EMPTY,start
+inspect_inventory,2020-01-23 15:23:01,26,[22],EMPTY,1,45,EMPTY,complete
+return_inventory,2020-01-23 15:23:46,26,[167],8,1,EMPTY,EMPTY,complete
+inspect_inventory,2020-01-23 15:24:34,26,[167],EMPTY,1,46,EMPTY,start
+inspect_inventory,2020-01-23 15:40:34,26,[167],EMPTY,1,46,EMPTY,complete
+confirm_payment,2020-01-23 18:13:02,29,EMPTY,69,8,EMPTY,31,complete
+confirm_rental,2020-01-23 18:14:34,29,EMPTY,69,7,EMPTY,EMPTY,complete
+lend_inventory,2020-01-23 20:36:17,25,"[20, 6]",29,6,EMPTY,EMPTY,complete
+create_rental,2020-01-23 20:42:31,30,"[58, 131]",5,EMPTY,EMPTY,EMPTY,complete
+create_payment,2020-01-23 20:43:05,30,EMPTY,5,20,EMPTY,32,complete
+cancel_inventory,2020-01-24 00:37:38,29,[92],69,EMPTY,EMPTY,EMPTY,complete
+return_inventory,2020-01-24 01:23:06,24,[53],17,12,EMPTY,EMPTY,complete
+inspect_inventory,2020-01-24 01:23:49,24,[53],EMPTY,3,41,EMPTY,start
+inspect_inventory,2020-01-24 01:34:49,24,[53],EMPTY,3,41,EMPTY,complete
+return_inventory,2020-01-24 01:35:53,24,[38],17,3,EMPTY,EMPTY,complete
+inspect_inventory,2020-01-24 01:36:56,24,[38],EMPTY,10,42,EMPTY,start
+inspect_inventory,2020-01-24 01:52:56,24,[38],EMPTY,10,42,EMPTY,complete
+lend_inventory,2020-01-24 06:42:31,27,"[153, 129]",71,6,EMPTY,EMPTY,complete
+lend_inventory,2020-01-24 09:03:38,29,[147],69,8,EMPTY,EMPTY,complete
+lend_inventory,2020-01-24 09:55:09,23,"[62, 151]",35,17,EMPTY,EMPTY,complete
+confirm_payment,2020-01-24 10:59:05,30,EMPTY,5,20,EMPTY,32,complete
+confirm_rental,2020-01-24 11:00:10,30,EMPTY,5,20,EMPTY,EMPTY,complete
+return_inventory,2020-01-24 11:47:17,25,[20],29,6,EMPTY,EMPTY,complete
+inspect_inventory,2020-01-24 11:48:53,25,[20],EMPTY,6,43,EMPTY,start
+create_rental,2020-01-24 11:51:08,31,"[101, 109]",35,EMPTY,EMPTY,EMPTY,complete
+create_payment,2020-01-24 11:52:14,31,EMPTY,35,11,EMPTY,33,complete
+inspect_inventory,2020-01-24 12:00:53,25,[20],EMPTY,6,43,EMPTY,complete
+return_inventory,2020-01-24 12:02:03,25,[6],29,6,EMPTY,EMPTY,complete
+inspect_inventory,2020-01-24 12:02:42,25,[6],EMPTY,5,44,EMPTY,start
+inspect_inventory,2020-01-24 12:15:42,25,[6],EMPTY,5,44,EMPTY,complete
+confirm_payment,2020-01-24 23:31:14,31,EMPTY,35,17,EMPTY,33,complete
+confirm_rental,2020-01-24 23:31:44,31,EMPTY,35,14,EMPTY,EMPTY,complete
+create_rental,2020-01-25 05:59:48,32,"[48, 123]",63,EMPTY,EMPTY,EMPTY,complete
+create_payment,2020-01-25 06:01:17,32,EMPTY,63,11,EMPTY,34,complete
+return_inventory,2020-01-25 11:12:38,29,[147],69,7,EMPTY,EMPTY,complete
+inspect_inventory,2020-01-25 11:14:06,29,[147],EMPTY,8,51,EMPTY,start
+inspect_inventory,2020-01-25 11:24:06,29,[147],EMPTY,8,51,EMPTY,complete
+confirm_payment,2020-01-25 15:22:17,32,EMPTY,63,11,EMPTY,34,complete
+confirm_rental,2020-01-25 15:23:57,32,EMPTY,63,14,EMPTY,EMPTY,complete
+return_inventory,2020-01-25 20:03:09,23,[62],35,17,EMPTY,EMPTY,complete
+inspect_inventory,2020-01-25 20:04:29,23,[62],EMPTY,17,39,EMPTY,start
+inspect_inventory,2020-01-25 20:17:29,23,[62],EMPTY,17,39,EMPTY,complete
+return_inventory,2020-01-25 20:18:10,23,[151],35,17,EMPTY,EMPTY,complete
+inspect_inventory,2020-01-25 20:19:35,23,[151],EMPTY,17,40,EMPTY,start
+inspect_inventory,2020-01-25 20:30:35,23,[151],EMPTY,17,40,EMPTY,complete
+return_inventory,2020-01-26 07:33:31,27,[153],71,6,EMPTY,EMPTY,complete
+inspect_inventory,2020-01-26 07:34:31,27,[153],EMPTY,5,47,EMPTY,start
+inspect_inventory,2020-01-26 07:48:31,27,[153],EMPTY,5,47,EMPTY,complete
+return_inventory,2020-01-26 07:49:13,27,[129],71,1,EMPTY,EMPTY,complete
+inspect_inventory,2020-01-26 07:50:34,27,[129],EMPTY,5,48,EMPTY,start
+inspect_inventory,2020-01-26 08:03:34,27,[129],EMPTY,5,48,EMPTY,complete
+lend_inventory,2020-01-26 13:08:10,30,"[58, 131]",5,20,EMPTY,EMPTY,complete
+cancel_inventory,2020-01-26 13:23:35,32,[48],63,EMPTY,EMPTY,EMPTY,complete
+lend_inventory,2020-01-26 16:16:44,31,"[101, 109]",35,11,EMPTY,EMPTY,complete
+lend_inventory,2020-01-27 02:44:22,28,"[156, 28]",67,4,EMPTY,EMPTY,complete
+lend_inventory,2020-01-27 17:51:35,32,[123],63,11,EMPTY,EMPTY,complete
+return_inventory,2020-01-28 11:54:10,30,[58],5,20,EMPTY,EMPTY,complete
+inspect_inventory,2020-01-28 11:55:24,30,[58],EMPTY,20,52,EMPTY,start
+inspect_inventory,2020-01-28 12:14:24,30,[58],EMPTY,20,52,EMPTY,complete
+return_inventory,2020-01-28 12:16:04,30,[131],5,20,EMPTY,EMPTY,complete
+inspect_inventory,2020-01-28 12:17:23,30,[131],EMPTY,20,53,EMPTY,start
+inspect_inventory,2020-01-28 12:35:23,30,[131],EMPTY,20,53,EMPTY,complete
+return_inventory,2020-01-28 19:57:35,32,[123],63,11,EMPTY,EMPTY,complete
+inspect_inventory,2020-01-28 19:58:12,32,[123],EMPTY,11,56,EMPTY,start
+inspect_inventory,2020-01-28 20:14:12,32,[123],EMPTY,11,56,EMPTY,complete
+create_payment,2020-01-28 20:14:54,32,EMPTY,63,14,EMPTY,35,complete
+confirm_payment,2020-01-28 20:15:40,32,EMPTY,63,11,EMPTY,35,complete
+return_inventory,2020-01-28 22:27:44,31,[101],35,11,EMPTY,EMPTY,complete
+inspect_inventory,2020-01-28 22:28:25,31,[101],EMPTY,14,54,EMPTY,start
+inspect_inventory,2020-01-28 22:45:25,31,[101],EMPTY,14,54,EMPTY,complete
+return_inventory,2020-01-28 22:46:06,31,[109],35,14,EMPTY,EMPTY,complete
+inspect_inventory,2020-01-28 22:46:59,31,[109],EMPTY,14,55,EMPTY,start
+inspect_inventory,2020-01-28 23:04:59,31,[109],EMPTY,14,55,EMPTY,complete
+return_inventory,2020-01-29 03:23:22,28,[156],67,4,EMPTY,EMPTY,complete
+inspect_inventory,2020-01-29 03:24:15,28,[156],EMPTY,4,49,EMPTY,start
+inspect_inventory,2020-01-29 03:37:15,28,[156],EMPTY,4,49,EMPTY,complete
+return_inventory,2020-01-29 03:38:47,28,[28],67,18,EMPTY,EMPTY,complete
+inspect_inventory,2020-01-29 03:40:17,28,[28],EMPTY,18,50,EMPTY,start
+inspect_inventory,2020-01-29 03:58:17,28,[28],EMPTY,18,50,EMPTY,complete
+create_rental,2020-01-29 13:49:11,33,"[133, 134]",57,EMPTY,EMPTY,EMPTY,complete
+create_payment,2020-01-29 13:49:51,33,EMPTY,57,5,EMPTY,36,complete
+confirm_payment,2020-01-29 16:17:51,33,EMPTY,57,5,EMPTY,36,complete
+confirm_rental,2020-01-29 16:18:24,33,EMPTY,57,5,EMPTY,EMPTY,complete
+lend_inventory,2020-01-31 14:55:24,33,"[133, 134]",57,1,EMPTY,EMPTY,complete
+return_inventory,2020-02-01 22:22:24,33,[133],57,6,EMPTY,EMPTY,complete
+inspect_inventory,2020-02-01 22:22:56,33,[133],EMPTY,5,57,EMPTY,start
+inspect_inventory,2020-02-01 22:32:56,33,[133],EMPTY,5,57,EMPTY,complete
+return_inventory,2020-02-01 22:33:53,33,[134],57,6,EMPTY,EMPTY,complete
+inspect_inventory,2020-02-01 22:34:36,33,[134],EMPTY,5,58,EMPTY,start
+inspect_inventory,2020-02-01 22:49:36,33,[134],EMPTY,5,58,EMPTY,complete
+create_payment,2020-02-01 22:50:36,33,EMPTY,57,6,EMPTY,37,complete
+confirm_payment,2020-02-01 22:51:30,33,EMPTY,57,1,EMPTY,37,complete
+create_rental,2020-02-02 06:39:47,34,"[58, 84]",26,EMPTY,EMPTY,EMPTY,complete
+create_payment,2020-02-02 06:41:06,34,EMPTY,26,20,EMPTY,38,complete
+create_rental,2020-02-02 08:43:32,35,"[89, 52]",26,EMPTY,EMPTY,EMPTY,complete
+create_payment,2020-02-02 08:44:31,35,EMPTY,26,20,EMPTY,39,complete
+confirm_payment,2020-02-03 00:59:31,35,EMPTY,26,20,EMPTY,39,complete
+confirm_rental,2020-02-03 01:01:09,35,EMPTY,26,20,EMPTY,EMPTY,complete
+create_rental,2020-02-03 01:12:39,36,"[25, 125]",67,EMPTY,EMPTY,EMPTY,complete
+create_payment,2020-02-03 01:13:17,36,EMPTY,67,13,EMPTY,40,complete
+confirm_payment,2020-02-03 05:15:06,34,EMPTY,26,20,EMPTY,38,complete
+confirm_rental,2020-02-03 05:16:22,34,EMPTY,26,20,EMPTY,EMPTY,complete
+confirm_payment,2020-02-04 01:42:17,36,EMPTY,67,4,EMPTY,40,complete
+confirm_rental,2020-02-04 01:43:47,36,EMPTY,67,13,EMPTY,EMPTY,complete
+lend_inventory,2020-02-04 15:48:22,34,"[58, 84]",26,20,EMPTY,EMPTY,complete
+return_inventory,2020-02-05 03:45:22,34,[58],26,20,EMPTY,EMPTY,complete
+inspect_inventory,2020-02-05 03:46:00,34,[58],EMPTY,20,59,EMPTY,start
+inspect_inventory,2020-02-05 04:00:00,34,[58],EMPTY,20,59,EMPTY,complete
+return_inventory,2020-02-05 04:01:27,34,[84],26,20,EMPTY,EMPTY,complete
+inspect_inventory,2020-02-05 04:01:59,34,[84],EMPTY,20,60,EMPTY,start
+inspect_inventory,2020-02-05 04:16:59,34,[84],EMPTY,20,60,EMPTY,complete
+lend_inventory,2020-02-05 14:31:47,36,"[25, 125]",67,4,EMPTY,EMPTY,complete
+lend_inventory,2020-02-06 03:07:09,35,"[89, 52]",26,20,EMPTY,EMPTY,complete
+return_inventory,2020-02-06 22:58:47,36,[25],67,18,EMPTY,EMPTY,complete
+inspect_inventory,2020-02-06 22:59:50,36,[25],EMPTY,4,63,EMPTY,start
+inspect_inventory,2020-02-06 23:18:50,36,[25],EMPTY,4,63,EMPTY,complete
+return_inventory,2020-02-06 23:20:03,36,[125],67,13,EMPTY,EMPTY,complete
+inspect_inventory,2020-02-06 23:21:07,36,[125],EMPTY,13,64,EMPTY,start
+inspect_inventory,2020-02-06 23:38:07,36,[125],EMPTY,13,64,EMPTY,complete
+create_payment,2020-02-06 23:38:40,36,EMPTY,67,18,EMPTY,41,complete
+confirm_payment,2020-02-06 23:39:30,36,EMPTY,67,13,EMPTY,41,complete
+create_rental,2020-02-07 11:41:43,37,"[72, 34]",40,EMPTY,EMPTY,EMPTY,complete
+create_payment,2020-02-07 11:42:55,37,EMPTY,40,20,EMPTY,42,complete
+create_rental,2020-02-07 23:46:16,38,"[21, 118]",13,EMPTY,EMPTY,EMPTY,complete
+create_payment,2020-02-07 23:47:08,38,EMPTY,13,8,EMPTY,43,complete
+confirm_payment,2020-02-08 04:03:08,38,EMPTY,13,9,EMPTY,43,complete
+confirm_rental,2020-02-08 04:04:02,38,EMPTY,13,8,EMPTY,EMPTY,complete
+return_inventory,2020-02-08 08:05:09,35,[89],26,20,EMPTY,EMPTY,complete
+inspect_inventory,2020-02-08 08:06:02,35,[89],EMPTY,20,61,EMPTY,start
+inspect_inventory,2020-02-08 08:20:02,35,[89],EMPTY,20,61,EMPTY,complete
+return_inventory,2020-02-08 08:21:21,35,[52],26,20,EMPTY,EMPTY,complete
+inspect_inventory,2020-02-08 08:22:01,35,[52],EMPTY,20,62,EMPTY,start
+inspect_inventory,2020-02-08 08:38:01,35,[52],EMPTY,20,62,EMPTY,complete
+confirm_payment,2020-02-08 10:04:55,37,EMPTY,40,20,EMPTY,42,complete
+confirm_rental,2020-02-08 10:06:03,37,EMPTY,40,20,EMPTY,EMPTY,complete
+lend_inventory,2020-02-09 20:30:02,38,"[21, 118]",13,7,EMPTY,EMPTY,complete
+lend_inventory,2020-02-10 15:22:03,37,"[72, 34]",40,20,EMPTY,EMPTY,complete
+return_inventory,2020-02-10 22:23:03,37,[72],40,20,EMPTY,EMPTY,complete
+inspect_inventory,2020-02-10 22:24:30,37,[72],EMPTY,20,65,EMPTY,start
+inspect_inventory,2020-02-10 22:35:30,37,[72],EMPTY,20,65,EMPTY,complete
+return_inventory,2020-02-10 22:36:29,37,[34],40,20,EMPTY,EMPTY,complete
+inspect_inventory,2020-02-10 22:37:23,37,[34],EMPTY,20,66,EMPTY,start
+inspect_inventory,2020-02-10 22:56:23,37,[34],EMPTY,20,66,EMPTY,complete
+return_inventory,2020-02-11 03:18:02,38,[21],13,7,EMPTY,EMPTY,complete
+inspect_inventory,2020-02-11 03:18:40,38,[21],EMPTY,8,67,EMPTY,start
+inspect_inventory,2020-02-11 03:30:40,38,[21],EMPTY,8,67,EMPTY,complete
+return_inventory,2020-02-11 03:31:26,38,[118],13,8,EMPTY,EMPTY,complete
+inspect_inventory,2020-02-11 03:32:29,38,[118],EMPTY,7,68,EMPTY,start
+inspect_inventory,2020-02-11 03:47:29,38,[118],EMPTY,7,68,EMPTY,complete
+create_payment,2020-02-11 03:48:16,38,EMPTY,13,7,EMPTY,44,complete
+confirm_payment,2020-02-11 03:49:43,38,EMPTY,13,8,EMPTY,44,complete
+create_rental,2020-02-11 11:48:39,39,"[16, 122]",24,EMPTY,EMPTY,EMPTY,complete
+create_payment,2020-02-11 11:49:37,39,EMPTY,24,15,EMPTY,45,complete
+create_rental,2020-02-12 03:04:55,40,"[56, 63]",33,EMPTY,EMPTY,EMPTY,complete
+create_payment,2020-02-12 03:06:28,40,EMPTY,33,20,EMPTY,46,complete
+confirm_payment,2020-02-12 04:44:37,39,EMPTY,24,10,EMPTY,45,complete
+confirm_rental,2020-02-12 04:45:18,39,EMPTY,24,12,EMPTY,EMPTY,complete
+confirm_payment,2020-02-13 00:47:28,40,EMPTY,33,20,EMPTY,46,complete
+confirm_rental,2020-02-13 00:48:44,40,EMPTY,33,20,EMPTY,EMPTY,complete
+lend_inventory,2020-02-13 08:33:44,40,"[56, 63]",33,20,EMPTY,EMPTY,complete
+return_inventory,2020-02-14 16:32:44,40,[56],33,20,EMPTY,EMPTY,complete
+inspect_inventory,2020-02-14 16:33:21,40,[56],EMPTY,20,71,EMPTY,start
+inspect_inventory,2020-02-14 16:53:21,40,[56],EMPTY,20,71,EMPTY,complete
+create_payment,2020-02-14 16:54:54,40,EMPTY,33,20,EMPTY,47,complete
+return_inventory,2020-02-14 16:55:30,40,[63],33,20,EMPTY,EMPTY,complete
+inspect_inventory,2020-02-14 16:56:07,40,[63],EMPTY,20,72,EMPTY,start
+inspect_inventory,2020-02-14 17:14:07,40,[63],EMPTY,20,72,EMPTY,complete
+confirm_payment,2020-02-14 17:15:12,40,EMPTY,33,20,EMPTY,47,complete
+create_rental,2020-02-15 06:26:43,41,"[12, 95]",47,EMPTY,EMPTY,EMPTY,complete
+create_payment,2020-02-15 06:27:45,41,EMPTY,47,20,EMPTY,48,complete
+create_rental,2020-02-15 06:41:21,42,"[10, 132]",76,EMPTY,EMPTY,EMPTY,complete
+create_payment,2020-02-15 06:42:40,42,EMPTY,76,8,EMPTY,49,complete
+lend_inventory,2020-02-15 06:58:18,39,"[16, 122]",24,3,EMPTY,EMPTY,complete
+confirm_payment,2020-02-15 18:32:45,41,EMPTY,47,20,EMPTY,48,complete
+confirm_rental,2020-02-15 18:33:33,41,EMPTY,47,20,EMPTY,EMPTY,complete
+create_rental,2020-02-15 20:30:09,43,"[21, 126]",48,EMPTY,EMPTY,EMPTY,complete
+create_payment,2020-02-15 20:31:07,43,EMPTY,48,7,EMPTY,50,complete
+confirm_payment,2020-02-16 06:39:40,42,EMPTY,76,7,EMPTY,49,complete
+confirm_rental,2020-02-16 06:41:04,42,EMPTY,76,8,EMPTY,EMPTY,complete
+confirm_payment,2020-02-16 07:57:07,43,EMPTY,48,9,EMPTY,50,complete
+confirm_rental,2020-02-16 07:57:49,43,EMPTY,48,7,EMPTY,EMPTY,complete
+return_inventory,2020-02-16 12:15:18,39,[16],24,3,EMPTY,EMPTY,complete
+inspect_inventory,2020-02-16 12:16:15,39,[16],EMPTY,19,69,EMPTY,start
+inspect_inventory,2020-02-16 12:31:15,39,[16],EMPTY,19,69,EMPTY,complete
+return_inventory,2020-02-16 12:31:47,39,[122],24,19,EMPTY,EMPTY,complete
+inspect_inventory,2020-02-16 12:32:42,39,[122],EMPTY,12,70,EMPTY,start
+inspect_inventory,2020-02-16 12:50:42,39,[122],EMPTY,12,70,EMPTY,complete
+lend_inventory,2020-02-16 20:18:49,43,"[21, 126]",48,9,EMPTY,EMPTY,complete
+lend_inventory,2020-02-17 19:40:33,41,"[12, 95]",47,20,EMPTY,EMPTY,complete
+return_inventory,2020-02-18 19:42:49,43,[21],48,7,EMPTY,EMPTY,complete
+inspect_inventory,2020-02-18 19:43:54,43,[21],EMPTY,7,77,EMPTY,start
+inspect_inventory,2020-02-18 19:57:54,43,[21],EMPTY,7,77,EMPTY,complete
+return_inventory,2020-02-18 19:58:37,43,[126],48,8,EMPTY,EMPTY,complete
+inspect_inventory,2020-02-18 19:59:33,43,[126],EMPTY,9,78,EMPTY,start
+inspect_inventory,2020-02-18 20:19:33,43,[126],EMPTY,9,78,EMPTY,complete
+create_payment,2020-02-18 20:20:51,43,EMPTY,48,8,EMPTY,51,complete
+confirm_payment,2020-02-18 20:21:32,43,EMPTY,48,9,EMPTY,51,complete
+lend_inventory,2020-02-18 21:22:04,42,"[10, 132]",76,8,EMPTY,EMPTY,complete
+create_rental,2020-02-19 02:19:22,44,"[20, 60]",22,EMPTY,EMPTY,EMPTY,complete
+create_payment,2020-02-19 02:20:01,44,EMPTY,22,1,EMPTY,52,complete
+confirm_payment,2020-02-19 05:34:01,44,EMPTY,22,2,EMPTY,52,complete
+confirm_rental,2020-02-19 05:34:46,44,EMPTY,22,1,EMPTY,EMPTY,complete
+return_inventory,2020-02-19 11:53:33,41,[12],47,20,EMPTY,EMPTY,complete
+inspect_inventory,2020-02-19 11:54:58,41,[12],EMPTY,20,73,EMPTY,start
+inspect_inventory,2020-02-19 12:08:58,41,[12],EMPTY,20,73,EMPTY,complete
+return_inventory,2020-02-19 12:09:50,41,[95],47,20,EMPTY,EMPTY,complete
+inspect_inventory,2020-02-19 12:11:25,41,[95],EMPTY,20,74,EMPTY,start
+inspect_inventory,2020-02-19 12:22:25,41,[95],EMPTY,20,74,EMPTY,complete
+create_rental,2020-02-20 03:01:22,45,"[128, 141]",66,EMPTY,EMPTY,EMPTY,complete
+create_payment,2020-02-20 03:02:04,45,EMPTY,66,10,EMPTY,53,complete
+confirm_payment,2020-02-20 13:59:04,45,EMPTY,66,15,EMPTY,53,complete
+confirm_rental,2020-02-20 14:00:38,45,EMPTY,66,3,EMPTY,EMPTY,complete
+create_rental,2020-02-21 03:33:02,46,"[56, 5]",5,EMPTY,EMPTY,EMPTY,complete
+create_payment,2020-02-21 03:33:59,46,EMPTY,5,20,EMPTY,54,complete
+create_rental,2020-02-21 09:03:01,47,"[41, 67]",56,EMPTY,EMPTY,EMPTY,complete
+create_payment,2020-02-21 09:04:28,47,EMPTY,56,14,EMPTY,55,complete
+confirm_payment,2020-02-21 13:01:59,46,EMPTY,5,20,EMPTY,54,complete
+confirm_rental,2020-02-21 13:02:37,46,EMPTY,5,20,EMPTY,EMPTY,complete
+confirm_payment,2020-02-21 15:02:28,47,EMPTY,56,14,EMPTY,55,complete
+confirm_rental,2020-02-21 15:03:29,47,EMPTY,56,11,EMPTY,EMPTY,complete
+return_inventory,2020-02-21 16:06:04,42,[10],76,9,EMPTY,EMPTY,complete
+inspect_inventory,2020-02-21 16:07:13,42,[10],EMPTY,9,75,EMPTY,start
+inspect_inventory,2020-02-21 16:24:13,42,[10],EMPTY,9,75,EMPTY,complete
+return_inventory,2020-02-21 16:25:40,42,[132],76,7,EMPTY,EMPTY,complete
+inspect_inventory,2020-02-21 16:26:58,42,[132],EMPTY,9,76,EMPTY,start
+inspect_inventory,2020-02-21 16:36:58,42,[132],EMPTY,9,76,EMPTY,complete
+lend_inventory,2020-02-22 02:00:46,44,"[20, 60]",22,5,EMPTY,EMPTY,complete
+return_inventory,2020-02-22 06:22:46,44,[20],22,2,EMPTY,EMPTY,complete
+inspect_inventory,2020-02-22 06:24:12,44,[20],EMPTY,6,79,EMPTY,start
+inspect_inventory,2020-02-22 06:38:12,44,[20],EMPTY,6,79,EMPTY,complete
+return_inventory,2020-02-22 06:39:40,44,[60],22,6,EMPTY,EMPTY,complete
+inspect_inventory,2020-02-22 06:40:16,44,[60],EMPTY,1,80,EMPTY,start
+inspect_inventory,2020-02-22 06:58:16,44,[60],EMPTY,1,80,EMPTY,complete
+lend_inventory,2020-02-22 07:10:38,45,"[128, 141]",66,19,EMPTY,EMPTY,complete
+create_rental,2020-02-22 07:38:32,48,"[80, 44]",34,EMPTY,EMPTY,EMPTY,complete
+create_payment,2020-02-22 07:39:38,48,EMPTY,34,9,EMPTY,56,complete
+confirm_payment,2020-02-22 08:46:38,48,EMPTY,34,9,EMPTY,56,complete
+confirm_rental,2020-02-22 08:47:37,48,EMPTY,34,9,EMPTY,EMPTY,complete
+create_rental,2020-02-22 19:14:53,49,"[70, 150]",2,EMPTY,EMPTY,EMPTY,complete
+create_payment,2020-02-22 19:16:07,49,EMPTY,2,16,EMPTY,57,complete
+lend_inventory,2020-02-22 19:42:29,47,"[41, 67]",56,11,EMPTY,EMPTY,complete
+create_rental,2020-02-22 23:13:43,50,"[48, 117]",35,EMPTY,EMPTY,EMPTY,complete
+create_payment,2020-02-22 23:14:36,50,EMPTY,35,17,EMPTY,58,complete
+confirm_payment,2020-02-23 08:30:36,50,EMPTY,35,11,EMPTY,58,complete
+confirm_rental,2020-02-23 08:32:12,50,EMPTY,35,14,EMPTY,EMPTY,complete
+confirm_payment,2020-02-23 09:39:07,49,EMPTY,2,16,EMPTY,57,complete
+confirm_rental,2020-02-23 09:39:42,49,EMPTY,2,16,EMPTY,EMPTY,complete
+create_rental,2020-02-23 19:18:11,51,"[136, 45]",12,EMPTY,EMPTY,EMPTY,complete
+create_payment,2020-02-23 19:18:55,51,EMPTY,12,20,EMPTY,59,complete
+return_inventory,2020-02-23 20:33:38,45,[128],66,3,EMPTY,EMPTY,complete
+inspect_inventory,2020-02-23 20:34:31,45,[128],EMPTY,10,81,EMPTY,start
+inspect_inventory,2020-02-23 20:51:31,45,[128],EMPTY,10,81,EMPTY,complete
+return_inventory,2020-02-23 20:52:36,45,[141],66,19,EMPTY,EMPTY,complete
+inspect_inventory,2020-02-23 20:53:15,45,[141],EMPTY,10,82,EMPTY,start
+inspect_inventory,2020-02-23 21:04:15,45,[141],EMPTY,10,82,EMPTY,complete
+lend_inventory,2020-02-24 01:32:37,48,"[80, 44]",34,9,EMPTY,EMPTY,complete
+confirm_payment,2020-02-24 10:57:55,51,EMPTY,12,20,EMPTY,59,complete
+confirm_rental,2020-02-24 10:59:13,51,EMPTY,12,20,EMPTY,EMPTY,complete
+lend_inventory,2020-02-24 14:48:37,46,"[56, 5]",5,20,EMPTY,EMPTY,complete
+create_rental,2020-02-24 20:06:48,52,"[106, 18]",55,EMPTY,EMPTY,EMPTY,complete
+create_payment,2020-02-24 20:07:55,52,EMPTY,55,9,EMPTY,60,complete
+lend_inventory,2020-02-24 21:15:12,50,"[48, 117]",35,11,EMPTY,EMPTY,complete
+cancel_inventory,2020-02-25 03:06:49,51,[45],12,EMPTY,EMPTY,EMPTY,complete
+return_inventory,2020-02-25 09:11:37,48,[80],34,8,EMPTY,EMPTY,complete
+inspect_inventory,2020-02-25 09:13:15,48,[80],EMPTY,8,87,EMPTY,start
+inspect_inventory,2020-02-25 09:33:15,48,[80],EMPTY,8,87,EMPTY,complete
+return_inventory,2020-02-25 09:34:51,48,[44],34,9,EMPTY,EMPTY,complete
+inspect_inventory,2020-02-25 09:35:48,48,[44],EMPTY,8,88,EMPTY,start
+inspect_inventory,2020-02-25 09:50:48,48,[44],EMPTY,8,88,EMPTY,complete
+lend_inventory,2020-02-25 10:28:42,49,"[70, 150]",2,16,EMPTY,EMPTY,complete
+create_rental,2020-02-25 13:47:25,53,"[130, 118]",41,EMPTY,EMPTY,EMPTY,complete
+create_payment,2020-02-25 13:48:28,53,EMPTY,41,7,EMPTY,61,complete
+confirm_payment,2020-02-25 17:13:55,52,EMPTY,55,9,EMPTY,60,complete
+confirm_rental,2020-02-25 17:15:23,52,EMPTY,55,7,EMPTY,EMPTY,complete
+create_rental,2020-02-25 17:53:02,54,"[23, 159]",69,EMPTY,EMPTY,EMPTY,complete
+create_payment,2020-02-25 17:53:34,54,EMPTY,69,9,EMPTY,62,complete
+return_inventory,2020-02-25 19:20:29,47,[41],56,11,EMPTY,EMPTY,complete
+inspect_inventory,2020-02-25 19:21:03,47,[41],EMPTY,14,85,EMPTY,start
+inspect_inventory,2020-02-25 19:36:03,47,[41],EMPTY,14,85,EMPTY,complete
+return_inventory,2020-02-25 19:37:12,47,[67],56,11,EMPTY,EMPTY,complete
+inspect_inventory,2020-02-25 19:37:50,47,[67],EMPTY,11,86,EMPTY,start
+inspect_inventory,2020-02-25 19:47:50,47,[67],EMPTY,11,86,EMPTY,complete
+confirm_payment,2020-02-26 01:44:28,53,EMPTY,41,7,EMPTY,61,complete
+confirm_rental,2020-02-26 01:45:18,53,EMPTY,41,7,EMPTY,EMPTY,complete
+confirm_payment,2020-02-26 04:51:34,54,EMPTY,69,8,EMPTY,62,complete
+confirm_rental,2020-02-26 04:52:22,54,EMPTY,69,8,EMPTY,EMPTY,complete
+return_inventory,2020-02-27 03:49:37,46,[56],5,20,EMPTY,EMPTY,complete
+inspect_inventory,2020-02-27 03:50:58,46,[56],EMPTY,20,83,EMPTY,start
+inspect_inventory,2020-02-27 04:09:58,46,[56],EMPTY,20,83,EMPTY,complete
+return_inventory,2020-02-27 04:11:11,46,[5],5,20,EMPTY,EMPTY,complete
+inspect_inventory,2020-02-27 04:12:47,46,[5],EMPTY,20,84,EMPTY,start
+inspect_inventory,2020-02-27 04:32:47,46,[5],EMPTY,20,84,EMPTY,complete
+return_inventory,2020-02-27 05:01:42,49,[70],2,16,EMPTY,EMPTY,complete
+inspect_inventory,2020-02-27 05:03:11,49,[70],EMPTY,16,89,EMPTY,start
+inspect_inventory,2020-02-27 05:16:11,49,[70],EMPTY,16,89,EMPTY,complete
+return_inventory,2020-02-27 05:16:51,49,[150],2,16,EMPTY,EMPTY,complete
+inspect_inventory,2020-02-27 05:17:31,49,[150],EMPTY,16,90,EMPTY,start
+inspect_inventory,2020-02-27 05:37:31,49,[150],EMPTY,16,90,EMPTY,complete
+lend_inventory,2020-02-27 09:56:49,51,[136],12,20,EMPTY,EMPTY,complete
+return_inventory,2020-02-27 20:21:12,50,[48],35,17,EMPTY,EMPTY,complete
+inspect_inventory,2020-02-27 20:22:19,50,[48],EMPTY,14,91,EMPTY,start
+inspect_inventory,2020-02-27 20:32:19,50,[48],EMPTY,14,91,EMPTY,complete
+return_inventory,2020-02-27 20:33:50,50,[117],35,14,EMPTY,EMPTY,complete
+inspect_inventory,2020-02-27 20:35:15,50,[117],EMPTY,11,92,EMPTY,start
+inspect_inventory,2020-02-27 20:46:15,50,[117],EMPTY,11,92,EMPTY,complete
+lend_inventory,2020-02-28 14:31:23,52,"[106, 18]",55,8,EMPTY,EMPTY,complete
+lend_inventory,2020-02-28 23:39:18,53,"[130, 118]",41,7,EMPTY,EMPTY,complete
+return_inventory,2020-02-29 02:35:18,53,[130],41,8,EMPTY,EMPTY,complete
+inspect_inventory,2020-02-29 02:35:56,53,[130],EMPTY,8,96,EMPTY,start
+inspect_inventory,2020-02-29 02:49:56,53,[130],EMPTY,8,96,EMPTY,complete
+return_inventory,2020-02-29 02:50:28,53,[118],41,9,EMPTY,EMPTY,complete
+inspect_inventory,2020-02-29 02:51:56,53,[118],EMPTY,8,97,EMPTY,start
+inspect_inventory,2020-02-29 03:06:56,53,[118],EMPTY,8,97,EMPTY,complete
+return_inventory,2020-02-29 13:24:23,52,[106],55,7,EMPTY,EMPTY,complete
+inspect_inventory,2020-02-29 13:25:47,52,[106],EMPTY,8,94,EMPTY,start
+lend_inventory,2020-02-29 13:34:22,54,"[23, 159]",69,8,EMPTY,EMPTY,complete
+inspect_inventory,2020-02-29 13:44:47,52,[106],EMPTY,8,94,EMPTY,complete
+return_inventory,2020-02-29 13:46:15,52,[18],55,8,EMPTY,EMPTY,complete
+inspect_inventory,2020-02-29 13:47:12,52,[18],EMPTY,9,95,EMPTY,start
+inspect_inventory,2020-02-29 13:58:12,52,[18],EMPTY,9,95,EMPTY,complete
+return_inventory,2020-02-29 15:45:49,51,[136],12,20,EMPTY,EMPTY,complete
+inspect_inventory,2020-02-29 15:46:36,51,[136],EMPTY,20,93,EMPTY,start
+inspect_inventory,2020-02-29 16:01:36,51,[136],EMPTY,20,93,EMPTY,complete
+return_inventory,2020-03-03 14:05:22,54,[23],69,9,EMPTY,EMPTY,complete
+inspect_inventory,2020-03-03 14:06:06,54,[23],EMPTY,8,98,EMPTY,start
+inspect_inventory,2020-03-03 14:24:06,54,[23],EMPTY,8,98,EMPTY,complete
+return_inventory,2020-03-03 14:25:40,54,[159],69,7,EMPTY,EMPTY,complete
+inspect_inventory,2020-03-03 14:26:20,54,[159],EMPTY,7,99,EMPTY,start
+inspect_inventory,2020-03-03 14:38:20,54,[159],EMPTY,7,99,EMPTY,complete
+create_payment,2020-03-03 14:39:41,54,EMPTY,69,9,EMPTY,63,complete
+confirm_payment,2020-03-03 14:40:40,54,EMPTY,69,7,EMPTY,63,complete
+create_rental,2020-03-04 11:05:37,55,"[146, 63]",26,EMPTY,EMPTY,EMPTY,complete
+create_payment,2020-03-04 11:07:10,55,EMPTY,26,20,EMPTY,64,complete
+confirm_payment,2020-03-04 17:55:10,55,EMPTY,26,20,EMPTY,64,complete
+confirm_rental,2020-03-04 17:56:36,55,EMPTY,26,20,EMPTY,EMPTY,complete
+lend_inventory,2020-03-04 20:43:36,55,"[146, 63]",26,20,EMPTY,EMPTY,complete
+return_inventory,2020-03-07 19:26:36,55,[146],26,20,EMPTY,EMPTY,complete
+inspect_inventory,2020-03-07 19:27:45,55,[146],EMPTY,20,100,EMPTY,start
+inspect_inventory,2020-03-07 19:43:45,55,[146],EMPTY,20,100,EMPTY,complete
+return_inventory,2020-03-07 19:44:28,55,[63],26,20,EMPTY,EMPTY,complete
+inspect_inventory,2020-03-07 19:45:22,55,[63],EMPTY,20,101,EMPTY,start
+inspect_inventory,2020-03-07 20:00:22,55,[63],EMPTY,20,101,EMPTY,complete
+create_payment,2020-03-07 20:01:14,55,EMPTY,26,20,EMPTY,65,complete
+confirm_payment,2020-03-07 20:02:16,55,EMPTY,26,20,EMPTY,65,complete
+create_rental,2020-03-07 22:09:14,56,"[49, 50]",18,EMPTY,EMPTY,EMPTY,complete
+create_payment,2020-03-07 22:10:02,56,EMPTY,18,18,EMPTY,66,complete
+confirm_payment,2020-03-07 23:14:02,56,EMPTY,18,13,EMPTY,66,complete
+confirm_rental,2020-03-07 23:15:21,56,EMPTY,18,18,EMPTY,EMPTY,complete
+create_rental,2020-03-08 15:45:44,57,"[2, 11]",39,EMPTY,EMPTY,EMPTY,complete
+create_payment,2020-03-08 15:46:32,57,EMPTY,39,13,EMPTY,67,complete
+confirm_payment,2020-03-08 21:15:32,57,EMPTY,39,13,EMPTY,67,complete
+confirm_rental,2020-03-08 21:16:26,57,EMPTY,39,18,EMPTY,EMPTY,complete
+create_rental,2020-03-09 10:25:23,58,"[130, 94]",55,EMPTY,EMPTY,EMPTY,complete
+create_payment,2020-03-09 10:26:28,58,EMPTY,55,8,EMPTY,68,complete
+create_rental,2020-03-09 11:21:17,59,"[26, 43]",41,EMPTY,EMPTY,EMPTY,complete
+create_payment,2020-03-09 11:22:32,59,EMPTY,41,9,EMPTY,69,complete
+confirm_payment,2020-03-09 18:10:28,58,EMPTY,55,9,EMPTY,68,complete
+confirm_rental,2020-03-09 18:11:13,58,EMPTY,55,9,EMPTY,EMPTY,complete
+cancel_inventory,2020-03-09 21:55:35,58,[130],55,EMPTY,EMPTY,EMPTY,complete
+create_rental,2020-03-09 23:46:51,60,"[70, 78]",58,EMPTY,EMPTY,EMPTY,complete
+create_payment,2020-03-09 23:48:27,60,EMPTY,58,16,EMPTY,70,complete
+lend_inventory,2020-03-10 01:30:21,56,"[49, 50]",18,13,EMPTY,EMPTY,complete
+create_rental,2020-03-10 03:19:46,61,"[161, 5]",54,EMPTY,EMPTY,EMPTY,complete
+create_payment,2020-03-10 03:20:55,61,EMPTY,54,20,EMPTY,71,complete
+confirm_payment,2020-03-10 03:45:27,60,EMPTY,58,16,EMPTY,70,complete
+confirm_rental,2020-03-10 03:45:57,60,EMPTY,58,16,EMPTY,EMPTY,complete
+confirm_payment,2020-03-10 10:38:32,59,EMPTY,41,7,EMPTY,69,complete
+confirm_rental,2020-03-10 10:39:53,59,EMPTY,41,9,EMPTY,EMPTY,complete
+confirm_payment,2020-03-10 20:24:55,61,EMPTY,54,20,EMPTY,71,complete
+confirm_rental,2020-03-10 20:26:17,61,EMPTY,54,20,EMPTY,EMPTY,complete
+lend_inventory,2020-03-10 21:17:17,61,"[161, 5]",54,20,EMPTY,EMPTY,complete
+lend_inventory,2020-03-10 22:29:26,57,"[2, 11]",39,13,EMPTY,EMPTY,complete
+create_rental,2020-03-11 02:19:59,62,"[154, 6]",43,EMPTY,EMPTY,EMPTY,complete
+create_payment,2020-03-11 02:21:11,62,EMPTY,43,5,EMPTY,72,complete
+create_rental,2020-03-11 04:47:32,63,"[71, 39]",44,EMPTY,EMPTY,EMPTY,complete
+create_payment,2020-03-11 04:49:05,63,EMPTY,44,16,EMPTY,73,complete
+lend_inventory,2020-03-11 09:08:53,59,"[26, 43]",41,9,EMPTY,EMPTY,complete
+confirm_payment,2020-03-11 10:07:11,62,EMPTY,43,5,EMPTY,72,complete
+confirm_rental,2020-03-11 10:08:29,62,EMPTY,43,2,EMPTY,EMPTY,complete
+lend_inventory,2020-03-11 13:47:57,60,"[70, 78]",58,16,EMPTY,EMPTY,complete
+return_inventory,2020-03-11 15:50:21,56,[49],18,4,EMPTY,EMPTY,complete
+inspect_inventory,2020-03-11 15:51:07,56,[49],EMPTY,18,102,EMPTY,start
+inspect_inventory,2020-03-11 16:09:07,56,[49],EMPTY,18,102,EMPTY,complete
+return_inventory,2020-03-11 16:09:56,56,[50],18,18,EMPTY,EMPTY,complete
+inspect_inventory,2020-03-11 16:11:19,56,[50],EMPTY,13,103,EMPTY,start
+inspect_inventory,2020-03-11 16:26:19,56,[50],EMPTY,13,103,EMPTY,complete
+return_inventory,2020-03-11 17:36:53,59,[26],41,7,EMPTY,EMPTY,complete
+inspect_inventory,2020-03-11 17:37:45,59,[26],EMPTY,7,107,EMPTY,start
+inspect_inventory,2020-03-11 17:57:45,59,[26],EMPTY,7,107,EMPTY,complete
+return_inventory,2020-03-11 17:58:33,59,[43],41,9,EMPTY,EMPTY,complete
+inspect_inventory,2020-03-11 17:59:43,59,[43],EMPTY,8,108,EMPTY,start
+inspect_inventory,2020-03-11 18:11:43,59,[43],EMPTY,8,108,EMPTY,complete
+lend_inventory,2020-03-11 18:12:35,58,[94],55,7,EMPTY,EMPTY,complete
+confirm_payment,2020-03-12 05:12:05,63,EMPTY,44,16,EMPTY,73,complete
+confirm_rental,2020-03-12 05:12:49,63,EMPTY,44,16,EMPTY,EMPTY,complete
+return_inventory,2020-03-12 17:30:35,58,[94],55,9,EMPTY,EMPTY,complete
+inspect_inventory,2020-03-12 17:31:41,58,[94],EMPTY,7,106,EMPTY,start
+inspect_inventory,2020-03-12 17:47:41,58,[94],EMPTY,7,106,EMPTY,complete
+return_inventory,2020-03-13 12:59:26,57,[2],39,18,EMPTY,EMPTY,complete
+inspect_inventory,2020-03-13 13:00:03,57,[2],EMPTY,13,104,EMPTY,start
+inspect_inventory,2020-03-13 13:11:03,57,[2],EMPTY,13,104,EMPTY,complete
+return_inventory,2020-03-13 13:11:44,57,[11],39,18,EMPTY,EMPTY,complete
+inspect_inventory,2020-03-13 13:12:38,57,[11],EMPTY,4,105,EMPTY,start
+inspect_inventory,2020-03-13 13:24:38,57,[11],EMPTY,4,105,EMPTY,complete
+return_inventory,2020-03-13 17:31:17,61,[161],54,20,EMPTY,EMPTY,complete
+inspect_inventory,2020-03-13 17:32:02,61,[161],EMPTY,20,111,EMPTY,start
+inspect_inventory,2020-03-13 17:48:02,61,[161],EMPTY,20,111,EMPTY,complete
+return_inventory,2020-03-13 17:49:20,61,[5],54,20,EMPTY,EMPTY,complete
+inspect_inventory,2020-03-13 17:50:18,61,[5],EMPTY,20,112,EMPTY,start
+inspect_inventory,2020-03-13 18:02:18,61,[5],EMPTY,20,112,EMPTY,complete
+return_inventory,2020-03-13 18:06:57,60,[70],58,16,EMPTY,EMPTY,complete
+inspect_inventory,2020-03-13 18:07:30,60,[70],EMPTY,16,109,EMPTY,start
+inspect_inventory,2020-03-13 18:27:30,60,[70],EMPTY,16,109,EMPTY,complete
+return_inventory,2020-03-13 18:28:30,60,[78],58,16,EMPTY,EMPTY,complete
+inspect_inventory,2020-03-13 18:29:45,60,[78],EMPTY,16,110,EMPTY,start
+inspect_inventory,2020-03-13 18:48:45,60,[78],EMPTY,16,110,EMPTY,complete
+lend_inventory,2020-03-14 06:31:29,62,"[154, 6]",43,6,EMPTY,EMPTY,complete
+lend_inventory,2020-03-15 18:10:49,63,"[71, 39]",44,16,EMPTY,EMPTY,complete
+return_inventory,2020-03-17 07:20:29,62,[154],43,6,EMPTY,EMPTY,complete
+inspect_inventory,2020-03-17 07:21:08,62,[154],EMPTY,2,113,EMPTY,start
+inspect_inventory,2020-03-17 07:35:08,62,[154],EMPTY,2,113,EMPTY,complete
+return_inventory,2020-03-17 07:35:53,62,[6],43,1,EMPTY,EMPTY,complete
+inspect_inventory,2020-03-17 07:37:03,62,[6],EMPTY,2,114,EMPTY,start
+inspect_inventory,2020-03-17 07:53:03,62,[6],EMPTY,2,114,EMPTY,complete
+return_inventory,2020-03-18 15:47:49,63,[71],44,16,EMPTY,EMPTY,complete
+inspect_inventory,2020-03-18 15:49:15,63,[71],EMPTY,16,115,EMPTY,start
+inspect_inventory,2020-03-18 16:07:15,63,[71],EMPTY,16,115,EMPTY,complete
+return_inventory,2020-03-18 16:08:40,63,[39],44,16,EMPTY,EMPTY,complete
+inspect_inventory,2020-03-18 16:10:19,63,[39],EMPTY,16,116,EMPTY,start
+inspect_inventory,2020-03-18 16:28:19,63,[39],EMPTY,16,116,EMPTY,complete
+create_payment,2020-03-18 16:29:46,63,EMPTY,44,16,EMPTY,74,complete
+confirm_payment,2020-03-18 16:31:04,63,EMPTY,44,16,EMPTY,74,complete
+create_rental,2020-03-19 05:37:35,64,"[120, 1]",16,EMPTY,EMPTY,EMPTY,complete
+create_payment,2020-03-19 05:38:29,64,EMPTY,16,16,EMPTY,75,complete
+create_rental,2020-03-19 07:13:38,65,"[116, 61]",24,EMPTY,EMPTY,EMPTY,complete
+create_payment,2020-03-19 07:14:49,65,EMPTY,24,12,EMPTY,76,complete
+confirm_payment,2020-03-19 08:34:49,65,EMPTY,24,15,EMPTY,76,complete
+confirm_rental,2020-03-19 08:36:17,65,EMPTY,24,10,EMPTY,EMPTY,complete
+confirm_payment,2020-03-19 21:43:29,64,EMPTY,16,16,EMPTY,75,complete
+confirm_rental,2020-03-19 21:44:43,64,EMPTY,16,16,EMPTY,EMPTY,complete
+create_rental,2020-03-20 00:29:28,66,"[106, 132]",41,EMPTY,EMPTY,EMPTY,complete
+create_payment,2020-03-20 00:30:26,66,EMPTY,41,7,EMPTY,77,complete
+create_rental,2020-03-20 10:18:07,67,"[89, 121]",40,EMPTY,EMPTY,EMPTY,complete
+create_payment,2020-03-20 10:19:09,67,EMPTY,40,20,EMPTY,78,complete
+confirm_payment,2020-03-20 14:50:26,66,EMPTY,41,9,EMPTY,77,complete
+confirm_rental,2020-03-20 14:51:20,66,EMPTY,41,9,EMPTY,EMPTY,complete
+lend_inventory,2020-03-21 06:08:20,66,"[106, 132]",41,9,EMPTY,EMPTY,complete
+lend_inventory,2020-03-21 06:53:43,64,"[120, 1]",16,16,EMPTY,EMPTY,complete
+confirm_payment,2020-03-21 08:46:09,67,EMPTY,40,20,EMPTY,78,complete
+confirm_rental,2020-03-21 08:47:10,67,EMPTY,40,20,EMPTY,EMPTY,complete
+lend_inventory,2020-03-22 22:46:10,67,"[89, 121]",40,20,EMPTY,EMPTY,complete
+return_inventory,2020-03-23 00:57:43,64,[120],16,16,EMPTY,EMPTY,complete
+inspect_inventory,2020-03-23 00:58:34,64,[120],EMPTY,16,117,EMPTY,start
+inspect_inventory,2020-03-23 01:13:34,64,[120],EMPTY,16,117,EMPTY,complete
+return_inventory,2020-03-23 01:14:11,64,[1],16,16,EMPTY,EMPTY,complete
+inspect_inventory,2020-03-23 01:15:39,64,[1],EMPTY,16,118,EMPTY,start
+lend_inventory,2020-03-23 01:21:17,65,"[116, 61]",24,3,EMPTY,EMPTY,complete
+inspect_inventory,2020-03-23 01:26:39,64,[1],EMPTY,16,118,EMPTY,complete
+return_inventory,2020-03-23 12:10:10,67,[89],40,20,EMPTY,EMPTY,complete
+inspect_inventory,2020-03-23 12:11:26,67,[89],EMPTY,20,123,EMPTY,start
+inspect_inventory,2020-03-23 12:29:26,67,[89],EMPTY,20,123,EMPTY,complete
+create_payment,2020-03-23 12:31:04,67,EMPTY,40,20,EMPTY,79,complete
+return_inventory,2020-03-23 12:32:25,67,[121],40,20,EMPTY,EMPTY,complete
+inspect_inventory,2020-03-23 12:33:47,67,[121],EMPTY,20,124,EMPTY,start
+inspect_inventory,2020-03-23 12:45:47,67,[121],EMPTY,20,124,EMPTY,complete
+confirm_payment,2020-03-23 12:46:38,67,EMPTY,40,20,EMPTY,79,complete
+return_inventory,2020-03-23 14:31:17,65,[116],24,15,EMPTY,EMPTY,complete
+inspect_inventory,2020-03-23 14:31:50,65,[116],EMPTY,19,119,EMPTY,start
+return_inventory,2020-03-23 14:32:20,66,[106],41,9,EMPTY,EMPTY,complete
+inspect_inventory,2020-03-23 14:32:57,66,[106],EMPTY,8,121,EMPTY,start
+inspect_inventory,2020-03-23 14:43:50,65,[116],EMPTY,19,119,EMPTY,complete
+return_inventory,2020-03-23 14:44:51,65,[61],24,15,EMPTY,EMPTY,complete
+inspect_inventory,2020-03-23 14:45:57,65,[61],EMPTY,3,120,EMPTY,start
+inspect_inventory,2020-03-23 14:49:57,66,[106],EMPTY,8,121,EMPTY,complete
+return_inventory,2020-03-23 14:50:36,66,[132],41,8,EMPTY,EMPTY,complete
+inspect_inventory,2020-03-23 14:51:38,66,[132],EMPTY,7,122,EMPTY,start
+inspect_inventory,2020-03-23 15:03:57,65,[61],EMPTY,3,120,EMPTY,complete
+inspect_inventory,2020-03-23 15:04:38,66,[132],EMPTY,7,122,EMPTY,complete
+create_rental,2020-03-24 13:50:34,68,"[10, 99]",6,EMPTY,EMPTY,EMPTY,complete
+create_payment,2020-03-24 13:51:26,68,EMPTY,6,9,EMPTY,80,complete
+confirm_payment,2020-03-25 12:34:26,68,EMPTY,6,9,EMPTY,80,complete
+confirm_rental,2020-03-25 12:35:02,68,EMPTY,6,8,EMPTY,EMPTY,complete
+lend_inventory,2020-03-26 20:16:02,68,"[10, 99]",6,9,EMPTY,EMPTY,complete
+return_inventory,2020-03-28 02:40:02,68,[10],6,9,EMPTY,EMPTY,complete
+inspect_inventory,2020-03-28 02:41:15,68,[10],EMPTY,7,125,EMPTY,start
+inspect_inventory,2020-03-28 02:59:15,68,[10],EMPTY,7,125,EMPTY,complete
+create_payment,2020-03-28 03:00:33,68,EMPTY,6,7,EMPTY,81,complete
+return_inventory,2020-03-28 03:01:21,68,[99],6,8,EMPTY,EMPTY,complete
+inspect_inventory,2020-03-28 03:02:01,68,[99],EMPTY,7,126,EMPTY,start
+inspect_inventory,2020-03-28 03:22:01,68,[99],EMPTY,7,126,EMPTY,complete
+confirm_payment,2020-03-28 03:22:43,68,EMPTY,6,8,EMPTY,81,complete
+create_rental,2020-03-28 10:23:02,69,"[3, 116]",73,EMPTY,EMPTY,EMPTY,complete
+create_payment,2020-03-28 10:24:03,69,EMPTY,73,10,EMPTY,82,complete
+create_rental,2020-03-28 10:45:32,70,"[166, 30]",78,EMPTY,EMPTY,EMPTY,complete
+create_payment,2020-03-28 10:46:24,70,EMPTY,78,1,EMPTY,83,complete
+confirm_payment,2020-03-28 11:54:24,70,EMPTY,78,2,EMPTY,83,complete
+confirm_rental,2020-03-28 11:55:49,70,EMPTY,78,6,EMPTY,EMPTY,complete
+confirm_payment,2020-03-28 21:50:03,69,EMPTY,73,19,EMPTY,82,complete
+confirm_rental,2020-03-28 21:51:22,69,EMPTY,73,15,EMPTY,EMPTY,complete
+create_rental,2020-03-29 11:33:30,71,"[107, 84]",5,EMPTY,EMPTY,EMPTY,complete
+create_payment,2020-03-29 11:34:22,71,EMPTY,5,20,EMPTY,84,complete
+lend_inventory,2020-03-30 03:31:49,70,"[166, 30]",78,5,EMPTY,EMPTY,complete
+confirm_payment,2020-03-30 03:41:22,71,EMPTY,5,20,EMPTY,84,complete
+confirm_rental,2020-03-30 03:42:47,71,EMPTY,5,20,EMPTY,EMPTY,complete
+create_rental,2020-03-30 04:54:55,72,"[113, 143]",74,EMPTY,EMPTY,EMPTY,complete
+create_payment,2020-03-30 04:55:33,72,EMPTY,74,13,EMPTY,85,complete
+return_inventory,2020-03-30 16:18:49,70,[166],78,6,EMPTY,EMPTY,complete
+inspect_inventory,2020-03-30 16:19:42,70,[166],EMPTY,5,129,EMPTY,start
+inspect_inventory,2020-03-30 16:36:42,70,[166],EMPTY,5,129,EMPTY,complete
+return_inventory,2020-03-30 16:37:27,70,[30],78,5,EMPTY,EMPTY,complete
+inspect_inventory,2020-03-30 16:38:41,70,[30],EMPTY,1,130,EMPTY,start
+inspect_inventory,2020-03-30 16:54:41,70,[30],EMPTY,1,130,EMPTY,complete
+lend_inventory,2020-03-30 19:14:22,69,"[3, 116]",73,10,EMPTY,EMPTY,complete
+confirm_payment,2020-03-31 02:58:33,72,EMPTY,74,13,EMPTY,85,complete
+confirm_rental,2020-03-31 02:59:41,72,EMPTY,74,18,EMPTY,EMPTY,complete
+lend_inventory,2020-03-31 22:30:47,71,"[107, 84]",5,20,EMPTY,EMPTY,complete
+lend_inventory,2020-04-01 16:11:41,72,"[113, 143]",74,18,EMPTY,EMPTY,complete
+return_inventory,2020-04-01 16:34:22,69,[3],73,10,EMPTY,EMPTY,complete
+inspect_inventory,2020-04-01 16:35:36,69,[3],EMPTY,15,127,EMPTY,start
+inspect_inventory,2020-04-01 16:53:36,69,[3],EMPTY,15,127,EMPTY,complete
+return_inventory,2020-04-01 16:54:44,69,[116],73,15,EMPTY,EMPTY,complete
+inspect_inventory,2020-04-01 16:55:46,69,[116],EMPTY,19,128,EMPTY,start
+inspect_inventory,2020-04-01 17:05:46,69,[116],EMPTY,19,128,EMPTY,complete
+return_inventory,2020-04-02 12:18:47,71,[107],5,20,EMPTY,EMPTY,complete
+inspect_inventory,2020-04-02 12:19:37,71,[107],EMPTY,20,131,EMPTY,start
+inspect_inventory,2020-04-02 12:31:37,71,[107],EMPTY,20,131,EMPTY,complete
+return_inventory,2020-04-02 12:32:29,71,[84],5,20,EMPTY,EMPTY,complete
+inspect_inventory,2020-04-02 12:33:31,71,[84],EMPTY,20,132,EMPTY,start
+inspect_inventory,2020-04-02 12:50:31,71,[84],EMPTY,20,132,EMPTY,complete
+return_inventory,2020-04-03 15:48:41,72,[113],74,18,EMPTY,EMPTY,complete
+inspect_inventory,2020-04-03 15:49:47,72,[113],EMPTY,4,133,EMPTY,start
+inspect_inventory,2020-04-03 16:09:47,72,[113],EMPTY,4,133,EMPTY,complete
+create_payment,2020-04-03 16:10:52,72,EMPTY,74,13,EMPTY,86,complete
+return_inventory,2020-04-03 16:11:25,72,[143],74,13,EMPTY,EMPTY,complete
+inspect_inventory,2020-04-03 16:12:30,72,[143],EMPTY,13,134,EMPTY,start
+inspect_inventory,2020-04-03 16:32:30,72,[143],EMPTY,13,134,EMPTY,complete
+confirm_payment,2020-04-03 16:33:29,72,EMPTY,74,4,EMPTY,86,complete
+create_rental,2020-04-03 22:14:55,73,"[140, 116]",45,EMPTY,EMPTY,EMPTY,complete
+create_payment,2020-04-03 22:15:41,73,EMPTY,45,15,EMPTY,87,complete
+create_rental,2020-04-04 19:53:37,74,"[104, 3]",17,EMPTY,EMPTY,EMPTY,complete
+create_payment,2020-04-04 19:54:25,74,EMPTY,17,3,EMPTY,88,complete
+confirm_payment,2020-04-04 20:40:25,74,EMPTY,17,3,EMPTY,88,complete
+confirm_rental,2020-04-04 20:41:28,74,EMPTY,17,19,EMPTY,EMPTY,complete
+confirm_payment,2020-04-04 21:24:41,73,EMPTY,45,15,EMPTY,87,complete
+confirm_rental,2020-04-04 21:25:17,73,EMPTY,45,19,EMPTY,EMPTY,complete
+create_rental,2020-04-04 21:51:00,75,"[153, 7]",36,EMPTY,EMPTY,EMPTY,complete
+create_payment,2020-04-04 21:52:37,75,EMPTY,36,1,EMPTY,89,complete
+create_rental,2020-04-04 22:58:54,76,"[89, 131]",33,EMPTY,EMPTY,EMPTY,complete
+create_payment,2020-04-04 22:59:44,76,EMPTY,33,20,EMPTY,90,complete
+confirm_payment,2020-04-05 00:33:44,76,EMPTY,33,20,EMPTY,90,complete
+confirm_rental,2020-04-05 00:35:01,76,EMPTY,33,20,EMPTY,EMPTY,complete
+lend_inventory,2020-04-05 01:07:28,74,"[104, 3]",17,10,EMPTY,EMPTY,complete
+confirm_payment,2020-04-05 05:28:37,75,EMPTY,36,5,EMPTY,89,complete
+confirm_rental,2020-04-05 05:29:07,75,EMPTY,36,2,EMPTY,EMPTY,complete
+lend_inventory,2020-04-05 07:48:07,75,"[153, 7]",36,1,EMPTY,EMPTY,complete
+return_inventory,2020-04-05 10:05:28,74,[104],17,19,EMPTY,EMPTY,complete
+inspect_inventory,2020-04-05 10:07:05,74,[104],EMPTY,19,137,EMPTY,start
+inspect_inventory,2020-04-05 10:18:05,74,[104],EMPTY,19,137,EMPTY,complete
+return_inventory,2020-04-05 10:19:34,74,[3],17,19,EMPTY,EMPTY,complete
+inspect_inventory,2020-04-05 10:20:18,74,[3],EMPTY,10,138,EMPTY,start
+inspect_inventory,2020-04-05 10:37:18,74,[3],EMPTY,10,138,EMPTY,complete
+lend_inventory,2020-04-05 17:34:17,73,"[140, 116]",45,12,EMPTY,EMPTY,complete
+return_inventory,2020-04-05 22:35:07,75,[153],36,2,EMPTY,EMPTY,complete
+inspect_inventory,2020-04-05 22:36:32,75,[153],EMPTY,6,139,EMPTY,start
+inspect_inventory,2020-04-05 22:50:32,75,[153],EMPTY,6,139,EMPTY,complete
+return_inventory,2020-04-05 22:52:09,75,[7],36,2,EMPTY,EMPTY,complete
+inspect_inventory,2020-04-05 22:53:01,75,[7],EMPTY,5,140,EMPTY,start
+inspect_inventory,2020-04-05 23:03:01,75,[7],EMPTY,5,140,EMPTY,complete
+return_inventory,2020-04-07 05:03:17,73,[140],45,12,EMPTY,EMPTY,complete
+inspect_inventory,2020-04-07 05:03:55,73,[140],EMPTY,19,135,EMPTY,start
+inspect_inventory,2020-04-07 05:17:55,73,[140],EMPTY,19,135,EMPTY,complete
+return_inventory,2020-04-07 05:19:01,73,[116],45,10,EMPTY,EMPTY,complete
+inspect_inventory,2020-04-07 05:20:02,73,[116],EMPTY,19,136,EMPTY,start
+inspect_inventory,2020-04-07 05:35:02,73,[116],EMPTY,19,136,EMPTY,complete
+lend_inventory,2020-04-09 01:24:01,76,"[89, 131]",33,20,EMPTY,EMPTY,complete
+return_inventory,2020-04-09 01:45:01,76,[89],33,20,EMPTY,EMPTY,complete
+inspect_inventory,2020-04-09 01:46:14,76,[89],EMPTY,20,141,EMPTY,start
+inspect_inventory,2020-04-09 02:00:14,76,[89],EMPTY,20,141,EMPTY,complete
+create_payment,2020-04-09 02:01:46,76,EMPTY,33,20,EMPTY,91,complete
+return_inventory,2020-04-09 02:02:37,76,[131],33,20,EMPTY,EMPTY,complete
+inspect_inventory,2020-04-09 02:03:38,76,[131],EMPTY,20,142,EMPTY,start
+inspect_inventory,2020-04-09 02:22:38,76,[131],EMPTY,20,142,EMPTY,complete
+confirm_payment,2020-04-09 02:23:08,76,EMPTY,33,20,EMPTY,91,complete
+create_rental,2020-04-09 11:03:21,77,"[13, 86]",67,EMPTY,EMPTY,EMPTY,complete
+create_payment,2020-04-09 11:03:59,77,EMPTY,67,4,EMPTY,92,complete
+confirm_payment,2020-04-09 13:06:59,77,EMPTY,67,13,EMPTY,92,complete
+confirm_rental,2020-04-09 13:08:24,77,EMPTY,67,18,EMPTY,EMPTY,complete
+create_rental,2020-04-10 07:10:01,78,"[98, 119]",63,EMPTY,EMPTY,EMPTY,complete
+create_payment,2020-04-10 07:11:35,78,EMPTY,63,14,EMPTY,93,complete
+confirm_payment,2020-04-11 04:55:35,78,EMPTY,63,14,EMPTY,93,complete
+confirm_rental,2020-04-11 04:57:02,78,EMPTY,63,17,EMPTY,EMPTY,complete
+lend_inventory,2020-04-12 09:31:24,77,"[13, 86]",67,4,EMPTY,EMPTY,complete
+lend_inventory,2020-04-12 11:40:02,78,"[98, 119]",63,14,EMPTY,EMPTY,complete
+return_inventory,2020-04-13 06:03:24,77,[13],67,18,EMPTY,EMPTY,complete
+inspect_inventory,2020-04-13 06:04:29,77,[13],EMPTY,18,143,EMPTY,start
+inspect_inventory,2020-04-13 06:16:29,77,[13],EMPTY,18,143,EMPTY,complete
+return_inventory,2020-04-13 06:17:20,77,[86],67,13,EMPTY,EMPTY,complete
+inspect_inventory,2020-04-13 06:18:16,77,[86],EMPTY,4,144,EMPTY,start
+inspect_inventory,2020-04-13 06:30:16,77,[86],EMPTY,4,144,EMPTY,complete
+return_inventory,2020-04-15 07:10:02,78,[98],63,14,EMPTY,EMPTY,complete
+inspect_inventory,2020-04-15 07:11:24,78,[98],EMPTY,11,145,EMPTY,start
+inspect_inventory,2020-04-15 07:30:24,78,[98],EMPTY,11,145,EMPTY,complete
+return_inventory,2020-04-15 07:31:28,78,[119],63,14,EMPTY,EMPTY,complete
+inspect_inventory,2020-04-15 07:32:32,78,[119],EMPTY,17,146,EMPTY,start
+inspect_inventory,2020-04-15 07:52:32,78,[119],EMPTY,17,146,EMPTY,complete
+create_payment,2020-04-15 07:53:02,78,EMPTY,63,11,EMPTY,94,complete
+confirm_payment,2020-04-15 07:54:17,78,EMPTY,63,11,EMPTY,94,complete
+create_rental,2020-04-16 07:34:05,79,"[37, 78]",23,EMPTY,EMPTY,EMPTY,complete
+create_payment,2020-04-16 07:34:46,79,EMPTY,23,16,EMPTY,95,complete
+create_rental,2020-04-16 08:53:47,80,"[82, 22]",36,EMPTY,EMPTY,EMPTY,complete
+create_payment,2020-04-16 08:54:19,80,EMPTY,36,2,EMPTY,96,complete
+confirm_payment,2020-04-16 22:42:46,79,EMPTY,23,16,EMPTY,95,complete
+confirm_rental,2020-04-16 22:43:27,79,EMPTY,23,16,EMPTY,EMPTY,complete
+create_rental,2020-04-16 23:30:47,81,"[113, 75]",4,EMPTY,EMPTY,EMPTY,complete
+create_payment,2020-04-16 23:31:36,81,EMPTY,4,13,EMPTY,97,complete
+create_rental,2020-04-17 01:41:16,82,"[72, 146]",47,EMPTY,EMPTY,EMPTY,complete
+create_payment,2020-04-17 01:42:04,82,EMPTY,47,20,EMPTY,98,complete
+confirm_payment,2020-04-17 05:20:19,80,EMPTY,36,5,EMPTY,96,complete
+confirm_rental,2020-04-17 05:21:48,80,EMPTY,36,6,EMPTY,EMPTY,complete
+confirm_payment,2020-04-17 15:26:04,82,EMPTY,47,20,EMPTY,98,complete
+confirm_rental,2020-04-17 15:26:39,82,EMPTY,47,20,EMPTY,EMPTY,complete
+confirm_payment,2020-04-17 17:03:36,81,EMPTY,4,4,EMPTY,97,complete
+confirm_rental,2020-04-17 17:04:53,81,EMPTY,4,4,EMPTY,EMPTY,complete
+lend_inventory,2020-04-17 22:53:27,79,"[37, 78]",23,16,EMPTY,EMPTY,complete
+create_rental,2020-04-17 23:48:06,83,"[120, 150]",72,EMPTY,EMPTY,EMPTY,complete
+create_payment,2020-04-17 23:49:18,83,EMPTY,72,16,EMPTY,99,complete
+return_inventory,2020-04-18 15:02:27,79,[37],23,16,EMPTY,EMPTY,complete
+inspect_inventory,2020-04-18 15:04:01,79,[37],EMPTY,16,147,EMPTY,start
+inspect_inventory,2020-04-18 15:19:01,79,[37],EMPTY,16,147,EMPTY,complete
+return_inventory,2020-04-18 15:19:43,79,[78],23,16,EMPTY,EMPTY,complete
+inspect_inventory,2020-04-18 15:21:10,79,[78],EMPTY,16,148,EMPTY,start
+create_rental,2020-04-18 15:30:17,84,"[42, 46]",17,EMPTY,EMPTY,EMPTY,complete
+create_payment,2020-04-18 15:31:03,84,EMPTY,17,19,EMPTY,100,complete
+inspect_inventory,2020-04-18 15:40:10,79,[78],EMPTY,16,148,EMPTY,complete
+confirm_payment,2020-04-18 20:34:18,83,EMPTY,72,16,EMPTY,99,complete
+confirm_rental,2020-04-18 20:35:11,83,EMPTY,72,16,EMPTY,EMPTY,complete
+lend_inventory,2020-04-18 22:37:53,81,"[113, 75]",4,4,EMPTY,EMPTY,complete
+create_rental,2020-04-19 00:47:52,85,"[25, 115]",32,EMPTY,EMPTY,EMPTY,complete
+create_payment,2020-04-19 00:48:56,85,EMPTY,32,18,EMPTY,101,complete
+lend_inventory,2020-04-19 01:38:39,82,"[72, 146]",47,20,EMPTY,EMPTY,complete
+cancel_inventory,2020-04-19 02:47:15,83,[120],72,EMPTY,EMPTY,EMPTY,complete
+confirm_payment,2020-04-19 07:21:56,85,EMPTY,32,13,EMPTY,101,complete
+confirm_rental,2020-04-19 07:22:31,85,EMPTY,32,13,EMPTY,EMPTY,complete
+lend_inventory,2020-04-19 11:52:48,80,"[82, 22]",36,6,EMPTY,EMPTY,complete
+confirm_payment,2020-04-19 15:37:03,84,EMPTY,17,3,EMPTY,100,complete
+confirm_rental,2020-04-19 15:37:40,84,EMPTY,17,3,EMPTY,EMPTY,complete
+cancel_inventory,2020-04-19 20:02:11,85,[25],32,EMPTY,EMPTY,EMPTY,complete
+lend_inventory,2020-04-20 22:57:11,85,[115],32,18,EMPTY,EMPTY,complete
+lend_inventory,2020-04-21 04:00:15,83,[150],72,16,EMPTY,EMPTY,complete
+return_inventory,2020-04-21 05:30:53,81,[113],4,13,EMPTY,EMPTY,complete
+inspect_inventory,2020-04-21 05:32:10,81,[113],EMPTY,4,151,EMPTY,start
+inspect_inventory,2020-04-21 05:50:10,81,[113],EMPTY,4,151,EMPTY,complete
+return_inventory,2020-04-21 05:51:17,81,[75],4,13,EMPTY,EMPTY,complete
+inspect_inventory,2020-04-21 05:51:54,81,[75],EMPTY,18,152,EMPTY,start
+inspect_inventory,2020-04-21 06:05:54,81,[75],EMPTY,18,152,EMPTY,complete
+return_inventory,2020-04-21 06:12:11,85,[115],32,18,EMPTY,EMPTY,complete
+inspect_inventory,2020-04-21 06:13:36,85,[115],EMPTY,13,158,EMPTY,start
+inspect_inventory,2020-04-21 06:31:36,85,[115],EMPTY,13,158,EMPTY,complete
+create_payment,2020-04-21 06:32:43,85,EMPTY,32,4,EMPTY,102,complete
+confirm_payment,2020-04-21 06:34:18,85,EMPTY,32,13,EMPTY,102,complete
+return_inventory,2020-04-21 08:45:48,80,[82],36,1,EMPTY,EMPTY,complete
+inspect_inventory,2020-04-21 08:47:22,80,[82],EMPTY,2,149,EMPTY,start
+inspect_inventory,2020-04-21 09:07:22,80,[82],EMPTY,2,149,EMPTY,complete
+return_inventory,2020-04-21 09:07:54,80,[22],36,5,EMPTY,EMPTY,complete
+inspect_inventory,2020-04-21 09:08:32,80,[22],EMPTY,6,150,EMPTY,start
+inspect_inventory,2020-04-21 09:23:32,80,[22],EMPTY,6,150,EMPTY,complete
+create_rental,2020-04-21 10:36:00,86,"[120, 162]",79,EMPTY,EMPTY,EMPTY,complete
+create_payment,2020-04-21 10:36:36,86,EMPTY,79,16,EMPTY,103,complete
+create_rental,2020-04-22 02:09:34,87,"[52, 14]",54,EMPTY,EMPTY,EMPTY,complete
+create_payment,2020-04-22 02:10:09,87,EMPTY,54,20,EMPTY,104,complete
+return_inventory,2020-04-22 02:36:39,82,[72],47,20,EMPTY,EMPTY,complete
+inspect_inventory,2020-04-22 02:38:18,82,[72],EMPTY,20,153,EMPTY,start
+inspect_inventory,2020-04-22 02:56:18,82,[72],EMPTY,20,153,EMPTY,complete
+return_inventory,2020-04-22 02:57:09,82,[146],47,20,EMPTY,EMPTY,complete
+inspect_inventory,2020-04-22 02:57:51,82,[146],EMPTY,20,154,EMPTY,start
+inspect_inventory,2020-04-22 03:09:51,82,[146],EMPTY,20,154,EMPTY,complete
+confirm_payment,2020-04-22 04:41:36,86,EMPTY,79,16,EMPTY,103,complete
+confirm_rental,2020-04-22 04:42:11,86,EMPTY,79,16,EMPTY,EMPTY,complete
+create_rental,2020-04-22 07:03:09,88,"[56, 95]",40,EMPTY,EMPTY,EMPTY,complete
+create_payment,2020-04-22 07:03:52,88,EMPTY,40,20,EMPTY,105,complete
+return_inventory,2020-04-22 10:15:15,83,[150],72,16,EMPTY,EMPTY,complete
+inspect_inventory,2020-04-22 10:16:03,83,[150],EMPTY,16,155,EMPTY,start
+inspect_inventory,2020-04-22 10:29:03,83,[150],EMPTY,16,155,EMPTY,complete
+lend_inventory,2020-04-22 13:33:40,84,"[42, 46]",17,15,EMPTY,EMPTY,complete
+confirm_payment,2020-04-22 18:19:09,87,EMPTY,54,20,EMPTY,104,complete
+confirm_payment,2020-04-22 18:19:52,88,EMPTY,40,20,EMPTY,105,complete
+confirm_rental,2020-04-22 18:20:23,88,EMPTY,40,20,EMPTY,EMPTY,complete
+confirm_rental,2020-04-22 18:20:37,87,EMPTY,54,20,EMPTY,EMPTY,complete
+create_rental,2020-04-23 05:27:00,89,"[96, 125]",39,EMPTY,EMPTY,EMPTY,complete
+create_payment,2020-04-23 05:27:35,89,EMPTY,39,18,EMPTY,106,complete
+lend_inventory,2020-04-23 08:36:11,86,"[120, 162]",79,16,EMPTY,EMPTY,complete
+create_rental,2020-04-23 22:28:50,90,"[120, 78]",16,EMPTY,EMPTY,EMPTY,complete
+create_payment,2020-04-23 22:29:44,90,EMPTY,16,16,EMPTY,107,complete
+return_inventory,2020-04-24 05:14:40,84,[42],17,12,EMPTY,EMPTY,complete
+inspect_inventory,2020-04-24 05:15:53,84,[42],EMPTY,12,156,EMPTY,start
+inspect_inventory,2020-04-24 05:26:53,84,[42],EMPTY,12,156,EMPTY,complete
+return_inventory,2020-04-24 05:27:46,84,[46],17,15,EMPTY,EMPTY,complete
+inspect_inventory,2020-04-24 05:29:01,84,[46],EMPTY,15,157,EMPTY,start
+confirm_payment,2020-04-24 05:36:35,89,EMPTY,39,13,EMPTY,106,complete
+confirm_rental,2020-04-24 05:37:25,89,EMPTY,39,13,EMPTY,EMPTY,complete
+inspect_inventory,2020-04-24 05:39:01,84,[46],EMPTY,15,157,EMPTY,complete
+return_inventory,2020-04-24 12:13:11,86,[120],79,16,EMPTY,EMPTY,complete
+inspect_inventory,2020-04-24 12:14:20,86,[120],EMPTY,16,159,EMPTY,start
+inspect_inventory,2020-04-24 12:27:20,86,[120],EMPTY,16,159,EMPTY,complete
+return_inventory,2020-04-24 12:28:50,86,[162],79,16,EMPTY,EMPTY,complete
+inspect_inventory,2020-04-24 12:30:06,86,[162],EMPTY,16,160,EMPTY,start
+inspect_inventory,2020-04-24 12:46:06,86,[162],EMPTY,16,160,EMPTY,complete
+confirm_payment,2020-04-24 18:31:44,90,EMPTY,16,16,EMPTY,107,complete
+confirm_rental,2020-04-24 18:32:42,90,EMPTY,16,16,EMPTY,EMPTY,complete
+lend_inventory,2020-04-25 02:54:37,87,"[52, 14]",54,20,EMPTY,EMPTY,complete
+lend_inventory,2020-04-25 07:25:25,89,"[96, 125]",39,13,EMPTY,EMPTY,complete
+lend_inventory,2020-04-25 11:45:23,88,"[56, 95]",40,20,EMPTY,EMPTY,complete
+return_inventory,2020-04-25 13:20:23,88,[56],40,20,EMPTY,EMPTY,complete
+inspect_inventory,2020-04-25 13:21:40,88,[56],EMPTY,20,163,EMPTY,start
+inspect_inventory,2020-04-25 13:31:40,88,[56],EMPTY,20,163,EMPTY,complete
+return_inventory,2020-04-25 13:32:48,88,[95],40,20,EMPTY,EMPTY,complete
+inspect_inventory,2020-04-25 13:33:45,88,[95],EMPTY,20,164,EMPTY,start
+inspect_inventory,2020-04-25 13:48:45,88,[95],EMPTY,20,164,EMPTY,complete
+return_inventory,2020-04-26 06:42:37,87,[52],54,20,EMPTY,EMPTY,complete
+inspect_inventory,2020-04-26 06:43:18,87,[52],EMPTY,20,161,EMPTY,start
+inspect_inventory,2020-04-26 06:53:18,87,[52],EMPTY,20,161,EMPTY,complete
+return_inventory,2020-04-26 06:54:06,87,[14],54,20,EMPTY,EMPTY,complete
+inspect_inventory,2020-04-26 06:55:07,87,[14],EMPTY,20,162,EMPTY,start
+inspect_inventory,2020-04-26 07:11:07,87,[14],EMPTY,20,162,EMPTY,complete
+return_inventory,2020-04-26 10:55:25,89,[96],39,13,EMPTY,EMPTY,complete
+inspect_inventory,2020-04-26 10:56:08,89,[96],EMPTY,4,165,EMPTY,start
+inspect_inventory,2020-04-26 11:10:08,89,[96],EMPTY,4,165,EMPTY,complete
+return_inventory,2020-04-26 11:11:31,89,[125],39,4,EMPTY,EMPTY,complete
+inspect_inventory,2020-04-26 11:13:07,89,[125],EMPTY,18,166,EMPTY,start
+inspect_inventory,2020-04-26 11:28:07,89,[125],EMPTY,18,166,EMPTY,complete
+lend_inventory,2020-04-26 16:09:42,90,"[120, 78]",16,16,EMPTY,EMPTY,complete
+return_inventory,2020-04-27 03:33:42,90,[120],16,16,EMPTY,EMPTY,complete
+inspect_inventory,2020-04-27 03:35:22,90,[120],EMPTY,16,167,EMPTY,start
+inspect_inventory,2020-04-27 03:52:22,90,[120],EMPTY,16,167,EMPTY,complete
+create_payment,2020-04-27 03:53:10,90,EMPTY,16,16,EMPTY,108,complete
+return_inventory,2020-04-27 03:53:52,90,[78],16,16,EMPTY,EMPTY,complete
+inspect_inventory,2020-04-27 03:55:08,90,[78],EMPTY,16,168,EMPTY,start
+inspect_inventory,2020-04-27 04:10:08,90,[78],EMPTY,16,168,EMPTY,complete
+confirm_payment,2020-04-27 04:11:03,90,EMPTY,16,16,EMPTY,108,complete
+create_rental,2020-04-27 08:25:21,91,"[153, 129]",71,EMPTY,EMPTY,EMPTY,complete
+create_payment,2020-04-27 08:26:34,91,EMPTY,71,6,EMPTY,109,complete
+confirm_payment,2020-04-28 06:49:34,91,EMPTY,71,5,EMPTY,109,complete
+confirm_rental,2020-04-28 06:51:05,91,EMPTY,71,6,EMPTY,EMPTY,complete
+lend_inventory,2020-05-01 05:11:05,91,"[153, 129]",71,1,EMPTY,EMPTY,complete
+return_inventory,2020-05-02 04:21:05,91,[153],71,1,EMPTY,EMPTY,complete
+inspect_inventory,2020-05-02 04:22:16,91,[153],EMPTY,2,169,EMPTY,start
+inspect_inventory,2020-05-02 04:33:16,91,[153],EMPTY,2,169,EMPTY,complete
+return_inventory,2020-05-02 04:34:21,91,[129],71,5,EMPTY,EMPTY,complete
+inspect_inventory,2020-05-02 04:35:46,91,[129],EMPTY,2,170,EMPTY,start
+inspect_inventory,2020-05-02 04:50:46,91,[129],EMPTY,2,170,EMPTY,complete
+create_payment,2020-05-02 04:51:22,91,EMPTY,71,2,EMPTY,110,complete
+confirm_payment,2020-05-02 04:52:34,91,EMPTY,71,6,EMPTY,110,complete
+create_rental,2020-05-02 12:49:49,92,"[120, 124]",30,EMPTY,EMPTY,EMPTY,complete
+create_payment,2020-05-02 12:50:43,92,EMPTY,30,16,EMPTY,111,complete
+create_rental,2020-05-03 02:17:21,93,"[54, 22]",8,EMPTY,EMPTY,EMPTY,complete
+create_payment,2020-05-03 02:18:27,93,EMPTY,8,6,EMPTY,112,complete
+confirm_payment,2020-05-03 08:57:43,92,EMPTY,30,16,EMPTY,111,complete
+confirm_rental,2020-05-03 08:58:44,92,EMPTY,30,16,EMPTY,EMPTY,complete
+create_rental,2020-05-03 19:56:35,94,"[160, 142]",57,EMPTY,EMPTY,EMPTY,complete
+create_payment,2020-05-03 19:58:10,94,EMPTY,57,6,EMPTY,113,complete
+confirm_payment,2020-05-04 02:44:27,93,EMPTY,8,5,EMPTY,112,complete
+confirm_rental,2020-05-04 02:45:10,93,EMPTY,8,2,EMPTY,EMPTY,complete
+create_rental,2020-05-04 16:46:18,95,"[101, 109]",63,EMPTY,EMPTY,EMPTY,complete
+create_payment,2020-05-04 16:47:32,95,EMPTY,63,11,EMPTY,114,complete
+confirm_payment,2020-05-04 18:46:10,94,EMPTY,57,1,EMPTY,113,complete
+confirm_rental,2020-05-04 18:46:45,94,EMPTY,57,1,EMPTY,EMPTY,complete
+create_rental,2020-05-04 23:03:12,96,"[75, 156]",67,EMPTY,EMPTY,EMPTY,complete
+create_payment,2020-05-04 23:04:07,96,EMPTY,67,13,EMPTY,115,complete
+confirm_payment,2020-05-05 00:51:32,95,EMPTY,63,17,EMPTY,114,complete
+confirm_rental,2020-05-05 00:52:44,95,EMPTY,63,14,EMPTY,EMPTY,complete
+lend_inventory,2020-05-05 13:37:10,93,"[54, 22]",8,5,EMPTY,EMPTY,complete
+lend_inventory,2020-05-05 16:14:44,92,"[120, 124]",30,16,EMPTY,EMPTY,complete
+confirm_payment,2020-05-05 20:14:07,96,EMPTY,67,4,EMPTY,115,complete
+confirm_rental,2020-05-05 20:14:45,96,EMPTY,67,18,EMPTY,EMPTY,complete
+lend_inventory,2020-05-06 00:10:45,94,"[160, 142]",57,2,EMPTY,EMPTY,complete
+return_inventory,2020-05-06 04:55:45,94,[160],57,5,EMPTY,EMPTY,complete
+inspect_inventory,2020-05-06 04:57:03,94,[160],EMPTY,5,175,EMPTY,start
+inspect_inventory,2020-05-06 05:14:03,94,[160],EMPTY,5,175,EMPTY,complete
+return_inventory,2020-05-06 05:15:41,94,[142],57,2,EMPTY,EMPTY,complete
+inspect_inventory,2020-05-06 05:17:11,94,[142],EMPTY,6,176,EMPTY,start
+inspect_inventory,2020-05-06 05:33:11,94,[142],EMPTY,6,176,EMPTY,complete
+return_inventory,2020-05-06 09:43:44,92,[120],30,16,EMPTY,EMPTY,complete
+inspect_inventory,2020-05-06 09:45:18,92,[120],EMPTY,16,171,EMPTY,start
+inspect_inventory,2020-05-06 09:55:18,92,[120],EMPTY,16,171,EMPTY,complete
+return_inventory,2020-05-06 09:55:53,92,[124],30,16,EMPTY,EMPTY,complete
+inspect_inventory,2020-05-06 09:57:17,92,[124],EMPTY,16,172,EMPTY,start
+inspect_inventory,2020-05-06 10:14:17,92,[124],EMPTY,16,172,EMPTY,complete
+return_inventory,2020-05-06 19:49:10,93,[54],8,6,EMPTY,EMPTY,complete
+inspect_inventory,2020-05-06 19:50:11,93,[54],EMPTY,6,173,EMPTY,start
+inspect_inventory,2020-05-06 20:01:11,93,[54],EMPTY,6,173,EMPTY,complete
+return_inventory,2020-05-06 20:01:42,93,[22],8,6,EMPTY,EMPTY,complete
+inspect_inventory,2020-05-06 20:03:20,93,[22],EMPTY,2,174,EMPTY,start
+inspect_inventory,2020-05-06 20:15:20,93,[22],EMPTY,2,174,EMPTY,complete
+lend_inventory,2020-05-07 21:51:44,95,"[101, 109]",63,14,EMPTY,EMPTY,complete
+return_inventory,2020-05-08 07:11:44,95,[101],63,14,EMPTY,EMPTY,complete
+inspect_inventory,2020-05-08 07:13:16,95,[101],EMPTY,17,177,EMPTY,start
+inspect_inventory,2020-05-08 07:30:16,95,[101],EMPTY,17,177,EMPTY,complete
+return_inventory,2020-05-08 07:30:59,95,[109],63,14,EMPTY,EMPTY,complete
+inspect_inventory,2020-05-08 07:32:32,95,[109],EMPTY,11,178,EMPTY,start
+inspect_inventory,2020-05-08 07:52:32,95,[109],EMPTY,11,178,EMPTY,complete
+lend_inventory,2020-05-08 21:05:45,96,"[75, 156]",67,4,EMPTY,EMPTY,complete
+return_inventory,2020-05-11 02:52:45,96,[75],67,4,EMPTY,EMPTY,complete
+inspect_inventory,2020-05-11 02:54:05,96,[75],EMPTY,13,179,EMPTY,start
+inspect_inventory,2020-05-11 03:09:05,96,[75],EMPTY,13,179,EMPTY,complete
+return_inventory,2020-05-11 03:10:44,96,[156],67,4,EMPTY,EMPTY,complete
+inspect_inventory,2020-05-11 03:11:14,96,[156],EMPTY,13,180,EMPTY,start
+inspect_inventory,2020-05-11 03:30:14,96,[156],EMPTY,13,180,EMPTY,complete
+create_payment,2020-05-11 03:31:19,96,EMPTY,67,18,EMPTY,116,complete
+confirm_payment,2020-05-11 03:32:58,96,EMPTY,67,18,EMPTY,116,complete
+create_rental,2020-05-11 04:24:48,97,"[57, 118]",69,EMPTY,EMPTY,EMPTY,complete
+create_payment,2020-05-11 04:25:54,97,EMPTY,69,7,EMPTY,117,complete
+confirm_payment,2020-05-11 18:28:54,97,EMPTY,69,7,EMPTY,117,complete
+confirm_rental,2020-05-11 18:30:19,97,EMPTY,69,9,EMPTY,EMPTY,complete
+create_rental,2020-05-12 04:56:19,98,"[140, 108]",3,EMPTY,EMPTY,EMPTY,complete
+create_payment,2020-05-12 04:57:59,98,EMPTY,3,12,EMPTY,118,complete
+create_rental,2020-05-12 13:45:26,99,"[139, 23]",55,EMPTY,EMPTY,EMPTY,complete
+create_payment,2020-05-12 13:47:06,99,EMPTY,55,9,EMPTY,119,complete
+confirm_payment,2020-05-12 21:29:59,98,EMPTY,3,10,EMPTY,118,complete
+confirm_rental,2020-05-12 21:31:36,98,EMPTY,3,12,EMPTY,EMPTY,complete
+create_rental,2020-05-12 21:59:11,100,"[152, 140]",52,EMPTY,EMPTY,EMPTY,complete
+create_payment,2020-05-12 22:00:16,100,EMPTY,52,10,EMPTY,120,complete
+lend_inventory,2020-05-13 01:25:19,97,"[57, 118]",69,9,EMPTY,EMPTY,complete
+confirm_payment,2020-05-13 06:03:06,99,EMPTY,55,7,EMPTY,119,complete
+confirm_rental,2020-05-13 06:04:32,99,EMPTY,55,9,EMPTY,EMPTY,complete
+create_rental,2020-05-13 08:01:47,101,"[21, 55]",55,EMPTY,EMPTY,EMPTY,complete
+create_payment,2020-05-13 08:02:38,101,EMPTY,55,7,EMPTY,121,complete
+create_rental,2020-05-13 16:10:55,102,"[114, 130]",76,EMPTY,EMPTY,EMPTY,complete
+create_payment,2020-05-13 16:11:28,102,EMPTY,76,9,EMPTY,122,complete
+confirm_payment,2020-05-13 18:22:16,100,EMPTY,52,12,EMPTY,120,complete
+confirm_rental,2020-05-13 18:23:22,100,EMPTY,52,12,EMPTY,EMPTY,complete
+confirm_payment,2020-05-13 19:16:28,102,EMPTY,76,7,EMPTY,122,complete
+confirm_rental,2020-05-13 19:17:23,102,EMPTY,76,7,EMPTY,EMPTY,complete
+create_rental,2020-05-13 21:34:10,103,"[124, 71]",79,EMPTY,EMPTY,EMPTY,complete
+create_payment,2020-05-13 21:35:03,103,EMPTY,79,16,EMPTY,123,complete
+return_inventory,2020-05-13 21:55:19,97,[57],69,8,EMPTY,EMPTY,complete
+inspect_inventory,2020-05-13 21:56:48,97,[57],EMPTY,9,181,EMPTY,start
+inspect_inventory,2020-05-13 22:15:48,97,[57],EMPTY,9,181,EMPTY,complete
+return_inventory,2020-05-13 22:16:59,97,[118],69,7,EMPTY,EMPTY,complete
+inspect_inventory,2020-05-13 22:18:08,97,[118],EMPTY,8,182,EMPTY,start
+inspect_inventory,2020-05-13 22:28:08,97,[118],EMPTY,8,182,EMPTY,complete
+lend_inventory,2020-05-13 22:55:32,99,"[139, 23]",55,8,EMPTY,EMPTY,complete
+confirm_payment,2020-05-14 02:29:03,103,EMPTY,79,16,EMPTY,123,complete
+confirm_rental,2020-05-14 02:29:51,103,EMPTY,79,16,EMPTY,EMPTY,complete
+confirm_payment,2020-05-14 07:00:38,101,EMPTY,55,9,EMPTY,121,complete
+confirm_rental,2020-05-14 07:02:11,101,EMPTY,55,7,EMPTY,EMPTY,complete
+lend_inventory,2020-05-15 03:32:51,103,"[124, 71]",79,16,EMPTY,EMPTY,complete
+lend_inventory,2020-05-15 13:08:22,100,"[152, 140]",52,3,EMPTY,EMPTY,complete
+lend_inventory,2020-05-15 17:15:36,98,"[140, 108]",3,12,EMPTY,EMPTY,complete
+return_inventory,2020-05-16 04:00:32,99,[139],55,8,EMPTY,EMPTY,complete
+inspect_inventory,2020-05-16 04:02:03,99,[139],EMPTY,8,185,EMPTY,start
+inspect_inventory,2020-05-16 04:14:03,99,[139],EMPTY,8,185,EMPTY,complete
+return_inventory,2020-05-16 04:15:27,99,[23],55,9,EMPTY,EMPTY,complete
+inspect_inventory,2020-05-16 04:16:55,99,[23],EMPTY,7,186,EMPTY,start
+inspect_inventory,2020-05-16 04:32:55,99,[23],EMPTY,7,186,EMPTY,complete
+lend_inventory,2020-05-16 10:14:11,101,"[21, 55]",55,7,EMPTY,EMPTY,complete
+lend_inventory,2020-05-16 14:49:23,102,"[114, 130]",76,7,EMPTY,EMPTY,complete
+return_inventory,2020-05-16 15:45:22,100,[152],52,10,EMPTY,EMPTY,complete
+inspect_inventory,2020-05-16 15:46:34,100,[152],EMPTY,12,187,EMPTY,start
+inspect_inventory,2020-05-16 16:01:34,100,[152],EMPTY,12,187,EMPTY,complete
+return_inventory,2020-05-16 16:02:06,100,[140],52,12,EMPTY,EMPTY,complete
+inspect_inventory,2020-05-16 16:02:41,100,[140],EMPTY,19,188,EMPTY,start
+inspect_inventory,2020-05-16 16:13:41,100,[140],EMPTY,19,188,EMPTY,complete
+return_inventory,2020-05-16 20:18:36,98,[140],3,15,EMPTY,EMPTY,complete
+inspect_inventory,2020-05-16 20:19:11,98,[140],EMPTY,12,183,EMPTY,start
+inspect_inventory,2020-05-16 20:32:11,98,[140],EMPTY,12,183,EMPTY,complete
+return_inventory,2020-05-16 20:32:53,98,[108],3,19,EMPTY,EMPTY,complete
+inspect_inventory,2020-05-16 20:33:32,98,[108],EMPTY,3,184,EMPTY,start
+inspect_inventory,2020-05-16 20:52:32,98,[108],EMPTY,3,184,EMPTY,complete
+return_inventory,2020-05-17 02:23:11,101,[21],55,8,EMPTY,EMPTY,complete
+inspect_inventory,2020-05-17 02:24:27,101,[21],EMPTY,7,189,EMPTY,start
+return_inventory,2020-05-17 02:33:23,102,[114],76,7,EMPTY,EMPTY,complete
+inspect_inventory,2020-05-17 02:34:02,102,[114],EMPTY,7,191,EMPTY,start
+inspect_inventory,2020-05-17 02:42:27,101,[21],EMPTY,7,189,EMPTY,complete
+return_inventory,2020-05-17 02:44:07,101,[55],55,8,EMPTY,EMPTY,complete
+inspect_inventory,2020-05-17 02:44:42,101,[55],EMPTY,7,190,EMPTY,start
+inspect_inventory,2020-05-17 02:54:02,102,[114],EMPTY,7,191,EMPTY,complete
+return_inventory,2020-05-17 02:55:35,102,[130],76,8,EMPTY,EMPTY,complete
+inspect_inventory,2020-05-17 02:56:12,102,[130],EMPTY,9,192,EMPTY,start
+inspect_inventory,2020-05-17 02:57:42,101,[55],EMPTY,7,190,EMPTY,complete
+inspect_inventory,2020-05-17 03:08:12,102,[130],EMPTY,9,192,EMPTY,complete
+return_inventory,2020-05-17 16:12:51,103,[124],79,16,EMPTY,EMPTY,complete
+inspect_inventory,2020-05-17 16:13:26,103,[124],EMPTY,16,193,EMPTY,start
+inspect_inventory,2020-05-17 16:28:26,103,[124],EMPTY,16,193,EMPTY,complete
+create_payment,2020-05-17 16:29:37,103,EMPTY,79,16,EMPTY,124,complete
+return_inventory,2020-05-17 16:30:50,103,[71],79,16,EMPTY,EMPTY,complete
+inspect_inventory,2020-05-17 16:32:26,103,[71],EMPTY,16,194,EMPTY,start
+inspect_inventory,2020-05-17 16:45:26,103,[71],EMPTY,16,194,EMPTY,complete
+confirm_payment,2020-05-17 16:46:22,103,EMPTY,79,16,EMPTY,124,complete
+create_rental,2020-05-18 07:55:51,104,"[62, 119]",7,EMPTY,EMPTY,EMPTY,complete
+create_payment,2020-05-18 07:56:40,104,EMPTY,7,11,EMPTY,125,complete
+confirm_payment,2020-05-18 15:00:40,104,EMPTY,7,11,EMPTY,125,complete
+confirm_rental,2020-05-18 15:01:56,104,EMPTY,7,14,EMPTY,EMPTY,complete
+lend_inventory,2020-05-20 21:28:56,104,"[62, 119]",7,14,EMPTY,EMPTY,complete
+return_inventory,2020-05-21 09:14:56,104,[62],7,11,EMPTY,EMPTY,complete
+inspect_inventory,2020-05-21 09:16:28,104,[62],EMPTY,11,195,EMPTY,start
+inspect_inventory,2020-05-21 09:32:28,104,[62],EMPTY,11,195,EMPTY,complete
+return_inventory,2020-05-21 09:34:02,104,[119],7,17,EMPTY,EMPTY,complete
+inspect_inventory,2020-05-21 09:35:11,104,[119],EMPTY,14,196,EMPTY,start
+inspect_inventory,2020-05-21 09:48:11,104,[119],EMPTY,14,196,EMPTY,complete
+create_payment,2020-05-21 09:48:54,104,EMPTY,7,17,EMPTY,126,complete
+confirm_payment,2020-05-21 09:49:36,104,EMPTY,7,17,EMPTY,126,complete
+create_rental,2020-05-22 04:29:06,105,"[26, 92]",20,EMPTY,EMPTY,EMPTY,complete
+create_payment,2020-05-22 04:29:52,105,EMPTY,20,8,EMPTY,127,complete
+create_rental,2020-05-22 06:40:17,106,"[73, 90]",41,EMPTY,EMPTY,EMPTY,complete
+create_payment,2020-05-22 06:41:13,106,EMPTY,41,7,EMPTY,128,complete
+confirm_payment,2020-05-22 18:07:52,105,EMPTY,20,7,EMPTY,127,complete
+confirm_rental,2020-05-22 18:08:54,105,EMPTY,20,9,EMPTY,EMPTY,complete
+create_rental,2020-05-22 21:23:32,107,"[52, 12]",75,EMPTY,EMPTY,EMPTY,complete
+create_payment,2020-05-22 21:24:50,107,EMPTY,75,20,EMPTY,129,complete
+create_rental,2020-05-22 22:25:11,108,"[70, 39]",9,EMPTY,EMPTY,EMPTY,complete
+create_payment,2020-05-22 22:25:56,108,EMPTY,9,16,EMPTY,130,complete
+confirm_payment,2020-05-23 03:39:13,106,EMPTY,41,8,EMPTY,128,complete
+confirm_rental,2020-05-23 03:40:50,106,EMPTY,41,9,EMPTY,EMPTY,complete
+create_rental,2020-05-23 07:13:15,109,"[4, 143]",32,EMPTY,EMPTY,EMPTY,complete
+create_payment,2020-05-23 07:13:53,109,EMPTY,32,18,EMPTY,131,complete
+confirm_payment,2020-05-23 12:12:53,109,EMPTY,32,13,EMPTY,131,complete
+confirm_rental,2020-05-23 12:14:08,109,EMPTY,32,18,EMPTY,EMPTY,complete
+confirm_payment,2020-05-23 13:48:50,107,EMPTY,75,20,EMPTY,129,complete
+confirm_rental,2020-05-23 13:50:19,107,EMPTY,75,20,EMPTY,EMPTY,complete
+cancel_inventory,2020-05-23 15:17:47,109,[143],32,EMPTY,EMPTY,EMPTY,complete
+confirm_payment,2020-05-23 15:51:56,108,EMPTY,9,16,EMPTY,130,complete
+confirm_rental,2020-05-23 15:52:43,108,EMPTY,9,16,EMPTY,EMPTY,complete
+create_rental,2020-05-24 01:51:45,110,"[110, 7]",57,EMPTY,EMPTY,EMPTY,complete
+create_payment,2020-05-24 01:52:16,110,EMPTY,57,1,EMPTY,132,complete
+create_rental,2020-05-24 08:34:43,111,"[48, 101]",70,EMPTY,EMPTY,EMPTY,complete
+create_payment,2020-05-24 08:35:51,111,EMPTY,70,17,EMPTY,133,complete
+confirm_payment,2020-05-24 11:50:16,110,EMPTY,57,5,EMPTY,132,complete
+confirm_rental,2020-05-24 11:51:28,110,EMPTY,57,2,EMPTY,EMPTY,complete
+cancel_inventory,2020-05-24 22:02:42,110,[110],57,EMPTY,EMPTY,EMPTY,complete
+create_rental,2020-05-24 22:05:08,112,"[20, 22]",8,EMPTY,EMPTY,EMPTY,complete
+create_payment,2020-05-24 22:05:42,112,EMPTY,8,6,EMPTY,134,complete
+confirm_payment,2020-05-24 22:20:51,111,EMPTY,70,14,EMPTY,133,complete
+confirm_rental,2020-05-24 22:21:46,111,EMPTY,70,17,EMPTY,EMPTY,complete
+lend_inventory,2020-05-25 05:25:50,106,"[73, 90]",41,8,EMPTY,EMPTY,complete
+create_rental,2020-05-25 08:46:56,113,"[146, 138]",47,EMPTY,EMPTY,EMPTY,complete
+create_payment,2020-05-25 08:48:13,113,EMPTY,47,20,EMPTY,135,complete
+lend_inventory,2020-05-25 12:59:54,105,"[26, 92]",20,8,EMPTY,EMPTY,complete
+lend_inventory,2020-05-25 14:19:19,107,"[52, 12]",75,20,EMPTY,EMPTY,complete
+return_inventory,2020-05-25 14:36:50,106,[73],41,9,EMPTY,EMPTY,complete
+inspect_inventory,2020-05-25 14:38:19,106,[73],EMPTY,7,199,EMPTY,start
+inspect_inventory,2020-05-25 14:58:19,106,[73],EMPTY,7,199,EMPTY,complete
+return_inventory,2020-05-25 14:59:51,106,[90],41,9,EMPTY,EMPTY,complete
+inspect_inventory,2020-05-25 15:00:33,106,[90],EMPTY,8,200,EMPTY,start
+inspect_inventory,2020-05-25 15:14:33,106,[90],EMPTY,8,200,EMPTY,complete
+confirm_payment,2020-05-25 16:50:42,112,EMPTY,8,2,EMPTY,134,complete
+confirm_rental,2020-05-25 16:51:27,112,EMPTY,8,2,EMPTY,EMPTY,complete
+confirm_payment,2020-05-25 17:22:13,113,EMPTY,47,20,EMPTY,135,complete
+confirm_rental,2020-05-25 17:23:29,113,EMPTY,47,20,EMPTY,EMPTY,complete
+lend_inventory,2020-05-25 17:35:47,109,[4],32,18,EMPTY,EMPTY,complete
+return_inventory,2020-05-26 02:55:54,105,[26],20,8,EMPTY,EMPTY,complete
+inspect_inventory,2020-05-26 02:57:21,105,[26],EMPTY,9,197,EMPTY,start
+inspect_inventory,2020-05-26 03:07:21,105,[26],EMPTY,9,197,EMPTY,complete
+return_inventory,2020-05-26 03:08:42,105,[92],20,8,EMPTY,EMPTY,complete
+inspect_inventory,2020-05-26 03:10:14,105,[92],EMPTY,7,198,EMPTY,start
+inspect_inventory,2020-05-26 03:20:14,105,[92],EMPTY,7,198,EMPTY,complete
+lend_inventory,2020-05-26 18:05:46,111,"[48, 101]",70,14,EMPTY,EMPTY,complete
+lend_inventory,2020-05-26 23:00:29,113,"[146, 138]",47,20,EMPTY,EMPTY,complete
+return_inventory,2020-05-26 23:53:29,113,[146],47,20,EMPTY,EMPTY,complete
+inspect_inventory,2020-05-26 23:54:45,113,[146],EMPTY,20,211,EMPTY,start
+inspect_inventory,2020-05-27 00:10:45,113,[146],EMPTY,20,211,EMPTY,complete
+return_inventory,2020-05-27 00:11:48,113,[138],47,20,EMPTY,EMPTY,complete
+inspect_inventory,2020-05-27 00:13:05,113,[138],EMPTY,20,212,EMPTY,start
+inspect_inventory,2020-05-27 00:28:05,113,[138],EMPTY,20,212,EMPTY,complete
+create_payment,2020-05-27 00:29:32,113,EMPTY,47,20,EMPTY,136,complete
+confirm_payment,2020-05-27 00:30:11,113,EMPTY,47,20,EMPTY,136,complete
+lend_inventory,2020-05-27 02:31:43,108,"[70, 39]",9,16,EMPTY,EMPTY,complete
+return_inventory,2020-05-27 16:16:46,111,[48],70,14,EMPTY,EMPTY,complete
+inspect_inventory,2020-05-27 16:18:03,111,[48],EMPTY,14,207,EMPTY,start
+inspect_inventory,2020-05-27 16:32:03,111,[48],EMPTY,14,207,EMPTY,complete
+return_inventory,2020-05-27 16:33:00,111,[101],70,11,EMPTY,EMPTY,complete
+inspect_inventory,2020-05-27 16:33:41,111,[101],EMPTY,17,208,EMPTY,start
+inspect_inventory,2020-05-27 16:53:41,111,[101],EMPTY,17,208,EMPTY,complete
+create_rental,2020-05-28 01:56:04,114,"[109, 101]",49,EMPTY,EMPTY,EMPTY,complete
+create_payment,2020-05-28 01:56:43,114,EMPTY,49,17,EMPTY,137,complete
+return_inventory,2020-05-28 03:51:47,109,[4],32,18,EMPTY,EMPTY,complete
+inspect_inventory,2020-05-28 03:52:34,109,[4],EMPTY,18,205,EMPTY,start
+inspect_inventory,2020-05-28 04:10:34,109,[4],EMPTY,18,205,EMPTY,complete
+return_inventory,2020-05-28 10:29:19,107,[52],75,20,EMPTY,EMPTY,complete
+inspect_inventory,2020-05-28 10:30:44,107,[52],EMPTY,20,201,EMPTY,start
+inspect_inventory,2020-05-28 10:40:44,107,[52],EMPTY,20,201,EMPTY,complete
+return_inventory,2020-05-28 10:41:36,107,[12],75,20,EMPTY,EMPTY,complete
+inspect_inventory,2020-05-28 10:43:00,107,[12],EMPTY,20,202,EMPTY,start
+inspect_inventory,2020-05-28 11:01:00,107,[12],EMPTY,20,202,EMPTY,complete
+confirm_payment,2020-05-28 13:00:43,114,EMPTY,49,17,EMPTY,137,complete
+confirm_rental,2020-05-28 13:02:07,114,EMPTY,49,17,EMPTY,EMPTY,complete
+lend_inventory,2020-05-28 18:52:42,110,[7],57,2,EMPTY,EMPTY,complete
+create_rental,2020-05-29 00:22:38,115,"[24, 110]",1,EMPTY,EMPTY,EMPTY,complete
+create_payment,2020-05-29 00:23:55,115,EMPTY,1,2,EMPTY,138,complete
+lend_inventory,2020-05-29 04:13:27,112,"[20, 22]",8,5,EMPTY,EMPTY,complete
+return_inventory,2020-05-29 10:34:43,108,[70],9,16,EMPTY,EMPTY,complete
+inspect_inventory,2020-05-29 10:36:23,108,[70],EMPTY,16,203,EMPTY,start
+inspect_inventory,2020-05-29 10:55:23,108,[70],EMPTY,16,203,EMPTY,complete
+return_inventory,2020-05-29 10:56:34,108,[39],9,16,EMPTY,EMPTY,complete
+inspect_inventory,2020-05-29 10:57:08,108,[39],EMPTY,16,204,EMPTY,start
+inspect_inventory,2020-05-29 11:08:08,108,[39],EMPTY,16,204,EMPTY,complete
+confirm_payment,2020-05-29 13:26:55,115,EMPTY,1,2,EMPTY,138,complete
+confirm_rental,2020-05-29 13:28:11,115,EMPTY,1,1,EMPTY,EMPTY,complete
+create_rental,2020-05-29 22:18:09,116,"[145, 119]",49,EMPTY,EMPTY,EMPTY,complete
+create_payment,2020-05-29 22:18:57,116,EMPTY,49,14,EMPTY,139,complete
+return_inventory,2020-05-30 00:15:42,110,[7],57,2,EMPTY,EMPTY,complete
+inspect_inventory,2020-05-30 00:16:22,110,[7],EMPTY,1,206,EMPTY,start
+inspect_inventory,2020-05-30 00:28:22,110,[7],EMPTY,1,206,EMPTY,complete
+confirm_payment,2020-05-30 03:53:57,116,EMPTY,49,14,EMPTY,139,complete
+confirm_rental,2020-05-30 03:54:59,116,EMPTY,49,17,EMPTY,EMPTY,complete
+return_inventory,2020-05-30 05:40:27,112,[20],8,5,EMPTY,EMPTY,complete
+inspect_inventory,2020-05-30 05:41:31,112,[20],EMPTY,6,209,EMPTY,start
+inspect_inventory,2020-05-30 05:57:31,112,[20],EMPTY,6,209,EMPTY,complete
+return_inventory,2020-05-30 05:58:29,112,[22],8,5,EMPTY,EMPTY,complete
+inspect_inventory,2020-05-30 05:59:15,112,[22],EMPTY,1,210,EMPTY,start
+inspect_inventory,2020-05-30 06:15:15,112,[22],EMPTY,1,210,EMPTY,complete
+lend_inventory,2020-05-30 07:25:11,115,"[24, 110]",1,5,EMPTY,EMPTY,complete
+lend_inventory,2020-05-31 13:22:07,114,"[109, 101]",49,17,EMPTY,EMPTY,complete
+return_inventory,2020-05-31 13:38:11,115,[24],1,6,EMPTY,EMPTY,complete
+inspect_inventory,2020-05-31 13:39:20,115,[24],EMPTY,5,215,EMPTY,start
+inspect_inventory,2020-05-31 13:58:20,115,[24],EMPTY,5,215,EMPTY,complete
+return_inventory,2020-05-31 13:59:03,115,[110],1,2,EMPTY,EMPTY,complete
+inspect_inventory,2020-05-31 14:00:41,115,[110],EMPTY,5,216,EMPTY,start
+inspect_inventory,2020-05-31 14:13:41,115,[110],EMPTY,5,216,EMPTY,complete
+lend_inventory,2020-06-01 07:03:59,116,"[145, 119]",49,14,EMPTY,EMPTY,complete
+return_inventory,2020-06-02 18:21:59,116,[145],49,11,EMPTY,EMPTY,complete
+inspect_inventory,2020-06-02 18:22:41,116,[145],EMPTY,11,217,EMPTY,start
+inspect_inventory,2020-06-02 18:38:41,116,[145],EMPTY,11,217,EMPTY,complete
+create_payment,2020-06-02 18:40:21,116,EMPTY,49,11,EMPTY,140,complete
+return_inventory,2020-06-02 18:41:45,116,[119],49,17,EMPTY,EMPTY,complete
+inspect_inventory,2020-06-02 18:43:19,116,[119],EMPTY,17,218,EMPTY,start
+inspect_inventory,2020-06-02 18:57:19,116,[119],EMPTY,17,218,EMPTY,complete
+confirm_payment,2020-06-02 18:58:04,116,EMPTY,49,11,EMPTY,140,complete
+return_inventory,2020-06-03 08:24:07,114,[109],49,11,EMPTY,EMPTY,complete
+inspect_inventory,2020-06-03 08:25:04,114,[109],EMPTY,17,213,EMPTY,start
+inspect_inventory,2020-06-03 08:36:04,114,[109],EMPTY,17,213,EMPTY,complete
+return_inventory,2020-06-03 08:37:03,114,[101],49,17,EMPTY,EMPTY,complete
+inspect_inventory,2020-06-03 08:38:30,114,[101],EMPTY,11,214,EMPTY,start
+inspect_inventory,2020-06-03 08:56:30,114,[101],EMPTY,11,214,EMPTY,complete
+create_rental,2020-06-03 11:31:27,117,"[116, 157]",45,EMPTY,EMPTY,EMPTY,complete
+create_payment,2020-06-03 11:32:11,117,EMPTY,45,12,EMPTY,141,complete
+create_rental,2020-06-03 17:16:07,118,"[56, 107]",33,EMPTY,EMPTY,EMPTY,complete
+create_payment,2020-06-03 17:17:45,118,EMPTY,33,20,EMPTY,142,complete
+confirm_payment,2020-06-04 07:17:45,118,EMPTY,33,20,EMPTY,142,complete
+confirm_rental,2020-06-04 07:19:07,118,EMPTY,33,20,EMPTY,EMPTY,complete
+lend_inventory,2020-06-04 09:08:07,118,"[56, 107]",33,20,EMPTY,EMPTY,complete
+confirm_payment,2020-06-04 10:28:11,117,EMPTY,45,15,EMPTY,141,complete
+confirm_rental,2020-06-04 10:29:42,117,EMPTY,45,10,EMPTY,EMPTY,complete
+create_rental,2020-06-04 12:13:18,119,"[1, 162]",65,EMPTY,EMPTY,EMPTY,complete
+create_payment,2020-06-04 12:14:42,119,EMPTY,65,16,EMPTY,143,complete
+return_inventory,2020-06-04 12:41:07,118,[56],33,20,EMPTY,EMPTY,complete
+inspect_inventory,2020-06-04 12:41:54,118,[56],EMPTY,20,221,EMPTY,start
+inspect_inventory,2020-06-04 12:58:54,118,[56],EMPTY,20,221,EMPTY,complete
+return_inventory,2020-06-04 12:59:52,118,[107],33,20,EMPTY,EMPTY,complete
+inspect_inventory,2020-06-04 13:00:47,118,[107],EMPTY,20,222,EMPTY,start
+inspect_inventory,2020-06-04 13:18:47,118,[107],EMPTY,20,222,EMPTY,complete
+confirm_payment,2020-06-05 09:39:42,119,EMPTY,65,16,EMPTY,143,complete
+confirm_rental,2020-06-05 09:40:26,119,EMPTY,65,16,EMPTY,EMPTY,complete
+create_rental,2020-06-05 12:02:53,120,"[164, 78]",37,EMPTY,EMPTY,EMPTY,complete
+create_payment,2020-06-05 12:03:52,120,EMPTY,37,16,EMPTY,144,complete
+create_rental,2020-06-05 15:22:40,121,"[41, 101]",21,EMPTY,EMPTY,EMPTY,complete
+create_payment,2020-06-05 15:23:40,121,EMPTY,21,14,EMPTY,145,complete
+confirm_payment,2020-06-06 02:12:52,120,EMPTY,37,16,EMPTY,144,complete
+confirm_rental,2020-06-06 02:13:26,120,EMPTY,37,16,EMPTY,EMPTY,complete
+lend_inventory,2020-06-06 03:39:26,120,"[164, 78]",37,16,EMPTY,EMPTY,complete
+return_inventory,2020-06-06 05:30:26,120,[164],37,16,EMPTY,EMPTY,complete
+inspect_inventory,2020-06-06 05:32:00,120,[164],EMPTY,16,225,EMPTY,start
+confirm_payment,2020-06-06 05:37:40,121,EMPTY,21,11,EMPTY,145,complete
+confirm_rental,2020-06-06 05:38:20,121,EMPTY,21,14,EMPTY,EMPTY,complete
+inspect_inventory,2020-06-06 05:48:00,120,[164],EMPTY,16,225,EMPTY,complete
+return_inventory,2020-06-06 05:48:54,120,[78],37,16,EMPTY,EMPTY,complete
+inspect_inventory,2020-06-06 05:49:38,120,[78],EMPTY,16,226,EMPTY,start
+inspect_inventory,2020-06-06 06:07:38,120,[78],EMPTY,16,226,EMPTY,complete
+create_rental,2020-06-06 11:59:31,122,[158],51,EMPTY,EMPTY,EMPTY,complete
+create_payment,2020-06-06 12:00:40,122,EMPTY,51,16,EMPTY,146,complete
+create_rental,2020-06-06 20:04:16,123,"[56, 84]",33,EMPTY,EMPTY,EMPTY,complete
+create_payment,2020-06-06 20:05:11,123,EMPTY,33,20,EMPTY,147,complete
+confirm_payment,2020-06-07 01:29:40,122,EMPTY,51,16,EMPTY,146,complete
+confirm_rental,2020-06-07 01:30:30,122,EMPTY,51,16,EMPTY,EMPTY,complete
+create_rental,2020-06-07 04:31:08,124,"[137, 102]",45,EMPTY,EMPTY,EMPTY,complete
+create_payment,2020-06-07 04:32:45,124,EMPTY,45,3,EMPTY,148,complete
+create_rental,2020-06-07 09:10:42,125,"[136, 5]",26,EMPTY,EMPTY,EMPTY,complete
+create_payment,2020-06-07 09:11:58,125,EMPTY,26,20,EMPTY,149,complete
+confirm_payment,2020-06-07 16:27:45,124,EMPTY,45,15,EMPTY,148,complete
+confirm_rental,2020-06-07 16:29:08,124,EMPTY,45,19,EMPTY,EMPTY,complete
+lend_inventory,2020-06-07 17:00:26,119,"[1, 162]",65,16,EMPTY,EMPTY,complete
+confirm_payment,2020-06-07 20:03:11,123,EMPTY,33,20,EMPTY,147,complete
+confirm_rental,2020-06-07 20:04:36,123,EMPTY,33,20,EMPTY,EMPTY,complete
+confirm_payment,2020-06-07 20:07:58,125,EMPTY,26,20,EMPTY,149,complete
+confirm_rental,2020-06-07 20:08:47,125,EMPTY,26,20,EMPTY,EMPTY,complete
+lend_inventory,2020-06-07 22:07:42,117,"[116, 157]",45,10,EMPTY,EMPTY,complete
+cancel_inventory,2020-06-08 06:44:42,123,[56],33,EMPTY,EMPTY,EMPTY,complete
+return_inventory,2020-06-08 08:36:26,119,[1],65,16,EMPTY,EMPTY,complete
+inspect_inventory,2020-06-08 08:37:44,119,[1],EMPTY,16,223,EMPTY,start
+inspect_inventory,2020-06-08 08:51:44,119,[1],EMPTY,16,223,EMPTY,complete
+return_inventory,2020-06-08 08:52:15,119,[162],65,16,EMPTY,EMPTY,complete
+inspect_inventory,2020-06-08 08:52:47,119,[162],EMPTY,16,224,EMPTY,start
+create_rental,2020-06-08 09:06:22,126,"[75, 69]",46,EMPTY,EMPTY,EMPTY,complete
+create_payment,2020-06-08 09:07:23,126,EMPTY,46,13,EMPTY,150,complete
+inspect_inventory,2020-06-08 09:08:47,119,[162],EMPTY,16,224,EMPTY,complete
+lend_inventory,2020-06-08 11:19:20,121,"[41, 101]",21,14,EMPTY,EMPTY,complete
+confirm_payment,2020-06-08 14:47:23,126,EMPTY,46,13,EMPTY,150,complete
+confirm_rental,2020-06-08 14:47:58,126,EMPTY,46,18,EMPTY,EMPTY,complete
+lend_inventory,2020-06-08 22:47:30,122,[158],51,16,EMPTY,EMPTY,complete
+lend_inventory,2020-06-09 13:06:08,124,"[137, 102]",45,10,EMPTY,EMPTY,complete
+lend_inventory,2020-06-09 22:47:58,126,"[75, 69]",46,18,EMPTY,EMPTY,complete
+return_inventory,2020-06-10 06:47:42,117,[116],45,19,EMPTY,EMPTY,complete
+inspect_inventory,2020-06-10 06:48:29,117,[116],EMPTY,10,219,EMPTY,start
+inspect_inventory,2020-06-10 07:00:29,117,[116],EMPTY,10,219,EMPTY,complete
+return_inventory,2020-06-10 07:01:03,117,[157],45,19,EMPTY,EMPTY,complete
+inspect_inventory,2020-06-10 07:02:00,117,[157],EMPTY,3,220,EMPTY,start
+inspect_inventory,2020-06-10 07:18:00,117,[157],EMPTY,3,220,EMPTY,complete
+lend_inventory,2020-06-10 09:18:42,123,[84],33,20,EMPTY,EMPTY,complete
+return_inventory,2020-06-10 14:46:20,121,[41],21,11,EMPTY,EMPTY,complete
+inspect_inventory,2020-06-10 14:47:56,121,[41],EMPTY,17,227,EMPTY,start
+inspect_inventory,2020-06-10 14:59:56,121,[41],EMPTY,17,227,EMPTY,complete
+return_inventory,2020-06-10 15:00:59,121,[101],21,17,EMPTY,EMPTY,complete
+inspect_inventory,2020-06-10 15:02:13,121,[101],EMPTY,14,228,EMPTY,start
+lend_inventory,2020-06-10 15:13:47,125,"[136, 5]",26,20,EMPTY,EMPTY,complete
+inspect_inventory,2020-06-10 15:18:13,121,[101],EMPTY,14,228,EMPTY,complete
+return_inventory,2020-06-11 06:23:08,124,[137],45,15,EMPTY,EMPTY,complete
+inspect_inventory,2020-06-11 06:24:48,124,[137],EMPTY,10,231,EMPTY,start
+inspect_inventory,2020-06-11 06:42:48,124,[137],EMPTY,10,231,EMPTY,complete
+return_inventory,2020-06-11 06:43:30,124,[102],45,10,EMPTY,EMPTY,complete
+inspect_inventory,2020-06-11 06:44:24,124,[102],EMPTY,15,232,EMPTY,start
+inspect_inventory,2020-06-11 07:04:24,124,[102],EMPTY,15,232,EMPTY,complete
+return_inventory,2020-06-11 15:04:30,122,[158],51,16,EMPTY,EMPTY,complete
+inspect_inventory,2020-06-11 15:05:04,122,[158],EMPTY,16,229,EMPTY,start
+inspect_inventory,2020-06-11 15:22:04,122,[158],EMPTY,16,229,EMPTY,complete
+return_inventory,2020-06-11 18:00:47,125,[136],26,20,EMPTY,EMPTY,complete
+inspect_inventory,2020-06-11 18:01:39,125,[136],EMPTY,20,233,EMPTY,start
+inspect_inventory,2020-06-11 18:16:39,125,[136],EMPTY,20,233,EMPTY,complete
+return_inventory,2020-06-11 18:18:12,125,[5],26,20,EMPTY,EMPTY,complete
+inspect_inventory,2020-06-11 18:19:34,125,[5],EMPTY,20,234,EMPTY,start
+inspect_inventory,2020-06-11 18:33:34,125,[5],EMPTY,20,234,EMPTY,complete
+return_inventory,2020-06-12 14:26:58,126,[75],46,18,EMPTY,EMPTY,complete
+inspect_inventory,2020-06-12 14:28:23,126,[75],EMPTY,18,235,EMPTY,start
+inspect_inventory,2020-06-12 14:41:23,126,[75],EMPTY,18,235,EMPTY,complete
+create_payment,2020-06-12 14:42:26,126,EMPTY,46,18,EMPTY,151,complete
+return_inventory,2020-06-12 14:43:17,126,[69],46,13,EMPTY,EMPTY,complete
+inspect_inventory,2020-06-12 14:44:13,126,[69],EMPTY,13,236,EMPTY,start
+inspect_inventory,2020-06-12 15:03:13,126,[69],EMPTY,13,236,EMPTY,complete
+confirm_payment,2020-06-12 15:04:00,126,EMPTY,46,4,EMPTY,151,complete
+return_inventory,2020-06-13 01:28:42,123,[84],33,20,EMPTY,EMPTY,complete
+inspect_inventory,2020-06-13 01:30:16,123,[84],EMPTY,20,230,EMPTY,start
+inspect_inventory,2020-06-13 01:48:16,123,[84],EMPTY,20,230,EMPTY,complete
+create_rental,2020-06-13 11:24:00,127,"[2, 29]",60,EMPTY,EMPTY,EMPTY,complete
+create_payment,2020-06-13 11:24:32,127,EMPTY,60,13,EMPTY,152,complete
+create_rental,2020-06-13 20:06:14,128,"[32, 74]",77,EMPTY,EMPTY,EMPTY,complete
+create_payment,2020-06-13 20:06:58,128,EMPTY,77,17,EMPTY,153,complete
+confirm_payment,2020-06-13 20:38:32,127,EMPTY,60,18,EMPTY,152,complete
+confirm_rental,2020-06-13 20:40:08,127,EMPTY,60,18,EMPTY,EMPTY,complete
+create_rental,2020-06-14 15:38:48,129,"[27, 11]",67,EMPTY,EMPTY,EMPTY,complete
+create_payment,2020-06-14 15:39:30,129,EMPTY,67,18,EMPTY,154,complete
+cancel_inventory,2020-06-14 17:33:11,127,[29],60,EMPTY,EMPTY,EMPTY,complete
+confirm_payment,2020-06-14 18:58:58,128,EMPTY,77,11,EMPTY,153,complete
+confirm_rental,2020-06-14 18:59:44,128,EMPTY,77,17,EMPTY,EMPTY,complete
+create_rental,2020-06-14 23:24:19,130,"[125, 143]",32,EMPTY,EMPTY,EMPTY,complete
+create_payment,2020-06-14 23:25:25,130,EMPTY,32,13,EMPTY,155,complete
+confirm_payment,2020-06-14 23:51:25,130,EMPTY,32,4,EMPTY,155,complete
+confirm_rental,2020-06-14 23:52:30,130,EMPTY,32,18,EMPTY,EMPTY,complete
+lend_inventory,2020-06-15 06:37:11,127,[2],60,13,EMPTY,EMPTY,complete
+confirm_payment,2020-06-15 10:00:30,129,EMPTY,67,13,EMPTY,154,complete
+confirm_rental,2020-06-15 10:01:10,129,EMPTY,67,18,EMPTY,EMPTY,complete
+return_inventory,2020-06-18 02:28:11,127,[2],60,18,EMPTY,EMPTY,complete
+inspect_inventory,2020-06-18 02:29:02,127,[2],EMPTY,4,237,EMPTY,start
+inspect_inventory,2020-06-18 02:43:02,127,[2],EMPTY,4,237,EMPTY,complete
+lend_inventory,2020-06-18 03:16:44,128,"[32, 74]",77,14,EMPTY,EMPTY,complete
+lend_inventory,2020-06-18 13:10:30,130,"[125, 143]",32,18,EMPTY,EMPTY,complete
+lend_inventory,2020-06-19 00:17:10,129,"[27, 11]",67,4,EMPTY,EMPTY,complete
+return_inventory,2020-06-19 15:39:10,129,[27],67,4,EMPTY,EMPTY,complete
+inspect_inventory,2020-06-19 15:40:27,129,[27],EMPTY,18,240,EMPTY,start
+inspect_inventory,2020-06-19 15:50:27,129,[27],EMPTY,18,240,EMPTY,complete
+return_inventory,2020-06-19 15:51:43,129,[11],67,4,EMPTY,EMPTY,complete
+inspect_inventory,2020-06-19 15:53:13,129,[11],EMPTY,13,241,EMPTY,start
+inspect_inventory,2020-06-19 16:04:13,129,[11],EMPTY,13,241,EMPTY,complete
+return_inventory,2020-06-20 13:29:44,128,[32],77,11,EMPTY,EMPTY,complete
+inspect_inventory,2020-06-20 13:30:37,128,[32],EMPTY,17,238,EMPTY,start
+inspect_inventory,2020-06-20 13:49:37,128,[32],EMPTY,17,238,EMPTY,complete
+return_inventory,2020-06-20 13:50:53,128,[74],77,14,EMPTY,EMPTY,complete
+inspect_inventory,2020-06-20 13:51:28,128,[74],EMPTY,11,239,EMPTY,start
+inspect_inventory,2020-06-20 14:05:28,128,[74],EMPTY,11,239,EMPTY,complete
+return_inventory,2020-06-21 11:24:30,130,[125],32,4,EMPTY,EMPTY,complete
+inspect_inventory,2020-06-21 11:25:17,130,[125],EMPTY,13,242,EMPTY,start
+inspect_inventory,2020-06-21 11:42:17,130,[125],EMPTY,13,242,EMPTY,complete
+return_inventory,2020-06-21 11:42:55,130,[143],32,18,EMPTY,EMPTY,complete
+inspect_inventory,2020-06-21 11:44:21,130,[143],EMPTY,18,243,EMPTY,start
+inspect_inventory,2020-06-21 12:02:21,130,[143],EMPTY,18,243,EMPTY,complete
+create_payment,2020-06-21 12:03:09,130,EMPTY,32,4,EMPTY,156,complete
+confirm_payment,2020-06-21 12:03:51,130,EMPTY,32,18,EMPTY,156,complete
+create_rental,2020-06-22 04:53:56,131,"[46, 102]",10,EMPTY,EMPTY,EMPTY,complete
+create_payment,2020-06-22 04:55:06,131,EMPTY,10,10,EMPTY,157,complete
+create_rental,2020-06-22 11:50:59,132,"[97, 57]",13,EMPTY,EMPTY,EMPTY,complete
+create_payment,2020-06-22 11:52:00,132,EMPTY,13,8,EMPTY,158,complete
+confirm_payment,2020-06-22 11:57:06,131,EMPTY,10,12,EMPTY,157,complete
+confirm_rental,2020-06-22 11:57:58,131,EMPTY,10,10,EMPTY,EMPTY,complete
+confirm_payment,2020-06-22 23:45:00,132,EMPTY,13,9,EMPTY,158,complete
+confirm_rental,2020-06-22 23:46:02,132,EMPTY,13,9,EMPTY,EMPTY,complete
+lend_inventory,2020-06-24 02:44:58,131,"[46, 102]",10,15,EMPTY,EMPTY,complete
+lend_inventory,2020-06-24 22:48:02,132,"[97, 57]",13,8,EMPTY,EMPTY,complete
+return_inventory,2020-06-26 05:53:02,132,[97],13,7,EMPTY,EMPTY,complete
+inspect_inventory,2020-06-26 05:53:35,132,[97],EMPTY,8,246,EMPTY,start
+inspect_inventory,2020-06-26 06:07:35,132,[97],EMPTY,8,246,EMPTY,complete
+create_payment,2020-06-26 06:09:08,132,EMPTY,13,9,EMPTY,159,complete
+return_inventory,2020-06-26 06:09:51,132,[57],13,9,EMPTY,EMPTY,complete
+inspect_inventory,2020-06-26 06:11:19,132,[57],EMPTY,9,247,EMPTY,start
+inspect_inventory,2020-06-26 06:28:19,132,[57],EMPTY,9,247,EMPTY,complete
+confirm_payment,2020-06-26 06:29:27,132,EMPTY,13,7,EMPTY,159,complete
+return_inventory,2020-06-26 11:32:58,131,[46],10,15,EMPTY,EMPTY,complete
+inspect_inventory,2020-06-26 11:34:05,131,[46],EMPTY,15,244,EMPTY,start
+inspect_inventory,2020-06-26 11:45:05,131,[46],EMPTY,15,244,EMPTY,complete
+return_inventory,2020-06-26 11:45:49,131,[102],10,10,EMPTY,EMPTY,complete
+inspect_inventory,2020-06-26 11:46:37,131,[102],EMPTY,15,245,EMPTY,start
+inspect_inventory,2020-06-26 12:01:37,131,[102],EMPTY,15,245,EMPTY,complete
+create_rental,2020-06-27 00:21:31,133,"[70, 31]",37,EMPTY,EMPTY,EMPTY,complete
+create_payment,2020-06-27 00:22:03,133,EMPTY,37,16,EMPTY,160,complete
+confirm_payment,2020-06-27 16:02:03,133,EMPTY,37,16,EMPTY,160,complete
+confirm_rental,2020-06-27 16:03:13,133,EMPTY,37,16,EMPTY,EMPTY,complete
+create_rental,2020-06-28 00:14:17,134,"[21, 94]",69,EMPTY,EMPTY,EMPTY,complete
+create_payment,2020-06-28 00:15:09,134,EMPTY,69,8,EMPTY,161,complete
+confirm_payment,2020-06-28 10:58:09,134,EMPTY,69,8,EMPTY,161,complete
+confirm_rental,2020-06-28 10:59:34,134,EMPTY,69,8,EMPTY,EMPTY,complete
+create_rental,2020-06-28 18:04:50,135,"[121, 95]",12,EMPTY,EMPTY,EMPTY,complete
+create_payment,2020-06-28 18:05:50,135,EMPTY,12,20,EMPTY,162,complete
+cancel_inventory,2020-06-29 01:57:37,134,[94],69,EMPTY,EMPTY,EMPTY,complete
+confirm_payment,2020-06-29 09:02:50,135,EMPTY,12,20,EMPTY,162,complete
+confirm_rental,2020-06-29 09:03:55,135,EMPTY,12,20,EMPTY,EMPTY,complete
+lend_inventory,2020-06-29 11:37:37,134,[21],69,7,EMPTY,EMPTY,complete
+create_rental,2020-06-29 12:33:20,136,"[129, 154]",15,EMPTY,EMPTY,EMPTY,complete
+create_payment,2020-06-29 12:34:39,136,EMPTY,15,5,EMPTY,163,complete
+confirm_payment,2020-06-29 20:34:39,136,EMPTY,15,1,EMPTY,163,complete
+confirm_rental,2020-06-29 20:35:57,136,EMPTY,15,6,EMPTY,EMPTY,complete
+create_rental,2020-06-29 23:24:23,137,"[59, 87]",18,EMPTY,EMPTY,EMPTY,complete
+create_payment,2020-06-29 23:25:17,137,EMPTY,18,13,EMPTY,164,complete
+create_rental,2020-06-30 04:56:48,138,"[105, 140]",73,EMPTY,EMPTY,EMPTY,complete
+create_payment,2020-06-30 04:58:10,138,EMPTY,73,12,EMPTY,165,complete
+confirm_payment,2020-06-30 10:22:10,138,EMPTY,73,19,EMPTY,165,complete
+confirm_rental,2020-06-30 10:23:45,138,EMPTY,73,3,EMPTY,EMPTY,complete
+confirm_payment,2020-06-30 13:27:17,137,EMPTY,18,4,EMPTY,164,complete
+confirm_rental,2020-06-30 13:28:17,137,EMPTY,18,4,EMPTY,EMPTY,complete
+cancel_inventory,2020-06-30 17:25:24,136,[129],15,EMPTY,EMPTY,EMPTY,complete
+lend_inventory,2020-07-01 03:28:13,133,"[70, 31]",37,16,EMPTY,EMPTY,complete
+return_inventory,2020-07-01 12:37:37,134,[21],69,7,EMPTY,EMPTY,complete
+inspect_inventory,2020-07-01 12:38:18,134,[21],EMPTY,7,250,EMPTY,start
+inspect_inventory,2020-07-01 12:53:18,134,[21],EMPTY,7,250,EMPTY,complete
+lend_inventory,2020-07-01 17:00:17,137,"[59, 87]",18,18,EMPTY,EMPTY,complete
+lend_inventory,2020-07-01 18:25:45,138,"[105, 140]",73,12,EMPTY,EMPTY,complete
+return_inventory,2020-07-02 05:24:45,138,[105],73,19,EMPTY,EMPTY,complete
+inspect_inventory,2020-07-02 05:26:14,138,[105],EMPTY,15,256,EMPTY,start
+inspect_inventory,2020-07-02 05:39:14,138,[105],EMPTY,15,256,EMPTY,complete
+create_payment,2020-07-02 05:40:28,138,EMPTY,73,15,EMPTY,166,complete
+return_inventory,2020-07-02 05:42:03,138,[140],73,10,EMPTY,EMPTY,complete
+inspect_inventory,2020-07-02 05:42:50,138,[140],EMPTY,12,257,EMPTY,start
+inspect_inventory,2020-07-02 06:02:50,138,[140],EMPTY,12,257,EMPTY,complete
+confirm_payment,2020-07-02 06:03:43,138,EMPTY,73,15,EMPTY,166,complete
+lend_inventory,2020-07-02 11:08:24,136,[154],15,1,EMPTY,EMPTY,complete
+return_inventory,2020-07-02 11:15:17,137,[59],18,13,EMPTY,EMPTY,complete
+inspect_inventory,2020-07-02 11:16:36,137,[59],EMPTY,13,254,EMPTY,start
+inspect_inventory,2020-07-02 11:32:36,137,[59],EMPTY,13,254,EMPTY,complete
+return_inventory,2020-07-02 11:34:02,137,[87],18,13,EMPTY,EMPTY,complete
+inspect_inventory,2020-07-02 11:34:43,137,[87],EMPTY,13,255,EMPTY,start
+inspect_inventory,2020-07-02 11:44:43,137,[87],EMPTY,13,255,EMPTY,complete
+create_rental,2020-07-02 18:35:20,139,"[96, 115]",11,EMPTY,EMPTY,EMPTY,complete
+create_payment,2020-07-02 18:36:17,139,EMPTY,11,13,EMPTY,167,complete
+return_inventory,2020-07-02 20:16:24,136,[154],15,6,EMPTY,EMPTY,complete
+inspect_inventory,2020-07-02 20:17:36,136,[154],EMPTY,6,253,EMPTY,start
+inspect_inventory,2020-07-02 20:30:36,136,[154],EMPTY,6,253,EMPTY,complete
+lend_inventory,2020-07-02 21:45:55,135,"[121, 95]",12,20,EMPTY,EMPTY,complete
+create_rental,2020-07-03 13:47:01,140,[165],35,EMPTY,EMPTY,EMPTY,complete
+create_payment,2020-07-03 13:48:20,140,EMPTY,35,11,EMPTY,168,complete
+confirm_payment,2020-07-03 16:31:17,139,EMPTY,11,4,EMPTY,167,complete
+confirm_rental,2020-07-03 16:32:31,139,EMPTY,11,18,EMPTY,EMPTY,complete
+confirm_payment,2020-07-03 20:46:20,140,EMPTY,35,17,EMPTY,168,complete
+confirm_rental,2020-07-03 20:47:36,140,EMPTY,35,17,EMPTY,EMPTY,complete
+return_inventory,2020-07-04 01:12:13,133,[70],37,16,EMPTY,EMPTY,complete
+inspect_inventory,2020-07-04 01:13:31,133,[70],EMPTY,16,248,EMPTY,start
+inspect_inventory,2020-07-04 01:24:31,133,[70],EMPTY,16,248,EMPTY,complete
+return_inventory,2020-07-04 01:26:07,133,[31],37,16,EMPTY,EMPTY,complete
+inspect_inventory,2020-07-04 01:27:45,133,[31],EMPTY,16,249,EMPTY,start
+inspect_inventory,2020-07-04 01:38:45,133,[31],EMPTY,16,249,EMPTY,complete
+create_rental,2020-07-04 14:22:42,141,"[100, 31]",79,EMPTY,EMPTY,EMPTY,complete
+create_payment,2020-07-04 14:23:40,141,EMPTY,79,16,EMPTY,169,complete
+return_inventory,2020-07-04 18:45:55,135,[121],12,20,EMPTY,EMPTY,complete
+inspect_inventory,2020-07-04 18:47:22,135,[121],EMPTY,20,251,EMPTY,start
+inspect_inventory,2020-07-04 19:05:22,135,[121],EMPTY,20,251,EMPTY,complete
+return_inventory,2020-07-04 19:06:36,135,[95],12,20,EMPTY,EMPTY,complete
+inspect_inventory,2020-07-04 19:07:30,135,[95],EMPTY,20,252,EMPTY,start
+inspect_inventory,2020-07-04 19:27:30,135,[95],EMPTY,20,252,EMPTY,complete
+confirm_payment,2020-07-04 23:37:40,141,EMPTY,79,16,EMPTY,169,complete
+confirm_rental,2020-07-04 23:38:58,141,EMPTY,79,16,EMPTY,EMPTY,complete
+create_rental,2020-07-05 00:20:09,142,"[153, 166]",15,EMPTY,EMPTY,EMPTY,complete
+create_payment,2020-07-05 00:21:08,142,EMPTY,15,2,EMPTY,170,complete
+create_rental,2020-07-05 03:52:39,143,"[115, 4]",18,EMPTY,EMPTY,EMPTY,complete
+create_payment,2020-07-05 03:54:19,143,EMPTY,18,18,EMPTY,171,complete
+confirm_payment,2020-07-05 07:29:08,142,EMPTY,15,5,EMPTY,170,complete
+confirm_rental,2020-07-05 07:30:31,142,EMPTY,15,2,EMPTY,EMPTY,complete
+create_rental,2020-07-05 08:08:57,144,"[156, 69]",53,EMPTY,EMPTY,EMPTY,complete
+create_payment,2020-07-05 08:10:15,144,EMPTY,53,18,EMPTY,172,complete
+cancel_inventory,2020-07-05 08:17:49,142,[166],15,EMPTY,EMPTY,EMPTY,complete
+confirm_payment,2020-07-05 10:59:15,144,EMPTY,53,18,EMPTY,172,complete
+confirm_rental,2020-07-05 11:00:02,144,EMPTY,53,4,EMPTY,EMPTY,complete
+lend_inventory,2020-07-05 15:45:02,144,"[156, 69]",53,4,EMPTY,EMPTY,complete
+return_inventory,2020-07-05 17:11:02,144,[156],53,13,EMPTY,EMPTY,complete
+inspect_inventory,2020-07-05 17:11:33,144,[156],EMPTY,13,266,EMPTY,start
+inspect_inventory,2020-07-05 17:22:33,144,[156],EMPTY,13,266,EMPTY,complete
+return_inventory,2020-07-05 17:23:10,144,[69],53,4,EMPTY,EMPTY,complete
+inspect_inventory,2020-07-05 17:24:03,144,[69],EMPTY,4,267,EMPTY,start
+inspect_inventory,2020-07-05 17:44:03,144,[69],EMPTY,4,267,EMPTY,complete
+confirm_payment,2020-07-05 20:49:19,143,EMPTY,18,4,EMPTY,171,complete
+confirm_rental,2020-07-05 20:50:09,143,EMPTY,18,13,EMPTY,EMPTY,complete
+create_rental,2020-07-06 04:47:10,145,"[20, 142]",64,EMPTY,EMPTY,EMPTY,complete
+create_payment,2020-07-06 04:47:59,145,EMPTY,64,2,EMPTY,173,complete
+lend_inventory,2020-07-06 06:12:36,140,[165],35,17,EMPTY,EMPTY,complete
+confirm_payment,2020-07-06 09:16:59,145,EMPTY,64,1,EMPTY,173,complete
+confirm_rental,2020-07-06 09:17:30,145,EMPTY,64,6,EMPTY,EMPTY,complete
+lend_inventory,2020-07-06 23:21:31,139,"[96, 115]",11,18,EMPTY,EMPTY,complete
+create_rental,2020-07-07 05:15:00,146,"[138, 52]",61,EMPTY,EMPTY,EMPTY,complete
+create_payment,2020-07-07 05:15:35,146,EMPTY,61,20,EMPTY,174,complete
+lend_inventory,2020-07-07 14:32:58,141,"[100, 31]",79,16,EMPTY,EMPTY,complete
+lend_inventory,2020-07-07 18:51:09,143,"[115, 4]",18,4,EMPTY,EMPTY,complete
+return_inventory,2020-07-07 19:11:36,140,[165],35,11,EMPTY,EMPTY,complete
+inspect_inventory,2020-07-07 19:12:21,140,[165],EMPTY,11,260,EMPTY,start
+confirm_payment,2020-07-07 19:13:35,146,EMPTY,61,20,EMPTY,174,complete
+confirm_rental,2020-07-07 19:15:03,146,EMPTY,61,20,EMPTY,EMPTY,complete
+inspect_inventory,2020-07-07 19:23:21,140,[165],EMPTY,11,260,EMPTY,complete
+return_inventory,2020-07-08 11:34:31,139,[96],11,18,EMPTY,EMPTY,complete
+inspect_inventory,2020-07-08 11:35:37,139,[96],EMPTY,4,258,EMPTY,start
+inspect_inventory,2020-07-08 11:45:37,139,[96],EMPTY,4,258,EMPTY,complete
+return_inventory,2020-07-08 11:47:04,139,[115],11,13,EMPTY,EMPTY,complete
+inspect_inventory,2020-07-08 11:47:58,139,[115],EMPTY,18,259,EMPTY,start
+inspect_inventory,2020-07-08 12:06:58,139,[115],EMPTY,18,259,EMPTY,complete
+return_inventory,2020-07-08 12:19:09,143,[115],18,13,EMPTY,EMPTY,complete
+inspect_inventory,2020-07-08 12:20:02,143,[115],EMPTY,4,264,EMPTY,start
+inspect_inventory,2020-07-08 12:40:02,143,[115],EMPTY,4,264,EMPTY,complete
+return_inventory,2020-07-08 12:41:31,143,[4],18,13,EMPTY,EMPTY,complete
+inspect_inventory,2020-07-08 12:42:42,143,[4],EMPTY,4,265,EMPTY,start
+inspect_inventory,2020-07-08 12:57:42,143,[4],EMPTY,4,265,EMPTY,complete
+lend_inventory,2020-07-08 15:17:49,142,[153],15,5,EMPTY,EMPTY,complete
+lend_inventory,2020-07-08 17:54:30,145,"[20, 142]",64,5,EMPTY,EMPTY,complete
+return_inventory,2020-07-08 20:43:58,141,[100],79,16,EMPTY,EMPTY,complete
+inspect_inventory,2020-07-08 20:44:49,141,[100],EMPTY,16,261,EMPTY,start
+inspect_inventory,2020-07-08 20:58:49,141,[100],EMPTY,16,261,EMPTY,complete
+return_inventory,2020-07-08 20:59:33,141,[31],79,16,EMPTY,EMPTY,complete
+inspect_inventory,2020-07-08 21:00:25,141,[31],EMPTY,16,262,EMPTY,start
+inspect_inventory,2020-07-08 21:11:25,141,[31],EMPTY,16,262,EMPTY,complete
+lend_inventory,2020-07-09 18:31:03,146,"[138, 52]",61,20,EMPTY,EMPTY,complete
+return_inventory,2020-07-10 01:06:49,142,[153],15,1,EMPTY,EMPTY,complete
+inspect_inventory,2020-07-10 01:07:49,142,[153],EMPTY,5,263,EMPTY,start
+inspect_inventory,2020-07-10 01:17:49,142,[153],EMPTY,5,263,EMPTY,complete
+return_inventory,2020-07-10 04:22:30,145,[20],64,1,EMPTY,EMPTY,complete
+inspect_inventory,2020-07-10 04:23:37,145,[20],EMPTY,5,268,EMPTY,start
+inspect_inventory,2020-07-10 04:33:37,145,[20],EMPTY,5,268,EMPTY,complete
+return_inventory,2020-07-10 04:34:38,145,[142],64,5,EMPTY,EMPTY,complete
+inspect_inventory,2020-07-10 04:35:11,145,[142],EMPTY,1,269,EMPTY,start
+inspect_inventory,2020-07-10 04:46:11,145,[142],EMPTY,1,269,EMPTY,complete
+return_inventory,2020-07-12 01:47:03,146,[138],61,20,EMPTY,EMPTY,complete
+inspect_inventory,2020-07-12 01:48:40,146,[138],EMPTY,20,270,EMPTY,start
+inspect_inventory,2020-07-12 02:02:40,146,[138],EMPTY,20,270,EMPTY,complete
+create_payment,2020-07-12 02:03:17,146,EMPTY,61,20,EMPTY,175,complete
+return_inventory,2020-07-12 02:03:52,146,[52],61,20,EMPTY,EMPTY,complete
+inspect_inventory,2020-07-12 02:05:01,146,[52],EMPTY,20,271,EMPTY,start
+inspect_inventory,2020-07-12 02:22:01,146,[52],EMPTY,20,271,EMPTY,complete
+confirm_payment,2020-07-12 02:22:38,146,EMPTY,61,20,EMPTY,175,complete
+create_rental,2020-07-12 16:53:27,147,"[45, 14]",19,EMPTY,EMPTY,EMPTY,complete
+create_payment,2020-07-12 16:54:35,147,EMPTY,19,20,EMPTY,176,complete
+confirm_payment,2020-07-12 17:02:35,147,EMPTY,19,20,EMPTY,176,complete
+confirm_rental,2020-07-12 17:03:34,147,EMPTY,19,20,EMPTY,EMPTY,complete
+lend_inventory,2020-07-13 07:08:34,147,"[45, 14]",19,20,EMPTY,EMPTY,complete
+create_rental,2020-07-13 17:48:17,148,"[33, 61]",31,EMPTY,EMPTY,EMPTY,complete
+create_payment,2020-07-13 17:49:23,148,EMPTY,31,10,EMPTY,177,complete
+return_inventory,2020-07-13 20:04:34,147,[45],19,20,EMPTY,EMPTY,complete
+inspect_inventory,2020-07-13 20:05:23,147,[45],EMPTY,20,272,EMPTY,start
+inspect_inventory,2020-07-13 20:22:23,147,[45],EMPTY,20,272,EMPTY,complete
+return_inventory,2020-07-13 20:23:24,147,[14],19,20,EMPTY,EMPTY,complete
+inspect_inventory,2020-07-13 20:25:00,147,[14],EMPTY,20,273,EMPTY,start
+inspect_inventory,2020-07-13 20:40:00,147,[14],EMPTY,20,273,EMPTY,complete
+confirm_payment,2020-07-14 00:23:23,148,EMPTY,31,15,EMPTY,177,complete
+confirm_rental,2020-07-14 00:24:35,148,EMPTY,31,19,EMPTY,EMPTY,complete
+create_rental,2020-07-14 11:02:04,149,"[13, 86]",11,EMPTY,EMPTY,EMPTY,complete
+create_payment,2020-07-14 11:03:42,149,EMPTY,11,18,EMPTY,178,complete
+confirm_payment,2020-07-14 19:14:42,149,EMPTY,11,13,EMPTY,178,complete
+confirm_rental,2020-07-14 19:16:08,149,EMPTY,11,18,EMPTY,EMPTY,complete
+cancel_inventory,2020-07-14 22:02:14,148,[33],31,EMPTY,EMPTY,EMPTY,complete
+lend_inventory,2020-07-15 04:44:08,149,"[13, 86]",11,13,EMPTY,EMPTY,complete
+lend_inventory,2020-07-15 22:43:14,148,[61],31,3,EMPTY,EMPTY,complete
+return_inventory,2020-07-16 15:02:08,149,[13],11,4,EMPTY,EMPTY,complete
+inspect_inventory,2020-07-16 15:03:14,149,[13],EMPTY,4,275,EMPTY,start
+inspect_inventory,2020-07-16 15:13:14,149,[13],EMPTY,4,275,EMPTY,complete
+create_payment,2020-07-16 15:14:30,149,EMPTY,11,4,EMPTY,179,complete
+return_inventory,2020-07-16 15:15:11,149,[86],11,13,EMPTY,EMPTY,complete
+inspect_inventory,2020-07-16 15:16:09,149,[86],EMPTY,18,276,EMPTY,start
+inspect_inventory,2020-07-16 15:32:09,149,[86],EMPTY,18,276,EMPTY,complete
+create_payment,2020-07-16 15:33:20,149,EMPTY,11,4,EMPTY,180,complete
+confirm_payment,2020-07-16 15:33:57,149,EMPTY,11,13,EMPTY,180,complete
+confirm_payment,2020-07-16 15:33:57,149,EMPTY,11,4,EMPTY,179,complete
+return_inventory,2020-07-17 05:37:14,148,[61],31,19,EMPTY,EMPTY,complete
+inspect_inventory,2020-07-17 05:38:23,148,[61],EMPTY,10,274,EMPTY,start
+inspect_inventory,2020-07-17 05:58:23,148,[61],EMPTY,10,274,EMPTY,complete
+create_rental,2020-07-17 13:16:46,150,"[134, 22]",78,EMPTY,EMPTY,EMPTY,complete
+create_payment,2020-07-17 13:18:16,150,EMPTY,78,6,EMPTY,181,complete
+create_rental,2020-07-18 10:46:39,151,"[9, 127]",77,EMPTY,EMPTY,EMPTY,complete
+create_payment,2020-07-18 10:47:56,151,EMPTY,77,17,EMPTY,182,complete
+create_rental,2020-07-18 11:00:31,152,"[61, 38]",17,EMPTY,EMPTY,EMPTY,complete
+create_payment,2020-07-18 11:01:58,152,EMPTY,17,19,EMPTY,183,complete
+confirm_payment,2020-07-18 12:11:16,150,EMPTY,78,6,EMPTY,181,complete
+confirm_rental,2020-07-18 12:12:36,150,EMPTY,78,5,EMPTY,EMPTY,complete
+confirm_payment,2020-07-18 17:06:56,151,EMPTY,77,14,EMPTY,182,complete
+confirm_rental,2020-07-18 17:08:08,151,EMPTY,77,17,EMPTY,EMPTY,complete
+cancel_inventory,2020-07-18 22:50:22,150,[134],78,EMPTY,EMPTY,EMPTY,complete
+create_rental,2020-07-19 01:02:25,153,"[114, 21]",13,EMPTY,EMPTY,EMPTY,complete
+create_payment,2020-07-19 01:03:53,153,EMPTY,13,7,EMPTY,184,complete
+confirm_payment,2020-07-19 05:37:58,152,EMPTY,17,15,EMPTY,183,complete
+confirm_rental,2020-07-19 05:38:35,152,EMPTY,17,15,EMPTY,EMPTY,complete
+create_rental,2020-07-19 05:49:42,154,"[10, 99]",41,EMPTY,EMPTY,EMPTY,complete
+create_payment,2020-07-19 05:51:09,154,EMPTY,41,7,EMPTY,185,complete
+create_rental,2020-07-19 06:49:53,155,"[82, 110]",22,EMPTY,EMPTY,EMPTY,complete
+create_payment,2020-07-19 06:51:07,155,EMPTY,22,6,EMPTY,186,complete
+create_rental,2020-07-19 07:49:33,156,"[24, 153]",8,EMPTY,EMPTY,EMPTY,complete
+create_payment,2020-07-19 07:51:06,156,EMPTY,8,5,EMPTY,187,complete
+create_rental,2020-07-19 08:37:58,157,"[96, 51]",4,EMPTY,EMPTY,EMPTY,complete
+create_payment,2020-07-19 08:39:02,157,EMPTY,4,13,EMPTY,188,complete
+confirm_payment,2020-07-19 20:32:53,153,EMPTY,13,7,EMPTY,184,complete
+confirm_rental,2020-07-19 20:34:29,153,EMPTY,13,8,EMPTY,EMPTY,complete
+create_rental,2020-07-20 03:04:22,158,"[11, 156]",32,EMPTY,EMPTY,EMPTY,complete
+create_payment,2020-07-20 03:05:19,158,EMPTY,32,13,EMPTY,189,complete
+confirm_payment,2020-07-20 04:05:09,154,EMPTY,41,9,EMPTY,185,complete
+confirm_rental,2020-07-20 04:06:10,154,EMPTY,41,9,EMPTY,EMPTY,complete
+confirm_payment,2020-07-20 05:14:07,155,EMPTY,22,1,EMPTY,186,complete
+confirm_rental,2020-07-20 05:15:04,155,EMPTY,22,1,EMPTY,EMPTY,complete
+create_rental,2020-07-20 05:45:40,159,"[137, 141]",66,EMPTY,EMPTY,EMPTY,complete
+create_payment,2020-07-20 05:46:27,159,EMPTY,66,19,EMPTY,190,complete
+confirm_payment,2020-07-20 07:04:06,156,EMPTY,8,1,EMPTY,187,complete
+confirm_rental,2020-07-20 07:04:46,156,EMPTY,8,2,EMPTY,EMPTY,complete
+confirm_payment,2020-07-20 07:22:02,157,EMPTY,4,4,EMPTY,188,complete
+confirm_rental,2020-07-20 07:22:32,157,EMPTY,4,18,EMPTY,EMPTY,complete
+confirm_payment,2020-07-20 12:09:19,158,EMPTY,32,4,EMPTY,189,complete
+confirm_rental,2020-07-20 12:10:08,158,EMPTY,32,18,EMPTY,EMPTY,complete
+create_rental,2020-07-20 13:12:27,160,"[142, 22]",64,EMPTY,EMPTY,EMPTY,complete
+create_payment,2020-07-20 13:13:57,160,EMPTY,64,6,EMPTY,191,complete
+create_rental,2020-07-20 15:51:58,161,"[90, 23]",76,EMPTY,EMPTY,EMPTY,complete
+create_payment,2020-07-20 15:53:10,161,EMPTY,76,8,EMPTY,192,complete
+confirm_payment,2020-07-20 16:48:27,159,EMPTY,66,12,EMPTY,190,complete
+confirm_rental,2020-07-20 16:49:23,159,EMPTY,66,15,EMPTY,EMPTY,complete
+create_rental,2020-07-20 23:25:49,162,"[11, 29]",46,EMPTY,EMPTY,EMPTY,complete
+create_payment,2020-07-20 23:26:57,162,EMPTY,46,13,EMPTY,193,complete
+lend_inventory,2020-07-21 00:34:32,157,"[96, 51]",4,4,EMPTY,EMPTY,complete
+lend_inventory,2020-07-21 03:37:29,153,"[114, 21]",13,7,EMPTY,EMPTY,complete
+create_rental,2020-07-21 05:58:05,163,"[78, 103]",23,EMPTY,EMPTY,EMPTY,complete
+create_payment,2020-07-21 05:58:59,163,EMPTY,23,16,EMPTY,194,complete
+confirm_payment,2020-07-21 06:42:57,160,EMPTY,64,2,EMPTY,191,complete
+confirm_rental,2020-07-21 06:43:59,160,EMPTY,64,1,EMPTY,EMPTY,complete
+return_inventory,2020-07-21 06:49:32,157,[96],4,18,EMPTY,EMPTY,complete
+inspect_inventory,2020-07-21 06:50:33,157,[96],EMPTY,4,290,EMPTY,start
+inspect_inventory,2020-07-21 07:02:33,157,[96],EMPTY,4,290,EMPTY,complete
+return_inventory,2020-07-21 07:03:17,157,[51],4,18,EMPTY,EMPTY,complete
+inspect_inventory,2020-07-21 07:04:48,157,[51],EMPTY,13,291,EMPTY,start
+inspect_inventory,2020-07-21 07:15:48,157,[51],EMPTY,13,291,EMPTY,complete
+confirm_payment,2020-07-21 09:23:57,162,EMPTY,46,18,EMPTY,193,complete
+confirm_rental,2020-07-21 09:24:56,162,EMPTY,46,18,EMPTY,EMPTY,complete
+lend_inventory,2020-07-21 11:07:22,150,[22],78,5,EMPTY,EMPTY,complete
+lend_inventory,2020-07-21 14:54:23,159,"[137, 141]",66,15,EMPTY,EMPTY,complete
+confirm_payment,2020-07-21 15:01:10,161,EMPTY,76,7,EMPTY,192,complete
+confirm_rental,2020-07-21 15:02:10,161,EMPTY,76,9,EMPTY,EMPTY,complete
+return_inventory,2020-07-21 16:52:29,153,[114],13,9,EMPTY,EMPTY,complete
+inspect_inventory,2020-07-21 16:53:58,153,[114],EMPTY,8,282,EMPTY,start
+inspect_inventory,2020-07-21 17:07:58,153,[114],EMPTY,8,282,EMPTY,complete
+return_inventory,2020-07-21 17:08:53,153,[21],13,8,EMPTY,EMPTY,complete
+inspect_inventory,2020-07-21 17:10:33,153,[21],EMPTY,9,283,EMPTY,start
+lend_inventory,2020-07-21 17:14:46,156,"[24, 153]",8,1,EMPTY,EMPTY,complete
+inspect_inventory,2020-07-21 17:27:33,153,[21],EMPTY,9,283,EMPTY,complete
+confirm_payment,2020-07-21 17:43:59,163,EMPTY,23,16,EMPTY,194,complete
+confirm_rental,2020-07-21 17:45:20,163,EMPTY,23,16,EMPTY,EMPTY,complete
+lend_inventory,2020-07-22 00:35:08,151,"[9, 127]",77,14,EMPTY,EMPTY,complete
+create_rental,2020-07-22 02:36:15,164,"[78, 47]",65,EMPTY,EMPTY,EMPTY,complete
+create_payment,2020-07-22 02:37:48,164,EMPTY,65,16,EMPTY,195,complete
+confirm_payment,2020-07-22 04:02:48,164,EMPTY,65,16,EMPTY,195,complete
+confirm_rental,2020-07-22 04:03:46,164,EMPTY,65,16,EMPTY,EMPTY,complete
+lend_inventory,2020-07-22 06:19:04,155,"[82, 110]",22,6,EMPTY,EMPTY,complete
+return_inventory,2020-07-22 07:08:08,151,[9],77,14,EMPTY,EMPTY,complete
+inspect_inventory,2020-07-22 07:09:19,151,[9],EMPTY,17,278,EMPTY,start
+inspect_inventory,2020-07-22 07:21:19,151,[9],EMPTY,17,278,EMPTY,complete
+return_inventory,2020-07-22 07:22:57,151,[127],77,11,EMPTY,EMPTY,complete
+inspect_inventory,2020-07-22 07:24:12,151,[127],EMPTY,11,279,EMPTY,start
+inspect_inventory,2020-07-22 07:35:12,151,[127],EMPTY,11,279,EMPTY,complete
+create_rental,2020-07-22 11:24:06,165,"[32, 145]",56,EMPTY,EMPTY,EMPTY,complete
+create_payment,2020-07-22 11:25:42,165,EMPTY,56,14,EMPTY,196,complete
+lend_inventory,2020-07-22 14:21:10,154,"[10, 99]",41,9,EMPTY,EMPTY,complete
+lend_inventory,2020-07-22 14:22:35,152,"[61, 38]",17,12,EMPTY,EMPTY,complete
+confirm_payment,2020-07-22 22:26:42,165,EMPTY,56,17,EMPTY,196,complete
+confirm_rental,2020-07-22 22:27:27,165,EMPTY,56,11,EMPTY,EMPTY,complete
+return_inventory,2020-07-23 00:18:46,156,[24],8,5,EMPTY,EMPTY,complete
+inspect_inventory,2020-07-23 00:20:04,156,[24],EMPTY,6,288,EMPTY,start
+inspect_inventory,2020-07-23 00:34:04,156,[24],EMPTY,6,288,EMPTY,complete
+return_inventory,2020-07-23 00:35:24,156,[153],8,1,EMPTY,EMPTY,complete
+inspect_inventory,2020-07-23 00:37:00,156,[153],EMPTY,2,289,EMPTY,start
+lend_inventory,2020-07-23 00:44:20,163,"[78, 103]",23,16,EMPTY,EMPTY,complete
+inspect_inventory,2020-07-23 00:53:00,156,[153],EMPTY,2,289,EMPTY,complete
+cancel_inventory,2020-07-23 01:19:13,164,[47],65,EMPTY,EMPTY,EMPTY,complete
+create_rental,2020-07-23 02:00:52,166,"[120, 150]",23,EMPTY,EMPTY,EMPTY,complete
+create_payment,2020-07-23 02:01:55,166,EMPTY,23,16,EMPTY,197,complete
+lend_inventory,2020-07-23 05:57:08,158,"[11, 156]",32,18,EMPTY,EMPTY,complete
+lend_inventory,2020-07-23 10:20:59,160,"[142, 22]",64,6,EMPTY,EMPTY,complete
+confirm_payment,2020-07-23 10:53:55,166,EMPTY,23,16,EMPTY,197,complete
+confirm_rental,2020-07-23 10:54:45,166,EMPTY,23,16,EMPTY,EMPTY,complete
+return_inventory,2020-07-23 17:58:04,155,[82],22,5,EMPTY,EMPTY,complete
+inspect_inventory,2020-07-23 17:58:43,155,[82],EMPTY,5,286,EMPTY,start
+inspect_inventory,2020-07-23 18:11:43,155,[82],EMPTY,5,286,EMPTY,complete
+return_inventory,2020-07-23 18:13:12,155,[110],22,2,EMPTY,EMPTY,complete
+inspect_inventory,2020-07-23 18:14:30,155,[110],EMPTY,2,287,EMPTY,start
+lend_inventory,2020-07-23 18:16:56,162,"[11, 29]",46,13,EMPTY,EMPTY,complete
+inspect_inventory,2020-07-23 18:24:30,155,[110],EMPTY,2,287,EMPTY,complete
+return_inventory,2020-07-24 01:03:22,150,[22],78,6,EMPTY,EMPTY,complete
+inspect_inventory,2020-07-24 01:04:20,150,[22],EMPTY,2,277,EMPTY,start
+inspect_inventory,2020-07-24 01:21:20,150,[22],EMPTY,2,277,EMPTY,complete
+create_rental,2020-07-24 02:55:02,167,"[107, 63]",33,EMPTY,EMPTY,EMPTY,complete
+create_payment,2020-07-24 02:55:45,167,EMPTY,33,20,EMPTY,198,complete
+lend_inventory,2020-07-24 04:27:10,161,"[90, 23]",76,7,EMPTY,EMPTY,complete
+confirm_payment,2020-07-24 07:50:45,167,EMPTY,33,20,EMPTY,198,complete
+confirm_rental,2020-07-24 07:51:36,167,EMPTY,33,20,EMPTY,EMPTY,complete
+create_rental,2020-07-24 10:48:13,168,"[107, 14]",40,EMPTY,EMPTY,EMPTY,complete
+create_payment,2020-07-24 10:48:45,168,EMPTY,40,20,EMPTY,199,complete
+return_inventory,2020-07-24 12:32:23,159,[137],66,12,EMPTY,EMPTY,complete
+inspect_inventory,2020-07-24 12:33:40,159,[137],EMPTY,19,294,EMPTY,start
+inspect_inventory,2020-07-24 12:52:40,159,[137],EMPTY,19,294,EMPTY,complete
+return_inventory,2020-07-24 12:53:56,159,[141],66,15,EMPTY,EMPTY,complete
+inspect_inventory,2020-07-24 12:55:32,159,[141],EMPTY,3,295,EMPTY,start
+inspect_inventory,2020-07-24 13:09:32,159,[141],EMPTY,3,295,EMPTY,complete
+return_inventory,2020-07-24 17:17:10,154,[10],41,7,EMPTY,EMPTY,complete
+inspect_inventory,2020-07-24 17:18:14,154,[10],EMPTY,7,284,EMPTY,start
+inspect_inventory,2020-07-24 17:32:14,154,[10],EMPTY,7,284,EMPTY,complete
+return_inventory,2020-07-24 17:33:33,154,[99],41,9,EMPTY,EMPTY,complete
+inspect_inventory,2020-07-24 17:34:56,154,[99],EMPTY,8,285,EMPTY,start
+inspect_inventory,2020-07-24 17:50:56,154,[99],EMPTY,8,285,EMPTY,complete
+confirm_payment,2020-07-24 18:47:45,168,EMPTY,40,20,EMPTY,199,complete
+confirm_rental,2020-07-24 18:49:02,168,EMPTY,40,20,EMPTY,EMPTY,complete
+return_inventory,2020-07-24 21:50:08,158,[11],32,4,EMPTY,EMPTY,complete
+inspect_inventory,2020-07-24 21:51:11,158,[11],EMPTY,18,292,EMPTY,start
+inspect_inventory,2020-07-24 22:10:11,158,[11],EMPTY,18,292,EMPTY,complete
+return_inventory,2020-07-24 22:11:50,158,[156],32,13,EMPTY,EMPTY,complete
+inspect_inventory,2020-07-24 22:12:26,158,[156],EMPTY,13,293,EMPTY,start
+inspect_inventory,2020-07-24 22:29:26,158,[156],EMPTY,13,293,EMPTY,complete
+create_rental,2020-07-24 23:25:25,169,"[41, 101]",56,EMPTY,EMPTY,EMPTY,complete
+create_payment,2020-07-24 23:26:31,169,EMPTY,56,17,EMPTY,200,complete
+return_inventory,2020-07-25 06:43:35,152,[61],17,12,EMPTY,EMPTY,complete
+inspect_inventory,2020-07-25 06:44:43,152,[61],EMPTY,19,280,EMPTY,start
+inspect_inventory,2020-07-25 06:54:43,152,[61],EMPTY,19,280,EMPTY,complete
+return_inventory,2020-07-25 06:56:10,152,[38],17,15,EMPTY,EMPTY,complete
+inspect_inventory,2020-07-25 06:56:50,152,[38],EMPTY,15,281,EMPTY,start
+inspect_inventory,2020-07-25 07:06:50,152,[38],EMPTY,15,281,EMPTY,complete
+confirm_payment,2020-07-25 09:04:31,169,EMPTY,56,11,EMPTY,200,complete
+confirm_rental,2020-07-25 09:05:18,169,EMPTY,56,14,EMPTY,EMPTY,complete
+return_inventory,2020-07-25 11:54:20,163,[78],23,16,EMPTY,EMPTY,complete
+inspect_inventory,2020-07-25 11:55:12,163,[78],EMPTY,16,302,EMPTY,start
+inspect_inventory,2020-07-25 12:09:12,163,[78],EMPTY,16,302,EMPTY,complete
+return_inventory,2020-07-25 12:09:53,163,[103],23,16,EMPTY,EMPTY,complete
+inspect_inventory,2020-07-25 12:11:29,163,[103],EMPTY,16,303,EMPTY,start
+inspect_inventory,2020-07-25 12:29:29,163,[103],EMPTY,16,303,EMPTY,complete
+lend_inventory,2020-07-25 13:16:45,166,"[120, 150]",23,16,EMPTY,EMPTY,complete
+return_inventory,2020-07-25 15:06:10,161,[90],76,8,EMPTY,EMPTY,complete
+inspect_inventory,2020-07-25 15:07:24,161,[90],EMPTY,9,298,EMPTY,start
+inspect_inventory,2020-07-25 15:25:24,161,[90],EMPTY,9,298,EMPTY,complete
+return_inventory,2020-07-25 15:26:09,161,[23],76,8,EMPTY,EMPTY,complete
+inspect_inventory,2020-07-25 15:26:43,161,[23],EMPTY,8,299,EMPTY,start
+inspect_inventory,2020-07-25 15:39:43,161,[23],EMPTY,8,299,EMPTY,complete
+return_inventory,2020-07-25 18:11:59,160,[142],64,1,EMPTY,EMPTY,complete
+inspect_inventory,2020-07-25 18:12:54,160,[142],EMPTY,1,296,EMPTY,start
+inspect_inventory,2020-07-25 18:26:54,160,[142],EMPTY,1,296,EMPTY,complete
+return_inventory,2020-07-25 18:27:50,160,[22],64,2,EMPTY,EMPTY,complete
+inspect_inventory,2020-07-25 18:28:47,160,[22],EMPTY,1,297,EMPTY,start
+inspect_inventory,2020-07-25 18:40:47,160,[22],EMPTY,1,297,EMPTY,complete
+create_rental,2020-07-25 22:24:47,170,"[110, 134]",71,EMPTY,EMPTY,EMPTY,complete
+create_payment,2020-07-25 22:25:58,170,EMPTY,71,6,EMPTY,201,complete
+lend_inventory,2020-07-25 23:58:36,167,"[107, 63]",33,20,EMPTY,EMPTY,complete
+confirm_payment,2020-07-26 00:45:58,170,EMPTY,71,6,EMPTY,201,complete
+confirm_rental,2020-07-26 00:47:32,170,EMPTY,71,6,EMPTY,EMPTY,complete
+lend_inventory,2020-07-26 03:02:27,165,"[32, 145]",56,14,EMPTY,EMPTY,complete
+lend_inventory,2020-07-26 06:32:02,168,"[107, 14]",40,20,EMPTY,EMPTY,complete
+create_rental,2020-07-26 08:22:24,171,"[118, 23]",20,EMPTY,EMPTY,EMPTY,complete
+create_payment,2020-07-26 08:23:53,171,EMPTY,20,8,EMPTY,202,complete
+return_inventory,2020-07-26 11:10:56,162,[11],46,13,EMPTY,EMPTY,complete
+inspect_inventory,2020-07-26 11:12:00,162,[11],EMPTY,4,300,EMPTY,start
+inspect_inventory,2020-07-26 11:22:00,162,[11],EMPTY,4,300,EMPTY,complete
+return_inventory,2020-07-26 11:22:43,162,[29],46,13,EMPTY,EMPTY,complete
+inspect_inventory,2020-07-26 11:23:44,162,[29],EMPTY,13,301,EMPTY,start
+inspect_inventory,2020-07-26 11:37:44,162,[29],EMPTY,13,301,EMPTY,complete
+return_inventory,2020-07-26 16:50:36,167,[107],33,20,EMPTY,EMPTY,complete
+inspect_inventory,2020-07-26 16:52:15,167,[107],EMPTY,20,309,EMPTY,start
+lend_inventory,2020-07-26 16:57:13,164,[78],65,16,EMPTY,EMPTY,complete
+inspect_inventory,2020-07-26 17:03:15,167,[107],EMPTY,20,309,EMPTY,complete
+return_inventory,2020-07-26 17:04:40,167,[63],33,20,EMPTY,EMPTY,complete
+inspect_inventory,2020-07-26 17:06:05,167,[63],EMPTY,20,310,EMPTY,start
+inspect_inventory,2020-07-26 17:18:05,167,[63],EMPTY,20,310,EMPTY,complete
+return_inventory,2020-07-26 18:32:02,168,[107],40,20,EMPTY,EMPTY,complete
+inspect_inventory,2020-07-26 18:33:20,168,[107],EMPTY,20,311,EMPTY,start
+inspect_inventory,2020-07-26 18:48:20,168,[107],EMPTY,20,311,EMPTY,complete
+return_inventory,2020-07-26 18:49:39,168,[14],40,20,EMPTY,EMPTY,complete
+inspect_inventory,2020-07-26 18:50:45,168,[14],EMPTY,20,312,EMPTY,start
+inspect_inventory,2020-07-26 19:04:45,168,[14],EMPTY,20,312,EMPTY,complete
+confirm_payment,2020-07-27 01:04:53,171,EMPTY,20,8,EMPTY,202,complete
+confirm_rental,2020-07-27 01:05:25,171,EMPTY,20,9,EMPTY,EMPTY,complete
+lend_inventory,2020-07-27 01:53:18,169,"[41, 101]",56,11,EMPTY,EMPTY,complete
+return_inventory,2020-07-27 11:56:45,166,[120],23,16,EMPTY,EMPTY,complete
+inspect_inventory,2020-07-27 11:58:10,166,[120],EMPTY,16,307,EMPTY,start
+inspect_inventory,2020-07-27 12:18:10,166,[120],EMPTY,16,307,EMPTY,complete
+return_inventory,2020-07-27 12:19:32,166,[150],23,16,EMPTY,EMPTY,complete
+inspect_inventory,2020-07-27 12:21:03,166,[150],EMPTY,16,308,EMPTY,start
+inspect_inventory,2020-07-27 12:33:03,166,[150],EMPTY,16,308,EMPTY,complete
+return_inventory,2020-07-27 16:04:13,164,[78],65,16,EMPTY,EMPTY,complete
+inspect_inventory,2020-07-27 16:05:07,164,[78],EMPTY,16,304,EMPTY,start
+inspect_inventory,2020-07-27 16:20:07,164,[78],EMPTY,16,304,EMPTY,complete
+cancel_inventory,2020-07-27 17:43:32,171,[118],20,EMPTY,EMPTY,EMPTY,complete
+return_inventory,2020-07-28 13:09:27,165,[32],56,11,EMPTY,EMPTY,complete
+inspect_inventory,2020-07-28 13:11:03,165,[32],EMPTY,11,305,EMPTY,start
+inspect_inventory,2020-07-28 13:21:03,165,[32],EMPTY,11,305,EMPTY,complete
+return_inventory,2020-07-28 13:21:49,165,[145],56,11,EMPTY,EMPTY,complete
+inspect_inventory,2020-07-28 13:22:34,165,[145],EMPTY,17,306,EMPTY,start
+inspect_inventory,2020-07-28 13:37:34,165,[145],EMPTY,17,306,EMPTY,complete
+lend_inventory,2020-07-28 17:29:32,170,"[110, 134]",71,5,EMPTY,EMPTY,complete
+lend_inventory,2020-07-29 19:06:32,171,[23],20,9,EMPTY,EMPTY,complete
+return_inventory,2020-07-29 22:29:18,169,[41],56,11,EMPTY,EMPTY,complete
+inspect_inventory,2020-07-29 22:30:16,169,[41],EMPTY,11,313,EMPTY,start
+inspect_inventory,2020-07-29 22:48:16,169,[41],EMPTY,11,313,EMPTY,complete
+return_inventory,2020-07-29 22:49:51,169,[101],56,17,EMPTY,EMPTY,complete
+inspect_inventory,2020-07-29 22:51:11,169,[101],EMPTY,14,314,EMPTY,start
+inspect_inventory,2020-07-29 23:05:11,169,[101],EMPTY,14,314,EMPTY,complete
+return_inventory,2020-07-31 16:15:32,171,[23],20,8,EMPTY,EMPTY,complete
+inspect_inventory,2020-07-31 16:16:10,171,[23],EMPTY,7,317,EMPTY,start
+return_inventory,2020-07-31 16:26:32,170,[110],71,2,EMPTY,EMPTY,complete
+inspect_inventory,2020-07-31 16:27:40,170,[110],EMPTY,2,315,EMPTY,start
+inspect_inventory,2020-07-31 16:33:10,171,[23],EMPTY,7,317,EMPTY,complete
+create_payment,2020-07-31 16:34:32,171,EMPTY,20,8,EMPTY,203,complete
+confirm_payment,2020-07-31 16:35:19,171,EMPTY,20,8,EMPTY,203,complete
+inspect_inventory,2020-07-31 16:47:40,170,[110],EMPTY,2,315,EMPTY,complete
+return_inventory,2020-07-31 16:48:50,170,[134],71,5,EMPTY,EMPTY,complete
+inspect_inventory,2020-07-31 16:50:17,170,[134],EMPTY,6,316,EMPTY,start
+inspect_inventory,2020-07-31 17:10:17,170,[134],EMPTY,6,316,EMPTY,complete
+create_rental,2020-08-01 16:54:04,172,"[138, 131]",40,EMPTY,EMPTY,EMPTY,complete
+create_payment,2020-08-01 16:55:24,172,EMPTY,40,20,EMPTY,204,complete
+confirm_payment,2020-08-01 20:36:24,172,EMPTY,40,20,EMPTY,204,complete
+confirm_rental,2020-08-01 20:37:57,172,EMPTY,40,20,EMPTY,EMPTY,complete
+create_rental,2020-08-01 21:21:21,173,"[42, 61]",52,EMPTY,EMPTY,EMPTY,complete
+create_payment,2020-08-01 21:22:47,173,EMPTY,52,3,EMPTY,205,complete
+create_rental,2020-08-02 04:55:31,174,"[85, 150]",30,EMPTY,EMPTY,EMPTY,complete
+create_payment,2020-08-02 04:56:23,174,EMPTY,30,16,EMPTY,206,complete
+confirm_payment,2020-08-02 12:52:47,173,EMPTY,52,19,EMPTY,205,complete
+confirm_rental,2020-08-02 12:53:50,173,EMPTY,52,3,EMPTY,EMPTY,complete
+confirm_payment,2020-08-02 13:06:23,174,EMPTY,30,16,EMPTY,206,complete
+confirm_rental,2020-08-02 13:07:20,174,EMPTY,30,16,EMPTY,EMPTY,complete
+create_rental,2020-08-02 19:35:58,175,"[164, 37]",2,EMPTY,EMPTY,EMPTY,complete
+create_payment,2020-08-02 19:37:25,175,EMPTY,2,16,EMPTY,207,complete
+confirm_payment,2020-08-03 01:58:25,175,EMPTY,2,16,EMPTY,207,complete
+confirm_rental,2020-08-03 01:59:13,175,EMPTY,2,16,EMPTY,EMPTY,complete
+lend_inventory,2020-08-03 22:41:20,174,"[85, 150]",30,16,EMPTY,EMPTY,complete
+return_inventory,2020-08-04 08:48:20,174,[85],30,16,EMPTY,EMPTY,complete
+inspect_inventory,2020-08-04 08:49:25,174,[85],EMPTY,16,322,EMPTY,start
+inspect_inventory,2020-08-04 09:03:25,174,[85],EMPTY,16,322,EMPTY,complete
+return_inventory,2020-08-04 09:04:15,174,[150],30,16,EMPTY,EMPTY,complete
+inspect_inventory,2020-08-04 09:05:51,174,[150],EMPTY,16,323,EMPTY,start
+inspect_inventory,2020-08-04 09:23:51,174,[150],EMPTY,16,323,EMPTY,complete
+lend_inventory,2020-08-04 12:32:57,172,"[138, 131]",40,20,EMPTY,EMPTY,complete
+lend_inventory,2020-08-05 05:05:50,173,"[42, 61]",52,19,EMPTY,EMPTY,complete
+lend_inventory,2020-08-05 22:46:13,175,"[164, 37]",2,16,EMPTY,EMPTY,complete
+return_inventory,2020-08-07 10:25:50,173,[42],52,12,EMPTY,EMPTY,complete
+inspect_inventory,2020-08-07 10:27:08,173,[42],EMPTY,3,320,EMPTY,start
+inspect_inventory,2020-08-07 10:39:08,173,[42],EMPTY,3,320,EMPTY,complete
+return_inventory,2020-08-07 10:40:17,173,[61],52,15,EMPTY,EMPTY,complete
+inspect_inventory,2020-08-07 10:40:52,173,[61],EMPTY,19,321,EMPTY,start
+inspect_inventory,2020-08-07 10:54:52,173,[61],EMPTY,19,321,EMPTY,complete
+return_inventory,2020-08-07 11:18:57,172,[138],40,20,EMPTY,EMPTY,complete
+inspect_inventory,2020-08-07 11:20:36,172,[138],EMPTY,20,318,EMPTY,start
+inspect_inventory,2020-08-07 11:38:36,172,[138],EMPTY,20,318,EMPTY,complete
+return_inventory,2020-08-07 11:39:31,172,[131],40,20,EMPTY,EMPTY,complete
+inspect_inventory,2020-08-07 11:41:08,172,[131],EMPTY,20,319,EMPTY,start
+inspect_inventory,2020-08-07 11:53:08,172,[131],EMPTY,20,319,EMPTY,complete
+return_inventory,2020-08-08 02:56:13,175,[164],2,16,EMPTY,EMPTY,complete
+inspect_inventory,2020-08-08 02:56:56,175,[164],EMPTY,16,324,EMPTY,start
+inspect_inventory,2020-08-08 03:13:56,175,[164],EMPTY,16,324,EMPTY,complete
+return_inventory,2020-08-08 03:14:35,175,[37],2,16,EMPTY,EMPTY,complete
+inspect_inventory,2020-08-08 03:16:00,175,[37],EMPTY,16,325,EMPTY,start
+inspect_inventory,2020-08-08 03:30:00,175,[37],EMPTY,16,325,EMPTY,complete
+create_payment,2020-08-08 03:31:38,175,EMPTY,2,16,EMPTY,208,complete
+confirm_payment,2020-08-08 03:33:18,175,EMPTY,2,16,EMPTY,208,complete
+create_rental,2020-08-09 00:04:29,176,"[66, 63]",75,EMPTY,EMPTY,EMPTY,complete
+create_payment,2020-08-09 00:05:07,176,EMPTY,75,20,EMPTY,209,complete
+confirm_payment,2020-08-09 01:23:07,176,EMPTY,75,20,EMPTY,209,complete
+confirm_rental,2020-08-09 01:24:13,176,EMPTY,75,20,EMPTY,EMPTY,complete
+lend_inventory,2020-08-10 16:13:13,176,"[66, 63]",75,20,EMPTY,EMPTY,complete
+return_inventory,2020-08-12 14:44:13,176,[66],75,20,EMPTY,EMPTY,complete
+inspect_inventory,2020-08-12 14:45:10,176,[66],EMPTY,20,326,EMPTY,start
+inspect_inventory,2020-08-12 15:00:10,176,[66],EMPTY,20,326,EMPTY,complete
+return_inventory,2020-08-12 15:01:02,176,[63],75,20,EMPTY,EMPTY,complete
+inspect_inventory,2020-08-12 15:01:39,176,[63],EMPTY,20,327,EMPTY,start
+inspect_inventory,2020-08-12 15:14:39,176,[63],EMPTY,20,327,EMPTY,complete
+create_payment,2020-08-12 15:15:47,176,EMPTY,75,20,EMPTY,210,complete
+confirm_payment,2020-08-12 15:17:04,176,EMPTY,75,20,EMPTY,210,complete
+create_rental,2020-08-13 06:04:24,177,"[101, 62]",28,EMPTY,EMPTY,EMPTY,complete
+create_payment,2020-08-13 06:05:01,177,EMPTY,28,11,EMPTY,211,complete
+confirm_payment,2020-08-13 18:03:01,177,EMPTY,28,14,EMPTY,211,complete
+confirm_rental,2020-08-13 18:03:41,177,EMPTY,28,11,EMPTY,EMPTY,complete
+create_rental,2020-08-13 21:37:56,178,"[9, 151]",56,EMPTY,EMPTY,EMPTY,complete
+create_payment,2020-08-13 21:39:09,178,EMPTY,56,17,EMPTY,212,complete
+create_rental,2020-08-14 06:11:25,179,"[97, 90]",76,EMPTY,EMPTY,EMPTY,complete
+create_payment,2020-08-14 06:12:13,179,EMPTY,76,9,EMPTY,213,complete
+confirm_payment,2020-08-14 09:07:09,178,EMPTY,56,14,EMPTY,212,complete
+confirm_rental,2020-08-14 09:08:34,178,EMPTY,56,17,EMPTY,EMPTY,complete
+confirm_payment,2020-08-14 11:53:13,179,EMPTY,76,7,EMPTY,213,complete
+confirm_rental,2020-08-14 11:54:24,179,EMPTY,76,7,EMPTY,EMPTY,complete
+create_rental,2020-08-15 00:34:55,180,"[82, 133]",50,EMPTY,EMPTY,EMPTY,complete
+create_payment,2020-08-15 00:35:29,180,EMPTY,50,2,EMPTY,214,complete
+create_rental,2020-08-15 15:47:36,181,"[104, 33]",17,EMPTY,EMPTY,EMPTY,complete
+create_payment,2020-08-15 15:48:33,181,EMPTY,17,15,EMPTY,215,complete
+confirm_payment,2020-08-15 22:46:29,180,EMPTY,50,1,EMPTY,214,complete
+confirm_rental,2020-08-15 22:47:02,180,EMPTY,50,1,EMPTY,EMPTY,complete
+lend_inventory,2020-08-16 00:26:41,177,"[101, 62]",28,14,EMPTY,EMPTY,complete
+lend_inventory,2020-08-16 08:24:34,178,"[9, 151]",56,11,EMPTY,EMPTY,complete
+confirm_payment,2020-08-16 10:14:33,181,EMPTY,17,3,EMPTY,215,complete
+confirm_rental,2020-08-16 10:15:36,181,EMPTY,17,10,EMPTY,EMPTY,complete
+lend_inventory,2020-08-16 19:56:02,180,"[82, 133]",50,2,EMPTY,EMPTY,complete
+return_inventory,2020-08-17 06:03:02,180,[82],50,6,EMPTY,EMPTY,complete
+inspect_inventory,2020-08-17 06:03:53,180,[82],EMPTY,1,334,EMPTY,start
+inspect_inventory,2020-08-17 06:18:53,180,[82],EMPTY,1,334,EMPTY,complete
+return_inventory,2020-08-17 06:19:48,180,[133],50,6,EMPTY,EMPTY,complete
+inspect_inventory,2020-08-17 06:20:58,180,[133],EMPTY,1,335,EMPTY,start
+inspect_inventory,2020-08-17 06:30:58,180,[133],EMPTY,1,335,EMPTY,complete
+lend_inventory,2020-08-17 07:58:24,179,"[97, 90]",76,9,EMPTY,EMPTY,complete
+return_inventory,2020-08-17 10:25:24,179,[97],76,8,EMPTY,EMPTY,complete
+inspect_inventory,2020-08-17 10:26:16,179,[97],EMPTY,9,332,EMPTY,start
+inspect_inventory,2020-08-17 10:41:16,179,[97],EMPTY,9,332,EMPTY,complete
+return_inventory,2020-08-17 10:42:01,179,[90],76,8,EMPTY,EMPTY,complete
+inspect_inventory,2020-08-17 10:43:10,179,[90],EMPTY,9,333,EMPTY,start
+inspect_inventory,2020-08-17 10:55:10,179,[90],EMPTY,9,333,EMPTY,complete
+return_inventory,2020-08-18 10:15:34,178,[9],56,17,EMPTY,EMPTY,complete
+inspect_inventory,2020-08-18 10:16:08,178,[9],EMPTY,14,330,EMPTY,start
+inspect_inventory,2020-08-18 10:31:08,178,[9],EMPTY,14,330,EMPTY,complete
+return_inventory,2020-08-18 10:32:45,178,[151],56,11,EMPTY,EMPTY,complete
+inspect_inventory,2020-08-18 10:34:16,178,[151],EMPTY,14,331,EMPTY,start
+inspect_inventory,2020-08-18 10:46:16,178,[151],EMPTY,14,331,EMPTY,complete
+return_inventory,2020-08-18 12:27:41,177,[101],28,11,EMPTY,EMPTY,complete
+inspect_inventory,2020-08-18 12:29:08,177,[101],EMPTY,14,328,EMPTY,start
+inspect_inventory,2020-08-18 12:49:08,177,[101],EMPTY,14,328,EMPTY,complete
+return_inventory,2020-08-18 12:49:48,177,[62],28,14,EMPTY,EMPTY,complete
+inspect_inventory,2020-08-18 12:51:10,177,[62],EMPTY,11,329,EMPTY,start
+inspect_inventory,2020-08-18 13:05:10,177,[62],EMPTY,11,329,EMPTY,complete
+lend_inventory,2020-08-18 19:34:36,181,"[104, 33]",17,19,EMPTY,EMPTY,complete
+return_inventory,2020-08-19 02:30:36,181,[104],17,15,EMPTY,EMPTY,complete
+inspect_inventory,2020-08-19 02:31:11,181,[104],EMPTY,15,336,EMPTY,start
+inspect_inventory,2020-08-19 02:44:11,181,[104],EMPTY,15,336,EMPTY,complete
+create_payment,2020-08-19 02:44:49,181,EMPTY,17,15,EMPTY,216,complete
+return_inventory,2020-08-19 02:46:08,181,[33],17,3,EMPTY,EMPTY,complete
+inspect_inventory,2020-08-19 02:46:38,181,[33],EMPTY,12,337,EMPTY,start
+inspect_inventory,2020-08-19 03:06:38,181,[33],EMPTY,12,337,EMPTY,complete
+confirm_payment,2020-08-19 03:07:53,181,EMPTY,17,19,EMPTY,216,complete
+create_rental,2020-08-19 14:42:38,182,"[85, 37]",16,EMPTY,EMPTY,EMPTY,complete
+create_payment,2020-08-19 14:43:08,182,EMPTY,16,16,EMPTY,217,complete
+confirm_payment,2020-08-20 00:31:08,182,EMPTY,16,16,EMPTY,217,complete
+confirm_rental,2020-08-20 00:32:21,182,EMPTY,16,16,EMPTY,EMPTY,complete
+lend_inventory,2020-08-21 20:37:21,182,"[85, 37]",16,16,EMPTY,EMPTY,complete
+return_inventory,2020-08-22 00:08:21,182,[85],16,16,EMPTY,EMPTY,complete
+inspect_inventory,2020-08-22 00:09:49,182,[85],EMPTY,16,338,EMPTY,start
+inspect_inventory,2020-08-22 00:24:49,182,[85],EMPTY,16,338,EMPTY,complete
+return_inventory,2020-08-22 00:25:39,182,[37],16,16,EMPTY,EMPTY,complete
+inspect_inventory,2020-08-22 00:26:29,182,[37],EMPTY,16,339,EMPTY,start
+inspect_inventory,2020-08-22 00:39:29,182,[37],EMPTY,16,339,EMPTY,complete
+create_payment,2020-08-22 00:40:31,182,EMPTY,16,16,EMPTY,218,complete
+confirm_payment,2020-08-22 00:41:23,182,EMPTY,16,16,EMPTY,218,complete
+create_rental,2020-08-22 14:37:45,183,"[94, 15]",27,EMPTY,EMPTY,EMPTY,complete
+create_payment,2020-08-22 14:38:31,183,EMPTY,27,7,EMPTY,219,complete
+confirm_payment,2020-08-22 15:17:31,183,EMPTY,27,7,EMPTY,219,complete
+confirm_rental,2020-08-22 15:18:15,183,EMPTY,27,7,EMPTY,EMPTY,complete
+lend_inventory,2020-08-24 07:39:15,183,"[94, 15]",27,8,EMPTY,EMPTY,complete
+return_inventory,2020-08-25 18:49:15,183,[94],27,8,EMPTY,EMPTY,complete
+inspect_inventory,2020-08-25 18:50:45,183,[94],EMPTY,8,340,EMPTY,start
+inspect_inventory,2020-08-25 19:00:45,183,[94],EMPTY,8,340,EMPTY,complete
+return_inventory,2020-08-25 19:02:01,183,[15],27,7,EMPTY,EMPTY,complete
+inspect_inventory,2020-08-25 19:03:13,183,[15],EMPTY,7,341,EMPTY,start
+inspect_inventory,2020-08-25 19:15:13,183,[15],EMPTY,7,341,EMPTY,complete
+create_payment,2020-08-25 19:16:02,183,EMPTY,27,9,EMPTY,220,complete
+confirm_payment,2020-08-25 19:17:33,183,EMPTY,27,8,EMPTY,220,complete
+create_rental,2020-08-26 12:17:06,184,"[112, 70]",79,EMPTY,EMPTY,EMPTY,complete
+create_payment,2020-08-26 12:18:13,184,EMPTY,79,16,EMPTY,221,complete
+confirm_payment,2020-08-26 18:59:13,184,EMPTY,79,16,EMPTY,221,complete
+confirm_rental,2020-08-26 19:00:16,184,EMPTY,79,16,EMPTY,EMPTY,complete
+create_rental,2020-08-27 01:47:05,185,"[64, 101]",77,EMPTY,EMPTY,EMPTY,complete
+create_payment,2020-08-27 01:47:59,185,EMPTY,77,17,EMPTY,222,complete
+confirm_payment,2020-08-27 19:48:59,185,EMPTY,77,14,EMPTY,222,complete
+confirm_rental,2020-08-27 19:49:47,185,EMPTY,77,14,EMPTY,EMPTY,complete
+lend_inventory,2020-08-29 04:31:47,185,"[64, 101]",77,17,EMPTY,EMPTY,complete
+return_inventory,2020-08-30 12:05:47,185,[64],77,11,EMPTY,EMPTY,complete
+inspect_inventory,2020-08-30 12:07:07,185,[64],EMPTY,11,344,EMPTY,start
+inspect_inventory,2020-08-30 12:26:07,185,[64],EMPTY,11,344,EMPTY,complete
+create_payment,2020-08-30 12:27:43,185,EMPTY,77,17,EMPTY,223,complete
+return_inventory,2020-08-30 12:28:24,185,[101],77,17,EMPTY,EMPTY,complete
+inspect_inventory,2020-08-30 12:28:58,185,[101],EMPTY,14,345,EMPTY,start
+inspect_inventory,2020-08-30 12:38:58,185,[101],EMPTY,14,345,EMPTY,complete
+confirm_payment,2020-08-30 12:39:29,185,EMPTY,77,17,EMPTY,223,complete
+lend_inventory,2020-08-30 15:59:16,184,"[112, 70]",79,16,EMPTY,EMPTY,complete
+create_rental,2020-08-31 01:52:09,186,"[64, 9]",21,EMPTY,EMPTY,EMPTY,complete
+create_payment,2020-08-31 01:53:19,186,EMPTY,21,14,EMPTY,224,complete
+create_rental,2020-08-31 14:32:03,187,"[104, 42]",24,EMPTY,EMPTY,EMPTY,complete
+create_payment,2020-08-31 14:33:21,187,EMPTY,24,3,EMPTY,225,complete
+create_rental,2020-08-31 21:19:49,188,"[41, 98]",28,EMPTY,EMPTY,EMPTY,complete
+create_payment,2020-08-31 21:21:24,188,EMPTY,28,14,EMPTY,226,complete
+confirm_payment,2020-08-31 22:00:19,186,EMPTY,21,11,EMPTY,224,complete
+confirm_rental,2020-08-31 22:00:51,186,EMPTY,21,11,EMPTY,EMPTY,complete
+return_inventory,2020-09-01 02:04:16,184,[112],79,16,EMPTY,EMPTY,complete
+inspect_inventory,2020-09-01 02:04:51,184,[112],EMPTY,16,342,EMPTY,start
+inspect_inventory,2020-09-01 02:14:51,184,[112],EMPTY,16,342,EMPTY,complete
+return_inventory,2020-09-01 02:15:21,184,[70],79,16,EMPTY,EMPTY,complete
+inspect_inventory,2020-09-01 02:16:23,184,[70],EMPTY,16,343,EMPTY,start
+inspect_inventory,2020-09-01 02:26:23,184,[70],EMPTY,16,343,EMPTY,complete
+confirm_payment,2020-09-01 03:31:24,188,EMPTY,28,14,EMPTY,226,complete
+confirm_rental,2020-09-01 03:32:19,188,EMPTY,28,14,EMPTY,EMPTY,complete
+create_rental,2020-09-01 05:26:40,189,"[28, 93]",39,EMPTY,EMPTY,EMPTY,complete
+create_payment,2020-09-01 05:27:31,189,EMPTY,39,4,EMPTY,227,complete
+confirm_payment,2020-09-01 09:26:21,187,EMPTY,24,3,EMPTY,225,complete
+confirm_rental,2020-09-01 09:27:07,187,EMPTY,24,19,EMPTY,EMPTY,complete
+lend_inventory,2020-09-01 11:41:51,186,"[64, 9]",21,14,EMPTY,EMPTY,complete
+confirm_payment,2020-09-01 12:38:31,189,EMPTY,39,18,EMPTY,227,complete
+confirm_rental,2020-09-01 12:39:54,189,EMPTY,39,18,EMPTY,EMPTY,complete
+create_rental,2020-09-01 17:32:47,190,"[114, 130]",20,EMPTY,EMPTY,EMPTY,complete
+create_payment,2020-09-01 17:34:03,190,EMPTY,20,9,EMPTY,228,complete
+create_rental,2020-09-01 18:19:18,191,"[57, 130]",48,EMPTY,EMPTY,EMPTY,complete
+create_payment,2020-09-01 18:20:04,191,EMPTY,48,8,EMPTY,229,complete
+confirm_payment,2020-09-01 19:19:04,191,EMPTY,48,8,EMPTY,229,complete
+confirm_rental,2020-09-01 19:20:28,191,EMPTY,48,9,EMPTY,EMPTY,complete
+cancel_inventory,2020-09-01 20:57:33,189,[28],39,EMPTY,EMPTY,EMPTY,complete
+cancel_inventory,2020-09-01 22:36:42,191,[130],48,EMPTY,EMPTY,EMPTY,complete
+create_rental,2020-09-02 07:41:44,192,"[38, 111]",3,EMPTY,EMPTY,EMPTY,complete
+create_payment,2020-09-02 07:42:53,192,EMPTY,3,15,EMPTY,230,complete
+create_rental,2020-09-02 13:55:35,193,"[81, 44]",20,EMPTY,EMPTY,EMPTY,complete
+create_payment,2020-09-02 13:57:14,193,EMPTY,20,7,EMPTY,231,complete
+confirm_payment,2020-09-02 15:30:03,190,EMPTY,20,8,EMPTY,228,complete
+confirm_rental,2020-09-02 15:31:28,190,EMPTY,20,9,EMPTY,EMPTY,complete
+confirm_payment,2020-09-02 16:21:53,192,EMPTY,3,3,EMPTY,230,complete
+confirm_rental,2020-09-02 16:23:15,192,EMPTY,3,19,EMPTY,EMPTY,complete
+lend_inventory,2020-09-03 01:39:07,187,"[104, 42]",24,3,EMPTY,EMPTY,complete
+create_rental,2020-09-03 07:17:32,194,"[149, 62]",56,EMPTY,EMPTY,EMPTY,complete
+create_payment,2020-09-03 07:18:11,194,EMPTY,56,17,EMPTY,232,complete
+confirm_payment,2020-09-03 09:02:14,193,EMPTY,20,9,EMPTY,231,complete
+confirm_rental,2020-09-03 09:03:35,193,EMPTY,20,8,EMPTY,EMPTY,complete
+lend_inventory,2020-09-03 12:07:19,188,"[41, 98]",28,14,EMPTY,EMPTY,complete
+lend_inventory,2020-09-03 14:47:35,193,"[81, 44]",20,9,EMPTY,EMPTY,complete
+create_rental,2020-09-03 16:47:04,195,"[106, 15]",6,EMPTY,EMPTY,EMPTY,complete
+confirm_payment,2020-09-03 16:47:11,194,EMPTY,56,17,EMPTY,232,complete
+create_payment,2020-09-03 16:47:44,195,EMPTY,6,7,EMPTY,233,complete
+confirm_rental,2020-09-03 16:48:28,194,EMPTY,56,11,EMPTY,EMPTY,complete
+return_inventory,2020-09-03 22:34:19,188,[41],28,17,EMPTY,EMPTY,complete
+inspect_inventory,2020-09-03 22:35:14,188,[41],EMPTY,14,350,EMPTY,start
+inspect_inventory,2020-09-03 22:48:14,188,[41],EMPTY,14,350,EMPTY,complete
+return_inventory,2020-09-03 22:49:21,188,[98],28,14,EMPTY,EMPTY,complete
+inspect_inventory,2020-09-03 22:50:05,188,[98],EMPTY,17,351,EMPTY,start
+return_inventory,2020-09-03 22:58:51,186,[64],21,14,EMPTY,EMPTY,complete
+inspect_inventory,2020-09-03 22:59:57,186,[64],EMPTY,11,346,EMPTY,start
+inspect_inventory,2020-09-03 23:01:05,188,[98],EMPTY,17,351,EMPTY,complete
+inspect_inventory,2020-09-03 23:14:57,186,[64],EMPTY,11,346,EMPTY,complete
+return_inventory,2020-09-03 23:16:07,186,[9],21,17,EMPTY,EMPTY,complete
+inspect_inventory,2020-09-03 23:16:46,186,[9],EMPTY,14,347,EMPTY,start
+inspect_inventory,2020-09-03 23:32:46,186,[9],EMPTY,14,347,EMPTY,complete
+lend_inventory,2020-09-04 02:42:28,190,"[114, 130]",20,7,EMPTY,EMPTY,complete
+lend_inventory,2020-09-04 03:32:33,189,[93],39,18,EMPTY,EMPTY,complete
+confirm_payment,2020-09-04 12:31:44,195,EMPTY,6,8,EMPTY,233,complete
+confirm_rental,2020-09-04 12:32:43,195,EMPTY,6,9,EMPTY,EMPTY,complete
+lend_inventory,2020-09-05 09:06:15,192,"[38, 111]",3,12,EMPTY,EMPTY,complete
+return_inventory,2020-09-05 12:20:07,187,[104],24,10,EMPTY,EMPTY,complete
+inspect_inventory,2020-09-05 12:21:37,187,[104],EMPTY,15,348,EMPTY,start
+inspect_inventory,2020-09-05 12:39:37,187,[104],EMPTY,15,348,EMPTY,complete
+return_inventory,2020-09-05 12:41:01,187,[42],24,10,EMPTY,EMPTY,complete
+inspect_inventory,2020-09-05 12:42:24,187,[42],EMPTY,3,349,EMPTY,start
+inspect_inventory,2020-09-05 12:57:24,187,[42],EMPTY,3,349,EMPTY,complete
+lend_inventory,2020-09-05 17:33:42,191,[57],48,7,EMPTY,EMPTY,complete
+return_inventory,2020-09-06 03:09:35,193,[81],20,7,EMPTY,EMPTY,complete
+inspect_inventory,2020-09-06 03:10:57,193,[81],EMPTY,9,358,EMPTY,start
+inspect_inventory,2020-09-06 03:21:57,193,[81],EMPTY,9,358,EMPTY,complete
+return_inventory,2020-09-06 03:23:22,193,[44],20,7,EMPTY,EMPTY,complete
+inspect_inventory,2020-09-06 03:23:58,193,[44],EMPTY,7,359,EMPTY,start
+inspect_inventory,2020-09-06 03:35:58,193,[44],EMPTY,7,359,EMPTY,complete
+return_inventory,2020-09-06 12:53:28,190,[114],20,9,EMPTY,EMPTY,complete
+inspect_inventory,2020-09-06 12:54:44,190,[114],EMPTY,8,353,EMPTY,start
+inspect_inventory,2020-09-06 13:09:44,190,[114],EMPTY,8,353,EMPTY,complete
+return_inventory,2020-09-06 13:11:03,190,[130],20,9,EMPTY,EMPTY,complete
+inspect_inventory,2020-09-06 13:12:23,190,[130],EMPTY,7,354,EMPTY,start
+inspect_inventory,2020-09-06 13:27:23,190,[130],EMPTY,7,354,EMPTY,complete
+lend_inventory,2020-09-06 13:55:28,194,"[149, 62]",56,11,EMPTY,EMPTY,complete
+return_inventory,2020-09-06 19:51:33,189,[93],39,18,EMPTY,EMPTY,complete
+inspect_inventory,2020-09-06 19:52:09,189,[93],EMPTY,13,352,EMPTY,start
+inspect_inventory,2020-09-06 20:04:09,189,[93],EMPTY,13,352,EMPTY,complete
+return_inventory,2020-09-07 12:34:42,191,[57],48,9,EMPTY,EMPTY,complete
+inspect_inventory,2020-09-07 12:36:00,191,[57],EMPTY,8,355,EMPTY,start
+inspect_inventory,2020-09-07 12:56:00,191,[57],EMPTY,8,355,EMPTY,complete
+lend_inventory,2020-09-07 21:53:43,195,"[106, 15]",6,7,EMPTY,EMPTY,complete
+return_inventory,2020-09-08 07:35:15,192,[38],3,12,EMPTY,EMPTY,complete
+inspect_inventory,2020-09-08 07:36:19,192,[38],EMPTY,10,356,EMPTY,start
+inspect_inventory,2020-09-08 07:56:19,192,[38],EMPTY,10,356,EMPTY,complete
+return_inventory,2020-09-08 07:57:52,192,[111],3,19,EMPTY,EMPTY,complete
+inspect_inventory,2020-09-08 07:59:28,192,[111],EMPTY,15,357,EMPTY,start
+inspect_inventory,2020-09-08 08:15:28,192,[111],EMPTY,15,357,EMPTY,complete
+return_inventory,2020-09-08 12:16:28,194,[149],56,11,EMPTY,EMPTY,complete
+inspect_inventory,2020-09-08 12:17:32,194,[149],EMPTY,17,360,EMPTY,start
+inspect_inventory,2020-09-08 12:31:32,194,[149],EMPTY,17,360,EMPTY,complete
+return_inventory,2020-09-08 12:32:02,194,[62],56,17,EMPTY,EMPTY,complete
+inspect_inventory,2020-09-08 12:32:43,194,[62],EMPTY,11,361,EMPTY,start
+inspect_inventory,2020-09-08 12:44:43,194,[62],EMPTY,11,361,EMPTY,complete
+return_inventory,2020-09-09 21:05:43,195,[106],6,7,EMPTY,EMPTY,complete
+inspect_inventory,2020-09-09 21:06:54,195,[106],EMPTY,8,362,EMPTY,start
+inspect_inventory,2020-09-09 21:20:54,195,[106],EMPTY,8,362,EMPTY,complete
+create_payment,2020-09-09 21:22:31,195,EMPTY,6,9,EMPTY,234,complete
+return_inventory,2020-09-09 21:24:02,195,[15],6,8,EMPTY,EMPTY,complete
+inspect_inventory,2020-09-09 21:24:36,195,[15],EMPTY,8,363,EMPTY,start
+inspect_inventory,2020-09-09 21:44:36,195,[15],EMPTY,8,363,EMPTY,complete
+confirm_payment,2020-09-09 21:46:07,195,EMPTY,6,8,EMPTY,234,complete
+create_rental,2020-09-10 08:53:15,196,"[4, 143]",11,EMPTY,EMPTY,EMPTY,complete
+create_payment,2020-09-10 08:54:05,196,EMPTY,11,18,EMPTY,235,complete
+confirm_payment,2020-09-10 10:37:05,196,EMPTY,11,13,EMPTY,235,complete
+confirm_rental,2020-09-10 10:38:41,196,EMPTY,11,13,EMPTY,EMPTY,complete
+cancel_inventory,2020-09-10 22:51:39,196,[4],11,EMPTY,EMPTY,EMPTY,complete
+create_rental,2020-09-11 09:32:08,197,"[124, 71]",9,EMPTY,EMPTY,EMPTY,complete
+create_payment,2020-09-11 09:32:55,197,EMPTY,9,16,EMPTY,236,complete
+confirm_payment,2020-09-11 20:10:55,197,EMPTY,9,16,EMPTY,236,complete
+confirm_rental,2020-09-11 20:11:43,197,EMPTY,9,16,EMPTY,EMPTY,complete
+create_rental,2020-09-12 10:07:47,198,"[85, 158]",30,EMPTY,EMPTY,EMPTY,complete
+create_payment,2020-09-12 10:08:55,198,EMPTY,30,16,EMPTY,237,complete
+create_rental,2020-09-12 16:30:41,199,"[113, 11]",67,EMPTY,EMPTY,EMPTY,complete
+create_payment,2020-09-12 16:31:31,199,EMPTY,67,13,EMPTY,238,complete
+lend_inventory,2020-09-12 19:05:39,196,[143],11,13,EMPTY,EMPTY,complete
+lend_inventory,2020-09-12 23:26:43,197,"[124, 71]",9,16,EMPTY,EMPTY,complete
+confirm_payment,2020-09-13 07:26:31,199,EMPTY,67,18,EMPTY,238,complete
+confirm_rental,2020-09-13 07:27:44,199,EMPTY,67,13,EMPTY,EMPTY,complete
+confirm_payment,2020-09-13 07:39:55,198,EMPTY,30,16,EMPTY,237,complete
+confirm_rental,2020-09-13 07:41:33,198,EMPTY,30,16,EMPTY,EMPTY,complete
+return_inventory,2020-09-14 06:52:43,197,[124],9,16,EMPTY,EMPTY,complete
+inspect_inventory,2020-09-14 06:54:05,197,[124],EMPTY,16,365,EMPTY,start
+inspect_inventory,2020-09-14 07:10:05,197,[124],EMPTY,16,365,EMPTY,complete
+return_inventory,2020-09-14 07:11:05,197,[71],9,16,EMPTY,EMPTY,complete
+inspect_inventory,2020-09-14 07:12:28,197,[71],EMPTY,16,366,EMPTY,start
+inspect_inventory,2020-09-14 07:24:28,197,[71],EMPTY,16,366,EMPTY,complete
+lend_inventory,2020-09-15 15:21:44,199,"[113, 11]",67,18,EMPTY,EMPTY,complete
+lend_inventory,2020-09-15 17:23:33,198,"[85, 158]",30,16,EMPTY,EMPTY,complete
+return_inventory,2020-09-15 18:37:39,196,[143],11,4,EMPTY,EMPTY,complete
+inspect_inventory,2020-09-15 18:38:13,196,[143],EMPTY,13,364,EMPTY,start
+inspect_inventory,2020-09-15 18:57:13,196,[143],EMPTY,13,364,EMPTY,complete
+return_inventory,2020-09-17 01:20:44,199,[113],67,13,EMPTY,EMPTY,complete
+inspect_inventory,2020-09-17 01:21:50,199,[113],EMPTY,13,369,EMPTY,start
+inspect_inventory,2020-09-17 01:37:50,199,[113],EMPTY,13,369,EMPTY,complete
+return_inventory,2020-09-17 01:38:37,199,[11],67,18,EMPTY,EMPTY,complete
+inspect_inventory,2020-09-17 01:40:04,199,[11],EMPTY,4,370,EMPTY,start
+inspect_inventory,2020-09-17 01:53:04,199,[11],EMPTY,4,370,EMPTY,complete
+create_payment,2020-09-17 01:54:23,199,EMPTY,67,4,EMPTY,239,complete
+confirm_payment,2020-09-17 01:55:20,199,EMPTY,67,4,EMPTY,239,complete
+return_inventory,2020-09-18 09:02:33,198,[85],30,16,EMPTY,EMPTY,complete
+inspect_inventory,2020-09-18 09:03:37,198,[85],EMPTY,16,367,EMPTY,start
+inspect_inventory,2020-09-18 09:17:37,198,[85],EMPTY,16,367,EMPTY,complete
+return_inventory,2020-09-18 09:18:46,198,[158],30,16,EMPTY,EMPTY,complete
+inspect_inventory,2020-09-18 09:19:47,198,[158],EMPTY,16,368,EMPTY,start
+inspect_inventory,2020-09-18 09:29:47,198,[158],EMPTY,16,368,EMPTY,complete

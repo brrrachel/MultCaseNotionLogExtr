@@ -20,7 +20,6 @@ class XESLogTool:
         # load csv file
         dataframe = csv_import_adapter.import_dataframe_from_path(csv_file_path, sep=",")
         dataframe.rental = dataframe.rental.astype(str)
-        dataframe.store = dataframe.store.astype(str)
 
         def is_slice_in_list(list1, list2):
             return all(elem in list2 for elem in list1)
@@ -73,9 +72,9 @@ class XESLogTool:
         return [event for event in self.event_log[case_id]]
 
     def get_directly_follows_graph(self):
-        dfg = dfg_discovery.apply(self.event_log, variant=dfg_discovery.Variants.PERFORMANCE)
+        dfg = dfg_discovery.apply(self.event_log)
         parameters = {dfg_visualization.Variants.PERFORMANCE.value.Parameters.FORMAT: "png"}
-        gviz = dfg_visualization.apply(dfg, log=self.event_log, variant=dfg_visualization.Variants.PERFORMANCE, parameters=parameters)
+        gviz = dfg_visualization.apply(dfg, log=self.event_log, parameters=parameters)
         dfg_visualization.save(gviz, 'graphs/DFG_' + self.case_notion + '.png')
 
     def xes_to_disk(self):
@@ -83,6 +82,6 @@ class XESLogTool:
 
 
 if __name__ == '__main__':
-    log_extractor = XESLogTool('sortedTableLog.csv', ['staff','inspection'])
+    log_extractor = XESLogTool('tableLog.csv', ['staff', 'inspection'])
     log_extractor.get_directly_follows_graph()
     log_extractor.xes_to_disk()

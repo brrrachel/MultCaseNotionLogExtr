@@ -33,30 +33,33 @@ class ProcessSimulator:
         self.payments = pd.DataFrame(columns=['rental_id', 'value', 'created_date', 'confirmed_date', 'staff'])
 
         # create table log
-        self.tableLog = pd.DataFrame(columns=['activity','timestamp','rental','inventory','customer','store','staff','inspection','payment','lifecycle'])
+        self.tableLog = pd.DataFrame(columns=['activity','timestamp','rental','inventory','customer','staff','inspection','payment','lifecycle'])
 
     '''
         Helper Methods
     '''
 
-    def __get_customer_id__(self) -> int:
+    def __get_random_customer_id__(self) -> int:
         return random.choice(self.customer.index.tolist())
 
+    def __get_customer_of_rental__(self, rental_id):
+        return self.rental_orders.loc[rental_id]['customer_id']
+
     def __get_store_of_customer__(self, customer_id: int) -> int:
-        return self.customer.iloc[customer_id-1]['store_id']
+        return self.customer.loc[customer_id]['store_id']
         
     def __get_store_of_inventory__(self, inventory_id: int) -> int:
-        return self.inventory.iloc[inventory_id-1]['store_id']
+        return self.inventory.loc[inventory_id]['store_id']
 
     def __get_inventory_ids_for_store__(self, store_id: int) -> list:
         return self.inventory.loc[(self.inventory['store_id'] == store_id)].index.tolist()
 
     def __get_rental_rate_for_inventory_id__(self, inventory_id: int) -> float:
-        equipment_id = self.inventory.iloc[inventory_id-1]['equipment_id']
-        return self.equipment.iloc[equipment_id-1]['rental_rate'].item()
+        equipment_id = self.inventory.loc[inventory_id,'equipment_id']
+        return self.equipment.loc[equipment_id]['rental_rate'].item()
 
     def __get_staff_id_for_inventory__(self, inventory_id: int) -> int:
-        store_id = self.inventory.iloc[inventory_id-1]['store_id']
+        store_id = self.inventory.loc[inventory_id]['store_id']
         staff_ids = self.staff.loc[(self.staff['store_id'] == store_id)].index.tolist()
         return random.choice(staff_ids)
 
@@ -64,7 +67,7 @@ class ProcessSimulator:
         inventory_of_store = self.__get_inventory_ids_for_store__(store_id)
         return list(set(random.choices(inventory_of_store, k=count)))
 
-    def __create_entry_for_table_log__(self, activity: str, timestamp: datetime.datetime, rental='EMPTY', inventory='EMPTY', customer='EMPTY', staff='EMPTY', inspection='EMPTY', payment='EMPTY', store='EMPTY', lifecycle='complete'):
+    def __create_entry_for_table_log__(self, activity: str, timestamp: datetime.datetime, rental='EMPTY', inventory='EMPTY', customer='EMPTY', staff='EMPTY', inspection='EMPTY', payment='EMPTY', lifecycle='complete'):
         new_entry = {'activity': activity,
                      'timestamp': timestamp,
                      'rental': str(rental),
@@ -73,7 +76,6 @@ class ProcessSimulator:
                      'staff': staff,
                      'inspection': inspection,
                      'payment': payment,
-                     'store': store,
                      'lifecycle': lifecycle
                      }
         self.tableLog = self.tableLog.append(new_entry, ignore_index=True)
@@ -89,8 +91,7 @@ class ProcessSimulator:
         self.rental_orders = self.rental_orders.append(new_rental, ignore_index=True)
         rental_id = self.rental_orders.index.max()
         print('Customer ' + str(customer_id) + ' created rental ' + str(rental_id) + ' on ' + date.__str__())
-        store_id = self.__get_store_of_inventory__(inventory_ids[0])
-        self.__create_entry_for_table_log__('create_rental', date, rental=rental_id, inventory=inventory_ids, customer=customer_id, store=store_id)
+        self.__create_entry_for_table_log__('create_rental', date, rental=rental_id, inventory=inventory_ids, customer=customer_id)
 
         # create entry for each inventory to lend
         lended_inventory_ids = []
@@ -109,74 +110,72 @@ class ProcessSimulator:
         new_payment = {'rental_id': rental_id, 'value': round(sum(total_payment), 2), 'created_date': date, 'staff': staff_id}
         self.payments = self.payments.append(new_payment, ignore_index=True)
         payment_id = self.payments.index.max()
-        store_id = self.__get_store_of_inventory__(inventory_ids[0])
-        self.__create_entry_for_table_log__('create_payment', date, rental=rental_id, staff=staff_id, payment=payment_id, store=store_id)
+        customer_id = self.__get_customer_of_rental__(rental_id)
+        self.__create_entry_for_table_log__('create_payment', date, rental=rental_id, staff=staff_id, payment=payment_id, customer=customer_id)
         print('Payment ' + str(payment_id) + ' with value ' + str(round(sum(total_payment), 2)) + ' created for rental ' + str(rental_id) + ' including inventory ids ' + str(inventory_ids))
         return payment_id
 
     def confirm_payment(self, rental_id: int, payment_id: int, date: datetime.datetime, inventory_id: int):
         staff_id = self.__get_staff_id_for_inventory__(inventory_id)
-        self.payments.iloc[payment_id, self.payments.columns.get_loc('confirmed_date')] = date
-        store_id = self.__get_store_of_inventory__(inventory_id)
-        self.__create_entry_for_table_log__('confirm_payment', date, rental= rental_id, payment=payment_id, staff=staff_id, store=store_id)
+        self.payments.loc[payment_id, self.payments.columns.get_loc('confirmed_date')] = date
+        customer_id = self.__get_customer_of_rental__(rental_id)
+        self.__create_entry_for_table_log__('confirm_payment', date, rental= rental_id, payment=payment_id, staff=staff_id, customer=customer_id)
         print('Payment ' + str(payment_id) + ' received on ' + date.__str__())
 
     def confirm_rental(self, rental_id: int, date: datetime.datetime):
-        self.rental_orders.iloc[rental_id, self.rental_orders.columns.get_loc('confirmed_date')] = date
+        self.rental_orders.loc[rental_id, self.rental_orders.columns.get_loc('confirmed_date')] = date
         inventory_id = self.lended_inventory.loc[(self.lended_inventory['rental_id'] == rental_id)]['inventory_id'].iloc[0]
-        #print(inventory_ids)
-        #inventory_id = inventory_ids[0]
         staff_id = self.__get_staff_id_for_inventory__(inventory_id)
-        store_id = self.__get_store_of_inventory__(inventory_id)
-        self.__create_entry_for_table_log__('confirm_rental', date, rental=rental_id, store=store_id, staff=staff_id)
+        customer_id = self.__get_customer_of_rental__(rental_id)
+        self.__create_entry_for_table_log__('confirm_rental', date, rental=rental_id, staff=staff_id, customer=customer_id)
         print('Rental ' + str(rental_id) + ' confirmed on ' + date.__str__())
 
     def cancel_inventory(self, rental_id: int, lended_inventory_id: int, date: datetime.datetime, customer_id: int):
-        self.lended_inventory.iloc[lended_inventory_id, self.lended_inventory.columns.get_loc('cancel_date')] = date
-        inventory_id = self.lended_inventory.iloc[lended_inventory_id]['inventory_id']
+        self.lended_inventory.loc[lended_inventory_id, self.lended_inventory.columns.get_loc('cancel_date')] = date
+        inventory_id = self.lended_inventory.loc[lended_inventory_id]['inventory_id']
         store_id = self.__get_store_of_inventory__(inventory_id)
-        self.__create_entry_for_table_log__('cancel_inventory', date, rental=rental_id, inventory=[inventory_id], customer= customer_id, store=store_id)
+        self.__create_entry_for_table_log__('cancel_inventory', date, rental=rental_id, inventory=[inventory_id].__str__(), customer= customer_id)
         print('Inventory order ' + str(inventory_id) + ' has been canceled on ' + date.__str__())
 
     def lend_inventory(self, lended_inventory_ids: list, date: datetime.datetime, customer_id: int):
         inventory_ids = []
         for lended_inventory_id in lended_inventory_ids:
-            self.lended_inventory.iloc[lended_inventory_id, self.lended_inventory.columns.get_loc('lend_date')] = date
-            inventory_ids.append(self.lended_inventory.iloc[lended_inventory_id]['inventory_id'])
+            self.lended_inventory.loc[lended_inventory_id, self.lended_inventory.columns.get_loc('lend_date')] = date
+            inventory_ids.append(self.lended_inventory.loc[lended_inventory_id]['inventory_id'])
 
-        rental_id = self.lended_inventory.iloc[lended_inventory_ids[0]]['rental_id']
+        rental_id = self.lended_inventory.loc[lended_inventory_ids[0]]['rental_id']
         store_id = self.__get_store_of_inventory__(inventory_ids[0])
         staff_id = self.__get_staff_id_for_inventory__(inventory_ids[0])
-        self.__create_entry_for_table_log__('lend_inventory', date, rental=rental_id, inventory=inventory_ids, customer= customer_id, store=store_id, staff=staff_id)
+        self.__create_entry_for_table_log__('lend_inventory', date, rental=rental_id, inventory=inventory_ids.__str__(), customer= customer_id, staff=staff_id)
         print('Inventory ids ' + str(inventory_ids) + ' were picked up on ' + date.__str__())
 
     def return_inventory(self, rental_id: int, lended_inventory_ids: list, date: datetime.datetime, customer: str):
         additional_payment_ids = []
         print('Inventory ids ' + str(lended_inventory_ids) + ' were returned up on ' + date.__str__() + '.')
         for lended_inventory_id in lended_inventory_ids:
-            inventory_id = self.lended_inventory.iloc[lended_inventory_id]['inventory_id']
+            inventory_id = self.lended_inventory.loc[lended_inventory_id,'inventory_id']
             store_id = self.__get_store_of_inventory__(inventory_id)
             staff_id = self.__get_staff_id_for_inventory__(inventory_id)
-            self.__create_entry_for_table_log__('return_inventory', date, rental=rental_id, inventory=[inventory_id], customer=customer, store=store_id, staff=staff_id)
+            self.__create_entry_for_table_log__('return_inventory', date, rental=rental_id, inventory=[inventory_id].__str__(), customer=customer, staff=staff_id)
             date += datetime.timedelta(seconds=random.randint(30,100))
             inspection_id, payment_id, date = self.inspect_inventory(rental_id, lended_inventory_id, date)
             if payment_id != -1:
                 additional_payment_ids.append(payment_id)
-            self.lended_inventory.iloc[lended_inventory_id, self.lended_inventory.columns.get_loc('return_date')] = date
+            self.lended_inventory.loc[lended_inventory_id, self.lended_inventory.columns.get_loc('return_date')] = date
             date += datetime.timedelta(seconds=random.randint(30,100))
         return additional_payment_ids, date
 
     def inspect_inventory(self, rental_id: int, lended_inventory_id: int, date: datetime.datetime):
-        inventory_id = self.lended_inventory.iloc[lended_inventory_id-1]['inventory_id']
+        inventory_id = self.lended_inventory.loc[lended_inventory_id]['inventory_id']
         inspector_id = self.__get_staff_id_for_inventory__(inventory_id)
         new_inspection = {'inspector_id': inspector_id, 'inspection_date': date, 'lended_inventory_id': lended_inventory_id}
         payment_id = -1
         self.inspections = self.inspections.append(new_inspection, ignore_index=True)
         inspection_id = self.inspections.index.max()
         store_id = self.__get_store_of_inventory__(inventory_id)
-        self.__create_entry_for_table_log__('inspect_inventory', date, rental=rental_id, inventory=[inventory_id], staff=inspector_id, inspection=inspection_id, store=store_id, lifecycle='start')
+        self.__create_entry_for_table_log__('inspect_inventory', date, rental=rental_id, inventory=[inventory_id].__str__(), staff=inspector_id, inspection=inspection_id, lifecycle='start')
         date += datetime.timedelta(minutes=random.randint(10,20))
-        self.__create_entry_for_table_log__('inspect_inventory', date, rental=rental_id, inventory=[inventory_id], staff=inspector_id, inspection=inspection_id, store=store_id)
+        self.__create_entry_for_table_log__('inspect_inventory', date, rental=rental_id, inventory=[inventory_id].__str__(), staff=inspector_id, inspection=inspection_id)
         if random.uniform(0, 1) < 0.1:
             date += datetime.timedelta(seconds=random.randint(30,100))
             payment_id = self.create_payment(rental_id, [inventory_id], date)
@@ -190,7 +189,7 @@ class ProcessSimulator:
         current_time = start_time
 
         for i in range(0,200):
-            customer = self.__get_customer_id__()
+            customer = self.__get_random_customer_id__()
             current_time_process = current_time
 
             belonging_store_id = self.__get_store_of_customer__(customer)
@@ -236,7 +235,7 @@ class ProcessSimulator:
         
         self.tableLog = self.tableLog.sort_values(by=['timestamp'])
         self.tableLog = self.tableLog.reset_index(drop=True)
-        self.tableLog.to_csv('sortedTableLog.csv', index=False)
+        self.tableLog.to_csv('tableLog.csv', index=False)
 
 
 if __name__ == '__main__':
