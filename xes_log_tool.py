@@ -80,6 +80,6 @@ class XESLogTool:
 
 
 if __name__ == '__main__':
-    log_extractor = XESLogTool('tableLog.csv', ['rental'])
+    log_extractor = XESLogTool('tableLogs/tableLog.csv', ['rental'])
     log_extractor.get_directly_follows_graph()
     log_extractor.xes_to_disk()
