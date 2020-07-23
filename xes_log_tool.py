@@ -2,9 +2,7 @@ import pandas as pd
 from pm4py.objects.log.log import EventLog
 from pm4py.objects.conversion.log import factory as conversion_factory
 from pm4py.objects.log.exporter.xes import exporter as xes_exporter
-from pm4py.algo.discovery.alpha import factory as alpha_miner
 from pm4py.algo.discovery.dfg import algorithm as dfg_discovery
-from pm4py.visualization.petrinet import factory as petri_net_visualization
 from pm4py.visualization.dfg import visualizer as dfg_visualization
 from pm4py.util import constants
 from pm4py.objects.log.adapters.pandas import csv_import_adapter
@@ -82,6 +80,6 @@ class XESLogTool:
 
 
 if __name__ == '__main__':
-    log_extractor = XESLogTool('tableLog.csv', ['staff', 'inspection'])
+    log_extractor = XESLogTool('tableLog.csv', ['rental'])
     log_extractor.get_directly_follows_graph()
     log_extractor.xes_to_disk()

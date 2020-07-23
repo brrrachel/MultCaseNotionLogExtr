@@ -1,7 +1,8 @@
 import datetime
 import random
 import pandas as pd
-from tqdm import tqdm
+import numpy as np
+import progressbar
 
 '''
 Processes:
@@ -34,223 +35,415 @@ class ProcessSimulator:
         self.invoices = pd.DataFrame(columns=['rental_id', 'value', 'created_date', 'payed_date', 'confirmed_date', 'staff'])
 
         # create table log
-        self.tableLog = pd.DataFrame(columns=['activity','timestamp','rental','inventory','customer','staff','inspection','invoice','lifecycle'])
+        self.tableLog = pd.DataFrame(columns=['activity','timestamp','rental','inventory','customer','staff','inspection','invoice','store','lifecycle'])
+
+        # simulation time
+        self.current_time: datetime.datetime
 
     '''
         Helper Methods
     '''
 
-    def __get_random_customer_id__(self) -> int:
-        return random.choice(self.customer.index.tolist())
+    def __get_customer_ids__(self) -> list:
+        return self.customer.index.tolist()
 
-    def __get_customer_of_rental__(self, rental_id):
-        return self.rental_orders.loc[rental_id]['customer_id']
+    def __get_store_ids__(self):
+        return self.store.index.tolist()
 
     def __get_store_of_customer__(self, customer_id: int) -> int:
         return self.customer.loc[customer_id]['store_id']
-        
-    def __get_store_of_inventory__(self, inventory_id: int) -> int:
-        return self.inventory.loc[inventory_id]['store_id']
 
-    def __get_inventory_ids_for_store__(self, store_id: int) -> list:
-        return self.inventory.loc[(self.inventory['store_id'] == store_id)].index.tolist()
+    def __get_lended_inventory_ids_of_customer__(self, customer_id) -> pd.DataFrame:
+        '''
+
+        :param customer_id: the customer
+        :return: the dataframe of lended_inventory_id for a customer (all lended_inventory_ids not only the currently lended ones)
+        '''
+        rentals_of_customer = self.rental_orders[(self.rental_orders['customer_id'] == customer_id)].index.tolist()
+        lended_inventory_of_customer = self.lended_inventory[self.lended_inventory['rental_id'].isin(rentals_of_customer)]
+        return lended_inventory_of_customer
+
+    def __get_rentals_without_invoice_from_store__(self, store_id: int) -> pd.DataFrame:
+        rental_inventory_invoices_mapping = pd.merge(self.lended_inventory, self.invoices, left_on='rental_id', right_on='rental_id', how='left')
+        rental_inventory_invoices_store_mapping = pd.merge(rental_inventory_invoices_mapping, self.inventory, left_on='inventory_id', right_index=True, how='left')
+        open_invoices_of_store = rental_inventory_invoices_store_mapping[(rental_inventory_invoices_store_mapping['store_id'] == store_id) & (pd.isna(rental_inventory_invoices_store_mapping['value']))]
+        return open_invoices_of_store
 
     def __get_rental_rate_for_inventory_id__(self, inventory_id: int) -> float:
-        equipment_id = self.inventory.loc[inventory_id,'equipment_id']
-        return self.equipment.loc[equipment_id]['rental_rate'].item()
+        equipment_id = self.inventory.loc[inventory_id, 'equipment_id']
+        return self.equipment.loc[equipment_id, 'rental_rate']
 
-    def __get_staff_id_for_inventory__(self, inventory_id: int) -> int:
-        store_id = self.inventory.loc[inventory_id]['store_id']
-        staff_ids = self.staff.loc[(self.staff['store_id'] == store_id)].index.tolist()
+    def __get_invoices_rental_mapping__(self) -> pd.DataFrame:
+        return pd.merge(self.invoices, self.rental_orders, left_on='rental_id', right_index=True, how='left')
+
+    def __get_lended_inventory_ids_of_store__(self, store_id):
+        li_inventory_mapping = pd.merge(self.lended_inventory, self.inventory, left_on='inventory_id', right_index=True, how='outer')
+        return li_inventory_mapping[(li_inventory_mapping['store_id'] == store_id)]
+
+    def __get_rentals_of_store__(self, store_id):
+        rentals_store_mapping = pd.merge(self.rental_orders, self.customer, left_on='customer_id', right_index=True, how='left')
+        return rentals_store_mapping[(rentals_store_mapping['store_id'] == store_id)]
+
+    def __get_invoices_of_store__(self, store_id):
+        invoices_rental_mapping = self.__get_invoices_rental_mapping__()
+        invoices_rental_store_mapping = pd.merge(invoices_rental_mapping, self.customer, left_on='customer_id', right_index=True, how='left')
+        return invoices_rental_store_mapping[(invoices_rental_store_mapping['store_id'] == store_id)]
+
+    def __get_random_staff_id_for_store__(self, store_id: int) -> int:
+        staff_ids = self.staff[(self.staff['store_id'] == store_id)].index.tolist()
         return random.choice(staff_ids)
 
-    def select_inventory_from_store(self, store_id: int, count=2) -> list:
-        inventory_of_store = self.__get_inventory_ids_for_store__(store_id)
-        return list(set(random.choices(inventory_of_store, k=count)))
+    def select_available_inventory_from_store(self, store_id: int, count=2) -> list:
+        inventory_of_store_ids = self.inventory[(self.inventory['store_id'] == store_id)].index.tolist()
+        currently_inventories_lended_ids = self.lended_inventory[(pd.isna(self.lended_inventory['cancel_date']) & (pd.isna(self.lended_inventory['return_date'])))]['inventory_id'].values.tolist()
+        available_inventory = [inventory for inventory in inventory_of_store_ids if inventory not in currently_inventories_lended_ids]
+        if len(available_inventory) > 0:
+            return list(set(random.choices(available_inventory, k=count)))
+        else:
+            return []
 
-    def __create_entry_for_table_log__(self, activity: str, timestamp: datetime.datetime, rental='EMPTY', inventory='EMPTY', customer='EMPTY', staff='EMPTY', inspection='EMPTY', invoice='EMPTY', lifecycle='complete'):
+    def calculate_payment_for_inventory_ids(self, inventory_ids: list) -> float:
+        total_invoice = []
+        for inventory_id in inventory_ids:
+            total_invoice.append(self.__get_rental_rate_for_inventory_id__(inventory_id))
+        return round(sum(total_invoice), 2)
+
+    def get_open_invoices_to_pay(self, customer_id):
+        invoices_rental_mapping = self.__get_invoices_rental_mapping__()
+        open_invoices_of_customer = invoices_rental_mapping[(invoices_rental_mapping['customer_id'] == customer_id) & (pd.isna(invoices_rental_mapping['payed_date']))]
+        return open_invoices_of_customer.index.tolist()
+
+    def select_lended_inventory_id_to_cancel(self, customer, count=1):
+        lended_inventory_ids_of_customer = self.__get_lended_inventory_ids_of_customer__(customer)
+        confirmed_rentals = self.rental_orders[pd.notna(self.rental_orders['confirmed_date'])].index.tolist()
+        confirmed_li = lended_inventory_ids_of_customer[lended_inventory_ids_of_customer['rental_id'].isin(confirmed_rentals)]
+        available_to_be_canceled = confirmed_li[(pd.isna(confirmed_li['lend_date'])) & (pd.isna(confirmed_li['cancel_date']))]
+        if len(available_to_be_canceled) > 0:
+            return random.choices(available_to_be_canceled.index.tolist(), k=count)
+        return []
+
+    def __create_entry_for_table_log__(self, activity: str, timestamp: datetime.datetime, store, rental='EMPTY', inventory='EMPTY', customer='EMPTY', staff='EMPTY', inspection='EMPTY', invoice='EMPTY', lifecycle='complete'):
         new_entry = {'activity': activity,
                      'timestamp': timestamp,
-                     'rental': str(rental),
-                     'inventory': inventory,
+                     'rental': rental if len(rental) > 0 else 'EMPTY',
+                     'inventory': inventory if len(inventory) > 0 else 'EMPTY',
                      'customer': customer,
                      'staff': staff,
-                     'inspection': inspection,
-                     'invoice': invoice,
+                     'inspection': inspection if len(inspection) > 0 else 'EMPTY',
+                     'invoice': invoice if len(invoice) > 0 else 'EMPTY',
+                     'store': store,
                      'lifecycle': lifecycle
                      }
         self.tableLog = self.tableLog.append(new_entry, ignore_index=True)
+
+    def __update_progress_bar__(self):
+        # updates the visualization in the terminal
+        self.progressbar_widgets[1] = self.current_time.__str__()
 
     '''
         Defining Activities
     '''
 
-    def create_rental(self, customer_id: int, inventory_ids: list, date: datetime.datetime):
+    def create_rental(self, customer_id: int, inventory_ids: list):
+
+        # if there are no inventories available
+        if len(inventory_ids) == 0:
+            return
 
         # create rental
-        new_rental = {'customer_id': customer_id, 'created_date': date}
+        new_rental = {'customer_id': customer_id, 'created_date': self.current_time, 'confirmed_date': np.NaN}
         self.rental_orders = self.rental_orders.append(new_rental, ignore_index=True)
-        rental_id = self.rental_orders.index.max()
+        rental_id = int(self.rental_orders.index.max())
         # print('Customer ' + str(customer_id) + ' created rental ' + str(rental_id) + ' on ' + date.__str__())
-        self.__create_entry_for_table_log__('create_rental', date, rental=rental_id, inventory=inventory_ids, customer=customer_id)
+        self.__create_entry_for_table_log__('create_rental', self.current_time, self.__get_store_of_customer__(customer_id), rental=[rental_id], inventory=inventory_ids, customer=customer_id)
 
         # create entry for each inventory to lend
         lended_inventory_ids = []
         for inventory_id in inventory_ids:
-            new_lended_inventory = {'rental_id': rental_id, 'inventory_id': inventory_id, 'created_date': date}
+            new_lended_inventory = {'rental_id': rental_id, 'inventory_id': inventory_id, 'created_date': self.current_time, 'cancel_date': np.NaN, 'lend_date': np.NaN, 'return_date': np.NaN}
             self.lended_inventory = self.lended_inventory.append(new_lended_inventory, ignore_index=True)
             lended_inventory_ids.append(self.lended_inventory.index.max())
-        return rental_id, lended_inventory_ids
+        #print('Created rental: ' + str(rental_id) + ' by customer ' + str(customer_id))
 
-    def create_invoice(self, rental_id: int, inventory_ids: list, date: datetime.datetime):
-        total_invoice = []
-        for inventory_id in inventory_ids:
-            total_invoice.append(self.__get_rental_rate_for_inventory_id__(inventory_id))
+    def create_invoice(self, store_id: int, df: pd.DataFrame, delay=datetime.timedelta(seconds=0)):
 
-        staff_id = self.__get_staff_id_for_inventory__(inventory_ids[0])
-        new_invoice = {'rental_id': rental_id, 'value': round(sum(total_invoice), 2), 'created_date': date, 'staff': staff_id}
-        self.invoices = self.invoices.append(new_invoice, ignore_index=True)
-        invoice_id = self.invoices.index.max()
-        self.__create_entry_for_table_log__('create_invoice', date, rental=rental_id, staff=staff_id, invoice=invoice_id)
-        # print('invoice ' + str(invoice_id) + ' with value ' + str(round(sum(total_invoice), 2)) + ' created for rental ' + str(rental_id) + ' including inventory ids ' + str(inventory_ids))
-        return invoice_id
-        
-    def pay_invoice(self, rental_id: int, invoice_id: int, date: datetime.datetime):
-        self.invoices.loc[invoice_id, self.invoices.columns.get_loc('payed_date')] = date
-        customer_id = self.__get_customer_of_rental__(rental_id)
-        self.__create_entry_for_table_log__('pay_invoice', date, rental= rental_id, invoice=invoice_id, customer=customer_id)
+        # if there are no invoices to create
+        if len(df) == 0:
+            return
 
-    def confirm_invoice(self, rental_id: int, invoice_id: int, date: datetime.datetime, inventory_id: int):
-        staff_id = self.__get_staff_id_for_inventory__(inventory_id)
-        self.invoices.loc[invoice_id, self.invoices.columns.get_loc('confirmed_date')] = date
-        customer_id = self.__get_customer_of_rental__(rental_id)
-        self.__create_entry_for_table_log__('confirm_invoice', date, rental= rental_id, invoice=invoice_id, staff=staff_id)
-        # print('invoice ' + str(invoice_id) + ' received on ' + date.__str__())
+        staff_id = self.__get_random_staff_id_for_store__(store_id)
+        time = self.current_time + delay
+        invoice_ids = []
+        rental_ids = set()
 
-    def confirm_rental(self, rental_id: int, date: datetime.datetime):
-        self.rental_orders.loc[rental_id, self.rental_orders.columns.get_loc('confirmed_date')] = date
-        inventory_id = self.lended_inventory.loc[(self.lended_inventory['rental_id'] == rental_id)]['inventory_id'].iloc[0]
-        staff_id = self.__get_staff_id_for_inventory__(inventory_id)
-        customer_id = self.__get_customer_of_rental__(rental_id)
-        self.__create_entry_for_table_log__('confirm_rental', date, rental=rental_id, staff=staff_id)
-        # print('Rental ' + str(rental_id) + ' confirmed on ' + date.__str__())
+        rental_lended_ids_groups = df.groupby('rental_id')['inventory_id'].apply(list).reset_index()
+        for index, row in rental_lended_ids_groups.iterrows():
 
-    def cancel_inventory(self, rental_id: int, lended_inventory_id: int, date: datetime.datetime, customer_id: int):
-        self.lended_inventory.loc[lended_inventory_id, self.lended_inventory.columns.get_loc('cancel_date')] = date
-        inventory_id = self.lended_inventory.loc[lended_inventory_id]['inventory_id']
-        store_id = self.__get_store_of_inventory__(inventory_id)
-        self.__create_entry_for_table_log__('cancel_inventory', date, rental=rental_id, inventory=[inventory_id].__str__(), customer= customer_id)
-        # print('Inventory order ' + str(inventory_id) + ' has been canceled on ' + date.__str__())
+            rental_id = row['rental_id']
+            inventory_ids = row['inventory_id']
+            total_invoice = self.calculate_payment_for_inventory_ids(inventory_ids)
 
-    def lend_inventory(self, lended_inventory_ids: list, date: datetime.datetime, customer_id: int):
+            # create invoice
+            new_invoice = {'rental_id': rental_id, 'value': total_invoice, 'created_date': time, 'staff': staff_id, 'payed_date': np.NaN, 'confirmed_date': np.NaN}
+            self.invoices = self.invoices.append(new_invoice, ignore_index=True)
+
+            invoice_ids.append(self.invoices.index.max())
+            rental_ids.add(rental_id)
+
+        # save activity in table log
+        self.__create_entry_for_table_log__('create_invoice', time, store_id, rental=list(rental_ids), staff=staff_id, invoice=invoice_ids.__str__())
+        #print('Confirmed invoices: ' + str(inventory_ids) + ' by staff ' + str(staff_id))
+
+    def pay_invoices(self, customer_id: int, invoices: list):
+
+        # if there are no open invoices the customer has to pay
+        if len(invoices) == 0:
+            return
+
+        # pay each invoice
+        rental_ids = set()
+        for invoice in invoices:
+            rental_ids.add(self.invoices.iloc[invoice]['rental_id'])
+            self.invoices.at[invoice, 'payed_date'] = self.current_time
+
+        # save activity in table log
+        self.__create_entry_for_table_log__('pay_invoice', self.current_time, self.__get_store_of_customer__(customer_id), rental=list(rental_ids), invoice=invoices, customer=customer_id)
+        #print('Payed invoices: ' + str(invoices) + ' by customer ' + str(customer_id))
+
+    def confirm_invoice(self, store_id: int):
+        invoices_of_store = self.__get_invoices_of_store__(store_id)
+        payed_invoices_of_store = invoices_of_store[(pd.notna(invoices_of_store['payed_date']) & (pd.isna(invoices_of_store['confirmed_date_x'])))]
+        invoices = payed_invoices_of_store.index.tolist()
+        rental_ids = set()
+
+        # if there is nothing to confirm
+        if len(invoices) == 0:
+            return
+
+        # confirm each invoice
+        for invoice in invoices:
+            rental_ids.add(self.invoices.loc[invoice]['rental_id'])
+            self.invoices.at[invoice, 'confirmed_date'] = self.current_time
+
+        #TODO: does it makes sense, that the staff confirms a invoice although this is not saved in the tables
+        staff_id = self.__get_random_staff_id_for_store__(store_id)
+        self.__create_entry_for_table_log__('confirm_invoice', self.current_time, store_id, rental=list(rental_ids), invoice=invoices, staff=staff_id)
+        #print('Confirmed invoice: ' + str(invoices) + ' by staff ' + str(staff_id))
+
+    def confirm_rentals(self, store_id: int):
+        rentals = self.__get_rentals_of_store__(store_id)
+        rentals_not_confirmed = rentals[pd.isna(rentals['confirmed_date'])].index.tolist()
+        confirmed_invoices_rental_ids = self.invoices[pd.notna(self.invoices['confirmed_date'])]['rental_id'].values.tolist()
+
+        # if rental is not confirmed yet, but the invoice is confirmed
+        rentals_to_confirm = [rental_id for rental_id in rentals_not_confirmed if rental_id in confirmed_invoices_rental_ids]
+
+        # if there is nothing to confirm
+        if len(rentals_to_confirm) == 0:
+            return
+
+        # confirm rentals
+        for rental in rentals_to_confirm:
+            self.rental_orders.at[rental, 'confirmed_date'] = self.current_time
+
+        #TODO: does it make sense, that the staff confirms a rental although this is not saved in the tables
+        staff_id = self.__get_random_staff_id_for_store__(store_id)
+        self.__create_entry_for_table_log__('confirm_rental', self.current_time, store_id, rental=rentals_to_confirm, staff=staff_id)
+        #print('Confirmed rentals: ' + str(rentals_ids) + ' by staff ' + str(staff_id))
+
+    def cancel_inventory(self, customer_id: int, lended_inventory_ids: list):
+
+        # if there are no lended_inventory_id to cancel
+        if len(lended_inventory_ids) == 0:
+            return
+        print(lended_inventory_ids)
         inventory_ids = []
+        rental_ids = []
         for lended_inventory_id in lended_inventory_ids:
-            self.lended_inventory.loc[lended_inventory_id, self.lended_inventory.columns.get_loc('lend_date')] = date
+            # set cancel date
+            self.lended_inventory.at[lended_inventory_id, 'cancel_date'] = self.current_time
+
+            # get information for table log entry
+            inventory_ids.append(self.lended_inventory.loc[lended_inventory_id, 'inventory_id'])
+            rental_ids.append(self.lended_inventory.loc[lended_inventory_id, 'rental_id'])
+
+        store_id = self.__get_store_of_customer__(customer_id)
+        self.__create_entry_for_table_log__('cancel_inventory', self.current_time, store_id, rental=rental_ids, inventory=inventory_ids, customer=customer_id)
+        #print('Cancled inventory: ' + str(lended_inventory_id) + ' by customer ' + str(customer_id))
+
+    def lend_inventory(self, customer_id: int):
+        li = self.__get_lended_inventory_ids_of_customer__(customer_id)
+        li_not_picked_up_yet = li[(pd.isna(li['lend_date']) & pd.isna(li['cancel_date']))]
+
+        confirmed_rentals_ids = self.rental_orders[(pd.notna(self.rental_orders['confirmed_date']) & (self.rental_orders['customer_id'] == customer_id))].index.tolist()
+        li_confirmed_ids = li_not_picked_up_yet[li_not_picked_up_yet['rental_id'].isin(confirmed_rentals_ids)].index.tolist()
+
+        # if there is nothing to pick up
+        if len(li_confirmed_ids) == 0:
+            return
+
+        # the customer picks everything upx
+        rental_ids = set()
+        inventory_ids = []
+        for lended_inventory_id in li_confirmed_ids:
+            self.lended_inventory.at[lended_inventory_id, 'lend_date'] = self.current_time
+            rental_ids.add(self.lended_inventory.loc[lended_inventory_id]['rental_id'])
             inventory_ids.append(self.lended_inventory.loc[lended_inventory_id]['inventory_id'])
 
-        rental_id = self.lended_inventory.loc[lended_inventory_ids[0]]['rental_id']
-        store_id = self.__get_store_of_inventory__(inventory_ids[0])
-        staff_id = self.__get_staff_id_for_inventory__(inventory_ids[0])
-        self.__create_entry_for_table_log__('lend_inventory', date, rental=rental_id, inventory=inventory_ids.__str__(), customer= customer_id, staff=staff_id)
-        # print('Inventory ids ' + str(inventory_ids) + ' were picked up on ' + date.__str__())
+        #TODO: does it makes sense, that the staff lends inventory although this is not saved in the tables
+        store_of_customer = self.__get_store_of_customer__(customer_id)
+        staff_id = self.__get_random_staff_id_for_store__(store_of_customer)
+        store_id = self.__get_store_of_customer__(customer_id)
+        self.__create_entry_for_table_log__('lend_inventory', self.current_time, store_id, rental=list(rental_ids), inventory=inventory_ids, customer=customer_id, staff=staff_id)
+        #print('Lended inventory: ' + str(inventory_ids) + ' by customer ' + str(customer_id))
 
-    def return_inventory(self, rental_id: int, lended_inventory_ids: list, date: datetime.datetime, customer: str):
-        inventory_ids_for_additional_invoice = []
-        # print('Inventory ids ' + str(lended_inventory_ids) + ' were returned up on ' + date.__str__() + '.')
-        for lended_inventory_id in lended_inventory_ids:
-            inventory_id = self.lended_inventory.loc[lended_inventory_id,'inventory_id']
-            store_id = self.__get_store_of_inventory__(inventory_id)
-            staff_id = self.__get_staff_id_for_inventory__(inventory_id)
-            self.__create_entry_for_table_log__('return_inventory', date, rental=rental_id, inventory=[inventory_id].__str__(), customer=customer, staff=staff_id)
-            date += datetime.timedelta(seconds=random.randint(30,100))
-            inspection_id, inventory_broken, date = self.inspect_inventory(rental_id, lended_inventory_id, date)
-            if inventory_broken:
-                inventory_ids_for_additional_invoice.append(inventory_id)
-            self.lended_inventory.loc[lended_inventory_id, self.lended_inventory.columns.get_loc('return_date')] = date
-            date += datetime.timedelta(seconds=random.randint(30,100))
-        return inventory_ids_for_additional_invoice, date
+    def return_inventory(self, customer_id: int):
+        # the customer brings everything back
+        li_ids = self.__get_lended_inventory_ids_of_customer__(customer_id)
+        li_to_return_up = li_ids[(pd.isna(li_ids['return_date']) & pd.notna(li_ids['lend_date'])) & ((pd.notna(li_ids['lend_date']) & pd.isna(li_ids['cancel_date'])))]
+        li_to_return_ids = li_to_return_up.index.tolist()
 
-    def inspect_inventory(self, rental_id: int, lended_inventory_id: int, date: datetime.datetime):
-        inventory_id = self.lended_inventory.loc[lended_inventory_id]['inventory_id']
-        inspector_id = self.__get_staff_id_for_inventory__(inventory_id)
-        new_inspection = {'inspector_id': inspector_id, 'inspection_date': date, 'lended_inventory_id': lended_inventory_id}
-        invoice_id = -1
-        self.inspections = self.inspections.append(new_inspection, ignore_index=True)
-        inspection_id = self.inspections.index.max()
-        store_id = self.__get_store_of_inventory__(inventory_id)
-        self.__create_entry_for_table_log__('inspect_inventory', date, rental=rental_id, inventory=[inventory_id].__str__(), staff=inspector_id, inspection=inspection_id, lifecycle='start')
-        date += datetime.timedelta(minutes=random.randint(10,30))
-        self.__create_entry_for_table_log__('inspect_inventory', date, rental=rental_id, inventory=[inventory_id].__str__(), staff=inspector_id, inspection=inspection_id)
-        if random.uniform(0, 1) < 0.1:
-            state = True
-        else:
-            state = False
-            # print('Inventory id ' + str(inventory_id) + ' was inspected up on ' + date.__str__() + '.')
-        return inspection_id, state, date
+        # if there are no inventories to return
+        if len(li_to_return_ids) == 0:
+            return
 
-    def simulate_process(self, start_time):
+        staff_id = self.__get_store_of_customer__(customer_id)
+        rental_ids = set()
+        inventory_ids = []
+        for lended_inventory_id in li_to_return_ids:
+            self.lended_inventory.at[lended_inventory_id, 'return_date'] = self.current_time
+            rental_ids.add(self.lended_inventory.loc[lended_inventory_id]['rental_id'])
+            inventory_ids.append(self.lended_inventory.loc[lended_inventory_id]['inventory_id'])
 
-        current_time = start_time
+            # create entry for future inspection
+            new_inspection = {'lended_inventory_id': lended_inventory_id, 'inspector_id': np.NaN, 'inspection_date': np.NaN}
+            self.inspections = self.inspections.append(new_inspection, ignore_index=True)
 
-        for i in tqdm(range(0,200)):
-            customer = self.__get_random_customer_id__()
-            current_time_process = current_time
+        store_id = self.__get_store_of_customer__(customer_id)
+        self.__create_entry_for_table_log__('return_inventory', self.current_time, store_id, rental=list(rental_ids), inventory=inventory_ids, customer=customer_id, staff=staff_id)
 
-            belonging_store_id = self.__get_store_of_customer__(customer)
-            selected_inventory = self.select_inventory_from_store(belonging_store_id)
+    def inspect_inventory(self, store_id: int) -> list:
 
-            rental_id, lended_inventory_ids = self.create_rental(customer, selected_inventory, current_time_process)
+        # all returned inventories are going to be inspected
+        lended_inventory = self.__get_lended_inventory_ids_of_store__(store_id)
+        returned_lended_inventory_ids = lended_inventory[(pd.notna(lended_inventory['return_date']))].index.tolist()
+        inspection_ids = self.inspections[(pd.isna(self.inspections['inspection_date'])) & (self.inspections['lended_inventory_id'].isin(returned_lended_inventory_ids))].index.tolist()
+        print(inspection_ids)
 
-            current_time_process += datetime.timedelta(seconds=random.randint(30,100))
-            invoice_id = self.create_invoice(rental_id, selected_inventory, current_time_process)
-            
-            current_time_process += datetime.timedelta(hours=random.randint(0,24), minutes=random.randint(0,59))
-            self.pay_invoice(rental_id, invoice_id, current_time_process)
+        # if there are no inspections to do
+        if len(inspection_ids) == 0:
+            return []
 
-            current_time_process += datetime.timedelta(hours=random.randint(0,24), minutes=random.randint(0,59))
-            self.confirm_invoice(rental_id, invoice_id, current_time_process, selected_inventory[0])
+        inspector_id = self.__get_random_staff_id_for_store__(store_id)
+        rental_ids = set()
+        inventory_ids = []
 
-            current_time_process += datetime.timedelta(seconds=random.randint(30,100))
-            self.confirm_rental(rental_id, current_time_process)
+        addtional_invoices_lended_inventory_ids = []
 
-            # somehow an rental request for an inventory is beeing canceled
-            if random.uniform(0, 1) < 0.1:
-                current_time_process += datetime.timedelta(hours=random.randint(0,24), minutes=random.randint(0,59), seconds=random.randint(30,100))
-                lended_inventory_id_to_cancel = list(set(random.choices(lended_inventory_ids, k=2)))[0]
-                self.cancel_inventory(rental_id, lended_inventory_id_to_cancel, current_time_process, customer)
-                lended_inventory_ids.remove(lended_inventory_id_to_cancel)
+        for inspection_id in inspection_ids:
+            self.inspections.at[inspection_id, 'inspection_date'] = self.current_time
+            lended_inventory_id = self.inspections.loc[inspection_id, 'lended_inventory_id']
+            rental_id = self.lended_inventory.loc[lended_inventory_id, 'rental_id']
+            inventory_ids.append(self.lended_inventory.loc[lended_inventory_id, 'inventory_id'])
+            rental_ids.add(rental_id)
 
-            if len(lended_inventory_ids) > 0:
+            if random.uniform(0, 1) < 0.5:
+                # inventory is brocken, additional payment is requested
+                addtional_invoices_lended_inventory_ids.append(lended_inventory_id)
 
-                current_time_process += datetime.timedelta(days=random.randint(0,1), hours=random.randint(0,72), minutes=random.randint(0,59))
-                self.lend_inventory(lended_inventory_ids, current_time_process, customer)
+        self.__create_entry_for_table_log__('inspect_inventories', self.current_time, store_id, rental=list(rental_ids), inventory=inventory_ids, staff=inspector_id, inspection=inspection_ids, lifecycle='start')
 
-                current_time_process += datetime.timedelta(hours=random.randint(0,72), minutes=random.randint(0,59))
-                inventory_ids_for_additional_invoice, current_time_process = self.return_inventory(rental_id, lended_inventory_ids, current_time_process, customer)
+        # list with rental & inventory for additional invoices
+        return addtional_invoices_lended_inventory_ids
 
-                if inventory_ids_for_additional_invoice:
-                    current_time = current_time_process + datetime.timedelta(minutes=random.randint(0,5), seconds=random.randint(30,100))
-                    additional_invoice_id = self.create_invoice(rental_id, inventory_ids_for_additional_invoice, current_time_process)
-                    current_time = current_time_process + datetime.timedelta(minutes=random.randint(0,5), seconds=random.randint(30,100))
-                    self.pay_invoice(rental_id, additional_invoice_id, current_time_process)
-                    current_time = current_time_process + datetime.timedelta(minutes=random.randint(0,1), seconds=random.randint(30,100))
-                    self.confirm_invoice(rental_id, additional_invoice_id, current_time_process, selected_inventory[0])
-            
-            current_time += datetime.timedelta(hours=random.randint(0,24), minutes=random.randint(0,59), seconds=random.randint(30,100))
-                
+    def simulate_process(self, start_time: datetime.datetime, end_time: datetime.datetime, step: datetime.timedelta):
+
+        self.current_time = start_time
+        self.step = step
+        self.small_step = (end_time - start_time).total_seconds() / step.total_seconds()
+        self.progressbar_widgets = [
+            ' (Simulation Time: ', self.current_time.__str__(), '/', end_time.__str__(), ') ',
+            progressbar.Bar(marker='#'), progressbar.SimpleProgress(),
+        ]
+
+        print('--------------------------------------------------------------------------')
+        self.bar = progressbar.ProgressBar(maxval=self.small_step, redirect_stdout=True, widgets=self.progressbar_widgets)
+        self.bar.start()
+
+        while self.current_time <= end_time:
+
+            # iterate over list of customers
+            customers = self.__get_customer_ids__()
+            random.shuffle(customers)
+
+            for customer in customers:
+                decision = random.uniform(0, 1)
+
+                if decision <= 0.1:
+                    # customer selects inventory from a store to rent
+                    belonging_store_id = self.__get_store_of_customer__(customer)
+                    selected_inventory = self.select_available_inventory_from_store(belonging_store_id)
+                    self.create_rental(customer, selected_inventory)
+                elif (0.1 < decision) & (decision <= 0.35):
+                    # customer pays all his open invoices
+                    open_invoices = self.get_open_invoices_to_pay(customer)
+                    self.pay_invoices(customer, open_invoices)
+                elif (0.35 < decision) & (decision <= 0.65):
+                    # somehow an rental request for an inventory is beeing canceled
+                    lended_inventory_to_cancel = self.select_lended_inventory_id_to_cancel(customer)
+                    self.cancel_inventory(customer, lended_inventory_to_cancel)
+                else:
+                    # when the customer is in the store and wants to return inventory and propably picks up other requested inventory
+                    self.return_inventory(customer)
+                    self.lend_inventory(customer)
+
+            self.current_time += datetime.timedelta(seconds=self.step.total_seconds()/(len(self.store) + len(self.customer)))
+
+        # iterate over the list of stores
+            stores = self.__get_store_ids__()
+            random.shuffle(stores)
+
+            for store in stores:
+                decision = random.uniform(0, 1)
+
+                if decision <= 0.3:
+                    # creating invoices for all received rental requests
+                    rentals_inventory_without_invoice = self.__get_rentals_without_invoice_from_store__(store)
+                    self.create_invoice(store, rentals_inventory_without_invoice)
+                elif (0.3 < decision) & (decision <= 0.5):
+                    self.confirm_invoice(store)
+                elif (0.5 < decision) & (decision <= 0.7):
+                    self.confirm_rentals(store)
+                else:
+                    additional_invoices_list = self.inspect_inventory(store)
+                    if len(additional_invoices_list) > 0:
+                        dataframe_additionnal_invoices = self.lended_inventory[(self.lended_inventory.index.isin(additional_invoices_list))]
+                        self.create_invoice(store, dataframe_additionnal_invoices, delay=datetime.timedelta(minutes=1))
+
+                self.current_time += datetime.timedelta(seconds=self.step.total_seconds()/(len(self.store) + len(self.customer)))
+
+        self.__update_progress_bar__()
+        self.bar.finish()
+        
     def save_table_to_csv(self):
         self.rental_orders.to_csv(self.path + 'rental_orders.csv')
         self.lended_inventory.to_csv(self.path + 'lended_inventory.csv')
         self.inspections.to_csv(self.path + 'inspections.csv')
         self.invoices.to_csv(self.path + 'invoices.csv')
-        
+
         self.tableLog = self.tableLog.sort_values(by=['timestamp'])
         self.tableLog = self.tableLog.reset_index(drop=True)
         self.tableLog.to_csv('tableLog.csv', index=False)
 
 
 if __name__ == '__main__':
+
+    start = datetime.datetime(year=2020, month=1, day=1, hour=8)
+    end = datetime.datetime(year=2020, month=1, day=2, hour=1)
+    step = datetime.timedelta(hours=1)
+
     ps = ProcessSimulator()
-    ps.simulate_process(datetime.datetime(year=2020, month=1, day=1))
+    ps.simulate_process(start, end, step)
     ps.save_table_to_csv()
+
 
