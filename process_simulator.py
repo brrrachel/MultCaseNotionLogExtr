@@ -35,9 +35,9 @@ class ProcessSimulator:
         self.invoices = pd.DataFrame(columns=['rental_id', 'value', 'created_date', 'payed_date', 'confirmed_date', 'staff'])
 
         # create table log
-        self.table_log = pd.DataFrame(columns=['activity', 'timestamp', 'rental', 'inventory', 'customer', 'staff', 'inspection', 'invoice', 'store', 'lifecycle'])
-        self.extended_table_log = pd.DataFrame(columns=['activity','timestamp','rental','inventory','customer','staff','inspection','invoice','store','lifecycle'])
-        self.event_id_counter = 0
+        self.table_log = pd.DataFrame(columns=['event_id', 'activity', 'timestamp', 'rental', 'inventory', 'customer', 'staff', 'inspection', 'invoice', 'store', 'lifecycle'])
+        self.extended_table_log = pd.DataFrame(columns=['event_id', 'activity','timestamp','rental','inventory','customer','staff','inspection','invoice','store','lifecycle'])
+        self.event_id_counter: int = 0
 
         # simulation time
         self.current_time: datetime.datetime
@@ -503,10 +503,12 @@ class ProcessSimulator:
 
         self.table_log = self.table_log.sort_values(by=['timestamp'])
         self.table_log = self.table_log.reset_index(drop=True)
+        self.table_log['event_id'] = self.table_log['event_id'].astype(int)
         self.table_log.to_csv('tableLogs/tableLog.csv', index=False)
 
         self.extended_table_log = self.extended_table_log.sort_values(by=['timestamp'])
         self.extended_table_log = self.extended_table_log.reset_index(drop=True)
+        self.extended_table_log['event_id'] = self.extended_table_log['event_id'].astype(int)
         self.extended_table_log.to_csv('tableLogs/extended_tableLog.csv', index=False)
 
 
