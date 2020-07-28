@@ -20,6 +20,8 @@ class XESLogTool:
 
         # the final log in form of a pandas DataFrame
         log = pd.DataFrame(columns=self.extended_tablelog.columns)
+        
+        log = log.astype(str)
 
         def is_slice_in_list(list1, list2):
                 return all(elem in list2 for elem in list1)
@@ -64,10 +66,10 @@ class XESLogTool:
         # convert to xes format
         parameters = {constants.PARAMETER_CONSTANT_CASEID_KEY: "case:concept:name",
                       constants.PARAMETER_CONSTANT_ACTIVITY_KEY: "concept:name",
-                      constants.PARAMETER_CONSTANT_TIMESTAMP_KEY: "time:timestamp",
-                      constants.PARAMETER_CONSTANT_TRANSITION_KEY: "lifecycle:transition"}
+                      constants.PARAMETER_CONSTANT_TIMESTAMP_KEY: "time:timestamp"}
 
         log = log.sort_values(by=['case:concept:name', 'time:timestamp'])
+        log = log.astype(str)
         return conversion_factory.apply(log, parameters=parameters)
 
     def get_case_ids(self, column) -> list:
@@ -104,5 +106,5 @@ class XESLogTool:
 
 
 if __name__ == '__main__':
-    log_extractor = XESLogTool(['staff'])
+    log_extractor = XESLogTool(['store'])
     log_extractor.xes_to_disk()

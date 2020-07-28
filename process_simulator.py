@@ -35,8 +35,8 @@ class ProcessSimulator:
         self.invoices = pd.DataFrame(columns=['rental_id', 'value', 'created_date', 'payed_date', 'confirmed_date', 'staff'])
 
         # create table log
-        self.table_log = pd.DataFrame(columns=['event_id', 'activity', 'timestamp', 'rental', 'inventory', 'customer', 'staff', 'inspection', 'invoice', 'store', 'lifecycle'])
-        self.extended_table_log = pd.DataFrame(columns=['event_id', 'activity','timestamp','rental','inventory','customer','staff','inspection','invoice','store','lifecycle'])
+        self.table_log = pd.DataFrame(columns=['event_id', 'activity', 'timestamp', 'rental', 'inventory', 'customer', 'staff', 'inspection', 'invoice', 'store'])
+        self.extended_table_log = pd.DataFrame(columns=['event_id', 'activity','timestamp','rental','inventory','customer','staff','inspection','invoice','store'])
         self.event_id_counter: int = 0
 
         # simulation time
@@ -124,7 +124,7 @@ class ProcessSimulator:
             return random.choices(available_to_be_canceled.index.tolist(), k=count)
         return []
 
-    def __create_entry_for_table_log__(self, activity: str, timestamp: datetime.datetime, store, rental='EMPTY', inventory='EMPTY', customer='EMPTY', staff='EMPTY', inspection='EMPTY', invoice='EMPTY', lifecycle='complete'):
+    def __create_entry_for_table_log__(self, activity: str, timestamp: datetime.datetime, store, rental='EMPTY', inventory='EMPTY', customer='EMPTY', staff='EMPTY', inspection='EMPTY', invoice='EMPTY'):
         new_entry = {'event_id': self.event_id_counter,
                      'activity': activity,
                      'timestamp': timestamp,
@@ -135,11 +135,10 @@ class ProcessSimulator:
                      'inspection': inspection if len(inspection) > 0 else 'EMPTY',
                      'invoice': invoice if len(invoice) > 0 else 'EMPTY',
                      'store': store,
-                     'lifecycle': lifecycle
                      }
         self.table_log = self.table_log.append(new_entry, ignore_index=True)
 
-    def __create_entry_for_extended_table_log__(self, activity: str, timestamp: datetime.datetime, store, rental='EMPTY', inventory='EMPTY', customer='EMPTY', staff='EMPTY', inspection='EMPTY', invoice='EMPTY', lifecycle='complete'):
+    def __create_entry_for_extended_table_log__(self, activity: str, timestamp: datetime.datetime, store, rental='EMPTY', inventory='EMPTY', customer='EMPTY', staff='EMPTY', inspection='EMPTY', invoice='EMPTY'):
         new_entry = {'event_id': self.event_id_counter,
                      'activity': activity,
                      'timestamp': timestamp,
@@ -150,7 +149,6 @@ class ProcessSimulator:
                      'inspection': inspection,
                      'invoice': invoice,
                      'store': store,
-                     'lifecycle': lifecycle
                      }
         self.extended_table_log = self.extended_table_log.append(new_entry, ignore_index=True)
 
@@ -418,9 +416,9 @@ class ProcessSimulator:
                 addtional_invoices_lended_inventory_ids.append(lended_inventory_id)
 
             # save activity in table log
-            self.__create_entry_for_extended_table_log__('inspect_inventories', self.current_time, store_id, rental=rental_id, inventory=inventory_id, staff=inspector_id, inspection=inspection_id, lifecycle='start')
+            self.__create_entry_for_extended_table_log__('inspect_inventories', self.current_time, store_id, rental=rental_id, inventory=inventory_id, staff=inspector_id, inspection=inspection_id)
 
-        self.__create_entry_for_table_log__('inspect_inventories', self.current_time, store_id, rental=list(rental_ids), inventory=inventory_ids, staff=inspector_id, inspection=inspection_ids, lifecycle='start')
+        self.__create_entry_for_table_log__('inspect_inventories', self.current_time, store_id, rental=list(rental_ids), inventory=inventory_ids, staff=inspector_id, inspection=inspection_ids)
         self.event_id_counter += 1
 
         # list with rental & inventory for additional invoices
