@@ -68,6 +68,8 @@ class XESLogTool:
                                  'lifecycle': 'lifecycle:transition'}
             log.rename(columns=columns_to_rename, inplace=True)
             
+            log = log[log['case:concept:name'] != 'EMPTY']
+            
             log['case:concept:name'] = log['case:concept:name'].astype(str)
 
         # convert to xes format
@@ -112,5 +114,5 @@ class XESLogTool:
 
 
 if __name__ == '__main__':
-    log_extractor = XESLogTool(['store'])
+    log_extractor = XESLogTool(['customer'])
     log_extractor.xes_to_disk()
