@@ -94,6 +94,21 @@ class ProcessSimulator:
     def __get_random_staff_id_for_store__(self, store_id: int) -> int:
         staff_of_store = self.staff[self.staff['store_id'] == store_id]
         return random.choice(staff_of_store.index.tolist())
+        
+    def __get_number_of_lended_inventories__(self) -> int:
+        return len(self.lended_inventory)
+        
+    def __get_number_of_cancelled_inventories(self) -> int:
+        return len(self.lended_inventory[pd.notna(self.lended_inventory['cancel_date'])])
+        
+    def __get_number_of_inspected_inventories__(self) -> int:
+        return len(self.inspections[pd.notna(self.inspections['inspection_date'])])
+        
+    def __rentals_finished__(self) -> bool:
+        return self.__get_number_of_lended_inventories__() == (self.__get_number_of_cancelled_inventories() + self.__get_number_of_inspected_inventories__())
+        
+    def __invoices_confirmed__(self) -> bool:
+        return len(self.invoices[pd.notna(self.invoices['confirmed_date'])]) == len(self.invoices)
 
     def select_available_inventory_from_store(self, store_id: int, count=2) -> list:
         inventory_of_store_ids = self.inventory[(self.inventory['store_id'] == store_id)].index.tolist()
@@ -435,11 +450,13 @@ class ProcessSimulator:
         ]
 
         print('--------------------------------------------------------------------------')
-        self.bar = progressbar.ProgressBar(maxval=self.small_step, redirect_stdout=True, widgets=self.progressbar_widgets)
-        self.bar.start()
-
-        while self.current_time <= end_time:
-
+        #self.bar = progressbar.ProgressBar(maxval=self.small_step, redirect_stdout=True, widgets=self.progressbar_widgets)
+        #self.bar.start()
+        
+        while (self.current_time > end_time and not (self.__rentals_finished__() and self.__invoices_confirmed__())) or (self.current_time <= end_time):
+            
+            print(str(self.current_time))
+            
             # iterate over list of customers
             customers = self.__get_customer_ids__()
             random.shuffle(customers)
@@ -447,7 +464,7 @@ class ProcessSimulator:
             for customer in customers:
                 decision = random.uniform(0, 1)
 
-                if decision <= 0.1:
+                if decision <= 0.1 and self.current_time <= end_time:
                     # customer selects inventory from a store to rent
                     belonging_store_id = self.__get_store_of_customer__(customer)
                     selected_inventory = self.select_available_inventory_from_store(belonging_store_id)
@@ -465,7 +482,7 @@ class ProcessSimulator:
                     self.return_inventory(customer)
                     self.lend_inventory(customer)
 
-            self.current_time += datetime.timedelta(seconds=self.step.total_seconds()/(len(self.store) + len(self.customer)))
+            self.current_time += datetime.timedelta(seconds=self.step.total_seconds())#/(len(self.store) + len(self.customer)))
 
         # iterate over the list of stores
             stores = self.__get_store_ids__()
@@ -486,12 +503,13 @@ class ProcessSimulator:
                     additional_invoices_list = self.inspect_inventory(store)
                     if len(additional_invoices_list) > 0:
                         dataframe_additionnal_invoices = self.lended_inventory[(self.lended_inventory.index.isin(additional_invoices_list))]
-                        self.create_invoice(store, dataframe_additionnal_invoices, delay=datetime.timedelta(minutes=1))
+                        self.create_invoice(store, dataframe_additionnal_invoices, delay=datetime.timedelta(seconds=1))
 
                 self.current_time += datetime.timedelta(seconds=self.step.total_seconds()/(len(self.store) + len(self.customer)))
+            print(self.__invoices_confirmed__())
 
-        self.__update_progress_bar__()
-        self.bar.finish()
+        #self.__update_progress_bar__()
+        #self.bar.finish()
         
     def save_table_to_csv(self):
         self.rental_orders.to_csv(self.path + 'rental_orders.csv')
@@ -512,9 +530,9 @@ class ProcessSimulator:
 
 if __name__ == '__main__':
 
-    start = datetime.datetime(year=2020, month=1, day=1, hour=8)
-    end = datetime.datetime(year=2020, month=1, day=2, hour=1)
-    step = datetime.timedelta(hours=1)
+    start = datetime.datetime(year=2020, month=1, day=1, hour=7)
+    end = datetime.datetime(year=2020, month=1, day=1, hour=8)
+    step = datetime.timedelta(minutes=15)
 
     ps = ProcessSimulator()
     ps.simulate_process(start, end, step)

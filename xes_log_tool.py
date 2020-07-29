@@ -21,7 +21,8 @@ class XESLogTool:
         # the final log in form of a pandas DataFrame
         log = pd.DataFrame(columns=self.extended_tablelog.columns)
         
-        log = log.astype(str)
+        
+        
 
         def is_slice_in_list(list1, list2):
                 return all(elem in list2 for elem in list1)
@@ -57,11 +58,17 @@ class XESLogTool:
                     log = log.append(event_attributes, ignore_index=True, sort=True)
 
             # rename the columns for preparing the xes log
+            
+            log['store'] = log['store'].astype(str)
+            log['event_id'] = log['event_id'].astype(str)
+            
             columns_to_rename = {case_notion_columns[0]: 'case:concept:name',
                                  'timestamp': 'time:timestamp',
                                  'activity': 'concept:name',
                                  'lifecycle': 'lifecycle:transition'}
             log.rename(columns=columns_to_rename, inplace=True)
+            
+            log['case:concept:name'] = log['case:concept:name'].astype(str)
 
         # convert to xes format
         parameters = {constants.PARAMETER_CONSTANT_CASEID_KEY: "case:concept:name",
@@ -69,7 +76,6 @@ class XESLogTool:
                       constants.PARAMETER_CONSTANT_TIMESTAMP_KEY: "time:timestamp"}
 
         log = log.sort_values(by=['case:concept:name', 'time:timestamp'])
-        log = log.astype(str)
         return conversion_factory.apply(log, parameters=parameters)
 
     def get_case_ids(self, column) -> list:
