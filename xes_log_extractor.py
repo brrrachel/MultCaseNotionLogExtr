@@ -46,8 +46,10 @@ class XESLogExtractor:
             # map new case id on the combination of unqiue columns
             columns = case_notion.columns
             log = self.extended_tablelog
+            print(case_notion)
             for index, row in case_notion.iterrows():
                 log.loc[((log[columns[0]] == row[columns[0]]) & (log[columns[1]] == row[columns[1]])), 'case:concept:name'] = row[columns[2]]
+            log.to_csv('merged.csv')
 
             # rename the columns for preparing the xes log
             log['store'] = log['store'].astype(str)
