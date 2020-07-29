@@ -2,7 +2,6 @@ import datetime
 import random
 import pandas as pd
 import numpy as np
-import progressbar
 
 '''
 Processes:
@@ -493,7 +492,6 @@ class ProcessSimulator:
                         self.create_invoice(store, dataframe_additionnal_invoices, delay=datetime.timedelta(seconds=1))
 
                 self.current_time += datetime.timedelta(seconds=self.step.total_seconds()/(len(self.store) + len(self.customer)))
-
 
     def save_table_to_csv(self):
         self.rental_orders.to_csv(self.path + 'rental_orders.csv')

@@ -1,1 +1,1 @@
-brew install pm4pybrew install graphviz
+brew install pm4pybrew install graphvizpip3 install colorama
