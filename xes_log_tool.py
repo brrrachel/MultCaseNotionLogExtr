@@ -20,9 +20,6 @@ class XESLogTool:
 
         # the final log in form of a pandas DataFrame
         log = pd.DataFrame(columns=self.extended_tablelog.columns)
-        
-        
-        
 
         def is_slice_in_list(list1, list2):
                 return all(elem in list2 for elem in list1)

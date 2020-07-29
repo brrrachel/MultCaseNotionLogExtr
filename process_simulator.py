@@ -94,19 +94,19 @@ class ProcessSimulator:
     def __get_random_staff_id_for_store__(self, store_id: int) -> int:
         staff_of_store = self.staff[self.staff['store_id'] == store_id]
         return random.choice(staff_of_store.index.tolist())
-        
+
     def __get_number_of_lended_inventories__(self) -> int:
         return len(self.lended_inventory)
-        
+
     def __get_number_of_cancelled_inventories(self) -> int:
         return len(self.lended_inventory[pd.notna(self.lended_inventory['cancel_date'])])
-        
+
     def __get_number_of_inspected_inventories__(self) -> int:
         return len(self.inspections[pd.notna(self.inspections['inspection_date'])])
-        
+
     def __rentals_finished__(self) -> bool:
         return self.__get_number_of_lended_inventories__() == (self.__get_number_of_cancelled_inventories() + self.__get_number_of_inspected_inventories__())
-        
+
     def __invoices_confirmed__(self) -> bool:
         return len(self.invoices[pd.notna(self.invoices['confirmed_date'])]) == len(self.invoices)
 
@@ -166,10 +166,6 @@ class ProcessSimulator:
                      'store': store,
                      }
         self.extended_table_log = self.extended_table_log.append(new_entry, ignore_index=True)
-
-    def __update_progress_bar__(self):
-        # updates the visualization in the terminal
-        self.progressbar_widgets[1] = self.current_time.__str__()
 
     '''
         Defining Activities
@@ -444,19 +440,10 @@ class ProcessSimulator:
         self.current_time = start_time
         self.step = step
         self.small_step = (end_time - start_time).total_seconds() / step.total_seconds()
-        self.progressbar_widgets = [
-            ' (Simulation Time: ', self.current_time.__str__(), '/', end_time.__str__(), ') ',
-            progressbar.Bar(marker='#'), progressbar.SimpleProgress(),
-        ]
 
-        print('--------------------------------------------------------------------------')
-        #self.bar = progressbar.ProgressBar(maxval=self.small_step, redirect_stdout=True, widgets=self.progressbar_widgets)
-        #self.bar.start()
-        
         while (self.current_time > end_time and not (self.__rentals_finished__() and self.__invoices_confirmed__())) or (self.current_time <= end_time):
-            
-            print(str(self.current_time))
-            
+            print('(Simulation Time: {0}/{1})'.format(self.current_time, end_time), end="\r")
+
             # iterate over list of customers
             customers = self.__get_customer_ids__()
             random.shuffle(customers)
@@ -506,11 +493,8 @@ class ProcessSimulator:
                         self.create_invoice(store, dataframe_additionnal_invoices, delay=datetime.timedelta(seconds=1))
 
                 self.current_time += datetime.timedelta(seconds=self.step.total_seconds()/(len(self.store) + len(self.customer)))
-            print(self.__invoices_confirmed__())
 
-        #self.__update_progress_bar__()
-        #self.bar.finish()
-        
+
     def save_table_to_csv(self):
         self.rental_orders.to_csv(self.path + 'rental_orders.csv')
         self.lended_inventory.to_csv(self.path + 'lended_inventory.csv')
