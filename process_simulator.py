@@ -356,9 +356,9 @@ class ProcessSimulator:
 
             # save activity in table log
             self.__create_entry_for_extended_table_log__('lend_inventory', self.current_time, store_id, rental=rental_id, inventory=inventory_id, customer=customer_id, staff=staff_id)
-            #TODO: does it makes sense, that the staff lends inventory although this is not saved in the tables
-            self.__create_entry_for_table_log__('lend_inventory', self.current_time, store_id, rental=list(rental_ids), inventory=inventory_ids, customer=customer_id, staff=staff_id)
-            self.event_id_counter += 1
+        #TODO: does it makes sense, that the staff lends inventory although this is not saved in the tables
+        self.__create_entry_for_table_log__('lend_inventory', self.current_time, store_id, rental=list(rental_ids), inventory=inventory_ids, customer=customer_id, staff=staff_id)
+        self.event_id_counter += 1
 
         #print('Lended inventory: ' + str(inventory_ids) + ' by customer ' + str(customer_id))
 
@@ -391,8 +391,8 @@ class ProcessSimulator:
 
             # save activity in table log
             self.__create_entry_for_extended_table_log__('return_inventory', self.current_time, store_id, rental=rental_id, inventory=inventory_id, customer=customer_id, staff=staff_id)
-            self.__create_entry_for_table_log__('return_inventory', self.current_time, store_id, rental=list(rental_ids), inventory=inventory_ids, customer=customer_id, staff=staff_id)
-            self.event_id_counter += 1
+        self.__create_entry_for_table_log__('return_inventory', self.current_time, store_id, rental=list(rental_ids), inventory=inventory_ids, customer=customer_id, staff=staff_id)
+        self.event_id_counter += 1
 
     def inspect_inventory(self, store_id: int) -> list:
 
@@ -426,8 +426,8 @@ class ProcessSimulator:
 
             # save activity in table log
             self.__create_entry_for_extended_table_log__('inspect_inventories', self.current_time, store_id, rental=rental_id, inventory=inventory_id, staff=inspector_id, inspection=inspection_id)
-            self.__create_entry_for_table_log__('inspect_inventories', self.current_time, store_id, rental=list(rental_ids), inventory=inventory_ids, staff=inspector_id, inspection=inspection_ids)
-            self.event_id_counter += 1
+        self.__create_entry_for_table_log__('inspect_inventories', self.current_time, store_id, rental=list(rental_ids), inventory=inventory_ids, staff=inspector_id, inspection=inspection_ids)
+        self.event_id_counter += 1
 
         # list with rental & inventory for additional invoices
         return addtional_invoices_lended_inventory_ids
