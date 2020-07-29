@@ -1,7 +1,8 @@
 import sys
 import warnings
 warnings.filterwarnings("ignore", category=DeprecationWarning)
-from colorama import Fore
+from colorama import init, Fore
+init()
 import pandas as pd
 from tqdm import tqdm
 from pm4py.objects.log.log import EventLog
@@ -46,10 +47,8 @@ class XESLogExtractor:
             # map new case id on the combination of unqiue columns
             columns = case_notion.columns
             log = self.extended_tablelog
-            print(case_notion)
             for index, row in case_notion.iterrows():
                 log.loc[((log[columns[0]] == row[columns[0]]) & (log[columns[1]] == row[columns[1]])), 'case:concept:name'] = row[columns[2]]
-            log.to_csv('merged.csv')
 
             # rename the columns for preparing the xes log
             log['store'] = log['store'].astype(str)
@@ -125,7 +124,7 @@ class XESLogExtractor:
     def xes_to_disk(self):
         path = 'xesLogs/xes_' + self.case_notion + '.xes'
         xes_exporter.apply(self.event_log, path)
-        print('Finished: Extracted XES log file can be found here: ', path)
+        print(Fore.GREEN, 'Finished: Extracted XES log file can be found here: ', path)
 
 
 if __name__ == '__main__':

@@ -2,6 +2,9 @@ import datetime
 import random
 import pandas as pd
 import numpy as np
+from colorama import init, Fore
+init()
+from optparse import OptionParser
 
 '''
 Processes:
@@ -28,14 +31,14 @@ class ProcessSimulator:
         self.store = pd.read_csv(self.path + 'store.csv', index_col=0)
 
         # create additional tables
-        self.rental_orders = pd.DataFrame(columns=['customer_id', 'created_date', 'confirmed_date'])
-        self.lended_inventory = pd.DataFrame(columns=['rental_id', 'inventory_id', 'created_date', 'cancel_date', 'lend_date', 'return_date'])
-        self.inspections = pd.DataFrame(columns=['inspector_id', 'inspection_date', 'lended_inventory_id']) # inspector == staff
-        self.invoices = pd.DataFrame(columns=['rental_id', 'value', 'created_date', 'payed_date', 'confirmed_date', 'staff'])
+        self.rental_orders = pd.DataFrame(columns=['customer_id', 'created_date', 'confirmed_date', 'confirmed_staff'])
+        self.lended_inventory = pd.DataFrame(columns=['rental_id', 'inventory_id', 'created_date', 'cancel_date', 'lend_date', 'lend_staff', 'return_date', 'return_staff'])
+        self.inspections = pd.DataFrame(columns=['inspector', 'inspection_date', 'lended_inventory_id']) # inspector == staff
+        self.invoices = pd.DataFrame(columns=['rental_id', 'value', 'created_date', 'created_staff', 'payed_date', 'confirmed_date', 'confirmed_staff'])
 
         # create table log
-        self.table_log = pd.DataFrame(columns=['event_id', 'activity', 'timestamp', 'rental', 'inventory', 'customer', 'staff', 'inspection', 'invoice', 'store'])
-        self.extended_table_log = pd.DataFrame(columns=['event_id', 'activity','timestamp','rental','inventory','customer','staff','inspection','invoice','store'])
+        self.table_log = pd.DataFrame(columns=['event_id', 'activity', 'timestamp', 'rental', 'inventory', 'customer', 'staff', 'inspection', 'invoice'])
+        self.extended_table_log = pd.DataFrame(columns=['event_id', 'activity','timestamp','rental','inventory','customer','staff','inspection','invoice'])
         self.event_id_counter: int = 0
 
         # simulation time
@@ -138,7 +141,7 @@ class ProcessSimulator:
             return random.choices(available_to_be_canceled.index.tolist(), k=count)
         return []
 
-    def __create_entry_for_table_log__(self, activity: str, timestamp: datetime.datetime, store, rental='EMPTY', inventory='EMPTY', customer='EMPTY', staff='EMPTY', inspection='EMPTY', invoice='EMPTY'):
+    def __create_entry_for_table_log__(self, activity: str, timestamp: datetime.datetime, rental='EMPTY', inventory='EMPTY', customer='EMPTY', staff='EMPTY', inspection='EMPTY', invoice='EMPTY'):
         new_entry = {'event_id': self.event_id_counter,
                      'activity': activity,
                      'timestamp': timestamp,
@@ -147,12 +150,11 @@ class ProcessSimulator:
                      'customer': customer,
                      'staff': staff,
                      'inspection': inspection if len(inspection) > 0 else 'EMPTY',
-                     'invoice': invoice if len(invoice) > 0 else 'EMPTY',
-                     'store': store,
+                     'invoice': invoice if len(invoice) > 0 else 'EMPTY'
                      }
         self.table_log = self.table_log.append(new_entry, ignore_index=True)
 
-    def __create_entry_for_extended_table_log__(self, activity: str, timestamp: datetime.datetime, store, rental='EMPTY', inventory='EMPTY', customer='EMPTY', staff='EMPTY', inspection='EMPTY', invoice='EMPTY'):
+    def __create_entry_for_extended_table_log__(self, activity: str, timestamp: datetime.datetime, rental='EMPTY', inventory='EMPTY', customer='EMPTY', staff='EMPTY', inspection='EMPTY', invoice='EMPTY'):
         new_entry = {'event_id': self.event_id_counter,
                      'activity': activity,
                      'timestamp': timestamp,
@@ -161,8 +163,7 @@ class ProcessSimulator:
                      'customer': customer,
                      'staff': staff,
                      'inspection': inspection,
-                     'invoice': invoice,
-                     'store': store,
+                     'invoice': invoice
                      }
         self.extended_table_log = self.extended_table_log.append(new_entry, ignore_index=True)
 
@@ -182,10 +183,9 @@ class ProcessSimulator:
         rental_id = int(self.rental_orders.index.max())
         # print('Customer ' + str(customer_id) + ' created rental ' + str(rental_id) + ' on ' + date.__str__())
 
-        store_id = self.__get_store_of_customer__(customer_id)
         for inventory in inventory_ids:
-            self.__create_entry_for_extended_table_log__('create_rental', self.current_time, store_id, rental=rental_id, inventory=inventory, customer=customer_id)
-        self.__create_entry_for_table_log__('create_rental', self.current_time, store_id, rental=[rental_id], inventory=inventory_ids, customer=customer_id)
+            self.__create_entry_for_extended_table_log__('create_rental', self.current_time, rental=rental_id, inventory=inventory, customer=customer_id)
+        self.__create_entry_for_table_log__('create_rental', self.current_time, rental=[rental_id], inventory=inventory_ids, customer=customer_id)
         self.event_id_counter += 1
 
         # create entry for each inventory to lend
@@ -193,9 +193,7 @@ class ProcessSimulator:
             new_lended_inventory = {'rental_id': rental_id, 'inventory_id': inventory_id, 'created_date': self.current_time, 'cancel_date': np.NaN, 'lend_date': np.NaN, 'return_date': np.NaN}
             self.lended_inventory = self.lended_inventory.append(new_lended_inventory, ignore_index=True)
 
-        #print('Created rental: ' + str(rental_id) + ' by customer ' + str(customer_id))
-
-    def create_invoice(self, store_id: int, df: pd.DataFrame, delay=datetime.timedelta(seconds=0)):
+    def create_invoice(self, store_id, df: pd.DataFrame, delay=datetime.timedelta(seconds=0)):
 
         # if there are no invoices to create
         if len(df) == 0:
@@ -214,7 +212,7 @@ class ProcessSimulator:
             total_invoice = self.calculate_payment_for_inventory_ids(inventory_ids)
 
             # create invoice
-            new_invoice = {'rental_id': rental_id, 'value': total_invoice, 'created_date': time, 'staff': staff_id, 'payed_date': np.NaN, 'confirmed_date': np.NaN}
+            new_invoice = {'rental_id': rental_id, 'value': total_invoice, 'created_date': time, 'created_staff': staff_id, 'payed_date': np.NaN, 'confirmed_date': np.NaN, 'confirmed_staff': np.NaN}
             self.invoices = self.invoices.append(new_invoice, ignore_index=True)
 
             invoice_id = self.invoices.index.max()
@@ -222,12 +220,10 @@ class ProcessSimulator:
             rental_ids.add(rental_id)
 
             # save activity in table log
-            self.__create_entry_for_extended_table_log__('create_invoice', time, store_id, rental=rental_id, staff=staff_id, invoice=invoice_id)
+            self.__create_entry_for_extended_table_log__('create_invoice', time, rental=rental_id, staff=staff_id, invoice=invoice_id)
 
-        self.__create_entry_for_table_log__('create_invoice', time, store_id, rental=list(rental_ids), staff=staff_id, invoice=invoice_ids)
+        self.__create_entry_for_table_log__('create_invoice', time, rental=list(rental_ids), staff=staff_id, invoice=invoice_ids)
         self.event_id_counter += 1
-
-        #print('Confirmed invoices: ' + str(inventory_ids) + ' by staff ' + str(staff_id))
 
     def pay_invoices(self, customer_id: int, invoices: list):
 
@@ -236,7 +232,6 @@ class ProcessSimulator:
             return
 
         # pay each invoice
-        store_id = self.__get_store_of_customer__(customer_id)
         rental_ids = set()
         for invoice in invoices:
             self.invoices.at[invoice, 'payed_date'] = self.current_time
@@ -244,12 +239,10 @@ class ProcessSimulator:
             rental_ids.add(rental_id)
 
             # save activity in table log
-            self.__create_entry_for_extended_table_log__('pay_invoice', self.current_time, store_id, rental=rental_id, invoice=invoice, customer=customer_id)
+            self.__create_entry_for_extended_table_log__('pay_invoice', self.current_time, invoice=invoice, customer=customer_id)
 
-        self.__create_entry_for_table_log__('pay_invoice', self.current_time, store_id, rental=list(rental_ids), invoice=invoices, customer=customer_id)
+        self.__create_entry_for_table_log__('pay_invoice', self.current_time, invoice=invoices, customer=customer_id)
         self.event_id_counter += 1
-
-        #print('Payed invoices: ' + str(invoices) + ' by customer ' + str(customer_id))
 
     def confirm_invoice(self, store_id: int):
         invoices_of_store = self.__get_invoices_of_store__(store_id)
@@ -265,17 +258,15 @@ class ProcessSimulator:
         staff_id = self.__get_random_staff_id_for_store__(store_id)
         for invoice in invoices:
             self.invoices.at[invoice, 'confirmed_date'] = self.current_time
+            self.invoices.at[invoice, 'confirmed_staff'] = staff_id
             rental_id = self.invoices.loc[invoice]['rental_id']
             rental_ids.add(rental_id)
 
             # save activity in table log
-            self.__create_entry_for_extended_table_log__('confirm_invoice', self.current_time, store_id, rental=rental_id, invoice=invoice, staff=staff_id)
+            self.__create_entry_for_extended_table_log__('confirm_invoice', self.current_time, invoice=invoice, staff=staff_id)
 
-        #TODO: does it makes sense, that the staff confirms a invoice although this is not saved in the tables
-        self.__create_entry_for_table_log__('confirm_invoice', self.current_time, store_id, rental=list(rental_ids), invoice=invoices, staff=staff_id)
+        self.__create_entry_for_table_log__('confirm_invoice', self.current_time, invoice=invoices, staff=staff_id)
         self.event_id_counter += 1
-
-        #print('Confirmed invoice: ' + str(invoices) + ' by staff ' + str(staff_id))
 
     def confirm_rentals(self, store_id: int):
         rentals = self.__get_rentals_of_store__(store_id)
@@ -293,15 +284,13 @@ class ProcessSimulator:
         staff_id = self.__get_random_staff_id_for_store__(store_id)
         for rental in rentals_to_confirm:
             self.rental_orders.at[rental, 'confirmed_date'] = self.current_time
+            self.rental_orders.at[rental, 'confirmed_staff'] = staff_id
 
             # save activity in table log
-            self.__create_entry_for_extended_table_log__('confirm_rental', self.current_time, store_id, rental=rental, staff=staff_id)
+            self.__create_entry_for_extended_table_log__('confirm_rental', self.current_time, rental=rental, staff=staff_id)
 
-        #TODO: does it make sense, that the staff confirms a rental although this is not saved in the tables
-        self.__create_entry_for_table_log__('confirm_rental', self.current_time, store_id, rental=rentals_to_confirm, staff=staff_id)
+        self.__create_entry_for_table_log__('confirm_rental', self.current_time, rental=rentals_to_confirm, staff=staff_id)
         self.event_id_counter += 1
-
-        #print('Confirmed rentals: ' + str(rentals_ids) + ' by staff ' + str(staff_id))
 
     def cancel_inventory(self, customer_id: int, lended_inventory_ids: list):
 
@@ -323,12 +312,10 @@ class ProcessSimulator:
             rental_ids.append(rental_id)
 
             # save activity in table log
-            self.__create_entry_for_extended_table_log__('cancel_inventory', self.current_time, store_id, rental=rental_id, inventory=inventory_id, customer=customer_id)
+            self.__create_entry_for_extended_table_log__('cancel_inventory', self.current_time, rental=rental_id, inventory=inventory_id, customer=customer_id)
 
-        self.__create_entry_for_table_log__('cancel_inventory', self.current_time, store_id, rental=rental_ids, inventory=inventory_ids, customer=customer_id)
+        self.__create_entry_for_table_log__('cancel_inventory', self.current_time, rental=rental_ids, inventory=inventory_ids, customer=customer_id)
         self.event_id_counter += 1
-
-        #print('Cancled inventory: ' + str(lended_inventory_id) + ' by customer ' + str(customer_id))
 
     def lend_inventory(self, customer_id: int):
         li = self.__get_lended_inventory_ids_of_customer__(customer_id)
@@ -348,6 +335,7 @@ class ProcessSimulator:
         inventory_ids = []
         for lended_inventory_id in li_confirmed_ids:
             self.lended_inventory.at[lended_inventory_id, 'lend_date'] = self.current_time
+            self.lended_inventory.at[lended_inventory_id, 'lend_staff'] = staff_id
 
             rental_id = self.lended_inventory.loc[lended_inventory_id]['rental_id']
             rental_ids.add(rental_id)
@@ -355,12 +343,10 @@ class ProcessSimulator:
             inventory_ids.append(inventory_id)
 
             # save activity in table log
-            self.__create_entry_for_extended_table_log__('lend_inventory', self.current_time, store_id, rental=rental_id, inventory=inventory_id, customer=customer_id, staff=staff_id)
-            #TODO: does it makes sense, that the staff lends inventory although this is not saved in the tables
-            self.__create_entry_for_table_log__('lend_inventory', self.current_time, store_id, rental=list(rental_ids), inventory=inventory_ids, customer=customer_id, staff=staff_id)
-            self.event_id_counter += 1
+            self.__create_entry_for_extended_table_log__('lend_inventory', self.current_time, rental=rental_id, inventory=inventory_id, customer=customer_id, staff=staff_id)
 
-        #print('Lended inventory: ' + str(inventory_ids) + ' by customer ' + str(customer_id))
+        self.__create_entry_for_table_log__('lend_inventory', self.current_time, rental=list(rental_ids), inventory=inventory_ids, customer=customer_id, staff=staff_id)
+        self.event_id_counter += 1
 
     def return_inventory(self, customer_id: int):
         # the customer brings not everything back
@@ -379,6 +365,7 @@ class ProcessSimulator:
         inventory_ids = []
         for lended_inventory_id in li_to_return_ids:
             self.lended_inventory.at[lended_inventory_id, 'return_date'] = self.current_time
+            self.lended_inventory.at[lended_inventory_id, 'return_staff'] = staff_id
 
             rental_id = self.lended_inventory.loc[lended_inventory_id]['rental_id']
             rental_ids.add(rental_id)
@@ -390,9 +377,9 @@ class ProcessSimulator:
             self.inspections = self.inspections.append(new_inspection, ignore_index=True)
 
             # save activity in table log
-            self.__create_entry_for_extended_table_log__('return_inventory', self.current_time, store_id, rental=rental_id, inventory=inventory_id, customer=customer_id, staff=staff_id)
-            self.__create_entry_for_table_log__('return_inventory', self.current_time, store_id, rental=list(rental_ids), inventory=inventory_ids, customer=customer_id, staff=staff_id)
-            self.event_id_counter += 1
+            self.__create_entry_for_extended_table_log__('return_inventory', self.current_time, rental=rental_id, inventory=inventory_id, customer=customer_id, staff=staff_id)
+        self.__create_entry_for_table_log__('return_inventory', self.current_time, rental=list(rental_ids), inventory=inventory_ids, customer=customer_id, staff=staff_id)
+        self.event_id_counter += 1
 
     def inspect_inventory(self, store_id: int) -> list:
 
@@ -413,6 +400,7 @@ class ProcessSimulator:
 
         for inspection_id in inspection_ids:
             self.inspections.at[inspection_id, 'inspection_date'] = self.current_time
+            self.inspections.at[inspection_id, 'inspector'] = inspection_id
 
             lended_inventory_id = self.inspections.loc[inspection_id, 'lended_inventory_id']
             rental_id = self.lended_inventory.loc[lended_inventory_id, 'rental_id']
@@ -425,9 +413,9 @@ class ProcessSimulator:
                 addtional_invoices_lended_inventory_ids.append(lended_inventory_id)
 
             # save activity in table log
-            self.__create_entry_for_extended_table_log__('inspect_inventories', self.current_time, store_id, rental=rental_id, inventory=inventory_id, staff=inspector_id, inspection=inspection_id)
-            self.__create_entry_for_table_log__('inspect_inventories', self.current_time, store_id, rental=list(rental_ids), inventory=inventory_ids, staff=inspector_id, inspection=inspection_ids)
-            self.event_id_counter += 1
+            self.__create_entry_for_extended_table_log__('inspect_inventories', self.current_time, rental=rental_id, inventory=inventory_id, staff=inspector_id, inspection=inspection_id)
+        self.__create_entry_for_table_log__('inspect_inventories', self.current_time, rental=list(rental_ids), inventory=inventory_ids, staff=inspector_id, inspection=inspection_ids)
+        self.event_id_counter += 1
 
         # list with rental & inventory for additional invoices
         return addtional_invoices_lended_inventory_ids
@@ -496,6 +484,7 @@ class ProcessSimulator:
         self.lended_inventory.to_csv(self.path + 'lended_inventory.csv')
         self.inspections.to_csv(self.path + 'inspections.csv')
         self.invoices.to_csv(self.path + 'invoices.csv')
+        print(Fore.GREEN, 'Finished: database tables can be found here: ', 'generatedData/')
 
         self.table_log = self.table_log.sort_values(by=['timestamp'])
         self.table_log = self.table_log.reset_index(drop=True)
@@ -507,13 +496,28 @@ class ProcessSimulator:
         self.extended_table_log['event_id'] = self.extended_table_log['event_id'].astype(int)
         self.extended_table_log.to_csv('tableLogs/extended_tableLog.csv', index=False)
 
+        print(Fore.GREEN, 'Finished: table logs can be found here: ', 'tableLogs/extended_tableLog.csv')
+
 
 if __name__ == '__main__':
 
-    start = datetime.datetime(year=2020, month=1, day=1, hour=7)
-    end = datetime.datetime(year=2020, month=1, day=1, hour=8)
-    step = datetime.timedelta(minutes=15)
+    # declare all options
+    parser = OptionParser()
+    parser.add_option("-i", dest="interval", help="Interval steps for simulation [Hours], default = 1 h", default=1, type="int", action="store")
+    parser.add_option("-s", "--start", dest="start", help="Set Start date to limit data [YYYY/MM/DD hh:mm], default = 2012/10/01 08:00", action="store", default="2020/01/01 08:00", type="str")
+    parser.add_option("-e", "--end", dest="end", help="Set Start date to limit data [YYYY/MM/DD hh:mm], default = 2012/11/15 08:00", action="store", default="2020/01/2 08:00", type="str")
+    (options, args) = parser.parse_args()
 
+    # parse options
+    start = datetime.datetime.strptime(options.start, "%Y/%m/%d %H:%M")
+    end = datetime.datetime.strptime(options.end, "%Y/%m/%d %H:%M")
+    step = datetime.timedelta(hours=options.interval)
+
+    print('Starttime', start)
+    print('Endtime', end)
+    print('Step', step)
+
+    # start simulator
     ps = ProcessSimulator()
     ps.simulate_process(start, end, step)
     ps.save_table_to_csv()
