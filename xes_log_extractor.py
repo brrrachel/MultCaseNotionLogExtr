@@ -4,6 +4,7 @@ warnings.filterwarnings("ignore", category=DeprecationWarning)
 from colorama import init, Fore
 init()
 import pandas as pd
+import numpy as np
 from tqdm import tqdm
 from pm4py.objects.log.log import EventLog
 from pm4py.objects.conversion.log import factory as conversion_factory
@@ -51,7 +52,6 @@ class XESLogExtractor:
                 log.loc[((log[columns[0]] == row[columns[0]]) & (log[columns[1]] == row[columns[1]])), 'case:concept:name'] = row[columns[2]]
 
             # rename the columns for preparing the xes log
-            log['store'] = log['store'].astype(str)
             log['event_id'] = log['event_id'].astype(str)
             columns_to_rename = {'timestamp': 'time:timestamp', 'activity': 'concept:name'}
             log.rename(columns=columns_to_rename, inplace=True)
@@ -69,7 +69,6 @@ class XESLogExtractor:
                     log = log.append(event_attributes, ignore_index=True, sort=True)
 
             # rename the columns for preparing the xes log
-            log['store'] = log['store'].astype(str)
             log['event_id'] = log['event_id'].astype(str)
             columns_to_rename = {case_notion_columns[0]: 'case:concept:name',
                                  'timestamp': 'time:timestamp',
@@ -80,6 +79,7 @@ class XESLogExtractor:
 
         # remove all empty values for the case id from the log
         log = log[log['case:concept:name'] != 'EMPTY']
+        log = log.dropna()
 
         # convert to xes format
         parameters = {constants.PARAMETER_CONSTANT_CASEID_KEY: "case:concept:name",
