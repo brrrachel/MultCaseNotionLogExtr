@@ -52,10 +52,13 @@ class XESLogExtractor:
 
             # map new case id on the combination of unique columns
             columns = case_notion.columns
-            log = self.extended_table_log
+            combined_case_notion_log = self.extended_table_log
             for index, row in case_notion.iterrows():
-                log.loc[((log[columns[0]] == row[columns[0]]) & (
-                        log[columns[1]] == row[columns[1]])), 'case:concept:name'] = row[columns[2]]
+                combined_case_notion_log.loc[((combined_case_notion_log[columns[0]] == row[columns[0]]) & (
+                        combined_case_notion_log[columns[1]] == row[columns[1]])), 'case:concept:name'] = row[columns[2]]
+
+            # merge attributes
+            log = self.merge_event_attributes(combined_case_notion_log, 'case:concept:name')
 
             # rename the columns for preparing the xes log
             log['event_id'] = log['event_id'].astype(str)
@@ -64,16 +67,8 @@ class XESLogExtractor:
 
         else:  # if only one column is considered as a case notion
 
-            # get case ids
-            case_ids = self.get_case_ids(case_notion_columns[0])
-
             # get events for selected case notion
-            for case in tqdm(case_ids):
-                event_ids = list(set(self.extended_table_log[(self.extended_table_log[case_notion_columns[0]] == case)][
-                                         'event_id'].values.tolist()))
-                for event in event_ids:
-                    event_attributes = self.get_case_attributes(case_notion_columns[0], event, case)
-                    log = log.append(event_attributes, ignore_index=True, sort=True)
+            log = self.merge_event_attributes(self.extended_table_log, case_notion_columns[0])
 
             # rename the columns for preparing the xes log
             log['event_id'] = log['event_id'].astype(str)
@@ -96,19 +91,29 @@ class XESLogExtractor:
         log = log.sort_values(by=['case:concept:name', 'time:timestamp'])
         return conversion_factory.apply(log, parameters=parameters)
 
-    def get_case_ids(self, column) -> list:
-        return list(set(self.extended_table_log[column].values.tolist()))
+    def get_case_ids(self, log, column) -> list:
+        return list(set(log[column].values.tolist()))
 
-    def get_case_attributes(self, case_notion, event_id, case_id) -> dict:
-        filtered = self.extended_table_log[
-            (self.extended_table_log['event_id'] == event_id) & (self.extended_table_log[case_notion] == case_id)]
+    def merge_event_attributes(self, log, case_notion):
+        case_ids = self.get_case_ids(log, case_notion)
+
+        merged_log = pd.DataFrame(columns=log.columns)
+        for case in tqdm(case_ids):
+            event_ids = list(set(log[(log[case_notion] == case)]['event_id'].values.tolist()))
+            for event in event_ids:
+                event_attributes = self.get_case_attributes(log, case_notion, event, case)
+                merged_log = merged_log.append(event_attributes, ignore_index=True, sort=True)
+        return merged_log
+
+    def get_case_attributes(self, log, case_notion, event_id, case_id) -> dict:
+        filtered = log[(log['event_id'] == event_id) & (log[case_notion] == case_id)]
         if len(filtered) == 1:
             event_attributes = filtered.reset_index(drop=True).to_dict('records')[0]
             return event_attributes
         else:
             event_attributes = {}
             for column in filtered.columns:
-                if column in ['event_id', 'activity', 'timestamp', case_notion, 'lifecycle']:
+                if column in ['event_id', 'activity', 'timestamp', case_notion]:
                     event_attributes[column] = filtered.iloc[0][column]
                 else:
                     # get all involved objects of the event
