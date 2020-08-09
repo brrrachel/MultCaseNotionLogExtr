@@ -141,11 +141,13 @@ class ProcessSimulator:
 
     def select_available_inventory_from_store(self, store_id: int, count=2) -> list:
         inventory_of_store_ids = self.inventory[(self.inventory['store_id'] == store_id)].index.tolist()
+        not_inspected_loaned_inventories = self.inspections[pd.isna(self.inspections['inspection_date'])][
+            'loaned_inventory_id'].values.tolist()
         currently_inventories_loaned_ids = self.loaned_inventory[
-            (pd.isna(self.loaned_inventory['cancel_date']) & (pd.isna(self.loaned_inventory['return_date'])))][
+            ((pd.isna(self.loaned_inventory['cancel_date']) & pd.isna(self.loaned_inventory['return_date'])) |
+             (pd.notna(self.loaned_inventory['return_date']) & self.loaned_inventory.index.isin(not_inspected_loaned_inventories)))][
             'inventory_id'].values.tolist()
-        available_inventory = [inventory for inventory in inventory_of_store_ids if
-                               inventory not in currently_inventories_loaned_ids]
+        available_inventory = [inventory for inventory in inventory_of_store_ids if inventory not in currently_inventories_loaned_ids]
         if len(available_inventory) > 0:
             return list(set(random.choices(available_inventory, k=count)))
         else:
@@ -166,10 +168,8 @@ class ProcessSimulator:
     def select_loaned_inventory_id_to_cancel(self, customer, count=1):
         loaned_inventory_ids_of_customer = self.__get_loaned_inventory_ids_of_customer__(customer)
         confirmed_rentals = self.rental_orders[pd.notna(self.rental_orders['confirmed_date'])].index.tolist()
-        confirmed_li = loaned_inventory_ids_of_customer[
-            loaned_inventory_ids_of_customer['rental_id'].isin(confirmed_rentals)]
-        available_to_be_canceled = confirmed_li[
-            (pd.isna(confirmed_li['lend_date'])) & (pd.isna(confirmed_li['cancel_date']))]
+        confirmed_li = loaned_inventory_ids_of_customer[loaned_inventory_ids_of_customer['rental_id'].isin(confirmed_rentals)]
+        available_to_be_canceled = confirmed_li[(pd.isna(confirmed_li['lend_date'])) & (pd.isna(confirmed_li['cancel_date']))]
         if len(available_to_be_canceled) > 0:
             return random.choices(available_to_be_canceled.index.tolist(), k=count)
         return []
@@ -311,7 +311,7 @@ class ProcessSimulator:
 
             # save activity in table log
             self.__create_entry_for_extended_table_log__('confirm_invoice', self.current_time, invoice=invoice,
-                                                         staff=str(staff_id))
+                                                         staff=str(staff_id), rental=str(rental_id))
 
         self.__create_entry_for_table_log__('confirm_invoice', self.current_time, invoice=invoices, staff=str(staff_id))
         self.event_id_counter += 1
