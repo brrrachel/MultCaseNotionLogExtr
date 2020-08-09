@@ -1,7 +1,7 @@
-import sys
 import warnings
 
 import pandas as pd
+import sys
 from colorama import init, Fore
 from pm4py.objects.conversion.log import factory as conversion_factory
 from pm4py.objects.log.adapters.pandas import csv_import_adapter
@@ -55,7 +55,8 @@ class XESLogExtractor:
             combined_case_notion_log = self.extended_table_log
             for index, row in case_notion.iterrows():
                 combined_case_notion_log.loc[((combined_case_notion_log[columns[0]] == row[columns[0]]) & (
-                        combined_case_notion_log[columns[1]] == row[columns[1]])), 'case:concept:name'] = row[columns[2]]
+                        combined_case_notion_log[columns[1]] == row[columns[1]])), 'case:concept:name'] = row[
+                    columns[2]]
 
             # merge attributes
             log = self.merge_event_attributes(combined_case_notion_log, 'case:concept:name')
