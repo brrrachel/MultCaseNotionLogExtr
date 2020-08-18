@@ -1,22 +1,10 @@
 import datetime
 import random
 from optparse import OptionParser
-
 import numpy as np
 import pandas as pd
 from colorama import init, Fore
-
-init()
-
-'''
-Processes:
-
-create_rental -> confirm_invoice -> confirm_rental -> cancel_inventory
-create_rental -> confirm_invoice -> confirm_rental -> lend_inventory -> return_inventory -> inspect_inventory
-create_rental -> confirm_invoice -> confirm_rental -> lend_inventory -> return_inventory -> inspect_inventory
-                -> create_invoice -> confirm_invoice
-
-'''
+init()  # for coloring the outputs
 
 
 class ProcessSimulator:
@@ -33,10 +21,11 @@ class ProcessSimulator:
         self.staff = pd.read_csv(self.path + 'staff.csv', index_col=0)
         self.store = pd.read_csv(self.path + 'store.csv', index_col=0)
 
-        self.current_time = start_time
-        self.step = step_size
-        self.small_step = (end_time - start_time).total_seconds() / step_size.total_seconds()
-        self.end_time = end_time
+        # set time related variables
+        self.current_time: datetime.datetime = start_time
+        self.step: datetime.timedelta = step_size
+        self.end_time: datetime.datetime = end_time
+        self.current_time: datetime.datetime
 
         # create additional tables
         self.rental_orders = pd.DataFrame(columns=['customer_id', 'created_date', 'confirmed_date', 'confirmed_staff'])
@@ -58,9 +47,6 @@ class ProcessSimulator:
                      'invoice'])
         self.event_id_counter: int = 0
 
-        # simulation time
-        self.current_time: datetime.datetime
-
     '''
         Helper Methods
     '''
@@ -68,7 +54,7 @@ class ProcessSimulator:
     def __get_customer_ids__(self) -> list:
         return self.customer.index.tolist()
 
-    def __get_store_ids__(self):
+    def __get_store_ids__(self) -> list:
         return self.store.index.tolist()
 
     def __get_store_of_customer__(self, customer_id: int) -> int:
@@ -76,10 +62,7 @@ class ProcessSimulator:
 
     def __get_loaned_inventory_ids_of_customer__(self, customer_id) -> pd.DataFrame:
         """
-
-        :param customer_id: the customer
-        :return: the data frame of loaned_inventory_id for a customer
-            (all loaned_inventory_ids not only the currently loaned ones)
+        :return: Dataframe with all inventories for the requested customer.
         """
         rentals_of_customer = self.rental_orders[(self.rental_orders['customer_id'] == customer_id)].index.tolist()
         loaned_inventory_of_customer = self.loaned_inventory[
@@ -87,6 +70,9 @@ class ProcessSimulator:
         return loaned_inventory_of_customer
 
     def __get_rentals_without_invoice_from_store__(self, store_id: int) -> pd.DataFrame:
+        '''
+        :return: Dataframe with all invoices which have to be created for the requested store.
+        '''
         rental_inventory_invoices_mapping = pd.merge(self.loaned_inventory, self.invoices, left_on='rental_id',
                                                      right_on='rental_id', how='left')
         rental_inventory_invoices_store_mapping = pd.merge(rental_inventory_invoices_mapping, self.inventory,
@@ -100,44 +86,41 @@ class ProcessSimulator:
         equipment_id = self.inventory.loc[inventory_id, 'equipment_id']
         return self.equipment.loc[equipment_id, 'rental_rate']
 
-    def __get_invoices_rental_mapping__(self) -> pd.DataFrame:
-        return pd.merge(self.invoices, self.rental_orders, left_on='rental_id', right_index=True, how='left')
-
-    def __get_loaned_inventory_ids_of_store__(self, store_id):
-        li_inventory_mapping = pd.merge(self.loaned_inventory, self.inventory, left_on='inventory_id', right_index=True,
-                                        how='outer')
-        return li_inventory_mapping[(li_inventory_mapping['store_id'] == store_id)]
-
-    def __get_rentals_of_store__(self, store_id):
-        rentals_store_mapping = pd.merge(self.rental_orders, self.customer, left_on='customer_id', right_index=True,
-                                         how='left')
-        return rentals_store_mapping[(rentals_store_mapping['store_id'] == store_id)]
-
-    def __get_invoices_of_store__(self, store_id):
-        invoices_rental_mapping = self.__get_invoices_rental_mapping__()
-        invoices_rental_store_mapping = pd.merge(invoices_rental_mapping, self.customer, left_on='customer_id',
-                                                 right_index=True, how='left')
-        return invoices_rental_store_mapping[(invoices_rental_store_mapping['store_id'] == store_id)]
-
     def __get_random_staff_id_for_store__(self, store_id: int) -> int:
         staff_of_store = self.staff[self.staff['store_id'] == store_id]
         return random.choice(staff_of_store.index.tolist())
 
-    def __get_number_of_loaned_inventories__(self) -> int:
-        return len(self.loaned_inventory)
+    def __get_loaned_inventory_ids_of_store__(self, store_id) -> pd.DataFrame:
+        '''
+        :return: Dataframe with all inventories of the requested which are lended currently.
+        '''
+        li_inventory_mapping = pd.merge(self.loaned_inventory, self.inventory,
+                                        left_on='inventory_id', right_index=True, how='outer')
+        return li_inventory_mapping[(li_inventory_mapping['store_id'] == store_id)]
 
-    def __get_number_of_cancelled_inventories(self) -> int:
-        return len(self.loaned_inventory[pd.notna(self.loaned_inventory['cancel_date'])])
+    def __get_rentals_of_store__(self, store_id) -> pd.DataFrame:
+        '''
+        :return: Dataframe with all rentals for the requested store.
+        '''
+        rentals_store_mapping = pd.merge(self.rental_orders, self.customer,
+                                         left_on='customer_id', right_index=True, how='left')
+        return rentals_store_mapping[(rentals_store_mapping['store_id'] == store_id)]
 
-    def __get_number_of_inspected_inventories__(self) -> int:
-        return len(self.inspections[pd.notna(self.inspections['inspection_date'])])
+    def __get_invoices_rental_mapping__(self) -> pd.DataFrame:
+        '''
+        :return: Merged dataframe, where we map from each invoice to their rental entry.
+        '''
+        return pd.merge(self.invoices, self.rental_orders, left_on='rental_id', right_index=True, how='left')
 
-    def __rentals_finished__(self) -> bool:
-        return self.__get_number_of_loaned_inventories__() == (
-                self.__get_number_of_cancelled_inventories() + self.__get_number_of_inspected_inventories__())
 
-    def __invoices_confirmed__(self) -> bool:
-        return len(self.invoices[pd.notna(self.invoices['confirmed_date'])]) == len(self.invoices)
+    def __get_invoices_of_store__(self, store_id) -> pd.DataFrame:
+        '''
+        :return: Merged dataframe, where we map invoice with their rental information and add the customer information.
+        '''
+        invoices_rental_mapping = self.__get_invoices_rental_mapping__()
+        invoices_rental_store_mapping = pd.merge(invoices_rental_mapping, self.customer,
+                                                 left_on='customer_id', right_index=True, how='left')
+        return invoices_rental_store_mapping[(invoices_rental_store_mapping['store_id'] == store_id)]
 
     def select_available_inventory_from_store(self, store_id: int, count=2) -> list:
         inventory_of_store_ids = self.inventory[(self.inventory['store_id'] == store_id)].index.tolist()
@@ -174,9 +157,32 @@ class ProcessSimulator:
             return random.choices(available_to_be_canceled.index.tolist(), k=count)
         return []
 
+    def __get_total_number_of_loaned_inventories__(self) -> int:
+        return len(self.loaned_inventory)
+
+    def __get_total_number_of_cancelled_inventories(self) -> int:
+        return len(self.loaned_inventory[pd.notna(self.loaned_inventory['cancel_date'])])
+
+    def __get_total_number_of_inspected_inventories__(self) -> int:
+        return len(self.inspections[pd.notna(self.inspections['inspection_date'])])
+
+    def __rentals_finished__(self) -> bool:
+        return self.__get_total_number_of_loaned_inventories__() == (
+                self.__get_total_number_of_cancelled_inventories() + self.__get_total_number_of_inspected_inventories__())
+
+    def __invoices_confirmed__(self) -> bool:
+        return len(self.invoices[pd.notna(self.invoices['confirmed_date'])]) == len(self.invoices)
+
+    '''
+        Methods to create the table representation of an XOC log.
+    '''
+
     def __create_entry_for_table_log__(self, activity: str, timestamp: datetime.datetime, rental='EMPTY',
                                        inventory='EMPTY', customer='EMPTY', staff='EMPTY', inspection='EMPTY',
                                        invoice='EMPTY'):
+        '''
+        A XOC Log represented as a table.
+        '''
         new_entry = {'event_id': self.event_id_counter,
                      'activity': activity,
                      'timestamp': timestamp,
@@ -192,6 +198,11 @@ class ProcessSimulator:
     def __create_entry_for_extended_table_log__(self, activity: str, timestamp: datetime.datetime, rental='EMPTY',
                                                 inventory='EMPTY', customer='EMPTY', staff='EMPTY', inspection='EMPTY',
                                                 invoice='EMPTY'):
+        '''
+        An extended table log is where each line in the table has exactly one value. Events where multiple objects are
+        involved have multiple enntries within the dataframe. This extended table log makes it easier for deriving the
+        different case notions using the object type projection. This representation is just used for internal work.
+        '''
         new_entry = {'event_id': self.event_id_counter,
                      'activity': activity,
                      'timestamp': timestamp,
@@ -218,8 +229,8 @@ class ProcessSimulator:
         new_rental = {'customer_id': customer_id, 'created_date': self.current_time, 'confirmed_date': np.NaN}
         self.rental_orders = self.rental_orders.append(new_rental, ignore_index=True)
         rental_id = int(self.rental_orders.index.max())
-        # print('Customer ' + str(customer_id) + ' created rental ' + str(rental_id) + ' on ' + date.__str__())
 
+        # save event also in the table log
         for inventory in inventory_ids:
             self.__create_entry_for_extended_table_log__('create_rental', self.current_time, rental=str(rental_id),
                                                          inventory=inventory, customer=str(customer_id))
@@ -322,7 +333,7 @@ class ProcessSimulator:
         confirmed_invoices_rental_ids = self.invoices[pd.notna(self.invoices['confirmed_date'])][
             'rental_id'].values.tolist()
 
-        # if rental is not confirmed yet, but the invoice is confirmed
+        # if rental are not confirmed yet, but the invoice is confirmed
         rentals_to_confirm = [rental_id for rental_id in rentals_not_confirmed if
                               rental_id in confirmed_invoices_rental_ids]
 
@@ -346,13 +357,14 @@ class ProcessSimulator:
 
     def cancel_inventory(self, customer_id: int, loaned_inventory_ids: list):
 
-        # if there are no loaned_inventory_id to cancel
+        # if there are no inventories to cancel
         if len(loaned_inventory_ids) == 0:
             return
 
         inventory_ids = []
         rental_ids = []
         for loaned_inventory_id in loaned_inventory_ids:
+
             # set cancel date
             self.loaned_inventory.at[loaned_inventory_id, 'cancel_date'] = self.current_time
 
@@ -389,6 +401,8 @@ class ProcessSimulator:
         rental_ids = set()
         inventory_ids = []
         for loaned_inventory_id in li_confirmed_ids:
+
+            # mark the inventory as loaned
             self.loaned_inventory.at[loaned_inventory_id, 'lend_date'] = self.current_time
             self.loaned_inventory.at[loaned_inventory_id, 'lend_staff'] = staff_id
 
@@ -424,6 +438,8 @@ class ProcessSimulator:
         rental_ids = set()
         inventory_ids = []
         for loaned_inventory_id in li_to_return_ids:
+
+            # mark an inventory as returned
             self.loaned_inventory.at[loaned_inventory_id, 'return_date'] = self.current_time
             self.loaned_inventory.at[loaned_inventory_id, 'return_staff'] = staff_id
 
@@ -465,6 +481,8 @@ class ProcessSimulator:
         additional_invoices_loaned_inventory_ids = []
 
         for inspection_id in inspection_ids:
+
+            # mark an inventory as inspected
             self.inspections.at[inspection_id, 'inspection_date'] = self.current_time
             self.inspections.at[inspection_id, 'inspector'] = inspection_id
 
@@ -489,6 +507,10 @@ class ProcessSimulator:
 
         # list with rental & inventory for additional invoices
         return additional_invoices_loaned_inventory_ids
+
+    def __proceed_time__(self):
+        self.current_time += datetime.timedelta(
+            seconds=self.step.total_seconds() / (len(self.store) + len(self.customer)))
 
     def simulate_process(self):
 
@@ -522,8 +544,7 @@ class ProcessSimulator:
                     self.return_inventory(customer)
                     self.lend_inventory(customer)
 
-            self.current_time += datetime.timedelta(
-                seconds=self.step.total_seconds())  # /(len(self.store) + len(self.customer)))
+                self.__proceed_time__()
 
             # iterate over the list of stores
             stores = self.__get_store_ids__()
@@ -537,18 +558,20 @@ class ProcessSimulator:
                     rentals_inventory_without_invoice = self.__get_rentals_without_invoice_from_store__(store)
                     self.create_invoice(store, rentals_inventory_without_invoice)
                 elif (0.3 < decision) & (decision <= 0.5):
+                    # confirm all payed invoices
                     self.confirm_invoice(store)
                 elif (0.5 < decision) & (decision <= 0.7):
+                    # confirm all confirmed invoices
                     self.confirm_rentals(store)
                 else:
+                    # inspect all recently returned inventories and create if necessary additional invoices
                     additional_invoices_list = self.inspect_inventory(store)
                     if len(additional_invoices_list) > 0:
                         data_frame_additional_invoices = self.loaned_inventory[
                             (self.loaned_inventory.index.isin(additional_invoices_list))]
                         self.create_invoice(store, data_frame_additional_invoices, delay=datetime.timedelta(seconds=1))
 
-                self.current_time += datetime.timedelta(
-                    seconds=self.step.total_seconds() / (len(self.store) + len(self.customer)))
+                self.__proceed_time__()
 
     def save_table_to_csv(self):
         self.rental_orders.to_csv(self.path + 'rental_orders.csv')
@@ -567,7 +590,7 @@ class ProcessSimulator:
         self.extended_table_log['event_id'] = self.extended_table_log['event_id'].astype(int)
         self.extended_table_log.to_csv('tableLogs/extended_tableLog.csv', index=False)
 
-        print(Fore.GREEN, 'Finished: table logs can be found here: ', 'tableLogs/extended_tableLog.csv')
+        print(Fore.GREEN, 'Finished: table logs can be found here: ', 'tableLogs/')
 
 
 if __name__ == '__main__':
