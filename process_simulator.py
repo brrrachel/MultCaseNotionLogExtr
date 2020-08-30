@@ -4,6 +4,7 @@ from optparse import OptionParser
 import numpy as np
 import pandas as pd
 from colorama import init, Fore
+
 init()  # for coloring the outputs
 
 
@@ -47,9 +48,9 @@ class ProcessSimulator:
                      'invoice'])
         self.event_id_counter: int = 0
 
-    '''
+    """
         Helper Methods
-    '''
+    """
 
     def __get_customer_ids__(self) -> list:
         return self.customer.index.tolist()
@@ -70,9 +71,9 @@ class ProcessSimulator:
         return loaned_inventory_of_customer
 
     def __get_rentals_without_invoice_from_store__(self, store_id: int) -> pd.DataFrame:
-        '''
+        """
         :return: Dataframe with all invoices which have to be created for the requested store.
-        '''
+        """
         rental_inventory_invoices_mapping = pd.merge(self.loaned_inventory, self.invoices, left_on='rental_id',
                                                      right_on='rental_id', how='left')
         rental_inventory_invoices_store_mapping = pd.merge(rental_inventory_invoices_mapping, self.inventory,
@@ -91,32 +92,31 @@ class ProcessSimulator:
         return random.choice(staff_of_store.index.tolist())
 
     def __get_loaned_inventory_ids_of_store__(self, store_id) -> pd.DataFrame:
-        '''
+        """
         :return: Dataframe with all inventories of the requested which are lended currently.
-        '''
+        """
         li_inventory_mapping = pd.merge(self.loaned_inventory, self.inventory,
                                         left_on='inventory_id', right_index=True, how='outer')
         return li_inventory_mapping[(li_inventory_mapping['store_id'] == store_id)]
 
     def __get_rentals_of_store__(self, store_id) -> pd.DataFrame:
-        '''
+        """
         :return: Dataframe with all rentals for the requested store.
-        '''
+        """
         rentals_store_mapping = pd.merge(self.rental_orders, self.customer,
                                          left_on='customer_id', right_index=True, how='left')
         return rentals_store_mapping[(rentals_store_mapping['store_id'] == store_id)]
 
     def __get_invoices_rental_mapping__(self) -> pd.DataFrame:
-        '''
+        """
         :return: Merged dataframe, where we map from each invoice to their rental entry.
-        '''
+        """
         return pd.merge(self.invoices, self.rental_orders, left_on='rental_id', right_index=True, how='left')
 
-
     def __get_invoices_of_store__(self, store_id) -> pd.DataFrame:
-        '''
+        """
         :return: Merged dataframe, where we map invoice with their rental information and add the customer information.
-        '''
+        """
         invoices_rental_mapping = self.__get_invoices_rental_mapping__()
         invoices_rental_store_mapping = pd.merge(invoices_rental_mapping, self.customer,
                                                  left_on='customer_id', right_index=True, how='left')
@@ -128,9 +128,11 @@ class ProcessSimulator:
             'loaned_inventory_id'].values.tolist()
         currently_inventories_loaned_ids = self.loaned_inventory[
             ((pd.isna(self.loaned_inventory['cancel_date']) & pd.isna(self.loaned_inventory['return_date'])) |
-             (pd.notna(self.loaned_inventory['return_date']) & self.loaned_inventory.index.isin(not_inspected_loaned_inventories)))][
+             (pd.notna(self.loaned_inventory['return_date']) & self.loaned_inventory.index.isin(
+                 not_inspected_loaned_inventories)))][
             'inventory_id'].values.tolist()
-        available_inventory = [inventory for inventory in inventory_of_store_ids if inventory not in currently_inventories_loaned_ids]
+        available_inventory = [inventory for inventory in inventory_of_store_ids if
+                               inventory not in currently_inventories_loaned_ids]
         if len(available_inventory) > 0:
             return list(set(random.choices(available_inventory, k=count)))
         else:
@@ -151,8 +153,10 @@ class ProcessSimulator:
     def select_loaned_inventory_id_to_cancel(self, customer, count=1):
         loaned_inventory_ids_of_customer = self.__get_loaned_inventory_ids_of_customer__(customer)
         confirmed_rentals = self.rental_orders[pd.notna(self.rental_orders['confirmed_date'])].index.tolist()
-        confirmed_li = loaned_inventory_ids_of_customer[loaned_inventory_ids_of_customer['rental_id'].isin(confirmed_rentals)]
-        available_to_be_canceled = confirmed_li[(pd.isna(confirmed_li['lend_date'])) & (pd.isna(confirmed_li['cancel_date']))]
+        confirmed_li = loaned_inventory_ids_of_customer[
+            loaned_inventory_ids_of_customer['rental_id'].isin(confirmed_rentals)]
+        available_to_be_canceled = confirmed_li[
+            (pd.isna(confirmed_li['lend_date'])) & (pd.isna(confirmed_li['cancel_date']))]
         if len(available_to_be_canceled) > 0:
             return random.choices(available_to_be_canceled.index.tolist(), k=count)
         return []
@@ -173,16 +177,16 @@ class ProcessSimulator:
     def __invoices_confirmed__(self) -> bool:
         return len(self.invoices[pd.notna(self.invoices['confirmed_date'])]) == len(self.invoices)
 
-    '''
+    """
         Methods to create the table representation of an XOC log.
-    '''
+    """
 
     def __create_entry_for_table_log__(self, activity: str, timestamp: datetime.datetime, rental='EMPTY',
                                        inventory='EMPTY', customer='EMPTY', staff='EMPTY', inspection='EMPTY',
                                        invoice='EMPTY'):
-        '''
+        """
         A XOC Log represented as a table.
-        '''
+        """
         new_entry = {'event_id': self.event_id_counter,
                      'activity': activity,
                      'timestamp': timestamp,
@@ -198,11 +202,11 @@ class ProcessSimulator:
     def __create_entry_for_extended_table_log__(self, activity: str, timestamp: datetime.datetime, rental='EMPTY',
                                                 inventory='EMPTY', customer='EMPTY', staff='EMPTY', inspection='EMPTY',
                                                 invoice='EMPTY'):
-        '''
+        """
         An extended table log is where each line in the table has exactly one value. Events where multiple objects are
         involved have multiple enntries within the dataframe. This extended table log makes it easier for deriving the
         different case notions using the object type projection. This representation is just used for internal work.
-        '''
+        """
         new_entry = {'event_id': self.event_id_counter,
                      'activity': activity,
                      'timestamp': timestamp,
@@ -215,9 +219,9 @@ class ProcessSimulator:
                      }
         self.extended_table_log = self.extended_table_log.append(new_entry, ignore_index=True)
 
-    '''
+    """
         Defining Activities
-    '''
+    """
 
     def create_rental(self, customer_id: int, inventory_ids: list):
 
@@ -364,7 +368,6 @@ class ProcessSimulator:
         inventory_ids = []
         rental_ids = []
         for loaned_inventory_id in loaned_inventory_ids:
-
             # set cancel date
             self.loaned_inventory.at[loaned_inventory_id, 'cancel_date'] = self.current_time
 
@@ -401,7 +404,6 @@ class ProcessSimulator:
         rental_ids = set()
         inventory_ids = []
         for loaned_inventory_id in li_confirmed_ids:
-
             # mark the inventory as loaned
             self.loaned_inventory.at[loaned_inventory_id, 'lend_date'] = self.current_time
             self.loaned_inventory.at[loaned_inventory_id, 'lend_staff'] = staff_id
@@ -438,7 +440,6 @@ class ProcessSimulator:
         rental_ids = set()
         inventory_ids = []
         for loaned_inventory_id in li_to_return_ids:
-
             # mark an inventory as returned
             self.loaned_inventory.at[loaned_inventory_id, 'return_date'] = self.current_time
             self.loaned_inventory.at[loaned_inventory_id, 'return_staff'] = staff_id
@@ -510,7 +511,7 @@ class ProcessSimulator:
 
     def __proceed_time__(self):
         self.current_time += datetime.timedelta(
-            seconds=self.step.total_seconds() / (len(self.store) + len(self.customer)))
+            seconds=int(self.step.total_seconds() / (len(self.store) + len(self.customer))))
 
     def simulate_process(self):
 
