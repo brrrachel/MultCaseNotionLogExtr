@@ -600,11 +600,11 @@ if __name__ == '__main__':
     parser.add_option("-i", dest="interval", help="Interval steps for simulation [Hours], default = 1 h", default=1,
                       type="int", action="store")
     parser.add_option("-s", "--start", dest="start",
-                      help="Set Start date to limit data [YYYY/MM/DD hh:mm], default = 2012/10/01 08:00",
+                      help="Set Start date to limit data [YYYY/MM/DD hh:mm], default = 2020/01/01 08:00",
                       action="store", default="2020/01/01 08:00", type="str")
     parser.add_option("-e", "--end", dest="end",
-                      help="Set Start date to limit data [YYYY/MM/DD hh:mm], default = 2012/11/15 08:00",
-                      action="store", default="2020/01/2 08:00", type="str")
+                      help="Set Start date to limit data [YYYY/MM/DD hh:mm], default = 2020/01/31 17:00",
+                      action="store", default="2020/01/31 17:00", type="str")
     (options, args) = parser.parse_args()
 
     # parse options
